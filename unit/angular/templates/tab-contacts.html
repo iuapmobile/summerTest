@@ -1,0 +1,21 @@
+<ion-view view-title="联系人">
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+    <ion-content>
+        <ion-list>
+            <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="contact in contacts"
+                      type="item-text-wrap" href="#/tab/contacts/{{contact.id}}">
+                <img ng-src="{{contact.face}}">
+
+                <h2>{{contact.name}}</h2>
+
+                <p>{{contact.tel}}</p>
+                <button class="button button button-icon icon ion-ios-telephone blue-icon" ng-if="contact.tel"></button>
+                <ion-option-button class="button-assertive" ng-click="remove(contact)">
+                    <i class="icon ion-ios-trash-outline"></i>
+                </ion-option-button>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

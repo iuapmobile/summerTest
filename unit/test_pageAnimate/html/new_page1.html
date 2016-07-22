@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/iuapmobile.um.css">
+		<link rel="stylesheet" href="../css/font-icons.css">
+		<script src="../js/Frameworks/iuapmobile.frameworks.core.js" ></script>
+		<script src="../js/jquery-2.1.4.min.js" ></script>
+		<script src="../js/Frameworks/iuapmobile.frameworks.ui.js" ></script>
+		<style>
+			html,body,.um-page{height:100%}
+		</style>
+	</head>
+	<body>
+		<div class="um-page active um-win" id="page">
+				<div class="btn-group btn-group-justify">
+					<button type="button" class="btn um-btn-info" onclick="toPage('#page1')">
+					page1
+					</button>
+					<button type="button" class="btn um-btn-success" onclick="toPage('#page2')">
+					page2
+					</button>
+					<button type="button" class="btn um-btn-primary" onclick="toPage('#page3')">
+					page3
+					</button>
+				</div>
+		</div>
+		<div class="um-page um-win" id="page1">
+			<div class="um-header" >
+				<a href="#" class="um-back">返回</a>
+				<h3>导航栏</h3>
+			</div>
+		
+			<div class="um-content">
+			在这里编辑您的页面内容...
+			</div>
+		
+			<div class="um-footer">
+				
+			</div>
+		</div>
+		<div class="um-page um-win" id="page2">
+			<div class="um-header" >
+				<a href="#" class="um-back">
+				返回</a>
+				<h3>导航栏</h3>
+			</div>
+			<div class="um-content">
+				<form id="">
+					<ul class="um-list">
+						<li>
+							<div class="um-list-item">
+								<div class="um-list-item-inner">
+									<div class="um-list-item-left">
+										用户名
+									</div>
+									<div class="um-list-item-right">
+										<input type="text" class="form-control" placeholder="请输入用户名" required>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="um-list-item">
+								<div class="um-list-item-inner">
+									<div class="um-list-item-left">
+										邮箱
+									</div>
+									<div class="um-list-item-right">
+										<input type="email" class="form-control" placeholder="请输入你的邮箱" required>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="um-list-item">
+								<div class="um-list-item-inner">
+									<div class="um-list-item-left">
+										密码
+									</div>
+									<div class="um-list-item-right">
+										<input type="password" class="form-control" placeholder="请输入密码" required>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="um-list-item">
+								<div class="um-list-item-inner">
+									<div class="um-list-item-left">
+										确认密码
+									</div>
+									<div class="um-list-item-right">
+										<input type="password" class="form-control" placeholder="确认密码" required>
+									</div>
+								</div>
+							</div>
+						</li>
+					</ul>
+					<button class="um-btn">
+					提交
+					</button>
+				</form>
+			</div>
+		</div>
+		<div class="um-page" id="page3">
+	<div class="um-header" >
+		<a href="#"  class="um-back">返回</a>
+		<h3>导航栏</h3>
+		<a class="um-header-right" href="#">保存</a>
+	</div>
+	<div class="um-content">
+		<div class="um-grid um-row">
+			<div class="um-grid-row tc um-border-bottom">
+				<div class="um-border-right um-bgc-white">
+					<a href="#" class="um-circle um-black">
+						<img src="../img/mt_food.png" width=40 class="um-img-responsive" alt="">
+						<div class="f12 mt5">美食</div>
+					</a>
+				</div>
+				<div class="um-border-right um-bgc-white">
+					<a href="#" class="um-circle um-black">
+						<img src="../img/mt_mv.png" width=40 class="um-img-responsive" alt="">
+						<div  class="f12 mt5">电影</div>
+					</a>
+				</div>
+				<div class="um-border-right um-bgc-white">
+					<a href="#" class="um-circle um-black">
+						<img src="../img/mt_hotal.png" width=40 class="um-img-responsive" alt="">
+						<div  class="f12 mt5">酒店</div>
+					</a>
+				</div>
+				<div  class="um-bgc-white">
+					<a href="#" class="um-circle um-black">
+						<img src="../img/mt_ktv.png" width=40 class="um-img-responsive" alt="">
+						<div  class="f12 mt5">KTV</div>
+					</a>
+				</div>
+			</div>
+			<div class="um-grid-row tc">
+				<div class="um-border-right um-bgc-white">
+					<a href="#" class="um-circle um-black">
+						<img src="../img/mt_new.png" width=40 class="um-img-responsive" alt="">
+						<div class="f12 mt5">今日新单</div>
+					</a>
+				</div>
+				<div class="um-border-right um-bgc-white">
+					<a href="#" class="um-circle um-black">
+						<img src="../img/mt_money.png" width=40 class="um-img-responsive" alt="">
+						<div  class="f12 mt5">代金券</div>
+					</a>
+				</div>
+				<div class="um-border-right um-bgc-white">
+					<a href="#" class="um-circle um-black">
+						<img src="../img/mt_you.png" width=40 class="um-img-responsive" alt="">
+						<div  class="f12 mt5">周边游</div>
+					</a>
+				</div>
+				<div class="um-bgc-white">
+					<a href="#" class="um-circle um-black">
+						<img src="../img/mt_xiaochi.png" width=40 class="um-img-responsive" alt="">
+						<div  class="f12 mt5">小吃快餐</div>
+					</a>
+				</div>
+			</div>
+		</div>
+			</div>
+</div>		
+	</body>	
+	<script>
+		 function toPage(name){
+		 	UM.page.changePage({target:name});
+		 }
+	</script>
+</html>

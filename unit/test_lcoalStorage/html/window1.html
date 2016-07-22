@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html class="um-win">
+	<head>
+		<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/iuapmobile.um-2.7.0.css">
+		<link rel="stylesheet" href="../css/font-icons.css">	
+		<script src="../js/Frameworks/iuapmobile.frameworks.core-2.7.0.js" ></script>	
+		<script src="../js/jquery-2.1.4.min.js" ></script>
+		<script src="../js/Frameworks/iuapmobile.frameworks.ui-2.7.0.js" ></script>
+		<script src="../js/summer.js" ></script>
+		<script>
+			
+			function $pageReady() {
+				/*这里编写与原生服务相关的代码逻辑，例如对原生设备服务的调用，对网络服务的调用等*/
+				//alert("Mobile Native Ready");
+			}
+
+			$(function() {
+
+			});
+		</script>
+
+	</head>
+	<body>
+		<div class="um-page um-win" id="index">
+		
+
+<div class="um-header" id="header" >
+	<a href="#"  class="um-back" onclick="summer.closeWin()">返回</a>
+	<h3>导航栏</h3>
+	<a class="um-header-right" href="#">保存</a>
+</div>
+
+			<div class="um-content" id="main">
+				在这编辑您的页面...
+			</div>
+
+			<div class="um-footer">
+				
+			</div>
+		</div>
+	</body>
+<script>
+
+summerready = function(){
+    // here is your code...	
+    var y = $summer.offset($summer.byId('header')).h;
+    var width=$summer.offset(document.getElementsByTagName("body")[0]).w;		
+    var height = $summer.offset($summer.byId('main')).h;
+
+    summer.openFrame({
+        name: 'win_f1',
+        url: 'html/window1_con.html',
+        bounces: true,
+        rect: {
+            x: 0,
+            y: y,
+            w: width,
+            h: height
+        }
+    });
+}
+</script>
+</html>

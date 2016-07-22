@@ -1,0 +1,248 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <title>Mobiscroll 2.13.2</title>
+
+    <style type="text/css">
+		*{ margin:0; padding:0;}
+        body {
+            margin: 0; padding: 0;
+            font-family:"微软雅黑";
+            font-size: 14px;
+            background: #fff;}
+		input, select {
+            width: 100%;
+            padding: 5px;
+            margin: 5px 0 10px;
+            border: 1px solid #aaa;
+            box-sizing: border-box;
+			background:#f5f5f5;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            -webkit-border-radius: 3px;}
+		label{ font:14px/1.4em "微软雅黑";}
+        .header {
+			box-sizing:border-box;
+            border: 1px solid #333;
+            background: #111; height:40px;
+            color: white;
+            font-weight: bold;
+            text-shadow: 0 -1px 1px black;
+            background-image: -webkit-gradient(linear,left top,left bottom,from(#3C3C3C),to(#111));
+            background-image: -webkit-linear-gradient(#3C3C3C,#111);
+            background-image: -moz-linear-gradient(#3C3C3C,#111);
+            background-image: -ms-linear-gradient(#3C3C3C,#111);
+            background-image: -o-linear-gradient(#3C3C3C,#111);
+            background-image: linear-gradient(#3C3C3C,#111);}
+        .header h1 {
+            text-align: center;
+            font-size: 16px;
+            margin: .6em 0;
+            padding: 0;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+		.header h1 a{ color:#fff; text-decoration:none;}
+        .content { padding: 15px; box-sizing:border-box;}
+		.copy{ height:40px; font:14px/40px "微软雅黑"; color:#aaa; text-align:center; background:#eee; border-top:1px solid #ddd; box-sizing:border-box;}
+        .demo { display: none; }
+
+    </style>
+
+    <script src="script/jquery-1.9.1.js"></script>
+    <script src="script/mobiscroll.2.13.2.js"></script>
+    <link href="style/mobiscroll.2.13.2.css" rel="stylesheet" />
+
+    <script type="text/javascript">
+        $(function () {
+            var curr = new Date().getFullYear();
+            var opt = {
+                'date': {
+                    preset: 'date',
+                    invalid: { daysOfWeek: [0, 6], daysOfMonth: ['5/1', '12/24', '12/25'] }
+                },
+                'datetime': {
+                    preset: 'datetime',
+                    minDate: new Date(2012, 3, 10, 9, 22),
+                    maxDate: new Date(2014, 7, 30, 15, 44),
+                    stepMinute: 5
+                },
+                'time': {
+                    preset: 'time'
+                },
+                'select': {
+                    preset: 'select'
+                },
+                'select-opt': {
+                    preset: 'select',
+                    group: true,
+                    width: 50
+                }
+            }
+
+            $('.settings select').bind('change', function() {
+                var demo = $('#demo').val();
+
+                if (!demo.match(/select/i)) {
+                    $('.demo-test-' + demo).val('');
+                }
+
+                $('.demo-test-' + demo).scroller('destroy').scroller($.extend(opt[demo], {
+                    theme: $('#theme').val(),
+                    mode: $('#mode').val(),
+                    display: $('#display').val(),
+                    animate: $('#animation').val()
+                }));
+                $('.demo').hide();
+                $('.demo-' + demo).show();
+            });
+
+            $('#demo').trigger('change');
+			
+			// debug this page
+			$(".content").css({minHeight:$(window).height()-80});
+        });
+    </script>
+
+</head>
+<body>
+
+    <div class="header">
+        <h1><a href="javascript:location.reload(true);">Mobiscroll 2.13.2</a></h1>
+    </div>
+
+    <div class="content">
+
+        <div class="settings">
+
+          <label for="theme">选择主题</label>
+          <select name="theme" id="theme">
+              <option value="default">Default</option>
+              <option value="android">Android</option>
+              <option value="android-holo">Android Holo</option>
+              <option value="android-holo light">Android Holo Light</option>
+              <option value="ios">iOS</option>
+              <option value="ios7">iOS7</option>
+              <option value="jqm">jQuery Mobile</option>
+              <option value="sense-ui">Sense UI</option>
+              <option value="wp">Windows Phone</option>
+              <option value="wp light">Windows Phone Light</option>
+          </select>
+
+          <label for="mode">选择模式</label>
+          <select name="mode" id="mode">
+              <option value="scroller">Scroller</option>
+              <option value="clickpick">Clickpick</option>
+              <option value="mixed">Mixed</option>
+          </select>
+
+          <label for="display">显示方式</label>
+          <select name="display" id="display">
+              <option value="modal">Modal</option>
+              <option value="inline">Inline</option>
+              <option value="bubble">Bubble</option>
+              <option value="top">Top</option>
+              <option value="bottom">Bottom</option>
+          </select>
+
+          <label for="animation">弹出特效</label>
+          <select name="animation" id="animation" class="settings">
+              <option value="">None</option>
+              <option value="fade">Fade</option>
+              <option value="flip">Flip</option>
+              <option value="pop">Pop</option>
+              <option value="swing">Swing</option>
+              <option value="slidehorizontal">Slide Horizontal</option>
+              <option value="slidevertical">Slide Vertical</option>
+              <option value="slidedown">Slide Down</option>
+              <option value="slideup">Slide Up</option>
+          </select>
+
+          <label for="demo">演示类型</label>
+          <select name="demo" id="demo">
+              <option value="date">日期</option>
+              <option value="time">时间</option>
+              <option value="datetime">日期时间</option>
+              <option value="select">普通选择</option>
+              <option value="select-opt">分组选择</option>
+          </select>
+          
+        </div>
+        
+        
+        <br><br>
+        
+        
+        <div data-role="fieldcontain" class="demo demo-date demo-datetime demo-time">
+            <label for="test">查看效果</label>
+            <input name="test" id="test" class="demo-test-date demo-test-datetime demo-test-time demo-test-credit" />
+        </div>
+        <div data-role="fieldcontain" class="demo demo-select">
+            <label for="city">选择城市</label>
+            <select id="city" class="demo-test-select" data-role="none">
+                <option value="1">北京</option>
+                <option value="2">波士顿</option>
+                <option value="3">芝加哥</option>
+                <option value="4">伦敦</option>
+                <option value="5">洛杉矶</option>
+                <option value="6">纽约</option>
+                <option value="7">巴黎</option>
+                <option value="8">旧金山</option>
+            </select>
+        </div>
+        <div data-role="fieldcontain" class="demo demo-select-opt">
+            <label for="names">高分电影</label>
+            <select id="names" class="demo-test-select-opt" data-role="none">
+                <optgroup label="喜剧片">
+                    <option value="0">《疯狂的石头》</option>
+                    <option value="1">《夜店》</option>
+                    <option value="2">《让子弹飞》</option>
+                    <option value="3">《非诚勿扰》</option>
+                </optgroup>
+                <optgroup label="惊悚片">
+                    <option value="78">《电锯惊魂》</option>
+                    <option value="79">《死神来了》</option>
+                    <option value="80">《惊声尖叫》</option>
+                    <option value="81">《致命弯道》</option>
+                    <option value="82">《异次元杀阵》</option>
+                    <option value="83">《生化危机》</option>
+                    <option value="84">《异形》</option>
+                </optgroup>
+                <optgroup label="青春片">
+                    <option value="118">《关于莉莉周的一切》</option>
+                    <option value="119">《东邪西毒》</option>
+                    <option value="120">《天使爱美丽》</option>
+                    <option value="121">《可爱的骨头》</option>
+                    <option value="122">《猜火车》</option>
+                </optgroup>
+                <optgroup label="科幻片">
+                    <option value="195">《我是传奇》</option>
+                    <option value="196">《机械公敌》</option>
+                    <option value="197">《蜘蛛侠》</option>
+                    <option value="198">《钢铁侠》</option>
+                    <option value="199">《变形金刚》</option>
+                    <option value="200">《X战警》</option>
+                    <option value="201">《哈利波特》</option>
+                </optgroup>
+                <optgroup label="剧情片">
+                    <option value="261">《杀死比尔》</option>
+                    <option value="262">《暴力街区》</option>
+                    <option value="263">《2012》</option>
+                    <option value="264">《流感》</option>
+                    <option value="265">《告白》</option>
+                    <option value="266">《无间道》</option>
+                    <option value="267">《门徒》</option>
+                </optgroup>
+            </select>
+        </div>
+    </div>
+    
+    <div class="copy">2014 @ 后天堂工作室</div>
+     
+</body>
+</html>

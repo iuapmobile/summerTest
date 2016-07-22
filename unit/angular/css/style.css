@@ -1,0 +1,19 @@
+/* Empty. Add your own CSS if you like */
+body {
+    font-family: 黑体, "microsoft yahei";
+}
+.tabs-striped .tab-item.tab-item-active, .tabs-striped .tab-item.active, .tabs-striped .tab-item.activated{
+    border:none;
+}
+
+.bar-header {
+    border: 1px solid black;
+}
+
+#myTabs .tab-nav.tabs{
+    border-top:1px solid #b2b2b2;
+}
+
+.icon.time{
+    font-size:16px;
+}

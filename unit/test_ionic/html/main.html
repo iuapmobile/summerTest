@@ -1,0 +1,62 @@
+<html ng-app="ionicApp">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>菜鸟教程(runoob.com)</title>
+    <link href="http://www.runoob.com/static/ionic/css/ionic.min.css" rel="stylesheet">
+    <script src="http://www.runoob.com/static/ionic/js/ionic.bundle.min.js"></script>
+    <script type="text/javascript">
+    angular.module('ionicApp', ['ionic']).controller('MyCtrl', function($scope) {
+			alert(123)
+    });
+    </script>
+    <style>
+    body {
+    cursor: url('http://www.runoob.com/static/img/finger.png'), auto;
+    }
+    </style>
+</head>
+<body ng-controller="MyCtrl">
+
+    <ion-header-bar class="bar-positive">
+    <h1 class="title">Hello World!</h1>
+    </ion-header-bar>
+
+    <ion-content>
+                <p>我的第一个 ionic 应用。</p>
+                 <div class="padding">
+        <button id="btnOpen" onclick="opencamera()" class="button button-block button-positive">opencamera</button>
+      </div>
+    </ion-content>
+
+    </body>
+    <script src="js/Frameworks/iuapmobile.frameworks.core-2.7.0.js" ></script>
+		<script src="js/summer.js" ></script>
+  <script>
+	function opencamera(){
+		$camera.open({
+			//bindfield : "image",//summer中不会再出现bindfield,应该已经不支持$ctx
+			callback :"callback0()"
+		});
+	}
+ 	function callback0(args){
+
+ 		alert(args);
+ 		$alert(args);
+		
+   			$summer.byId("myphoto").src = args.imgPath;
+
+	}
+	/*
+  	function callback1(args){
+
+ 		alert(args);
+ 		$alert(args);
+ 		if($summer.os == "android")  		
+   			$summer.byId("myphoto").src = args.image;
+   		else if($summer.os == "ios")  	
+   			$summer.byId("myphoto").src = args.albumpath;
+	}
+	*/
+</script>
+</html>

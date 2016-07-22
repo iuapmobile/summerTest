@@ -1,0 +1,78 @@
+<ion-view view-title="设置">
+    <ion-nav-buttons side="left">
+        <button class="button button-clear" ng-click="goBack()"><i class="icon ion-arrow-left-c" ></i> 返回</button>
+    </ion-nav-buttons>
+    <ion-content>
+        <div class="list" style="margin-top: 13px">
+            <div class="item item-divider fb">
+                系统设置
+            </div>
+            <div class="item range range-positive">
+                <i class="icon ion-volume-low"></i>
+                <input type="range"  name="s"  value="40" min="0" max="100" step="0.1">
+                <i class="icon ion-volume-high"></i>
+            </div>
+            <div class="item range range-positive">
+                <i class="icon ion-ios-sunny-outline"></i>
+                <input type="range" name="volume1" min="0" max="100" value="12">
+                <i class="icon ion-ios-sunny"></i>
+            </div>
+        </div>
+        <div class="list" style="margin-top: 13px">
+            <div class="item item-divider fb">
+                账号管理
+            </div>
+            <div class="item item-toggle">
+                是否显示朋友最新动态
+                <label class="toggle toggle-balanced">
+                    <input type="checkbox" checked="true">
+                    <div class="track">
+                        <div class="handle"></div>
+                    </div>
+                </label>
+            </div>
+        </div>
+        <div class="list" style="margin-top: 13px">
+            <div class="item item-divider fb">
+                拦截规则
+            </div>
+            <div class="item item-checkbox">
+                <label class="checkbox">
+                    <input type="checkbox" checked="true">
+                </label>
+                智能拦截
+            </div>
+            <div class="item item-checkbox">
+                <label class="checkbox">
+                    <input type="checkbox">
+                </label>
+                拦截黑名单
+            </div>
+            <div class="item item-checkbox">
+                <label class="checkbox">
+                    <input type="checkbox">
+                </label>
+                拦截陌生人
+            </div>
+        </div>
+        <div class="list" style="margin-top: 13px">
+            <div class="item item-divider fb">
+                版本更新
+            </div>
+            <label class="item item-radio">
+                <input type="radio" name="group" checked="true">
+                <div class="item-content">
+                    自动更新
+                </div>
+                <i class="radio-icon ion-checkmark positive"></i>
+            </label>
+            <label class="item item-radio">
+                <input type="radio" name="group">
+                <div class="item-content">
+                    手动更新
+                </div>
+                <i class="radio-icon ion-checkmark positive"></i>
+            </label>
+        </div>
+    </ion-content>
+</ion-view>

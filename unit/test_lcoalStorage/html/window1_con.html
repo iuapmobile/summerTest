@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/iuapmobile.um-2.7.0.css">
+		<link rel="stylesheet" href="../css/font-icons.css">
+		<script src="../js/Frameworks/iuapmobile.frameworks.core-2.7.0.js" ></script>
+		<script src="../js/jquery-2.1.4.min.js" ></script>
+		<script src="../js/Frameworks/iuapmobile.frameworks.ui-2.7.0.js" ></script>
+
+		<script>
+			$(function() {
+
+			});
+		</script>
+	</head>
+	<body>
+		<div class="um-page" id="index">
+			<div class="um-content">
+				<div class="um-grid um-row">
+					<div class="um-grid-row tc um-border-bottom">
+						<div class="um-border-right um-bgc-white">
+							<a href="#" class="um-circle um-black"> <img src="../img/mt_food.png" width=40 class="um-img-responsive" alt="">
+							<div class="f12 mt5">
+								美食
+							</div> </a>
+						</div>
+						<div class="um-border-right um-bgc-white">
+							<a href="#" class="um-circle um-black"> <img src="../img/mt_mv.png" width=40 class="um-img-responsive" alt="">
+							<div  class="f12 mt5">
+								电影
+							</div> </a>
+						</div>
+						<div class="um-border-right um-bgc-white">
+							<a href="#" class="um-circle um-black"> <img src="../img/mt_hotal.png" width=40 class="um-img-responsive" alt="">
+							<div  class="f12 mt5">
+								酒店
+							</div> </a>
+						</div>
+						<div  class="um-bgc-white">
+							<a href="#" class="um-circle um-black"> <img src="../img/mt_ktv.png" width=40 class="um-img-responsive" alt="">
+							<div  class="f12 mt5">
+								KTV
+							</div> </a>
+						</div>
+					</div>
+					<div class="um-grid-row tc">
+						<div class="um-border-right um-bgc-white">
+							<a href="#" class="um-circle um-black"> <img src="../img/mt_new.png" width=40 class="um-img-responsive" alt="">
+							<div class="f12 mt5">
+								今日新单
+							</div> </a>
+						</div>
+						<div class="um-border-right um-bgc-white">
+							<a href="#" class="um-circle um-black"> <img src="../img/mt_money.png" width=40 class="um-img-responsive" alt="">
+							<div  class="f12 mt5">
+								代金券
+							</div> </a>
+						</div>
+						<div class="um-border-right um-bgc-white">
+							<a href="#" class="um-circle um-black"> <img src="../img/mt_you.png" width=40 class="um-img-responsive" alt="">
+							<div  class="f12 mt5">
+								周边游
+							</div> </a>
+						</div>
+						<div class="um-bgc-white">
+							<a href="#" class="um-circle um-black"> <img src="../img/mt_xiaochi.png" width=40 class="um-img-responsive" alt="">
+							<div  class="f12 mt5">
+								小吃快餐
+							</div> </a>
+						</div>
+					</div>
+				</div>
+			
+					<div class="pr">
+					<input id="tbLocalStorage" type="text" class="form-control" placeholder="该输入框文本可以清除">
+					<span class="um-input-clear ti-close"></span>
+				</div>
+				
+				
+				<button class="btn" onclick="getLocalStorage()">get-->localStorage</button>
+				<br/>
+				<div class="pr">
+					<input id="tbSessionStorage" type="text" class="form-control" placeholder="该输入框文本可以清除">
+					<span class="um-input-clear ti-close"></span>
+				</div>
+				
+				
+				<button class="btn" onclick="getSessionStorage()">get-->sessionStorage</button>
+				<br/>
+			</div>
+		</div>
+	</body>
+	<script>
+		
+
+		function getLocalStorage(){
+			if(window.localStorage){
+		        alert('ok');
+		    }else{
+		        alert('fail');
+		    }
+
+		    // 取值
+		    var key_a = localStorage.getItem('key_a');
+		    alert(key_a);
+		
+		}
+		
+		function getSessionStorage(){
+			if(window.sessionStorage){
+		        alert('ok');
+		    }else{
+		        alert('fail');
+		    }
+
+		    // 取值
+		    var key_b = sessionStorage.getItem('key_b');
+		    alert(key_b);
+		}
+	</script>
+</html>

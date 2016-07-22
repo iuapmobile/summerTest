@@ -1,0 +1,52 @@
+<!--
+  This template loads for the 'tab.friend-detail' state (app.js)
+  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+  The FriendsCtrl pulls data from the Friends service (service.js)
+  The Friends service returns an array of friend data
+-->
+<ion-view view-title="{{chat.name}}">
+    <ion-nav-buttons side="left">
+        <button class="button button-clear" ng-click="goBack()"><i class="icon ion-arrow-left-c"></i> 返回</button>
+    </ion-nav-buttons>
+    <ion-content class="padding">
+        <div class="list card">
+
+            <div class="item item-avatar">
+                <img ng-src="{{chat.face}}">
+
+                <h2 ng-bind="chat.name"></h2>
+
+                <p ng-bind="chat.lastTime"></p>
+            </div>
+
+            <div class="item item-body">
+                <img class="full-image" ng-src="{{chat.textImg}}">
+
+                <p ng-bind="chat.lastText">
+
+                </p>
+
+                <p>
+                    <a href="#" class="subdued">1 个赞</a>
+                    <a href="#" class="subdued">5 条评论</a>
+                </p>
+            </div>
+
+            <div class="item tabs tabs-secondary tabs-icon-left">
+                <a class="tab-item" href="#">
+                    <i class="icon ion-thumbsup"></i>
+                    赞
+                </a>
+                <a class="tab-item" href="#">
+                    <i class="icon ion-chatbox"></i>
+                    评论
+                </a>
+                <a class="tab-item" href="#">
+                    <i class="icon ion-share"></i>
+                    分享
+                </a>
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>

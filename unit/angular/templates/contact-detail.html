@@ -1,0 +1,54 @@
+<!--
+  This template loads for the 'tab.friend-detail' state (app.js)
+  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+  The FriendsCtrl pulls data from the Friends service (service.js)
+  The Friends service returns an array of friend data
+-->
+<ion-view view-title="{{contact.name}}">
+    <ion-nav-buttons side="left">
+        <button class="button button-clear" ng-click="goBack()"><i class="icon ion-arrow-left-c"></i> 返回</button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <button class="button button-clear button-positive" ng-click="setEditable()">编辑</button>
+    </ion-nav-buttons>
+    <ion-content>
+        <div class="list">
+            <label class="item item-icon-left item-input">
+                <i class="icon ion-person"></i>
+                <input type="text" class="tr" placeholder="请输入联系人姓名" ng-model="contact.name" ng-disabled="!editable">
+            </label>
+            <label class="item item-icon-left item-input">
+                <i class="icon ion-email"></i>
+                <input type="text" class="tr" placeholder="请输入联系人邮件地址" ng-model="contact.email" ng-disabled="!editable">
+            </label>
+            <label class="item item-icon-left item-input">
+                <i class="icon ion-ios-telephone"></i>
+                <input type="text" class="tr" placeholder="请输入联系人电话" ng-model="contact.tel" ng-disabled="!editable">
+            </label>
+            <label class="item item-icon-left item-input">
+                <i class="icon ion-ios-location"></i>
+                <input type="text" class="tr" placeholder="请输入联系人地址" ng-model="contact.address" ng-disabled="editable">
+            </label>
+
+        </div>
+        <!--<div class="list">
+            <label class="item item-input">
+                <i class="icon ion-chatbox"></i>
+                <span class="input-label">姓名</span>
+                <input type="text" class="tr" placeholder="请输入联系人姓名">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">电话</span>
+                <input type="text" class="tr" placeholder="请输入联系人电话">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">邮箱</span>
+                <input type="text" class="tr" placeholder="请输入联系人邮箱">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">住址</span>
+                <input type="text" class="tr" placeholder="请输入联系人住址">
+            </label>
+        </div>-->
+    </ion-content>
+</ion-view>
