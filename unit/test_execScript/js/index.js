@@ -5,6 +5,7 @@ summerready = function(){
     var y = $summer.offset($summer.byId('header')).h;
     var width=$summer.offset(document.getElementsByTagName("body")[0]).w;		
     var height = $summer.offset($summer.byId('main')).h;
+//$summer.fixIos7Bar($summer.byId('header'));
 
     summer.openFrame({
         id: 'main',

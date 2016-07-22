@@ -25,13 +25,13 @@
 <div class="um-grid">
 	<div class="um-grid-row tc">
 		<div>
-			<a href="#" class="um-circle um-black">
+			<a href="#" class="um-circle um-black" onclick="dd('f_win')">
 				<img src="../img/mt_food.png" width=40 class="um-img-responsive" alt="">
 				<div class="f12 mt5">美食</div>
 			</a>
 		</div>
 		<div>
-			<a href="#" class="um-circle um-black">
+			<a href="#" class="um-circle um-black" onclick="ff('f_win_frm')"> 
 				<img src="../img/mt_mv.png" width=40 class="um-img-responsive" alt="">
 				<div  class="f12 mt5">电影</div>
 			</a>
@@ -80,4 +80,27 @@
 			</div>
 		</div>
 	</body>
+	<script>
+		function dd(p){
+			alert(p)
+			summer.execScript({
+				winId:"root",
+				//frameId:"",
+				//script:'script : "test_win('settings frame'"+(new Date()).valueOf()+");"
+				script: 'test_win("' + p + '");'
+				
+			})
+			
+		}
+		
+		function ff(p){
+			alert(p);
+			summer.execScript({
+				winId:"root",
+				frameId:"main",
+				script: 'test_frame("' + p + '");'
+				
+			})
+		}
+	</script>
 </html>

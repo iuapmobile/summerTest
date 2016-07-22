@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <application>
 	<app_start>index.html</app_start>
-	<app_name>test_execScript</app_name>
-	<project_name>test_execScript</project_name>
-	<package_name>com.yonyou.test_execscript</package_name>
+	<app_name>test_iframe</app_name>
+	<project_name>test_iframe</project_name>
+	<package_name>com.yonyou.test_iframe</package_name>
 	<frame_name>ump</frame_name>
 	<icon relativePath="css/themes/default/app">app</icon>
 	<target>android-15</target>

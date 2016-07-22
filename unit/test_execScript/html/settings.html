@@ -17,7 +17,7 @@
 			<div id="header" class="um-header">
 				<a href="#" class="um-back" onclick="summer.closeWin()">关闭</a>
 				<h3>settings</h3>
-				<a href="#" class="um-header-right ti-layout-grid2 f24"></a>
+				<a href="#" class="um-header-right ti-layout-grid2 f24" onclick="test_win('settings win')"></a>
 			</div>
 
 			<div id="main" class="um-content">
@@ -35,4 +35,16 @@
 		
 		</div>
 	</body>
+	<script>
+		function test_win(p){
+			alert(p)
+			summer.execScript({
+				winId:"root",
+				//frameId:"",
+				script : 'test_win("set_con'+(new Date()).valueOf()+'")'
+				
+			})
+			
+		}
+	</script>
 </html>
