@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 /* *
 CSS base
 * @name : iUAP Mobile CSS Libary
@@ -6,7 +6,6 @@ CSS base
 * @type : Mobile Development
 * @author : gct@yonyou.com
 */
-/*20160706*/
 dl, dt, dd, ul, ol, li, pre, form, p, fieldset, input, textarea, blockquote, th, td, button {
   margin: 0;
   padding: 0;
@@ -220,92 +219,32 @@ a {
 }
 
 /* font-size */
-.f4 {
-  font-size: 4px;
-}
-
-.f5 {
-  font-size: 5px;
-}
-
-.f6 {
-  font-size: 6px;
-}
-
-.f7 {
-  font-size: 7px;
-}
-
-.f8 {
-  font-size: 8px;
-}
-
-.f9 {
-  font-size: 9px;
-}
-
-.f10 {
-  font-size: 10px;
-}
-
-.f11 {
-  font-size: 11px;
-}
-
 .f12 {
   font-size: 12px;
-}
-
-.f13 {
-  font-size: 13px;
 }
 
 .f14 {
   font-size: 14px;
 }
 
-.f15 {
-  font-size: 15px;
-}
-
 .f16 {
   font-size: 16px;
-}
-
-.f17 {
-  font-size: 17px;
 }
 
 .f18 {
   font-size: 18px;
 }
 
-.f19 {
-  font-size: 19px;
-}
-
 .f20 {
   font-size: 20px;
-}
-
-.f21 {
-  font-size: 21px;
 }
 
 .f22 {
   font-size: 22px;
 }
 
-.f23 {
-  font-size: 23px;
-}
-
 .f24 {
   font-size: 24px;
-}
-
-.f25 {
-  font-size: 25px;
 }
 
 /* height width */
@@ -2614,7 +2553,76 @@ a {
   font-weight: normal;
 }
 
+/* box model */
+.um-box {
+  display: -webkit-box;
+  display: box;
+  display: -webkit-flex;
+  display: flex;
+}
 
+.um-bf1 {
+  -webkit-box-flex: 1;
+  box-flex: 1;
+  -webkit-flex: 1;
+  flex: 1;
+}
+
+.um-bf2 {
+  -webkit-box-flex: 2;
+  box-flex: 2;
+  -webkit-flex: 2;
+  flex: 2;
+}
+
+.um-bf3 {
+  -webkit-box-flex: 3;
+  box-flex: 3;
+  -webkit-flex: 3;
+  flex: 3;
+}
+
+.um-bf4 {
+  -webkit-box-flex: 4;
+  box-flex: 4;
+  -webkit-flex: 4;
+  flex: 4;
+}
+
+.um-direction-h {
+  -webkit-box-orient: horizontal;
+  box-orient: horizontal;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+}
+
+.um-direction-v {
+  -webkit-box-orient: vertical;
+  box-orient: vertical;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+}
+
+.um-box-justify {
+  display: -webkit-box;
+  display: box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  box-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  box-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+.um-box-justify > a {
+  display: block;
+}
+.um-box-justify > a:active, .um-box-justify > a.active {
+  color: #007aff;
+}
 
 .um-css3-hc {
   position: absolute;
@@ -2768,7 +2776,6 @@ input[type="radio"]:checked ~ .um-icon-checkbox:before, input[type="checkbox"]:c
   border-bottom: 3px solid #007aff;
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
-  margin: 0px 0px 0xp 0px;
 }
 
 .um-icon-angle-right:before {
@@ -2780,7 +2787,6 @@ input[type="radio"]:checked ~ .um-icon-checkbox:before, input[type="checkbox"]:c
   border-bottom: 2px solid #d8d8d8;
   -webkit-transform: rotate(-135deg);
   transform: rotate(-135deg);
-  margin: 0px 0px 0xp 0px;
 }
 
 .um-check-group-item:after {
@@ -3259,7 +3265,7 @@ input[type="radio"]:checked ~ .um-icon-checkbox:before, input[type="checkbox"]:c
   flex-direction: column;
   visibility: hidden;
   z-index: -1;
-  background-color: #ffffff;
+  background-color: #efeff4;
 }
 .um-page.active {
   visibility: visible;
@@ -3302,7 +3308,7 @@ input[type="radio"]:checked ~ .um-icon-checkbox:before, input[type="checkbox"]:c
   margin-right: 0;
 }
 
-/* 适用于frame    */
+/* 适用于frame的html*/
 html {
   height: auto;
   overflow: auto;
@@ -3311,7 +3317,6 @@ html {
 /* 适用于frame的um-page*/
 .um-page {
   position: static;
-  /*不出现单页滚动*/
 }
 
 /* 适用于win的html*/
@@ -3337,13 +3342,12 @@ html.um-win {
   text-overflow: ellipsis;
   white-space: nowrap;
   pointer-events: none;
-  color: #ffffff;
 }
 
 .um-header {
   position: relative;
   min-height: 44px;
-  background-color: #007aff;
+  background-color: #f5f5f7;
   z-index: 5;
 }
 
@@ -3376,7 +3380,7 @@ html.um-win {
   top: 0;
   left: 10px;
   font-weight: 500;
-  color: #ffffff;
+  color: #007aff;
   line-height: 44px;
   text-decoration: none;
 }
@@ -3405,11 +3409,10 @@ html.um-win {
   display: inline-block;
   width: 14px;
   height: 14px;
-  border-left: 2px solid #ffffff;
-  border-bottom: 2px solid #ffffff;
+  border-left: 3px solid #007aff;
+  border-bottom: 3px solid #007aff;
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
-  margin: 0px -3px 0px 0px;
 }
 
 .um-header-right {
@@ -3448,7 +3451,7 @@ html.um-win {
   -webkit-flex: 1;
   flex: 1;
   text-align: center;
-  color: #777777;
+  color: #919191;
   padding-top: 5px;
   padding-bottom: 3px;
   transition: color ease .3s;
@@ -3460,11 +3463,6 @@ html.um-win {
   margin: 0 auto;
 }
 
-/*
-.um-footerbar-item i{
-	font-size:18px;
-}
-*/
 @supports (display: -webkit-flex) or (display: flex) {
   .um-footerbar-item {
     display: inline-block;
@@ -3722,7 +3720,7 @@ input[type="number"].form-control {
   -webkit-align-items: center;
   align-items: center;
   padding: 0;
-  /*padding-left: 15px;*/
+  padding-left: 15px;
   color: #000;
   transition: all ease .3s;
 }
@@ -3743,12 +3741,10 @@ input[type="number"].form-control {
   top: 50%;
   -webkit-transform: translate(0, -50%) rotate(-135deg);
   transform: translate(0, -50%) rotate(-135deg);
-  margin: 0px 0px 0xp 0px;
   right: 15px;
   z-index: 2;
 }
 .um-list .um-list-item-media {
-  margin-left: 12px;
   margin-right: 12px;
   display: -webkit-box;
   display: box;
@@ -3801,10 +3797,9 @@ input[type="number"].form-control {
   -webkit-flex: 1;
   flex: 1;
   padding: 9px 0;
-  /*padding-right: 25px;   不需要gct*/
+  padding-right: 25px;
   -webkit-align-self: stretch;
   align-self: stretch;
-  width: 0;
 }
 .um-list .um-list-item-left {
   padding: 9px 0;
@@ -4107,7 +4102,6 @@ input[type="number"].form-control {
   top: 50%;
   -webkit-transform: translate(0, -50%) rotate(-135deg);
   transform: translate(0, -50%) rotate(-135deg);
-  margin: 0px 0px 0xp 0px;
 }
 .um-list .um-list > li:first-child .btn, .um-list .um-list > li:first-child .um-btn,
 .um-list > .btn:first-child,
@@ -4330,7 +4324,7 @@ input[type="number"].form-control {
 .um-tabbar-underline > li > a {
   border-right: 0;
   background-color: transparent;
-  color: #777777;
+  color: #333;
 }
 .um-tabbar-underline > li.active {
   color: #007aff;
@@ -4352,7 +4346,7 @@ input[type="number"].form-control {
 }
 
 .um-tabbar-item-text {
-  font-size: 9px;
+  font-size: 12px;
   line-height: 1;
 }
 
@@ -4363,7 +4357,7 @@ input[type="number"].form-control {
   -webkit-flex: 1;
   flex: 1;
   text-align: center;
-  color: #777777;
+  color: #919191;
   padding-top: 5px;
   padding-bottom: 3px;
   transition: color ease .4s;
@@ -4960,74 +4954,5 @@ input[type=range]::-webkit-slider-thumb:before {
   background-image: url(../img/grade-half.png);
   background-size: 100%;
 }
-/* box model */
-.um-box {
-  display: -webkit-box;
-  display: box;
-  display: -webkit-flex;
-  display: flex;
-}
 
-.um-bf1 {
-  -webkit-box-flex: 1;
-  box-flex: 1;
-  -webkit-flex: 1;
-  flex: 1;
-}
-
-.um-bf2 {
-  -webkit-box-flex: 2;
-  box-flex: 2;
-  -webkit-flex: 2;
-  flex: 2;
-}
-
-.um-bf3 {
-  -webkit-box-flex: 3;
-  box-flex: 3;
-  -webkit-flex: 3;
-  flex: 3;
-}
-
-.um-bf4 {
-  -webkit-box-flex: 4;
-  box-flex: 4;
-  -webkit-flex: 4;
-  flex: 4;
-}
-
-.um-direction-h {
-  -webkit-box-orient: horizontal;
-  box-orient: horizontal;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-}
-
-.um-direction-v {
-  -webkit-box-orient: vertical;
-  box-orient: vertical;
-  -webkit-flex-direction: column;
-  flex-direction: column;
-}
-
-.um-box-justify {
-  display: -webkit-box;
-  display: box;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-pack: justify;
-  box-pack: justify;
-  -webkit-justify-content: space-between;
-  justify-content: space-between;
-  -webkit-box-align: center;
-  box-align: center;
-  -webkit-align-items: center;
-  align-items: center;
-}
-.um-box-justify > a {
-  display: block;
-}
-.um-box-justify > a:active, .um-box-justify > a.active {
-  color: #007aff;
-}
 /*# sourceMappingURL=iuapmobile.um.css.map */

@@ -1661,8 +1661,8 @@ a {
 .um-container {
   margin-right: auto;
   margin-left: auto;
-  padding-left: 15px;
-  padding-right: 15px;
+/*  padding-left: 15px;
+  padding-right: 15px;*/
 }
 .um-container:before, .um-container:after {
   content: " ";
@@ -2613,7 +2613,6 @@ a {
   margin-bottom: 5px;
   font-weight: normal;
 }
-
 
 
 .um-css3-hc {
@@ -4960,6 +4959,8 @@ input[type=range]::-webkit-slider-thumb:before {
   background-image: url(../img/grade-half.png);
   background-size: 100%;
 }
+
+
 /* box model */
 .um-box {
   display: -webkit-box;
@@ -4968,18 +4969,40 @@ input[type=range]::-webkit-slider-thumb:before {
   display: flex;
 }
 
+.um-vbox {
+  display: -webkit-box;
+  display: box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  box-orient: vertical;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+}
+
+.um-hbox {
+  display: -webkit-box;
+  display: box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  box-orient: horizontal;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+}
+
 .um-bf1 {
   -webkit-box-flex: 1;
   box-flex: 1;
   -webkit-flex: 1;
-  flex: 1;
+  flex: 1 !important;
 }
 
 .um-bf2 {
   -webkit-box-flex: 2;
   box-flex: 2;
   -webkit-flex: 2;
-  flex: 2;
+  flex: 2 !important;
 }
 
 .um-bf3 {
@@ -5030,4 +5053,6 @@ input[type=range]::-webkit-slider-thumb:before {
 .um-box-justify > a:active, .um-box-justify > a.active {
   color: #007aff;
 }
+
+
 /*# sourceMappingURL=iuapmobile.um.css.map */

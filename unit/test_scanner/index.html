@@ -70,6 +70,12 @@
 				}
 				alert(args);
 				
+				
+				
+				if(typeof args == "string"){
+					args = JSON.parse(args);
+				}
+				
 			}
 			
 			function generateQRCode(){

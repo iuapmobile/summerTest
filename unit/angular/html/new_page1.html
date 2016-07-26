@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html class="um-win">
+	<head>
+		<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/font-icons.css">
+		<link rel="stylesheet" href="../css/iuapmobile.um.css">
+ 		<script src="../js/Frameworks/iuapmobile.frameworks.core-2.7.0.js" ></script>
+		<script src="../js/summer.js" ></script>
+		<script src="../js/jquery-2.1.4.min.js" ></script>
+		<script src="../js/Frameworks/iuapmobile.frameworks.ui-2.7.0.js" ></script>
+		
+	</head>
+	<style type="text/css" media="screen">
+		
+			.um-tab{
+				height:400px;
+				width:100%;
+				position:relative;
+			}
+			.um-tab>div{
+				display:none;
+				text-align:center;
+				position: relative;
+				top:0;
+				bottom:0;
+				left:0;
+				right:0;
+				
+			}
+			.um-tab>div.active{
+				display:block;
+			}
+	</style>
+	<body>
+		<div class="um-page um-win" id="index">
+			<div id="header" class="um-header fixed">
+				<h3 class='um-white'>消息</h3>
+				<!-- <a href="#" class="um-back">返回</a>
+				<h3>标题</h3>
+				<a href="#" class="um-header-right ti-layout-grid2 f24"></a> -->
+			</div>
+			<div id="main" class="um-content">	
+								 
+					<!-- 这里插入控件和编写代码 -->
+					<div class="um-tab">
+						
+                        <ul class="um-tabbar">
+                            <li><a>待付款</a></li>
+                            <li class="active"><a>待发货</a></li>
+                            <li><a>待收货</a></li>
+                            <li><a>待收货</a></li>
+                        </ul>
+
+					  <div  id="message" class="um-tab-item active" >
+						第一个消息页面 <!--这里写第一个页面的内容-->
+						<br/>
+						第一个消息页面 <!--这里写第一个页面的内容--><br/>
+						第一个消息页面 <!--这里写第一个页面的内容--><br/>
+						第一个消息页面 <!--这里写第一个页面的内容--><br/>
+						第一个消息页面 <!--这里写第一个页面的内容--><br/>
+						第一个消息页面 <!--这里写第一个页面的内容--><br/>
+						第一个消息页面 <!--这里写第一个页面的内容-->
+						
+					  </div>
+					  <div id="contact" style="background: red">
+						第二个通讯录页面<!--这里写第二个页面的内容-->
+					  </div>
+					  <div id="apply">
+						第三个应用页面<!--这里写第三个页面的内容-->
+					  </div>
+					  <div id="user">
+						第四个个人信息页面<!--这里写第四个页面的内容-->
+					  </div>
+					</div>		 
+			</div>
+			<div class="um-footer">
+				<div class="um-tabbar-foot" id='footer'>
+					<a id="item0" href="#" class="um-footerbar-item active" data-tar='#message' > <i class="ti-comment-alt f24"></i>
+					<div class="um-tabbar-item-text">
+						消息
+					</div> </a>
+					<a id="item1" href="#" class="um-footerbar-item"   data-tar='#contact'> <i class="ti-id-badge f24"></i>
+					<div class="um-tabbar-item-text">
+						通讯录
+					</div> </a>
+					<a id="item2" href="#" class="um-footerbar-item "  data-tar='#apply' > <i class="ti-layout-grid2 f24"></i>
+					<div class="um-tabbar-item-text">
+						应用
+					</div> </a>
+					<a id="item3" href="#" class="um-footerbar-item" data-tar='#user'  > <i class="ti-user f24"></i>
+					<div class="um-tabbar-item-text">
+						我
+					</div> </a>					 
+				</div>
+			</div>
+		</div>
+<script>	
+ $('#footer>a').click(function(){
+ 	var a=['消息','应用','通讯录','我'];
+ 	$(this).addClass('active').siblings('.active').removeClass('active');
+ 	
+	var tar=$(this).attr('data-tar');
+	$(tar).addClass('active').siblings('.active').removeClass('active');
+	
+	var num=$(this).index(); 
+	$('#header h3').html(a[num]);	
+});		 
+</script>
+</body>		
+</html>

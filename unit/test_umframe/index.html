@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html class="um-win">
+	<head>
+		<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/font-icons.css">
+		<link rel="stylesheet" href="css/iuapmobile.um.css">
+		<script src="js/jquery-2.1.4.min.js" ></script>
+		<style type="text/css" media="screen">
+		.um-content {
+	     	padding-left: 0px;
+	     	padding-right: 0px;
+	  	 }
+	  	 
+	  	 .um-list {
+    		margin: 0px; 
+  		 }
+			.um-tabPage {
+				/*height: 400px;*/
+				/*width: 100%;*/
+
+				/*margin: 0px -15px;*/
+			}
+			.um-tabPage > div {
+				display: none;
+				/*
+				 position: absolute;
+				 top: 0;
+				 bottom: 0;
+				 left: 0;
+				 right: 0;
+				 */
+
+			}
+			.um-tabPage > div.active {
+				display: block;
+			}
+			
+			.um-tabPage-item{
+				text-align:center;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="um-page um-win" id="index">
+			<div id="header" class="um-header">
+				<a href="#" class="um-header-left ti-menu f20"></a>
+				<h3>标题</h3>
+				<a href="#" class="um-header-right ti-plus f20"></a>
+			</div>
+
+			<div id="main" class="um-content um-vbox">
+				<div class="um-tabPage um-bf1 um-vbox">
+					<div id="message" class="um-tabPage-item um-bf1 active" style="background: #efefef" >
+
+						<ul class="um-list">
+							<li>
+								<div class="um-list-item">
+									<div class="um-list-item-inner">
+										<span class="h pa um-box-vc um-red f20" style="margin-left:-10px;">*</span>
+										<div class="um-list-item-left">
+											公司名称：
+										</div>
+										<div class="um-list-item-right">
+											<input type="text" class="form-control" placeholder="请输入公司名称">
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="um-list-item">
+									<div class="um-list-item-inner">
+										<div class="um-list-item-left">
+											订单编号：
+										</div>
+										<div class="um-list-item-right">
+											<input type="text" class="form-control" placeholder="请输入订单编号">
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="um-list-item">
+									<div class="um-list-item-inner">
+										<div class="um-list-item-left">
+											订单金额：
+										</div>
+										<div class="um-list-item-right">
+											<input type="text" class="form-control" placeholder="请输入订单金额">
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="um-list-item">
+									<div class="um-list-item-inner">
+										<div class="um-list-item-left">
+											下单日期：
+										</div>
+										<div class="um-list-item-right">
+											<input type="date" name="date" value="2015-01-01" class="form-control">
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="um-list-item">
+									<div class="um-list-item-inner">
+										<span class="h pa um-box-vc um-red f20" style="margin-left:-10px;">*</span>
+										<div class="um-list-item-left">
+											业务员：
+										</div>
+										<div class="um-list-item-right">
+											<input type="text" class="form-control" placeholder="请输入业务员名字">
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="um-list-item">
+									<div class="um-list-item-inner">
+										<div class="um-list-item-left">
+											联系电话：
+										</div>
+										<div class="um-list-item-right">
+											<input type="text" class="form-control" placeholder="请输入业务员联系电话">
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="um-list-item">
+									<div class="um-list-item-inner">
+										<span class="h pa um-box-vc um-red f20" style="margin-left:-10px;">*</span>
+										<div class="um-list-item-left">
+											公司名称：
+										</div>
+										<div class="um-list-item-right">
+											<input type="text" class="form-control" placeholder="请输入公司名称">
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="um-list-item">
+									<div class="um-list-item-inner">
+										<div class="um-list-item-left">
+											订单编号：
+										</div>
+										<div class="um-list-item-right">
+											<input type="text" class="form-control" placeholder="请输入订单编号">
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="um-list-item">
+									<div class="um-list-item-inner">
+										<div class="um-list-item-left">
+											订单金额：
+										</div>
+										<div class="um-list-item-right">
+											<input type="text" class="form-control" placeholder="请输入订单金额">
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="um-list-item">
+									<div class="um-list-item-inner">
+										<div class="um-list-item-left">
+											下单日期：
+										</div>
+										<div class="um-list-item-right">
+											<input type="date" name="date" value="2015-01-01" class="form-control">
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="um-list-item">
+									<div class="um-list-item-inner">
+										<span class="h pa um-box-vc um-red f20" style="margin-left:-10px;">*</span>
+										<div class="um-list-item-left">
+											业务员：
+										</div>
+										<div class="um-list-item-right">
+											<input type="text" class="form-control" placeholder="请输入业务员名字">
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="um-list-item">
+									<div class="um-list-item-inner">
+										<div class="um-list-item-left">
+											联系电话：
+										</div>
+										<div class="um-list-item-right">
+											<input type="text" class="form-control" placeholder="请输入业务员联系电话">
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="um-list-item">
+									<div class="um-list-item-inner">
+										<span class="h pa um-box-vc um-red f20" style="margin-left:-10px;">*</span>
+										<div class="um-list-item-left">
+											公司名称：
+										</div>
+										<div class="um-list-item-right">
+											<input type="text" class="form-control" placeholder="请输入公司名称">
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="um-list-item">
+									<div class="um-list-item-inner">
+										<div class="um-list-item-left">
+											订单编号：
+										</div>
+										<div class="um-list-item-right">
+											<input type="text" class="form-control" placeholder="请输入订单编号">
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="um-list-item">
+									<div class="um-list-item-inner">
+										<div class="um-list-item-left">
+											订单金额：
+										</div>
+										<div class="um-list-item-right">
+											<input type="text" class="form-control" placeholder="请输入订单金额">
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="um-list-item">
+									<div class="um-list-item-inner">
+										<div class="um-list-item-left">
+											下单日期：
+										</div>
+										<div class="um-list-item-right">
+											<input type="date" name="date" value="2015-01-01" class="form-control">
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="um-list-item">
+									<div class="um-list-item-inner">
+										<span class="h pa um-box-vc um-red f20" style="margin-left:-10px;">*</span>
+										<div class="um-list-item-left">
+											业务员：
+										</div>
+										<div class="um-list-item-right">
+											<input type="text" class="form-control" placeholder="请输入业务员名字">
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="um-list-item">
+									<div class="um-list-item-inner">
+										<div class="um-list-item-left">
+											联系电话：
+										</div>
+										<div class="um-list-item-right">
+											<input type="text" class="form-control" placeholder="请输入业务员联系电话">
+										</div>
+									</div>
+								</div>
+							</li>
+						</ul>
+						<div class="p15">
+							<button class="btn um-btn-success">
+								提交<i class="ti-check"></i>
+							</button>
+						</div>
+
+					</div>
+					<div id="contact" class="um-tabPage-item um-bf1" style="background: #e3e3e3">
+						第二个通讯录页面<!--这里写第二个页面的内容-->
+
+						<button class="btn">
+							普通按钮
+						</button>
+
+					</div>
+					<div id="apply" class="um-tabPage-item um-bf1" style="background: #e9e9e9">
+						第三个应用页面<!--这里写第三个页面的内容-->
+
+						<label class="um-switch1">
+							<input type="checkbox" value="on" checked="checked">
+							<div class="um-track">
+								<div class="um-handle"></div>
+							</div> </label>
+
+					</div>
+					<div id="user" class="um-tabPage-item um-bf1" style="background: #eeeeee">
+
+						<div class="um-list" style="margin:30px 0px">
+							<div class="um-list-item">
+								<div class="um-list-item-media">
+									<img src="./img/form.png" width=24 class="um-round" alt="">
+								</div>
+								<div class="um-list-item-inner">
+									<div class="um-list-item-body">
+										飞行模式
+									</div>
+									<div class="um-list-item-right">
+										<label class="um-switch1">
+											<input type="checkbox" value="on" checked="checked">
+											<div class="um-track">
+												<div class="um-handle"></div>
+											</div> </label>
+									</div>
+								</div>
+							</div>
+							<a href="#" class="um-list-item">
+							<div class="um-list-item-media">
+								<img src="./img/select.png" width=24 class="um-round" alt="">
+							</div>
+							<div class="um-list-item-inner">
+								<div class="um-list-item-body">
+									无线局域网
+								</div>
+								<div class="um-list-item-right">
+									<span class="um-gray mr15">用友</span>
+								</div>
+							</div> </a>
+
+						</div>
+						<div class="um-list" style="margin:30px 0px">
+							<a href="#p2"  class="um-list-item"> <div class="um-list-item-media um-icon-ios um-icon-ios-general"></div>
+							<div class="um-list-item-inner">
+								<div class="um-list-item-body">
+									通用
+								</div>
+							</div> </a>
+							<a href="#p2"  class="um-list-item"> <div class="um-list-item-media um-icon-ios um-icon-ios-mails"></div>
+							<div class="um-list-item-inner">
+								<div class="um-list-item-body um-bf2">
+									邮件、通讯录、日历
+								</div>
+								<div class="um-list-item-right">
+									<span class="um-badge um-btn-info mr10">4</span>
+								</div>
+							</div> </a>
+							<a href="#p2" class="um-list-item"> <div class="um-list-item-media um-icon-ios um-icon-ios-phone"></div>
+							<div class="um-list-item-inner">
+								<div class="um-list-item-body">
+									电话
+								</div>
+							</div> </a>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+			<div class="um-footer">
+				<div class="um-tabbar-foot" id="footer" >
+					<a id="item0" href="#" class="um-footerbar-item active" data-tar='#message'> <i class="ti-comments f20"></i>
+					<div class="um-tabbar-item-text">
+						消息
+					</div> </a>
+					<a id="item1" href="#" class="um-footerbar-item" data-tar='#apply'> <i class="ti-calendar f20"></i>
+					<div class="um-tabbar-item-text">
+						日程
+					</div> </a>
+					<a id="item2" href="#" class="um-footerbar-item" data-tar='#contact'> <i class="ti-layout-grid2 f20"></i>
+					<div class="um-tabbar-item-text">
+						应用中心
+					</div> </a>
+					<a id="item3" href="#" class="um-footerbar-item" data-tar='#user'> <i class="ti-user f20"></i>
+					<div class="um-tabbar-item-text">
+						我
+					</div> </a>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="js/Frameworks/iuapmobile.frameworks.core.js" ></script>
+	<script src="js/summer.js" ></script>
+	<script src="js/Frameworks/iuapmobile.frameworks.ui.js" ></script>
+	<script src="js/index.js" ></script>
+	<script>
+		$('#footer>a').click(function() {
+			//debugger;
+			var a = ['消息', '应用', '通讯录', '我'];
+			$(this).addClass('active').siblings('.active').removeClass('active');
+
+			var tar = $(this).attr('data-tar');
+			$(tar).addClass('active').siblings('.active').removeClass('active');
+
+			var num = $(this).index();
+			$('#header h3').html(a[num]);
+		});
+	</script>
+</html>
