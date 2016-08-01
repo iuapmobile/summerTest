@@ -33,3 +33,16 @@ summerready = function(){debugger;
         }
     });
 }
+
+function openwin1(){
+	if(confirm("将打开一个全屏显示的window，请确定")){
+		summer.openWin({
+	        "id" : "index2",
+	        "url" : "html/index2.html",
+	        "fullScreen" : true,
+	        "statusBarAppearance":true,
+	        "statusBarStyle":"light",// dark
+	        "screenOrientation" : "landscape" // portrait
+	    });
+    }
+}

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application>
+	<app_start>index.html</app_start>
+	<app_name>test_ko_list</app_name>
+	<project_name>test_ko_list</project_name>
+	<package_name>com.yonyou.test_ko_list</package_name>
+	<frame_name>ump</frame_name>
+	<icon relativePath="css/themes/default/app">app</icon>
+	<target>android-15</target>
+	<platform>android</platform>
+	<versionCode>1</versionCode>
+	<versionName>1</versionName>
+	<orientation>4</orientation>
+	<min_sdk_version>10</min_sdk_version>
+	<max_sdk_version>17</max_sdk_version>
+	<permission id="android.permission.INTERNET"/>
+	<statebarstyle>dark</statebarstyle>
+	<isfullscreen>false</isfullscreen>
+	<windowSoftInputMode>stateHidden</windowSoftInputMode>
+</application><!--
+����Ļ��ʾ����
+  screenOrientation: ��Ļ��ʾ����
+    landscape: ����
+    portrait: ����
+    unspecified: �Զ�ת��
+��״̬����ʽ��
+  statebarstyle��״̬����ʽ��Ĭ��dark
+    dark����ɫ
+    light��ǳɫ
+���Ƿ�ȫ����
+  isfullscreen���Ƿ�ȫ����ֵΪtrue|false��Ĭ��false
+������̽���ģʽ��
+  windowSoftInputMode������������̵Ľ���ģʽ�����������������뷨����ڵ����⣬��Ҫ���ƣ�1�����н������ʱ������������ػ�����ʾ��2���Ƿ���ٻ�����ڴ�С�Ա��ڳ��ռ������̣�
+    stateUnspecified������̵�״̬��û��ָ����ϵͳ��ѡ��һ�����ʵ�״̬�����������������
+    stateUnchanged�������activity����ʱ������̽�һֱ��������һ��activity���״̬�����������ػ�����ʾ
+    stateHidden���û�ѡ��activityʱ����������Ǳ�����
+    stateAlwaysHidden������Activity�����ڻ�ȡ����ʱ�������Ҳ���Ǳ����ص�
+    stateVisible�������ͨ���ǿɼ��
+    stateAlwaysVisible���û�ѡ��activityʱ�������������ʾ��״̬
+    adjustUnspecified��Ĭ�����ã�ͨ����ϵͳ���о��������ػ�����ʾ
+    adjustResize����ǰActivity�����������ǻᱻ�����С���Ӷ�֤���������ʾ�ռ�
+    adjustPan����ǰ���ڵ����ݽ��Զ��ƶ��Ա㵱ǰ����Ӳ������̸��Ǻ��û������ǿ����������ݵĲ���
+-->
