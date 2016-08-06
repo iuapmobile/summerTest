@@ -6,101 +6,73 @@
 		<title></title>
 		<link rel="stylesheet" href="../css/iuapmobile.um-2.7.0.css">
 		<link rel="stylesheet" href="../css/font-icons.css">
-		
+
 		<script src="../js/Frameworks/iuapmobile.frameworks.core-2.7.0.js" ></script>
 		<script src="../js/jquery-2.1.4.min.js" ></script>
 		<script src="../js/Frameworks/iuapmobile.frameworks.ui-2.7.0.js" ></script>
-<script src="../js/summer.js" ></script>
-		<script>
-			$(function() {
-
-			});
-		</script>
+		<script src="../js/summer.js" ></script>
+		<script src="../js/settings_con.js" ></script>
 	</head>
 	<body>
 		<div class="um-page" id="index">
 			<div class="um-content">
-				
 
-<div class="um-grid">
-	<div class="um-grid-row tc">
-		<div>
-			<a href="#" class="um-circle um-black" onclick="dd('f_win')">
-				<img src="../img/mt_food.png" width=40 class="um-img-responsive" alt="">
-				<div class="f12 mt5">美食</div>
-			</a>
-		</div>
-		<div>
-			<a href="#" class="um-circle um-black" onclick="ff('f_win_frm')"> 
-				<img src="../img/mt_mv.png" width=40 class="um-img-responsive" alt="">
-				<div  class="f12 mt5">电影</div>
-			</a>
-		</div>
-		<div>
-			<a href="#" class="um-circle um-black">
-				<img src="../img/mt_hotal.png" width=40 class="um-img-responsive" alt="">
-				<div  class="f12 mt5">酒店</div>
-			</a>
-		</div>
-		<div>
-			<a href="#" class="um-circle um-black">
-				<img src="../img/mt_ktv.png" width=40 class="um-img-responsive" alt="">
-				<div  class="f12 mt5">KTV</div>
-			</a>
-		</div>
-	</div>
-	<!-- 第二行 -->
-	<div class="um-grid-row tc">
-		<div>
-			<a href="#" class="um-circle um-black">
-				<img src="../img/mt_new.png" width=40 class="um-img-responsive" alt="">
-				<div class="f12 mt5">今日新单</div>
-			</a>
-		</div>
-		<div>
-			<a href="#" class="um-circle um-black">
-				<img src="../img/mt_money.png" width=40 class="um-img-responsive" alt="">
-				<div  class="f12 mt5">代金券</div>
-			</a>
-		</div>
-		<div>
-			<a href="#" class="um-circle um-black">
-				<img src="../img/mt_you.png" width=40 class="um-img-responsive" alt="">
-				<div  class="f12 mt5">周边游</div>
-			</a>
-		</div>
-		<div>
-			<a href="#" class="um-circle um-black">
-				<img src="../img/mt_xiaochi.png" width=40 class="um-img-responsive" alt="">
-				<div  class="f12 mt5">小吃快餐</div>
-			</a>
-		</div>
-	</div>
-</div>
+				<div class="um-grid">
+					<div class="um-grid-row tc">
+						<div>
+							<a href="#" class="um-circle um-black" onclick="execWinScript('setings_con_param1')"> <img src="../img/mt_food.png" width=40 class="um-img-responsive" alt="">
+							<div class="f12 mt5">
+								跨win
+							</div> </a>
+						</div>
+						<div>
+							<a href="#" class="um-circle um-black" onclick="execWinFrameScript('settings_con_param2')"> <img src="../img/mt_mv.png" width=40 class="um-img-responsive" alt="">
+							<div  class="f12 mt5">
+								跨win_frame
+							</div> </a>
+						</div>
+						<div>
+							<a href="#" class="um-circle um-black"> <img src="../img/mt_hotal.png" width=40 class="um-img-responsive" alt="">
+							<div  class="f12 mt5">
+								酒店
+							</div> </a>
+						</div>
+						<div>
+							<a href="#" class="um-circle um-black"> <img src="../img/mt_ktv.png" width=40 class="um-img-responsive" alt="">
+							<div  class="f12 mt5">
+								KTV
+							</div> </a>
+						</div>
+					</div>
+					<!-- 第二行 -->
+					<div class="um-grid-row tc">
+						<div>
+							<a href="#" class="um-circle um-black"> <img src="../img/mt_new.png" width=40 class="um-img-responsive" alt="">
+							<div class="f12 mt5">
+								今日新单
+							</div> </a>
+						</div>
+						<div>
+							<a href="#" class="um-circle um-black"> <img src="../img/mt_money.png" width=40 class="um-img-responsive" alt="">
+							<div  class="f12 mt5">
+								代金券
+							</div> </a>
+						</div>
+						<div>
+							<a href="#" class="um-circle um-black"> <img src="../img/mt_you.png" width=40 class="um-img-responsive" alt="">
+							<div  class="f12 mt5">
+								周边游
+							</div> </a>
+						</div>
+						<div>
+							<a href="#" class="um-circle um-black"> <img src="../img/mt_xiaochi.png" width=40 class="um-img-responsive" alt="">
+							<div  class="f12 mt5">
+								小吃快餐
+							</div> </a>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</body>
-	<script>
-		function dd(p){
-			alert(p)
-			summer.execScript({
-				winId:"root",
-				//frameId:"",
-				//script:'script : "test_win('settings frame'"+(new Date()).valueOf()+");"
-				script: 'test_win("' + p + '");'
-				
-			})
-			
-		}
-		
-		function ff(p){
-			alert(p);
-			summer.execScript({
-				winId:"root",
-				frameId:"main",
-				script: 'test_frame("' + p + '");'
-				
-			})
-		}
-	</script>
 </html>

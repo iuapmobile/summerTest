@@ -2,7 +2,7 @@
  * Summer JavaScript Library
  * Copyright (c) 2016 yonyou.com
  * Author: gct@yonyou.com go
- * Version: 1.0.20160706
+ * Version: 3.0.20160726
  */
 
 ;(function(w){
@@ -24,6 +24,26 @@
             document.addEventListener('deviceready', function(){
                 //1、先通过cdv来获取页面参数
                 summer.winParam(function(ret){
+					//希望返回
+					var ctx = {
+						systemType:"android",//"ios"
+						systemVersion:7,// ios--> 7    android-->21
+						iOS7StatusBarAppearance:true,//false
+						fullScreen:true,
+						pageParam:{param0:123,param1:"abc"},
+						screenWidth:"",
+						screenHeight:"",
+						
+						winId:"",
+						winWidth:"",
+						winHeight:"",
+						
+						frameId:"",
+						frameWidth:"",
+						frameHeight:"",
+						
+						appParam:"",
+					}
                     //alert(typeof ret)// --> object
 
                     if(typeof ret == "string"){
@@ -735,12 +755,28 @@
 
    
     /******************** Native API BEGIN ********************/
-	var umStorage = function(){
-        var ls = window.localStorage;
-        if(u.os == "android"){
-           ls = summer.localStorage();
-        }
-        return ls;
+	var umStorage = function(type){
+		type = type || "localStorage";
+		if(type == "localStorage"){
+			if(!window.localStorage){
+		        alert('your device do not support the localStorage');
+				return;
+		    }
+			return window.localStorage;
+		}else if(type == "sessionStorage"){
+			if(!window.sessionStorage){
+		        alert('your device do not support the sessionStorage');
+				return;
+		    }
+			return window.sessionStorage;
+		}else{
+			return null;
+			/*
+			if($summer.os == "android"){
+				ls = summer.localStorage();
+			}
+			*/
+		}
     };
 	u.setStorage = function(key, value){
         if(arguments.length === 2){
@@ -782,9 +818,9 @@
             ls.clear();
         }
     };
-    u.fixIos7Bar = function(el){
+    u.fixStatusBar = function(el){
         if(!u.isElement(el)){
-            alert('$summer.fixIos7Bar Function need el param, el param must be DOM Element');
+            alert('$summer.fixStatusBar Function need el param, el param must be DOM Element');
 			return;
         }
         // var strDM = api.systemType;
@@ -798,9 +834,20 @@
         //     }
         // }
 		if($summer.os == "ios" || $summer.os == "pc"){
-         	el.style.paddingTop = '20px';
-			$(el).find(".um-back, .um-header-right, .um-header-left").css("top","20px");
-        }
+			$(el).children().css("top","20px");
+			var strSV = summer.systemVersion;
+            var numSV = parseInt(strSV,10);
+            var fullScreen = summer.fullScreen;
+            var statusBarAppearance = summer.statusBarAppearance;
+			
+			//if (numSV >= 7 && !fullScreen && statusBarAppearance) {
+			if (true) {
+				el.style.paddingTop = '20px';
+				$(el).children().css("top","20px");
+			}
+        }else{
+			
+		}
     };
     u.toast = function(title, text, time){
         // var opts = {};
@@ -974,39 +1021,39 @@
 //                }
 //            }
 			if(s.canrequire())
-            return s.cordova.require('summer-plugin-frame.XFrame').openWin(json, successFn, errFn);
+                return s.cordova.require('summer-plugin-frame.XFrame').openWin(json, successFn, errFn);
         },
-        closeWin : function(){
+        closeWin : function(json, successFn, errFn){
 			if(s.canrequire())
-            return s.cordova.require('summer-plugin-frame.XFrame').closeWin();
+				return s.cordova.require('summer-plugin-frame.XFrame').closeWin(json, successFn, errFn);
         },
-        setFrameAttr : function(json){
+        setFrameAttr : function(json, successFn, errFn){
 			if(s.canrequire())
-            return s.cordova.require('summer-plugin-frame.XFrame').setFrameAttr(json);
+            return s.cordova.require('summer-plugin-frame.XFrame').setFrameAttr(json, successFn, errFn);
         },
-        winParam : function(json){
+        winParam : function(json, successFn, errFn){
 			if(s.canrequire())
-            return s.cordova.require('summer-plugin-frame.XFrame').winParam(json);
+            return s.cordova.require('summer-plugin-frame.XFrame').winParam(json, successFn, errFn);
         },
-        frameParam : function(json){
+        frameParam : function(json, successFn, errFn){
 			if(s.canrequire())
-            return s.cordova.require('summer-plugin-frame.XFrame').frameParam(json);
+            return s.cordova.require('summer-plugin-frame.XFrame').frameParam(json, successFn, errFn);
         },
-        setRefreshHeaderInfo : function(json,success,error){
+        setRefreshHeaderInfo : function(json, successFn, errFn){
 			if(s.canrequire())
-            return s.cordova.require('summer-plugin-frame.XFrame').setRefreshHeaderInfo(json,success,error);
+            return s.cordova.require('summer-plugin-frame.XFrame').setRefreshHeaderInfo(json, successFn, errFn);
         },
-        refreshHeaderLoadDone : function(json,success,error){
+        refreshHeaderLoadDone : function(json, successFn, errFn){
 			if(s.canrequire())
-            return s.cordova.require('summer-plugin-frame.XFrame').refreshHeaderLoadDone(json,success,error);
+            return s.cordova.require('summer-plugin-frame.XFrame').refreshHeaderLoadDone(json, successFn, errFn);
         },
-        setRefreshFooterInfo : function(json,success,error){
+        setRefreshFooterInfo : function(json, successFn, errFn){
 			if(s.canrequire())
-            return s.cordova.require('summer-plugin-frame.XFrame').setRefreshFooterInfo(json,success,error);
+            return s.cordova.require('summer-plugin-frame.XFrame').setRefreshFooterInfo(json, successFn, errFn);
         },
-        refreshFooterLoadDone : function(json,success,error){
+        refreshFooterLoadDone : function(json, successFn, errFn){
 			if(s.canrequire())
-            return s.cordova.require('summer-plugin-frame.XFrame').refreshFooterLoadDone(json,success,error);
+            return s.cordova.require('summer-plugin-frame.XFrame').refreshFooterLoadDone(json, successFn, errFn);
         }
     };
 
@@ -1047,23 +1094,62 @@
 		if(s.canrequire())
             return s.require('summer-plugin-frame.XFrame').execScript(json,null,null);
     };
-	s.setItem = function(json, successFn, errFn){
+	
+	//持久化本地存储
+	s.setStorage = function(json, successFn, errFn){
 		if(s.canrequire())
-            return s.cordova.require('summer-plugin-frame.XFrame').setItem(json, successFn, errFn);
+            return s.cordova.require('summer-plugin-frame.XService').setStorage(json, successFn, errFn);
 	};
-	s.getItem = function(json, successFn, errFn){
+	s.getStorage = function(json, successFn, errFn){
 		if(s.canrequire())
-            return s.cordova.require('summer-plugin-frame.XFrame').getItem(json, successFn, errFn);
+            return s.cordova.require('summer-plugin-frame.XService').getStorage(json, successFn, errFn);
 	};
-	s.removeItem = function(json, successFn, errFn){
+	s.rmStorage = function(json, successFn, errFn){
 		if(s.canrequire())
-            return s.cordova.require('summer-plugin-frame.XFrame').removeItem(json, successFn, errFn);
+            return s.cordova.require('summer-plugin-frame.XService').rmStorage(json, successFn, errFn);
 	};
-	s.clearItem = function(json, successFn, errFn){
+	s.clearStorage = function(json, successFn, errFn){
 		if(s.canrequire())
-            return s.cordova.require('summer-plugin-frame.XFrame').clear(json, successFn, errFn);
+            return s.cordova.require('summer-plugin-frame.XService').clearStorage(json, successFn, errFn);
 	};
 	
+	//应用级Storage
+	s.setAppStorage = function(json, successFn, errFn){
+		if(s.canrequire())
+            return s.cordova.require('summer-plugin-frame.XService').setAppStorage(json, successFn, errFn);
+	};
+	s.getAppStorage = function(json, successFn, errFn){
+		if(s.canrequire())
+            return s.cordova.require('summer-plugin-frame.XService').getAppStorage(json, successFn, errFn);
+	};
+	s.rmAppStorage = function(json, successFn, errFn){
+		if(s.canrequire())
+            return s.cordova.require('summer-plugin-frame.XService').rmAppStorage(json, successFn, errFn);
+	};
+	s.clearAppStorage = function(json, successFn, errFn){
+		if(s.canrequire())
+            return s.cordova.require('summer-plugin-frame.XService').clearAppStorage(json, successFn, errFn);
+	};
+	
+	s.callCordova = function(cordovaPlugName, plugFnName, json, successFn, errFn){
+		if(s.canrequire() || true){
+            var plug = s.cordova.require(cordovaPlugName);
+			if(plug[plugFnName]){
+				plug[plugFnName](json, successFn, errFn);
+			}else{
+				alert("the cordova plug ["+cordovaPlugName+"]'s method[" + plugFnName + "] not implementation");
+			}
+		}
+	}
+	
+	s.sysInfo = function(json, successFn, errFn){
+		if(s.canrequire())
+            return s.cordova.require('summer-plugin-frame.XService').sysInfo(json, successFn, errFn);
+	};
+	s.addEventListener = function(json, successFn, errFn){
+		if(s.canrequire())
+            return s.cordova.require('summer-plugin-frame.XFrame').addEventListener(json, successFn, errFn);
+	};
 	//1、兼容Android
     if(w.adrinvoker) alert(w.adrinvoker);
     var adrinvoker = {};
@@ -1080,7 +1166,15 @@
     }
 
     adrinvoker.call2 = function(srvName, strJson){
-        adrinvoker.call(srvName, strJson);
+		if(navigator.platform.toLowerCase().indexOf("win")>=0){
+			alert("执行"+srvName+"完毕\n参数是："+strJson);
+			return;
+		}
+		if(summerBridge){
+			return summerBridge.callSync(srvName,strJson);
+		}else{
+			alert("summerBridge is not defined by native successfully!");
+		}
     }
     w.adrinvoker = adrinvoker;
 	

@@ -21,11 +21,15 @@ summerready = function(){
     });
 }
 
-function test_win(param){
+
+//跨win执行，并关闭上一个win
+function test_indexWin(param){
 	//alert("test_win : " + param);
 	var item0 = document.getElementById("item0");
 	//alert("改之前："+ item0.innerHTML);
 	item0.innerText = param;
+	
+	summer.closeWin({id:"settings"})//更改并关闭
 	
 
 }

@@ -6,49 +6,89 @@
 		<title></title>
 		<link rel="stylesheet" href="css/font-icons.css">
 		<link rel="stylesheet" href="css/iuapmobile.um.css">
-<style>
-/* 设置背景图片 */
-.icon-home, .icon-msg, .icon-share {
-    height: 25px;
-    background: url(../img/Home-25.png) center no-repeat;
-}
-.icon-msg {
-    background-image: url(../img/About-25.png);
-}
-.icon-share {
-    background-image: url(../img/Share-25.png);
-}
-/* 设置激活状态 */
-.um-footerbar-item.active {
-    color: rgb(252, 116, 122);
-}
-.um-footerbar-item.active .icon-home {
-    background-image: url(../img/Home-25-active.png);
-}
-.um-footerbar-item.active .icon-msg {
-    background-image: url(../img/About-25-active.png);
-}
-.um-footerbar-item.active .icon-share {
-    background-image: url(../img/Share-25-active.png);
-}
-</style>
+		<style>
+			/* 设置背景图片 */
+			.icon-home, .icon-msg, .icon-share {
+				height: 25px;
+				background: url(../img/Home-25.png) center no-repeat;
+			}
+			.icon-msg {
+				background-image: url(../img/About-25.png);
+			}
+			.icon-share {
+				background-image: url(../img/Share-25.png);
+			}
+			/* 设置激活状态 */
+			.um-footerbar-item.active {
+				color: rgb(252, 116, 122);
+			}
+			.um-footerbar-item.active .icon-home {
+				background-image: url(../img/Home-25-active.png);
+			}
+			.um-footerbar-item.active .icon-msg {
+				background-image: url(../img/About-25-active.png);
+			}
+			.um-footerbar-item.active .icon-share {
+				background-image: url(../img/Share-25-active.png);
+			}
+
+		</style>
 
 		<script src="js/Frameworks/iuapmobile.frameworks.core-2.7.0.js" ></script>
 		<script src="js/summer.js" ></script>
 		<script src="js/jquery-2.1.4.min.js" ></script>
 		<script src="js/Frameworks/iuapmobile.frameworks.ui-2.7.0.js" ></script>
 		<script src="js/index.js" ></script>
-<script src="js/knockout-2.2.0.js" type="text/javascript" charset="utf-8"></script>	
-<script>
-$(function(){
-  var arrData = [{title:"军事",src: "#item1" },{title: "社会",src: "#item2" },{title: "体育",src: "#item3" },{title: "娱乐",src: "#item4" },{title: "财经",src: "#item5" },{title: "科技",src: "#item6" },{title: "专题",src: "#item7" },{title: "图片",src: "#item8" },{title: "视频",src: "#item9" },{title: "国内",src: "#item10" },{title: "国际",src: "#item11" },{title: "视界",src: "#item12"}];
+		<script src="js/knockout-2.2.0.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			$(function() {
+				var arrData = [{
+					title : "军事",
+					src : "#item1"
+				}, {
+					title : "社会",
+					src : "#item2"
+				}, {
+					title : "体育",
+					src : "#item3"
+				}, {
+					title : "娱乐",
+					src : "#item4"
+				}, {
+					title : "财经",
+					src : "#item5"
+				}, {
+					title : "科技",
+					src : "#item6"
+				}, {
+					title : "专题",
+					src : "#item7"
+				}, {
+					title : "图片",
+					src : "#item8"
+				}, {
+					title : "视频",
+					src : "#item9"
+				}, {
+					title : "国内",
+					src : "#item10"
+				}, {
+					title : "国际",
+					src : "#item11"
+				}, {
+					title : "视界",
+					src : "#item12"
+				}];
 
- function Model(){
-    this.arrData = ko.observableArray(arrData);
-  }
-  ko.applyBindings(new Model());
-})
-</script>
+				function Model() {
+					this.arrData = ko.observableArray(arrData);
+				}
+
+
+				ko.applyBindings(new Model());
+			})
+
+		</script>
 	</head>
 	<body>
 		<div class="um-page um-win" id="index">
@@ -60,59 +100,69 @@ $(function(){
 
 			<div id="main" class="um-content p15">
 
+				<div class="um-input-text ">
+					<span class="ti-lock um-input-left-icon"></span>
+					<input type="text" class="form-control" placeholder="Username">
+				</div>
+				<div class="um-input-text ">
+					<span class="ti-lock um-input-left-icon"></span>
+					<input type="text" class="form-control" placeholder="Username">
+				</div>
+				<div class="um-input-text ">
+					<span class="ti-lock um-input-left-icon"></span>
+					<input type="text" class="form-control" placeholder="Username">
+				</div>
 
+				<div class="um-nav">
+					<div class="um-nav-inner">
+						<div class="um-nav-item"><img src="img/love.png" width="150" alt="">
+						</div>
+						<div class="um-nav-item"><img src="img/waite.png" width="150" alt="">
+						</div>
+						<div class="um-nav-item"><img src="img/sun.png" width="150" alt="">
+						</div>
+						<div class="um-nav-item"><img src="img/love.png" width="150" alt="">
+						</div>
+						<div class="um-nav-item"><img src="img/waite.png" width="150" alt="">
+						</div>
+						<div class="um-nav-item"><img src="img/sun.png" width="150" alt="">
+						</div>
+						<div class="um-nav-item"><img src="img/love.png" width="150" alt="">
+						</div>
+						<div class="um-nav-item"><img src="img/waite.png" width="150" alt="">
+						</div>
+						<div class="um-nav-item"><img src="img/sun.png" width="150" alt="">
+						</div>
+						<div class="um-nav-item"><img src="img/love.png" width="150" alt="">
+						</div>
+						<div class="um-nav-item"><img src="img/waite.png" width="150" alt="">
+						</div>
+						<div class="um-nav-item"><img src="img/sun.png" width="150" alt="">
+						</div>
+						<div class="um-nav-item"><img src="img/love.png" width="150" alt="">
+						</div>
+						<div class="um-nav-item"><img src="img/waite.png" width="150" alt="">
+						</div>
+						<div class="um-nav-item"><img src="img/sun.png" width="150" alt="">
+						</div>
+					</div>
+				</div>
 
-<div class="um-input-text ">
-	<span class="ti-lock um-input-left-icon"></span>
-	<input type="text" class="form-control" placeholder="Username">
-</div>
-<div class="um-input-text ">
-	<span class="ti-lock um-input-left-icon"></span>
-	<input type="text" class="form-control" placeholder="Username">
-</div>
-<div class="um-input-text ">
-	<span class="ti-lock um-input-left-icon"></span>
-	<input type="text" class="form-control" placeholder="Username">
-</div>
-
-
-
-<div class="um-nav">
-	<div class="um-nav-inner">
-		<div class="um-nav-item"><img src="img/love.png" width="150" alt=""></div>
-		<div class="um-nav-item"><img src="img/waite.png" width="150" alt=""></div>
-		<div class="um-nav-item"><img src="img/sun.png" width="150" alt=""></div>
-		<div class="um-nav-item"><img src="img/love.png" width="150" alt=""></div>
-		<div class="um-nav-item"><img src="img/waite.png" width="150" alt=""></div>
-		<div class="um-nav-item"><img src="img/sun.png" width="150" alt=""></div>
-		<div class="um-nav-item"><img src="img/love.png" width="150" alt=""></div>
-		<div class="um-nav-item"><img src="img/waite.png" width="150" alt=""></div>
-		<div class="um-nav-item"><img src="img/sun.png" width="150" alt=""></div>
-		<div class="um-nav-item"><img src="img/love.png" width="150" alt=""></div>
-		<div class="um-nav-item"><img src="img/waite.png" width="150" alt=""></div>
-		<div class="um-nav-item"><img src="img/sun.png" width="150" alt=""></div>
-		<div class="um-nav-item"><img src="img/love.png" width="150" alt=""></div>
-		<div class="um-nav-item"><img src="img/waite.png" width="150" alt=""></div>
-		<div class="um-nav-item"><img src="img/sun.png" width="150" alt=""></div>
-	</div>
-</div>
-
-
-
-<ul class="um-tabbar um-tabbar-underline">
-    <li><a>用户</a></li>
-    <li class="active"><a>应用</a></li>
-    <li><a>社区</a></li>
-    <li><a>企业</a></li>
-</ul>
-</div>
-
-
-
-
-		
-
-
+				<ul class="um-tabbar um-tabbar-underline">
+					<li>
+						<a>用户</a>
+					</li>
+					<li class="active">
+						<a>应用</a>
+					</li>
+					<li>
+						<a>社区</a>
+					</li>
+					<li>
+						<a>企业</a>
+					</li>
+				</ul>
+			</div>
 
 			<div class="um-footer">
 				<div class="um-tabbar-foot">

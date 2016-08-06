@@ -4,16 +4,20 @@ summerready = function () {
 };
 
 
-function test_execScript(){
+function test_curWinIndex(){
 	//alert("执行win上的test_win(222)")
 	summer.execScript({
-		script : 'test_win(909);'
+		script : "alert('mainFrame执行indexWin上的script');test_indexWin('main');"//test_indexWin()定义在index.html中
 	}); 
 
 
 }
 
-function test_frame(p){
+function test_mainFrame(p){
 	$summer.byId("username").value = p;
+	
+	summer.execScript({
+		script : "test_indexWin('main');"//test_indexWin()定义在index.html中
+	});
 }
 
