@@ -32,9 +32,34 @@ function jquery_ajax(type) {
 }
 
 //使用cordova请求的数据
-function cordova_ajax(type) {
-	if(type == "get"){
-		cordovaHTTP.get(url2, {}, {
+function summer_ajax(type) {
+	if(type == "ajax_get" || type == "ajax_post"){
+		alert("将发起"+type.substring(5)+"请求");
+		//用法1
+		summer.ajax({
+			"type" : type.substring(5),
+			"url" : url2,
+			"param" : {}, 
+			"header" : {}
+		},	function(response) {
+			alert("服务器端返回值的类型为" + typeof response);
+			alert(response);//结果为[objet Object],[objet Object],[objet Object]这些
+			alert(JSON.stringify(response));//
+			
+			alert(response.data);//response.data是字符串类型
+			alert("共返回"+JSON.parse(response.data).length+"条数据");//获取返回数据的长度
+			alert(JSON.parse(response.data)[2].text);//获取返回值的第三条数据的text值
+		}, function(response) {
+			alert("err");
+			alert(typeof response);//结果为object
+			
+			alert(JSON.stringify(response));
+			alert(response.error);//查看错误信息
+		});
+	}else if(type == "get"){
+		alert("请求类型为"+type);
+		//用法2
+		summer.get(url2, {}, {
 		}, function(response) {
 			alert("服务器端返回值的类型为" + typeof response);
 			alert(response);//结果为[objet Object],[objet Object],[objet Object]这些
@@ -50,9 +75,11 @@ function cordova_ajax(type) {
 			alert(JSON.stringify(response));
 			alert(response.error);//查看错误信息
 		});
+		
 	}else if(type == "post"){
-		//alert(type)
-		cordovaHTTP.post(url2, {}, {
+		alert("请求类型为"+type);
+		//用法3
+		summer.post(url2, {}, {
 		}, function(response) {
 			alert("服务器端返回值的类型为" + typeof response);
 			alert(response);//结果为[objet Object],[objet Object],[objet Object]这些
