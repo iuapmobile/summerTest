@@ -4,28 +4,41 @@
 		<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
 		<meta charset="UTF-8">
 		<title></title>
-		<link rel="stylesheet" href="../css/iuapmobile.um-2.7.0.css">
+		<link rel="stylesheet" href="../css/iuapmobile.um.css">
 		<link rel="stylesheet" href="../css/font-icons.css">
-		<script src="../js/Frameworks/iuapmobile.frameworks.core-2.7.0.js" ></script>
+		<script src="../js/Frameworks/iuapmobile.frameworks.core.js" ></script>
 		<script src="../js/summer.js" ></script>
 		<script src="../js/jquery-2.1.4.min.js" ></script>
-		<script src="../js/Frameworks/iuapmobile.frameworks.ui-2.7.0.js" ></script>
+		<script src="../js/Frameworks/iuapmobile.frameworks.ui.js" ></script>
 		<script src="../js/main.js" ></script>
 	</head>
 	<body>
-		<div class="um-page" id="main">
+		<div class="um-frame" id="main">
 			<!-- <div class="um-header" >
 				<h3>导航栏</h3>
 			</div> -->
 
-			<div id="content" class="um-content">
+			<div id="content" class="um-content p15">
 				<div style="text-align:center;font-weight:bold;">iUAP Mobile</div>
 			
-<button class="btn" onclick="getData('get')">get</button>
-<button class="btn" onclick="getData('post')">post</button>
-<br/>
-<button class="btn" onclick="getData2('get')">get</button>
-<button class="btn" onclick="getData2('post')">post</button>
+				<button class="btn m10" onclick="jquery_ajax('get')">$.ajax--->get</button>
+				<button class="btn m10" onclick="jquery_ajax('post')">$.ajax--->post</button>
+				
+				<HR style="FILTER: alpha(opacity=100,finishopacity=0,style=3)" width="80%" color=#987cb9 SIZE=3>
+				
+				<button class="btn m10" onclick="cordova_ajax('get')">cordova.ajax--->get</button>
+				<button class="btn m10" onclick="cordova_ajax('post')">cordova.ajax--->post</button>
+				
+				<HR style="FILTER: alpha(opacity=100,finishopacity=0,style=3)" width="80%" color=#987cb9 SIZE=3>
+                
+                <button class="btn m10" onclick="$service_ajax('get')">$service.ajax--->get</button>
+  				<button class="btn m10" onclick="$service_ajax('post')">$service.ajax--->post</button>
+  				
+  				<HR style="FILTER: alpha(opacity=100,finishopacity=0,style=3)" width="80%" color=#987cb9 SIZE=3>
+  				
+  				<button class="btn m10" onclick="$service_ajax_err('get')">$service.ajax--->get err test</button>
+  				<button class="btn m10" onclick="$service_ajax_err('post')">$service.ajax--->post err test</button>
+
 			</div>
 
 			<!-- <div class="um-footer">
