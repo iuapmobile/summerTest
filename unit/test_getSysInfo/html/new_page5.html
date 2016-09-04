@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../css/font-icons.css">
+    <link rel="stylesheet" href="../css/iuapmobile.um.css">
+    <link rel="stylesheet" href="../css/new_page5.css"/>
+    <link rel="stylesheet" href="../css/iscroll.css"/>
+        <link rel="stylesheet" href="../css/iscroll.css" /> 
+        <style>
+        .um-time{
+            background:#ffffff;
+            border-top:1px solid #dddddd;
+            border-bottom:1px solid #dddddd;
+        }
+        .um-time-list{
+            height:46px;
+            line-height: 46px;
+        }
+        .um-time-list:first-child{
+            border-bottom:1px solid #dddddd;
+        }
+        .um-time-txt{
+            float: left;
+            color:#8c8d8e;
+        }
+        .um-time-list .fr{
+            position:relative;
+            float: right;
+            margin-right:30px;
+        }
+        .um-time-list .fr:after{
+            content: "";
+            position:absolute;
+            right:-15px;
+            top:15px;
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            border-right: 2px solid #8c8d8e;
+            border-top: 2px solid #8c8d8e;
+            -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
+        .um-time-list input{
+            display:block;
+            width: 180px;
+            height: 45px;
+            line-height:45px;
+            border: none;
+            outline: none;
+            text-align: right;
+            background: #fff;
+        }
+        </style>
+
+
+    <style>
+        #select1_dummy,
+        #select2_dummy,
+        #select3_dummy ,
+        #select4_dummy {
+            border: none;
+            color: #999;
+            font-size: 15px;
+        }
+
+        #select1_dummy:disabled,
+        #select2_dummy:disabled,
+        #select3_dummy:disabled,
+        #select4_dummy:disabled {
+            background: #fff;
+        }
+    </style>
+
+
+    <script src="../js/jquery-2.1.4.min.js"></script>
+    <script src="../js/Frameworks/iuapmobile.frameworks.core.js"></script>
+    <script src="../js/summer.js"></script>
+    <script src="../js/Frameworks/iuapmobile.frameworks.ui.js"></script>
+    <script src="../js/new_page5.js"></script>
+    <script src="../js/iscroll.js"></script>
+        <script src="../js/iscroll.js"></script>
+
+</head>
+<body>
+<div class="um-page" id="index">
+    <div id="header" class="um-header">
+        <h3>简易报销</h3>
+    </div>
+    <div id="main" class="um-content">
+    	
+        <div class="mt10 mb10 um-time">
+            <ul class="um-time-view pl40">
+                <li class="um-time-list clearfix">
+                    <p class="fl um-time-txt">开始时间</p>
+                    <div class="fr">
+                        <input name="start" id="start" type="text" class="scroller-date" readonly="">
+                    </div>
+                </li>
+                <li class="um-time-list clearfix">
+                    <p class="fl um-time-txt">结束时间</p>
+                    <div class="fr">
+                        <input name="end" id="end" type="text" class="scroller-date" readonly="">
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="um-list">
+            <a href="#" class="um-list-item main-item">
+                <div class="um-list-item-inner">
+                    <div class="um-list-item-body">
+                        单据
+                    </div>
+                    <div class="um-list-item-right">
+                        <span class="um-gray mr15">请填写</span>
+                    </div>
+                </div>
+            </a>
+            <a href="#" class="um-list-item main-item">
+                <div class="um-list-item-inner">
+                    <div class="um-list-item-body">
+                        个人信息
+                    </div>
+                    <div class="um-list-item-right">
+                        <span class="um-gray mr15">请填写</span>
+                    </div>
+                </div>
+            </a>
+            <a href="#" class="um-list-item main-item">
+                <div class="um-list-item-inner">
+                    <div class="um-list-item-body">
+                        项目信息
+                    </div>
+                    <div class="um-list-item-right">
+                        <span class="um-gray mr15">请填写</span>
+                    </div>
+                </div>
+            </a>
+            <a href="#" class="um-list-item main-item sum-money">
+                <div class="um-list-item-inner">
+                    <div class="um-list-item-body">
+                        报销金额
+                    </div>
+                    <div class="um-list-item-right">
+                        <span class="um-gray mr15 total-money">0.00</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <ul class="um-tabbar um-tabbar-underline">
+            <li class="active"><a>往返交通费用</a></li>
+            <li ><a>目的地费用</a></li>
+            <li><a>出差补贴</a></li>
+        </ul>
+        <div id="transportation">
+            <div class="um-list">
+                <a href="#" class="um-list-item main-item go-dest-cost">
+                    <div class="um-list-item-inner">
+                        <div class="um-list-item-body">
+                            去往目的地 <br/>
+                            交通费用总计
+                        </div>
+                        <div class="um-list-item-right">
+                            <span class="um-gray mr15 money-count">0.00</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="um-list-item main-item  bo-back-company">
+                    <div class="um-list-item-inner">
+                        <div class="um-list-item-body">
+                            返回公司 <br/>
+                            交通费用总计
+                        </div>
+                        <div class="um-list-item-right">
+                            <span class="um-gray mr15 money-count">0.00</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div id="cost" class="none">
+            <ul class="um-list um-list-style">
+                <li class="um-list-item ">
+                    <div class="um-list-item-inner">
+                        <div class="um-list-item-left">
+                           费用项目
+                        </div>
+                        <div class="um-list-item-right">
+                            <input type="text" class="form-control" placeholder="">
+                        </div>
+                    </div>
+                </li>
+                <li class="um-list-item">
+                    <div class="um-list-item-inner">
+                        <div class="um-list-item-left">
+                            报销金额
+                        </div>
+                        <div class="um-list-item-right">
+                            <input type="text" class="form-control money-count" placeholder="输入金额">
+                        </div>
+                    </div>
+                </li>
+                <li class="um-list-item">
+                    <div class="um-list-item-inner">
+                        <div class="um-list-item-left">
+                            电子发票号
+                        </div>
+                        <div class="um-list-item-right">
+                            <input type="text" class="form-control " placeholder="选择发票号">
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div id="subsidy" class="none">
+            <ul class="um-list um-list-style">
+                <li class="um-list-item um-list-select">
+                    <div class="um-list-item-inner">
+                        <div class="um-list-item-left">
+                            是否提供食宿
+                        </div>
+                        <div class="um-list-item-right">
+                            <div class="um-input-text">
+                                <span class="um-input-left"></span>
+                                <input type="text" id='select4_dummy' placeholder="请选择公司"/>
+                                <select id='select4'>
+                                    <option>是</option>
+                                    <option>否</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="um-list-item">
+                    <div class="um-list-item-inner">
+                        <div class="um-list-item-left">
+                            出发日期
+                        </div>
+                        <div class="um-list-item-right">
+                            <input type="date" class="form-control" placeholder="选择日期">
+                        </div>
+                    </div>
+                </li>
+                <li class="um-list-item">
+                    <div class="um-list-item-inner">
+                        <div class="um-list-item-left">
+                            结束日期
+                        </div>
+                        <div class="um-list-item-right">
+                            <input type="date" class="form-control" placeholder="选择日期">
+                        </div>
+                    </div>
+                </li>
+                <li class="um-list-item">
+                    <div class="um-list-item-inner">
+                        <div class="um-list-item-left">
+                            出差天数
+                        </div>
+                        <div class="um-list-item-right">
+                            <input type="text" class="form-control" placeholder="" disabled>
+                        </div>
+                    </div>
+                </li>
+                <li class="um-list-item">
+                    <div class="um-list-item-inner">
+                        <div class="um-list-item-left">
+                            补贴标准
+                        </div>
+                        <div class="um-list-item-right">
+                            <input type="text" class="form-control" placeholder="60.00" disabled>
+                        </div>
+                    </div>
+                </li>
+                <li class="um-list-item">
+                    <div class="um-list-item-inner">
+                        <div class="um-list-item-left">
+                            报销金额
+                        </div>
+                        <div class="um-list-item-right">
+                            <input type="text" class="form-control money-count" placeholder="" disabled>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+</div>
+<div class="um-page" id="bill">
+    <div class="um-header">
+        <a href="#" class="um-back">返回</a>
+        <h3>单据详情</h3>
+    </div>
+    <div class="um-content">
+        <ul class="um-list um-list-style">
+            <li class="um-list-item ">
+                <div class="um-list-item-inner">
+                    <div class="um-list-item-left">
+                        单据号
+                    </div>
+                    <div class="um-list-item-right">
+                        <input type="text" class="form-control" placeholder="请填写单据号">
+                    </div>
+                </div>
+            </li>
+            <li class="um-list-item">
+                <div class="um-list-item-inner">
+                    <div class="um-list-item-left">
+                        单据日期
+                    </div>
+                    <div class="um-list-item-right">
+                        <input type="date" class="form-control" placeholder="选择日期">
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div></div>
+    </div>
+</div>
+<div class="um-page" id="info">
+    <div class="um-header">
+        <a href="#" class="um-back">返回</a>
+
+        <h3>个人信息</h3>
+    </div>
+    <div class="um-content">
+        <ul class="um-list um-list-style">
+            <li class="um-list-item ">
+                <div class="um-list-item-inner">
+                    <div class="um-list-item-left">
+                        公司
+                    </div>
+                    <div class="um-list-item-right">
+                        <input class="form-control" placeholder="用友网络股份有限公司" disabled>
+                    </div>
+                </div>
+            </li>
+            <li class="um-list-item um-list-select">
+                <div class="um-list-item-inner">
+                    <div class="um-list-item-left">
+                        部门
+                    </div>
+                    <div class="um-list-item-right">
+
+                        <div class="um-input-text">
+                            <span class="um-input-left"></span>
+                            <input type="text" id='select1_dummy'/>
+                            <select id='select1'>
+                                <option>移动开发部</option>
+                                <option>营销部</option>
+                                <option>人力资源部</option>
+                                <option>后勤部</option>
+                                <option>NC事业部</option>
+                                <option>研发部</option>
+                            </select>
+                        </div>
+
+                    </div>
+                </div>
+            </li>
+            <li class="um-list-item">
+                <div class="um-list-item-inner">
+                    <div class="um-list-item-left">
+                        报销人
+                    </div>
+                    <div class="um-list-item-right">
+                        <input type="text" class="form-control" placeholder="万桶金" disabled>
+                    </div>
+                </div>
+            </li>
+            <li class="um-list-item">
+                <div class="um-list-item-inner">
+                    <div class="um-list-item-left">
+                        个人银行账号
+                    </div>
+                    <div class="um-list-item-right">
+                        <input type="text" class="form-control" placeholder="6214888888888888888888" disabled>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="um-page" id="project">
+    <div class="um-header">
+        <a href="#" class="um-back">返回</a>
+
+        <h3>项目选择</h3>
+    </div>
+    <div class="um-content">
+        <ul class="um-list um-list-style">
+            <li class="um-list-item um-list-select">
+                <div class="um-list-item-inner">
+                    <div class="um-list-item-left">
+                        费用承担公司
+                    </div>
+                    <div class="um-list-item-right">
+                        <div class="um-input-text">
+                            <span class="um-input-left"></span>
+                            <input type="text" id='select2_dummy' placeholder="请选择公司"/>
+                            <select id='select2'>
+                                <option>北京分公司</option>
+                                <option>石家庄分公司</option>
+                                <option>上海分公司</option>
+                                <option>广州分公司</option>
+                                <option>深圳分公司</option>
+                                <option>沈阳分公司</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="um-list-item um-list-select">
+                <div class="um-list-item-inner">
+                    <div class="um-list-item-left">
+                        项目
+                    </div>
+                    <div class="um-list-item-right">
+                        <div class="um-input-text">
+                            <span class="um-input-left"></span>
+                            <input type="text" id='select3_dummy' placeholder="请选择项目"/>
+                            <select id='select3'>
+                                <option>售前项目</option>
+                                <option>售后项目</option>
+                                <option>移动项目</option>
+                                <option>PC项目</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="um-list-item">
+                <div class="um-list-item-inner">
+                    <div class="um-list-item-left">
+                        业务描述
+                    </div>
+                    <div class="um-list-item-right">
+                        <textarea type="text" class="form-control" placeholder="描述"></textarea>
+                    </div>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+</div>
+<div class="um-page" id="goDest">
+    <div class="um-header">
+        <a href="#" class="um-back">返回</a>
+        <h3>目的地交通费</h3>
+    </div>
+    <div class="um-content">
+        <ul class="um-list um-list-style">
+            <li class="um-list-item ">
+                <div class="um-list-item-inner">
+                    <div class="um-list-item-left">
+                       事由
+                    </div>
+                    <div class="um-list-item-right">
+                        <input type="text" class="form-control" placeholder="请填写">
+                    </div>
+                </div>
+            </li>
+            <li class="um-list-item">
+                <div class="um-list-item-inner">
+                    <div class="um-list-item-left">
+                        出发日期
+                    </div>
+                    <div class="um-list-item-right">
+                        <input type="date" class="form-control" placeholder="选择日期">
+                    </div>
+                </div>
+            </li>
+            <li class="um-list-item">
+                <div class="um-list-item-inner">
+                    <div class="um-list-item-left">
+                        出发地点
+                    </div>
+                    <div class="um-list-item-right">
+                        <input type="text" class="form-control" placeholder="选择日期">
+                    </div>
+                </div>
+            </li>
+            <li class="um-list-item">
+                <div class="um-list-item-inner">
+                    <div class="um-list-item-left">
+                        到达日期
+                    </div>
+                    <div class="um-list-item-right">
+                        <input type="date" class="form-control" placeholder="选择日期">
+                    </div>
+                </div>
+            </li>
+            <li class="um-list-item">
+                <div class="um-list-item-inner">
+                    <div class="um-list-item-left">
+                        到达地点
+                    </div>
+                    <div class="um-list-item-right">
+                        <input type="text" class="form-control" placeholder="选择日期">
+                    </div>
+                </div>
+            </li>
+            <li class="um-list-item">
+                <div class="um-list-item-inner">
+                    <div class="um-list-item-left">
+                        交通费用
+                    </div>
+                    <div class="um-list-item-right">
+                        <input type="text" class="form-control go-dest-money" placeholder="请输入金额">
+                    </div>
+                </div>
+            </li>
+            <li class="um-list-item">
+                <div class="um-list-item-inner">
+                    <div class="um-list-item-left">
+                        往返机场费用
+                    </div>
+                    <div class="um-list-item-right">
+                        <input type="text" class="form-control go-dest-money" placeholder="请输入金额">
+                    </div>
+                </div>
+            </li>
+            <li class="um-list-item">
+                <div class="um-list-item-inner">
+                    <div class="um-list-item-left">
+                        其他费用
+                    </div>
+                    <div class="um-list-item-right">
+                        <input type="text" class="form-control go-dest-money" placeholder="请输入金额">
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <button class="btn btn-style">确认</button>
+        </div>
+</div>
+<div class="um-page" id="goBack">
+    <div class="um-header">
+        <a href="#" class="um-back">返回</a>
+
+        <h3>目的地交通费</h3>
+    </div>
+    <div class="um-content">
+        <ul class="um-list um-list-style">
+            <li class="um-list-item ">
+                <div class="um-list-item-inner">
+                    <div class="um-list-item-left">
+                       事由
+                    </div>
+                    <div class="um-list-item-right">
+                        <input type="text" class="form-control" placeholder="请填写">
+                    </div>
+                </div>
+            </li>
+            <li class="um-list-item">
+                <div class="um-list-item-inner">
+                    <div class="um-list-item-left">
+                        出发日期
+                    </div>
+                    <div class="um-list-item-right">
+                        <input type="date" class="form-control" placeholder="选择日期">
+                    </div>
+                </div>
+            </li>
+            <li class="um-list-item">
+                <div class="um-list-item-inner">
+                    <div class="um-list-item-left">
+                        出发地点
+                    </div>
+                    <div class="um-list-item-right">
+                        <input type="text" class="form-control" placeholder="选择日期">
+                    </div>
+                </div>
+            </li>
+            <li class="um-list-item">
+                <div class="um-list-item-inner">
+                    <div class="um-list-item-left">
+                        到达日期
+                    </div>
+                    <div class="um-list-item-right">
+                        <input type="date" class="form-control" placeholder="选择日期">
+                    </div>
+                </div>
+            </li>
+            <li class="um-list-item">
+                <div class="um-list-item-inner">
+                    <div class="um-list-item-left">
+                        到达地点
+                    </div>
+                    <div class="um-list-item-right">
+                        <input type="text" class="form-control" placeholder="选择日期">
+                    </div>
+                </div>
+            </li>
+            <li class="um-list-item">
+                <div class="um-list-item-inner">
+                    <div class="um-list-item-left">
+                        交通费用
+                    </div>
+                    <div class="um-list-item-right">
+                        <input type="text" class="form-control back-company-money" placeholder="请输入金额">
+                    </div>
+                </div>
+            </li>
+            <li class="um-list-item">
+                <div class="um-list-item-inner">
+                    <div class="um-list-item-left">
+                        往返机场费用
+                    </div>
+                    <div class="um-list-item-right">
+                        <input type="text" class="form-control back-company-money" placeholder="请输入金额">
+                    </div>
+                </div>
+            </li>
+            <li class="um-list-item">
+                <div class="um-list-item-inner">
+                    <div class="um-list-item-left">
+                        其他费用
+                    </div>
+                    <div class="um-list-item-right">
+                        <input type="text" class="form-control back-company-money" placeholder="请输入金额">
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <button class="btn btn-style">确认</button>
+    </div>
+</div>
+<script>
+    $(function () {
+        // var curr = new Date().getFullYear();
+        var opt = {
+            'date': {
+                preset: 'date'
+            },
+            'select': {
+                preset: 'select'
+            }
+        };
+        for (var i = 0; i < 10; i++) {
+            $('#select' + i).scroller('destroy').scroller(
+                    $.extend(opt['select'], {
+                        theme: "ios7",
+                        mode: "scroller",
+                        display: "bottom",
+                        animate: ""
+                    })
+            );
+        }
+
+    });
+</script>
+
+        <script>
+        	$(function () {
+        		$('.scroller-date').scroller('destroy').scroller({
+        			preset: 'date',
+        			theme: "ios7",
+        			mode: "scroller",
+        			display: "bottom",
+        			animate: ""
+        		});	
+        	});
+        </script>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/iuapmobile.um.css">
+		<link rel="stylesheet" href="../css/font-icons.css">	
+		<script src="../js/Frameworks/iuapmobile.frameworks.core.js" ></script>	
+		<script src="../js/jquery-2.1.4.min.js" ></script>
+		<script src="../js/Frameworks/iuapmobile.frameworks.ui.js" ></script>
+		<script src="../js/summer.js" ></script>
+		<script>
+			function $pageReady() {
+				/*这里编写与原生服务相关的代码逻辑，例如对原生设备服务的调用，对网络服务的调用等*/
+				//alert("Mobile Native Ready");
+			}
+
+			$(function() {
+				$("#btn0").on("click", function(){
+					summer.closeWin("root");
+					
+					
+				})
+				$("#btn1").on("click", function(){
+					summer.closeWin();
+					
+					
+				})
+				
+			});
+		</script>
+
+	</head>
+	<body>
+		<div class="um-win" id="index">
+			<div class="um-header" >
+				<h3>导航栏</h3>
+			</div>
+
+			<div class="um-content">
+				
+                <button class="btn" id="btn0">closeWin("root")</button>
+                
+                <button class="btn" id="btn1" >closeWin()</button>
+
+
+			</div>
+
+			<div class="um-footer">
+				
+			</div>
+		</div>
+	</body>
+</html>

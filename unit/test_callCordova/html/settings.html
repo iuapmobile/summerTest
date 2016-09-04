@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html class="um-win">
+	<head>
+		<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/font-icons.css">
+		<link rel="stylesheet" href="../css/iuapmobile.um.css">
+        <link rel="stylesheet" type="text/css" href="../css/islider.css">
+        <style>
+        	.iSlider-wrapper {
+        		height: 140px;
+        	}
+        	.um-header{background:#fff;}
+        	.um-header h3{background:#007aff;}
+			.islider-dot{width:0.5em;height:0.5em;}
+        	.islider-dot-wrap{text-align:center;}
+        	.um-content{padding:0;}
+        	#main>div{display:none;color:#555;}
+        	#main>div.active{display:block;}
+        </style>
+		<script src="../js/jquery-2.1.4.min.js" ></script>
+				<script src="../js/summer.js" ></script>	 
+		<script src="../js/Frameworks/iuapmobile.frameworks.ui.js" ></script>
+        <script type="text/javascript" src="../js/islider.js"></script>       
+	</head>
+	<body>
+		<div class="um-page um-win" id="index">
+			<div id="header" class="um-header">
+				<a href="#" class="um-back" onclick="summer.closeWin()">返回</a>
+				<h3>新闻中心</h3>		 
+                 <div><div id="iSlider-wrapper" class="iSlider-wrapper"></div></div>
+                 <ul class="um-tabbar um-tabbar-underline">
+                    <li class="active" data-tar='.user'><a>用户</a></li>
+                    <li data-tar='.application'><a>应用</a></li>
+                    <li data-tar='.community'><a>社区</a></li>
+                    <li data-tar='.enterprise'><a>企业</a></li>
+                </ul>
+			</div>
+			<div id="main" class="um-content um-box um-direction-v">        
+                	<div class="user active um-bgc-green um-bf1">用户</div>
+					<div class="application um-bgc-red um-bf1">应用</div>
+					<div class="community um-bgc-yellow um-bf1">社区</div>
+					<div class="enterprise um-bgc-orange um-bf1">企业</div>				
+			</div>
+			   <div class="um-footer">
+                <div class="um-footerbar">
+                    <a href="#" class="um-footerbar-item">
+                        <i class="ti-comments f20"></i>
+                        <div class="f12 lh1">消息</div>
+                    </a>
+                    <a href="#" class="um-footerbar-item active">
+                        <i class="ti-notepad f20"></i>
+                        <div class="f12 lh1">日程</div>
+                    </a>
+                    <a href="#" class="um-footerbar-item">
+                        <i class="ti-id-badge f20"></i>
+                        <div class="f12 lh1">通讯录</div>
+                    </a>
+                    <a href="#" class="um-footerbar-item">
+                        <i class="ti-user f20"></i>
+                        <div class="f12 lh1">我</div>
+                    </a>
+                </div>
+            </div>
+		</div>
+		<script>
+        /*轮播js*/
+        	$(function() {
+        		var list = [
+        			{
+        				content: "../img/g1.png"
+        			}, 
+        			{
+        				content: "../img/g2.png"
+        			}, 
+        			{
+        				content: "../img/g3.png"
+        			}
+        		];
+        		var islider = new iSlider({
+        			type: 'pic',
+        			data: list,
+        			dom: document.getElementById("iSlider-wrapper"),
+        			isLooping: true,
+        			animateType: 'default',
+        			isAutoplay: true,
+        			animateTime: 800
+        		});
+        		islider.addDot();
+        	})
+         /*导航更换js*/
+		 $('#header ul Li').click(function(){
+		 	$(this).addClass('active').siblings('.active').removeClass('active');
+			var tar=$(this).attr('data-tar');
+			$(tar).addClass('active').siblings('.active').removeClass('active');
+		});
+        </script>
+	</body>
+</html>

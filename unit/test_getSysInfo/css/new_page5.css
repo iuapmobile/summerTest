@@ -1,0 +1,73 @@
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+    color: #f00;
+}
+.um-list-item {
+    font-size: 15px;
+}
+.main-item {
+    margin-left: 10px;
+}
+.um-list .main-item.sum-money:before {
+    width: 0;
+    height: 0;
+    border: 0;
+}
+.main-item .um-list-item-right {
+    text-align: left;
+    flex: 2;
+}
+#index .um-content {
+    background-color: #F9F9F9;
+}
+.um-list {
+    background-color: #fff;
+}
+.um-list-style {
+    padding-left: 10px;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.um-list-select::before {
+    right: 10px;
+    content: "";
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-left: 1px solid #c2c2c2;
+    border-bottom: 1px solid #c2c2c2;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translate(0, -50%) rotate(-135deg);
+    transform: translate(0, -50%) rotate(-45deg);
+    margin-top: -4px;
+    z-index: 2;
+}
+.um-list-search::before {
+    right: 10px;
+    content: "";
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    background: url('../img/search.png') center center no-repeat;
+    background-size:14px 14px;
+    position: absolute;
+    top: 50%;
+    margin-top: -7px;
+}
+.um-input-text {
+    border: none;
+}
+.um-tabbar {
+    margin: 10px 0;
+    background-color: #fff;
+    padding: 0 10px;
+}
+#transportation .um-list-item {
+    font-size: 13px;
+}
+ .btn-style {
+     width: 90%;
+     margin: 20px 5%;
+ }
