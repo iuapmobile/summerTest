@@ -19,6 +19,20 @@ summerready = function(){
         },
         alert:false
     });
+    
+    
+    document.addEventListener('backbutton', onBackKeyDown, true);
+
+       function onBackKeyDown() {
+	        summer.openWin({
+                "id" : "settings",
+                "url" : "html/settings.html",
+                "pageParam" : {
+                    "count" : 1
+                }
+            });
+    	}
+
 }
 
 

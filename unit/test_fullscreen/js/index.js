@@ -1,4 +1,4 @@
-﻿summerready = function() {debugger;
+﻿summerready = function() {
 
 	// here is your code...
 
@@ -19,28 +19,38 @@
 			y : y,
 			w : width,
 			h : height2
-		}
+		},
+		alert:true
 	});
-}
-function openwin1() {
-	if (confirm("将打开一个全屏显示的window，请确定？")) {
-		summer.openWin({
-			"id" : "home",
-			"url" : "html/home.html",
-			"fullScreen" : true,
-			"statusBarAppearance" : true,
-			"statusBarStyle" : "light", // dark
-			"screenOrientation" : "landscape" // portrait(竖屏)
-		});
-	}else{
-		summer.openWin({
-			"id" : "home",
-			"url" : "html/home.html",
-			"fullScreen" : false,
-			"statusBarAppearance" : true,
-			"statusBarStyle" : "light", // dark
-			"screenOrientation" : "portrait" // landscape(横屏)
-		});
 	
-	}
+	
+	navigator.camera.getPicture(cameraSuccess, cameraError, cameraOptions);
+	
+	
+}
+
+function xx(){
+	/ onSuccess Callback
+// This method accepts a Position object, which contains the
+// current GPS coordinates
+//
+var onSuccess = function(position) {
+    alert('Latitude: '          + position.coords.latitude          + '\n' +
+          'Longitude: '         + position.coords.longitude         + '\n' +
+          'Altitude: '          + position.coords.altitude          + '\n' +
+          'Accuracy: '          + position.coords.accuracy          + '\n' +
+          'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
+          'Heading: '           + position.coords.heading           + '\n' +
+          'Speed: '             + position.coords.speed             + '\n' +
+          'Timestamp: '         + position.timestamp                + '\n');
+};
+
+// onError Callback receives a PositionError object
+//
+function onError(error) {
+    alert('code: '    + error.code    + '\n' +
+          'message: ' + error.message + '\n');
+}
+
+navigator.geolocation.getCurrentPosition(onSuccess, onError);
 }

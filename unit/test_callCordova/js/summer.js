@@ -2,9 +2,8 @@
  * Summer JavaScript Library
  * Copyright (c) 2016 yonyou.com
  * Author: gct@yonyou.com go
- * Version: 3.0.20160726
+ * Version: 3.0.0.20160805
  */
-
 ;(function(w){
     w.$summer = {};
     w.summer = {};
@@ -107,7 +106,6 @@
    
    w.$summer.require = w.summer.require;
 })(window);
-
 
 // JavaScript Base Type Extra API
 ;(function(){
@@ -348,6 +346,7 @@
 
     window.$summer = window.$summer || u;
 })();
+
 
 //HTML DOM API by gct
 ;(function(window){
@@ -755,72 +754,11 @@
 
    
     /******************** Native API BEGIN ********************/
-	var umStorage = function(type){
-		type = type || "localStorage";
-		if(type == "localStorage"){
-			if(!window.localStorage){
-		        alert('your device do not support the localStorage');
-				return;
-		    }
-			return window.localStorage;
-		}else if(type == "sessionStorage"){
-			if(!window.sessionStorage){
-		        alert('your device do not support the sessionStorage');
-				return;
-		    }
-			return window.sessionStorage;
-		}else{
-			return null;
-			/*
-			if($summer.os == "android"){
-				ls = summer.localStorage();
-			}
-			*/
-		}
-    };
-	u.setStorage = function(key, value){
-        if(arguments.length === 2){
-            var v = value;
-            if(typeof v == 'object'){
-                v = JSON.stringify(v);
-                v = 'obj-'+ v;
-            }else{
-                v = 'str-'+ v;
-            }
-            var ls = umStorage();
-            if(ls){
-                ls.setItem(key, v);
-            }
-        }
-    };
-    u.getStorage = function(key){
-        var ls = umStorage();
-        if(ls){
-            var v = ls.getItem(key);
-            if(!v){return;}
-            if(v.indexOf('obj-') === 0){
-                v = v.slice(4);
-                return JSON.parse(v);
-            }else if(v.indexOf('str-') === 0){
-                return v.slice(4);
-            }
-        }
-    };
-    u.rmStorage = function(key){
-        var ls = umStorage();
-        if(ls && key){
-            ls.removeItem(key);
-        }
-    };
-    u.clearStorage = function(){
-        var ls = umStorage();
-        if(ls){
-            ls.clear();
-        }
-    };
-    u.fixIos7Bar = function(el){
+	//20160810
+	
+    u.fixStatusBar = function(el){
         if(!u.isElement(el)){
-            alert('$summer.fixIos7Bar Function need el param, el param must be DOM Element');
+            alert('$summer.fixStatusBar Function need el param, el param must be DOM Element');
 			return;
         }
         // var strDM = api.systemType;
@@ -833,15 +771,21 @@
         //         el.style.paddingTop = '20px';
         //     }
         // }
-		if($summer.os == "ios"){
-         	el.style.paddingTop = '20px';
-            /*
-	        $(el).find(".um-back, .um-header-right, .um-header-left").each(function(){
-	   			this.style.top = '20px';
-	  		});
-	  		*/
-			$(el).find(".um-back, .um-header-right, .um-header-left").css("top","20px");
-        }
+		if($summer.os == "ios" || $summer.os == "pc"){
+			$(el).children().css("top","20px");
+			var strSV = summer.systemVersion;
+            var numSV = parseInt(strSV,10);
+            var fullScreen = summer.fullScreen;
+            var statusBarAppearance = summer.statusBarAppearance;
+			
+			//if (numSV >= 7 && !fullScreen && statusBarAppearance) {
+			if (true) {
+				el.style.paddingTop = '20px';
+				$(el).children().css("top","20px");
+			}
+        }else{
+			
+		}
     };
     u.toast = function(title, text, time){
         // var opts = {};
@@ -935,34 +879,105 @@
     window.$api = window.$summer;
 })(window);
 
-//UAP Mobile Service
-;(function(window){
-	/*
-    var r = {};
-    r.eval = function(controllerid, js, ctx, sender, args, uicontrols){
-        //$router.eval("","getData()","","btn0",{a:1},{});
-        try{
-            var fnName = js.indexOf("(") > 0 ? js.substring(0, js.indexOf("(")) : js;
-            
-            var curInst = (controllerid && controllerid != ".") ? eval(controllerid) : window;
-            fn = eval(controllerid ? controllerid + "." + fnName : fnName);
-            fn.apply(curInst, [sender, args]);   
-                            
-        }catch(e){
-            alert(e.stack);
-        }    
-    };
+//summerBridge serivce 3.0.0.20160802
++function(w,s){
+	//1、兼容Android
+    if(w.adrinvoker) alert(w.adrinvoker);
+    var adrinvoker = {};
+    if(w.adrinvoker && w.adrinvoker.call2) alert(w.adrinvoker.call2);
 
-    window.$router = r;
-	*/
-})(window);
+	//Asynchronous call run as corodva bridge
+    adrinvoker.call = function(srvName, strJson){
+		if(navigator.platform.toLowerCase().indexOf("win")>=0){
+			alert("执行"+srvName+"完毕\n参数是："+strJson);
+			return;
+		}
+		
+		strJson = strJson || '{}';
+		
+		var plug = summer.require('summer-plugin-service.XService');
+		plug.call(srvName,$summer.strToJson(strJson));
+    }
 
+	//Synchronous call as summer bridge
+    adrinvoker.call2 = function(srvName, strJson){
+		if(navigator.platform.toLowerCase().indexOf("win")>=0){
+			alert("执行"+srvName+"完毕\n参数是："+strJson);
+			return;
+		}
+		if(typeof summerBridge != "undefined"){
+			return summerBridge.callSync(srvName,strJson);
+		}else{
+			alert("summerBridge is not defined by native successfully!");
+		}
+    }
+    w.adrinvoker = adrinvoker;
+	
+	//2、兼容ios
+	//ios Synchronous
+	if(typeof CurrentEnvironment != "undefined"){
+		if($summer.os == "ios"){
+			CurrentEnvironment.DeviceType = CurrentEnvironment.DeviceIOS;
+		}else if($summer.os == "android"){
+			CurrentEnvironment.DeviceType = CurrentEnvironment.DeviceAndroid;
+		}else{}
+	}
+	if(typeof UM_callNativeService == "undefined"){
+		var UM_callNativeService = function(serviceType,strParams){//同步调用，和安卓统一接口
+			return adrinvoker.call2(serviceType,strParams);
+		}
+	}else{
+		alert("UM_callNativeService is exist! fatal error!");
+		alert(UM_callNativeService);
+	}
+	w.UM_callNativeService = UM_callNativeService;
+	
+	//ios Asynchronous
+	if(typeof UM_callNativeServiceNoraml == "undefined"){
+		UM_callNativeServiceNoraml = function(serviceType,strParams){//异步调用，和安卓统一接口
+			return adrinvoker.call(serviceType,strParams);
+		}
+	}else{
+		alert("UM_callNativeServiceNoraml is exist! fatal error!");
+		alert(UM_callNativeServiceNoraml);
+	}
+	w.UM_callNativeServiceNoraml = UM_callNativeServiceNoraml;	
+
+	//3、
+	s.callSync = function(serivceName, strJson){
+		var strParam = strJson;
+		if(typeof strJson == "object"){
+			strParam = JSON.stringify(strJson);
+		}else if(typeof strJson != "string"){
+			strParam = strJson.toString();
+		}
+		return summerBridge.callSync(serivceName, strParam);
+	}
+	//20160815
+	s.callCordova = function(cordovaPlugName, plugFnName, json, successFn, errFn){
+		if(this.canrequire() && !this.__debug){
+            var plug = this.cordova.require(cordovaPlugName);
+			if(plug[plugFnName]){
+				//alert("the cordova plug["+cordovaPlugName+"]'s method[" + plugFnName + "] is executing");
+				plug[plugFnName](json, successFn, errFn);
+			}else{
+				alert("the cordova plug["+cordovaPlugName+"]'s method[" + plugFnName + "] not implementation");
+			}
+		}else{
+			console.log("the cordova plug["+cordovaPlugName+"]'s method[" + plugFnName + "] executed!");
+		}
+	}
+	
+}(window,summer);
 
 //summer API
 +function(w,s){
+	if(!s){
+		s = {};
+		w.summer = s;
+	}
     s.window = {
         openFrame : function(json, successFn, errFn){
-
             json["animation"] = json["animation"] || {};
             json["pageParam"] = json["pageParam"] || {};
 
@@ -1000,8 +1015,11 @@
 				$summer.alert(json);
 				delete json["alert"];
 			}
-			if(s.canrequire())
-				return s.cordova.require('summer-plugin-frame.XFrame').openFrame(json, successFn, errFn);
+			if(s.canrequire()){
+				return this.callCordova('summer-plugin-frame.XFrame','openFrame',json, successFn, errFn);
+				//return s.cordova.require('summer-plugin-frame.XFrame').openFrame(json, successFn, errFn);
+			}
+				
 			//等价于return s.require('summer-plugin-frame.XFrame').openFrame(json, successFn, errFn);
         },
         closeFrame : function(json, successFn, errFn){
@@ -1009,19 +1027,28 @@
             return s.cordova.require('summer-plugin-frame.XFrame').closeFrame(json, successFn, errFn);
         },
         openWin : function(json, successFn, errFn){
-//            if(json["url"]){
-//                var idx = json["url"].indexOf("www/html/");
-//                if(idx < 0){
-//                    json["url"] = "www/html/" + json["url"];
-//                }
-//            }
-			if(s.canrequire())
-            return s.cordova.require('summer-plugin-frame.XFrame').openWin(json, successFn, errFn);
+			return this.callCordova('summer-plugin-frame.XFrame', 'openWin', json, successFn, errFn);
         },
         closeWin : function(json, successFn, errFn){
-			if(s.canrequire())
-				return s.cordova.require('summer-plugin-frame.XFrame').closeWin(json, successFn, errFn);
-        },
+			//support closeWin('xxx') and closeWin({id:'xxx'})
+			if(typeof json == "string"){
+				json = {"id" : json};
+			}else if(typeof json == "undefined"){
+				json = {};
+			}				
+			return this.callCordova('summer-plugin-frame.XFrame', 'closeWin', json, successFn, errFn);
+		},
+		getSysInfo : function(json, successFn, errFn){
+			if(s.canrequire()){
+				//support closeWin('xxx') and closeWin({id:'xxx'})
+				if(typeof json == "string"){
+					json = {"id" : json};
+				}else if(typeof json == "undefined"){
+					json = {};
+				}				
+				return s.cordova.require('summer-plugin-frame.XFrame').getSysInfo(json, successFn, errFn);
+			}
+		},
         setFrameAttr : function(json, successFn, errFn){
 			if(s.canrequire())
             return s.cordova.require('summer-plugin-frame.XFrame').setFrameAttr(json, successFn, errFn);
@@ -1086,99 +1113,144 @@
 			frameId:'yyy',
 			script:'do()'
 		}*/
-		if(s.canrequire())
-            return s.require('summer-plugin-frame.XFrame').execScript(json,null,null);
-    };
-	
-	//持久化本地存储
-	s.setStorage = function(json, successFn, errFn){
-		if(s.canrequire())
-            return s.cordova.require('summer-plugin-frame.XService').setStorage(json, successFn, errFn);
-	};
-	s.getStorage = function(json, successFn, errFn){
-		if(s.canrequire())
-            return s.cordova.require('summer-plugin-frame.XService').getStorage(json, successFn, errFn);
-	};
-	s.rmStorage = function(json, successFn, errFn){
-		if(s.canrequire())
-            return s.cordova.require('summer-plugin-frame.XService').rmStorage(json, successFn, errFn);
-	};
-	s.clearStorage = function(json, successFn, errFn){
-		if(s.canrequire())
-            return s.cordova.require('summer-plugin-frame.XService').clearStorage(json, successFn, errFn);
-	};
-	
-	//应用级Storage
-	s.setAppStorage = function(json, successFn, errFn){
-		if(s.canrequire())
-            return s.cordova.require('summer-plugin-frame.XService').setAppStorage(json, successFn, errFn);
-	};
-	s.getAppStorage = function(json, successFn, errFn){
-		if(s.canrequire())
-            return s.cordova.require('summer-plugin-frame.XService').getAppStorage(json, successFn, errFn);
-	};
-	s.rmAppStorage = function(json, successFn, errFn){
-		if(s.canrequire())
-            return s.cordova.require('summer-plugin-frame.XService').rmAppStorage(json, successFn, errFn);
-	};
-	s.clearAppStorage = function(json, successFn, errFn){
-		if(s.canrequire())
-            return s.cordova.require('summer-plugin-frame.XService').clearAppStorage(json, successFn, errFn);
-	};
-	
-	s.callCordova = function(cordovaPlugName, plugFnName, json, successFn, errFn){
-	
-	alert(cordovaPlugName);
-	json["animation"] = json["animation"] || {};
-            json["pageParam"] = json["pageParam"] || {};
-
-    		if(json["rect"] && !json["position"]){
-    			json["position"] = {};
-    			json["position"].left = json["rect"].x;
-    			json["position"].top = json["rect"].y;
-    			json["position"].width = json["rect"].w;
-    			json["position"].height = json["rect"].h;
-
-    		}
-    		if(json["position"].width=="auto"){
-    		    json["position"].width = $summer.offset(document.getElementsByTagName("body")[0]).w;
-    		}
-    		if(json["position"].height=="auto"){
-    		    json["position"].height = $summer.offset(document.getElementsByTagName("body")[0]).h;
-    		}
-
-    		if(json["name"] && !json["id"]){
-    			json["id"] = json["name"];
-    		}
-//            if(json["url"]){
-//                var url = json["url"];
-//                var idx = url.indexOf("www/html/");
-//                if(idx < 0){
-//                    if(url.indexOf("html/")==0){
-//                        json["url"] = "www/" + json["url"];
-//                    }else{
-//                        json["url"] = "www/html/" + json["url"];
-//                    }
-//                }
-//            }
-			var _test = json["alert"];
-			if(_test){
-				$summer.alert(json);
-				delete json["alert"];
-			}
-			
-			
-			
-		if(s.canrequire() || true){
-            var plug = s.cordova.require(cordovaPlugName);
-            alert(typeof plug[plugFnName])
-			if(plug[plugFnName]){
-				plug[plugFnName](json, successFn, errFn);
+		if(typeof json == "object"){
+			if(json.script){
+				json.script = "try{"+json.script+"}catch(e){alert(e)}";
 			}else{
-				alert("the cordova plug ["+cordovaPlugName+"]'s method[" + plugFnName + "] not implementation");
+				alert("the parameter script of the execScript function is " + json.script);
 			}
 		}
-	}
+		if(s.canrequire()){
+            //return s.require('summer-plugin-frame.XFrame').execScript(json,null,null);
+			return this.callCordova('summer-plugin-frame.XFrame','execScript',json, null, null);
+		}
+    };
+	
+	//持久化本地存储	
+	var umStorage = function(type){
+		type = type || "localStorage";
+		if(type == "localStorage"){
+			if(!window.localStorage){
+		        alert('your device do not support the localStorage');
+				return;
+		    }
+			return window.localStorage;
+		}else if(type == "sessionStorage"){
+			if(!window.sessionStorage){
+		        alert('your device do not support the sessionStorage');
+				return;
+		    }
+			return window.sessionStorage;
+		}else if(type == "application"){
+			return {
+				setItem : function(key, value){
+					var json = {
+						key: key,
+						value: value
+					};
+					return summerBridge.callSync("SummerStorage.writeApplicationContext", JSON.stringify(json));
+				},
+				getItem : function(key){
+					var json = {
+						key: key
+					};
+					return summerBridge.callSync("SummerStorage.writeApplicationContext", JSON.stringify(json));
+				}				
+			};
+		}else if(type == "configure"){
+			return {
+				setItem : function(key, value){
+					var json = {
+						key: key,
+						value: typeof value == "string" ? value : JSON.stringify(value)
+					};
+					return summerBridge.callSync("SummerStorage.writeConfigure", JSON.stringify(json));
+				},
+				getItem : function(key){
+					var json = {
+						key: key
+					};
+					return summerBridge.callSync("SummerStorage.readConfigure", JSON.stringify(json));
+				}				
+			};
+		}else if(type == "window"){
+			return {
+				setItem : function(key, value){
+					var json = {
+						key: key,
+						value: typeof value == "string" ? value : JSON.stringify(value)
+					};
+					return summerBridge.callSync("SummerStorage.writeWindowContext", JSON.stringify(json));
+				},
+				getItem : function(key){
+					var json = {
+						key: key
+					};
+					return summerBridge.callSync("SummerStorage.readWindowContext", JSON.stringify(json));
+				}				
+			};
+		}
+    };
+	s.setStorage = function(key, value, storageType){
+		var v = value;
+		if(typeof v == 'object'){
+			v = JSON.stringify(v);
+			v = 'obj-'+ v;
+		}else{
+			v = 'str-'+ v;
+		}
+		var ls = umStorage(storageType);
+		if(ls){
+			ls.setItem(key, v);
+		}
+    };
+	s.getStorage = function(key, storageType){
+        var ls = umStorage(storageType);
+        if(ls){
+            var v = ls.getItem(key);
+            if(!v){return;}
+            if(v.indexOf('obj-') === 0){
+                v = v.slice(4);
+                return JSON.parse(v);
+            }else if(v.indexOf('str-') === 0){
+                return v.slice(4);
+            }
+        }
+    };
+	
+	s.setAppStorage = function(key, value){
+        return this.setStorage(key, value, "application");
+    };
+	s.getAppStorage = function(key){
+        return this.getStorage("application");
+    };
+	
+	s.writeConfig = function(key, value){
+        return this.setStorage(key, value, "configure");
+    };
+	s.readConfig = function(key){
+        return this.getStorage("configure");
+    };
+	
+	s.setWindowStorage = function(key, value){
+        return this.setStorage(key, value, "window");
+    };
+	s.getWindowStorage = function(key){
+        return this.getStorage("window");
+    };
+	
+    s.rmStorage = function(key){
+        var ls = umStorage();
+        if(ls && key){
+            ls.removeItem(key);
+        }
+    };
+    s.clearStorage = function(){
+        var ls = umStorage();
+        if(ls){
+            ls.clear();
+        }
+    };
 	
 	s.sysInfo = function(json, successFn, errFn){
 		if(s.canrequire())
@@ -1188,55 +1260,4 @@
 		if(s.canrequire())
             return s.cordova.require('summer-plugin-frame.XFrame').addEventListener(json, successFn, errFn);
 	};
-	//1、兼容Android
-    if(w.adrinvoker) alert(w.adrinvoker);
-    var adrinvoker = {};
-    if(w.adrinvoker && w.adrinvoker.call2) alert(w.adrinvoker.call2);
-
-    adrinvoker.call = function(srvName, strJson){
-		if(navigator.platform.toLowerCase().indexOf("win")>=0){
-			alert("执行"+srvName+"完毕\n参数是："+strJson);
-			return;
-		}
-
-		var plug = summer.require('summer-plugin-service.XService');
-		plug.call(srvName,$summer.strToJson(strJson));
-    }
-
-    adrinvoker.call2 = function(srvName, strJson){
-        adrinvoker.call(srvName, strJson);
-    }
-    w.adrinvoker = adrinvoker;
-	
-	//2、兼容ios
-	if(typeof CurrentEnvironment != "undefined"){
-		if($summer.os == "ios"){
-			CurrentEnvironment.DeviceType = CurrentEnvironment.DeviceIOS;
-		}else if($summer.os == "android"){
-			CurrentEnvironment.DeviceType = CurrentEnvironment.DeviceAndroid;
-		}else{}
-	}
-	if(typeof UM_callNativeService == "undefined"){
-		var UM_callNativeService = function(serviceType,strParams){//同步调用
-			return adrinvoker.call2(serviceType,strParams);
-		}
-	}else{
-		alert("UM_callNativeService is exist! fatal error!");
-		alert(UM_callNativeService);
-	}
-	w.UM_callNativeService = UM_callNativeService;
-	if(typeof UM_callNativeServiceNoraml == "undefined"){
-		UM_callNativeServiceNoraml = function(serviceType,strParams){//异步调用
-			return adrinvoker.call(serviceType,strParams);
-		}
-	}else{
-		alert("UM_callNativeServiceNoraml is exist! fatal error!");
-		alert(UM_callNativeServiceNoraml);
-	}
-	 w.UM_callNativeServiceNoraml = UM_callNativeServiceNoraml;			
 }(window,summer);
-//alert(adrinvoker.call)
-
-$summer.log = function(nn){
-    $summer.byId("log").innerHTML =nn;
-}

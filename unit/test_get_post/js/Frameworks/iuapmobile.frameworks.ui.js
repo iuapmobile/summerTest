@@ -642,7 +642,7 @@ $(function() {
         defaults: {
             target: null,
             isReverse: 0,
-            transition: "um"
+            transition: "rotate"
         },
         _init: function() {
             var settings = this.settings;
