@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+        <meta charset="UTF-8">
+        <title></title>
+        <link rel="stylesheet" href="css/font-icons.css">
+        <link rel="stylesheet" href="css/iuapmobile.um.css">
+        <link rel="stylesheet" href="css/sliderDown.css"/>
+		<style>
+			.um-list-item-left {
+				
+			}
+			.um-list-item-left button {
+				margin-left: 10px;
+				border: 0;
+				display: inline-block;
+				height: 30px;
+				line-height: 30px;
+				width: 60%;
+				background-color: #007aff;
+				color: #fff;
+			}
+		</style>
+
+        <style>
+            .um-popover .btn {
+                font-size: 14px;
+            }
+            .um-popover .btn img {
+                margin-right: 8px;
+                width: 20px;
+                height: 20px;
+            }
+        </style>
+        <script src="js/jquery-2.1.4.min.js" ></script>
+        <script src="js/Frameworks/iuapmobile.frameworks.core.js" ></script>
+        <script src="js/summer.js" ></script>
+        <script src="js/Frameworks/iuapmobile.frameworks.ui.js" ></script>
+        <script src="js/sliderDown.js"></script>
+        <script src="js/index.js" ></script>
+    </head>
+    <body>
+        <div class="um-win" id="index">
+            <div id="header" class="um-header">
+                <a href="#" class="um-back">返回</a>
+                <h3>摸态框展示</h3>
+                <a href="#" class="um-header-right ti-menu mr5" data-placement="bottom-left"></a>
+            </div>
+
+            <div id="main" class="um-content">
+                <ul class="um-list">
+                    <li class="um-list-item">
+                        <div class="um-list-item-inner">
+                            <div class="um-list-item-left">
+                               <button class="alert">警告框</button>
+                            </div>
+                            <div class="um-list-item-right">
+                                <input type="text" class="form-control" placeholder="未点击">
+                            </div>
+                        </div>
+                    </li>
+                    <li class="um-list-item">
+                        <div class="um-list-item-inner">
+                            <div class="um-list-item-left">
+								<button class="confirm">确认对话框</button>
+                            </div>
+                            <div class="um-list-item-right">
+                                <input type="password" class="form-control" placeholder="点击改变按钮颜色">
+                            </div>
+                        </div>
+                    </li>
+                    <li class="um-list-item">
+                        <div class="um-list-item-inner">
+                            <div class="um-list-item-left">
+								<button class="prompt">输入对话框</button>
+                            </div>
+                            <div class="um-list-item-right">
+                                <input type="tel" class="form-control" placeholder="点击获取输入信息">
+                            </div>
+                        </div>
+                    </li>
+					<div class="um-list-item-inner">
+						<div class="um-list-item-left">
+							<button class="login">登录框</button>
+						</div>
+						<div class="um-list-item-right">
+							<input type="tel" class="form-control" placeholder="未登录">
+						</div>
+					</div>
+					</li>
+					<div class="um-list-item-inner">
+						<div class="um-list-item-left">
+							<button class="toast">提示框</button>
+						</div>
+						<div class="um-list-item-right">
+							<input type="tel" class="form-control" placeholder="点击显示提示框">
+						</div>
+					</div>
+					<div class="um-list-item-inner">
+						<div class="um-list-item-left">
+							<button class="loading">页面加载</button>
+						</div>
+						<div class="um-list-item-right">
+							<input type="tel" class="form-control" placeholder="点击页面加载3秒后消失">
+						</div>
+					</div>
+					</li>
+                </ul>
+                <a href="#" class="popBtn btn mt30 phone" data-target="actionsheet">拍照</a>
+                <a href="#" class="popBtn btn mt30" data-target="share">分享</a>
+                <!--页面-->
+                <div class="none" id="temp">
+                    <ul class="um-list um-list-corner">
+                        <li>
+                            <a href="" class="btn um-no-icon"><img src="./img/conversation_options_qr.png" alt="">扫一扫</a>
+                        </li>
+                        <li>
+                            <a href="" class="btn um-no-icon"><img src="./img/conversation_options_addmember.png" alt="">加好友</a>
+                        </li>
+                        <li>
+                            <a href="" class="btn um-no-icon"><img src="./img/conversation_options_multichat.png" alt="">创建讨论组</a>
+                        </li>
+                        <li>
+                            <a href="" class="btn um-no-icon"><img src="./img/conversation_options_transferfiles.png" alt="">发送到电脑</a>
+                        </li>
+                        <li>
+                            <a href="" class="btn um-no-icon"><img src="./img/conversation_facetoface_qr.png" alt="">面对面快传</a>
+                        </li>
+                        <li>
+                            <a href="" class="btn um-no-icon"><img src="./img/conversation_options_charge_icon.png" alt="">收钱</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    <div class="um-share" id="share">
+          <div class="um-grid">
+            <div class="um-grid-row tc">
+                <div class="item">
+                    <a href="#" class="um-circle um-black">
+                        <img src="./img/WeChat_circle.png" width=40 class="um-img-responsive" alt="">
+                        <div class="f12 mt5">微信朋友圈</div>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="#" class="um-circle um-black">
+                        <img src="./img/WeChat.png" width=40 class="um-img-responsive" alt="">
+                        <div  class="f12 mt5">微信好友</div>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="#" class="um-circle um-black">
+                        <img src="./img/QQ.png" width=40 class="um-img-responsive" alt="">
+                        <div  class="f12 mt5">QQ好友</div>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="#" class="um-circle um-black">
+                        <img src="./img/QQ_circle.png" width=40 class="um-img-responsive" alt="">
+                        <div  class="f12 mt5">QQ空间</div>
+                    </a>
+                </div>
+            </div>
+            <!-- 第二行 -->
+            <div class="um-grid-row tc">
+                <div class="item">
+                    <a href="#" class="um-circle um-black">
+                        <img src="./img/message.png" width=40 class="um-img-responsive" alt="">
+                        <div class="f12 mt5">短信</div>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="#" class="um-circle um-black">
+                        <img src="./img/mail.png" width=40 class="um-img-responsive" alt="">
+                        <div  class="f12 mt5">邮件</div>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="#" class="um-circle um-black">
+                        <img src="./img/copy_link.png" width=40 class="um-img-responsive" alt="">
+                        <div  class="f12 mt5">转发链接</div>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="#" class="um-circle um-black">
+                        <img src="./img/copy.png" width=40 class="um-img-responsive" alt="">
+                        <div  class="f12 mt5">转发内容</div>
+                    </a>
+                </div>
+            </div>
+            </div>
+          <div class="btn" onclick="shareCancle()">取消分享</div>
+    </div>
+    </body>
+</html>
