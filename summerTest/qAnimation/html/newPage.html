@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/iuapmobile.um.css">
+		<link rel="stylesheet" href="../css/font-icons.css">
+		<link rel="stylesheet" type="text/css" href="../css/islider.css">
+		<style>
+			.iSlider-wrapper {
+				height: 150px;
+			}
+
+		</style>
+		<script src="../js/Frameworks/iuapmobile.frameworks.core.js" ></script>
+		<script src="../js/jquery-2.1.4.min.js" ></script>
+		<script src="../js/Frameworks/iuapmobile.frameworks.ui.js" ></script>
+		<script src="../js/summer.js" ></script>
+
+		<script>
+			function closeWin(){
+				summer.closeWin({
+			       id: 'newPage'
+			   });
+			}
+		</script>
+
+		<script type="text/javascript" src="../js/islider.js"></script>
+		<script>$(function() {
+				var list = [{
+					content : "../img/g1.jpg"
+				}, {
+					content : "../img/g2.jpg"
+				}, {
+					content : "../img/g3.jpg"
+				}];
+
+				var islider = new iSlider({
+					type : 'pic',
+					data : list,
+					dom : document.getElementById("iSlider-wrapper"),
+					isLooping : 1,
+					animateType : 'default',
+					isAutoplay : true,
+					animateTime : 800
+				});
+				islider.addDot();
+			})</script>
+	</head>
+	<body>
+		<div class="um-page" id="index" onclick="closeWin()">
+			<div class="um-header" >
+				<h3>导航栏</h3>
+			</div>
+
+			<div class="um-content">
+				<div class="um-row"><div id="iSlider-wrapper" class="iSlider-wrapper"></div></div>
+				<div class="um-grid">
+					<div class="um-grid-row tc">
+						<div>
+							<a href="#" class="um-circle um-black"> <img src="../img/mt_food.png" width=40 class="um-img-responsive" alt="">
+							<div class="f12 mt5">
+								美食
+							</div> </a>
+						</div>
+						<div>
+							<a href="#" class="um-circle um-black"> <img src="../img/mt_mv.png" width=40 class="um-img-responsive" alt="">
+							<div  class="f12 mt5">
+								电影
+							</div> </a>
+						</div>
+						<div>
+							<a href="#" class="um-circle um-black"> <img src="../img/mt_hotal.png" width=40 class="um-img-responsive" alt="">
+							<div  class="f12 mt5">
+								酒店
+							</div> </a>
+						</div>
+						<div>
+							<a href="#" class="um-circle um-black"> <img src="../img/mt_ktv.png" width=40 class="um-img-responsive" alt="">
+							<div  class="f12 mt5">
+								KTV
+							</div> </a>
+						</div>
+					</div>
+					<!-- 第二行 -->
+					<div class="um-grid-row tc">
+						<div>
+							<a href="#" class="um-circle um-black"> <img src="../img/mt_new.png" width=40 class="um-img-responsive" alt="">
+							<div class="f12 mt5">
+								今日新单
+							</div> </a>
+						</div>
+						<div>
+							<a href="#" class="um-circle um-black"> <img src="../img/mt_money.png" width=40 class="um-img-responsive" alt="">
+							<div  class="f12 mt5">
+								代金券
+							</div> </a>
+						</div>
+						<div>
+							<a href="#" class="um-circle um-black"> <img src="../img/mt_you.png" width=40 class="um-img-responsive" alt="">
+							<div  class="f12 mt5">
+								周边游
+							</div> </a>
+						</div>
+						<div>
+							<a href="#" class="um-circle um-black"> <img src="../img/mt_xiaochi.png" width=40 class="um-img-responsive" alt="">
+							<div  class="f12 mt5">
+								小吃快餐
+							</div> </a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<application> 
+  <app_start>index.html</app_start>  
+  <app_name>qGeolocation</app_name>  
+  <project_name>qGeolocation</project_name>  
+  <package_name>com.yonyou.qgeolocation</package_name>  
+  <frame_name>ump</frame_name>  
+  <icon relativePath="css/themes/default/app">app</icon>  
+  <target>android-15</target>  
+  <platform>android</platform>  
+  <versionCode>1</versionCode>  
+  <versionName>1</versionName>  
+  <orientation>unspecified</orientation>  
+  <min_sdk_version>10</min_sdk_version>  
+  <max_sdk_version>17</max_sdk_version>  
+  <statebarstyle>dark</statebarstyle>  
+  <isfullscreen>false</isfullscreen>  
+  <windowSoftInputMode>stateHidden</windowSoftInputMode>  
+  <permission id="android.permission.ACCESS_FINE_LOCATION"></permission>  
+  <permission id="android.permission.ACCESS_MOCK_LOCATION"/>  
+  <permission id="android.permission.ACCESS_NETWORK_STATE"/>  
+  <permission id="android.permission.ACCESS_WIFI_STATE"/>  
+  <permission id="android.permission.BIND_INPUT_METHOD"/>  
+  <permission id="android.permission.BLUETOOTH"/>  
+  <permission id="android.permission.BLUETOOTH_ADMIN"/>  
+  <permission id="android.permission.BROADCAST_PACKAGE_REMOVED"/>  
+  <permission id="android.permission.BROADCAST_SMS"/>  
+  <permission id="android.permission.BROADCAST_STICKY"/>  
+  <permission id="android.permission.CALL_PHONE"/>  
+  <permission id="android.permission.CALL_PRIVILEGED"/>  
+  <permission id="android.permission.CAMERA"/>  
+  <permission id="android.permission.CHANGE_NETWORK_STATE"/>  
+  <permission id="android.permission.CHANGE_WIFI_MULTICAST_STATE"/>  
+  <permission id="android.permission.CHANGE_WIFI_STATE"/>  
+  <permission id="android.permission.CLEAR_APP_CACHE"/>  
+  <permission id="android.permission.CLEAR_APP_USER_DATA"/>  
+  <permission id="android.permission.DELETE_CACHE_FILES"/>  
+  <permission id="android.permission.DELETE_PACKAGES"/>  
+  <permission id="android.permission.DISABLE_KEYGUARD"/>  
+  <permission id="android.permission.EXPAND_STATUS_BAR"/>  
+  <permission id="android.permission.FLASHLIGHT"/>  
+  <permission id="android.permission.FORCE_BACK"/>  
+  <permission id="android.permission.GET_ACCOUNTS"/>  
+  <permission id="android.permission.GET_PACKAGE_SIZE"/>  
+  <permission id="android.permission.INSTALL_PACKAGES"/>  
+  <permission id="android.permission.INTERNAL_SYSTEM_WINDOW"/>  
+  <permission id="android.permission.INTERNET"/>  
+  <permission id="android.permission.KILL_BACKGROUND_PROCESSES"/>  
+  <permission id="android.permission.MODIFY_AUDIO_SETTINGS"/>  
+  <permission id="android.permission.MODIFY_PHONE_STATE"/>  
+  <permission id="android.permission.MTWEAK_USER"/>  
+  <permission id="android.permission.NFC"/>  
+  <permission id="android.permission.PERSISTENT_ACTIVITY"/>  
+  <permission id="android.permission.PROCESS_OUTGOING_CALLS"/>  
+  <permission id="android.permission.READ_CALENDAR"/>  
+  <permission id="android.permission.READ_CONTACTS"/>  
+  <permission id="android.permission.READ_FRAME_BUFFER"/>  
+  <permission id="android.permission.READ_INPUT_STATE"/>  
+  <permission id="android.permission.READ_PHONE_STATE"/>  
+  <permission id="android.permission.READ_SMS"/>  
+  <permission id="android.permission.REBOOT"/>  
+  <permission id="android.permission.RECEIVE_BOOT_COMPLETED"/>  
+  <permission id="android.permission.RECEIVE_MMS"/>  
+  <permission id="android.permission.RECEIVE_SMS"/>  
+  <permission id="android.permission.RECORD_AUDIO"/>  
+  <permission id="android.permission.SEND_SMS"/>  
+  <permission id="android.permission.SET_ANIMATION_SCALE"/>  
+  <permission id="android.permission.SET_ORIENTATION"/>  
+  <permission id="android.permission.STATUS_BAR"/>  
+  <permission id="android.permission.SYSTEM_ALERT_WINDOW"/>  
+  <permission id="android.permission.UPDATE_DEVICE_STATS"/>  
+  <permission id="android.permission.USE_CREDENTIALS"/>  
+  <permission id="android.permission.VIBRATE"/>  
+  <permission id="android.permission.WAKE_LOCK"/>  
+  <permission id="android.permission.WRITE_CONTACTS"/>  
+  <permission id="android.permission.WRITE_EXTERNAL_STORAGE"/>  
+  <permission id="android.permission.WRITE_SMS"/>  
+  <permission id="com.android.alarm.permission.SET_ALARM"/>  
+  <import id="cordova-plugin-geolocation" type="web" ref="cordova"/> 
+</application>
+<!--
+【屏幕显示方向】
+  screenOrientation: 屏幕显示方向
+    landscape: 横向
+    portrait: 竖向
+    unspecified: 自动转屏
+【状态条样式】
+  statebarstyle：状态条样式，默认dark
+    dark：深色
+    light：浅色
+【是否全屏】
+  isfullscreen：是否全屏，值为true|false，默认false
+【软键盘交互模式】
+  windowSoftInputMode：窗口与软键盘的交互模式，可以用来避免输入法面板遮挡问题，主要控制（1、当有焦点产生时，软键盘是隐藏还是显示；2、是否减少活动主窗口大小以便腾出空间放软键盘）
+    stateUnspecified：软键盘的状态并没有指定，系统将选择一个合适的状态或依赖于主题的设置
+    stateUnchanged：当这个activity出现时，软键盘将一直保持在上一个activity里的状态，无论是隐藏还是显示
+    stateHidden：用户选择activity时，软键盘总是被隐藏
+    stateAlwaysHidden：当该Activity主窗口获取焦点时，软键盘也总是被隐藏的
+    stateVisible：软键盘通常是可见的
+    stateAlwaysVisible：用户选择activity时，软键盘总是显示的状态
+    adjustUnspecified：默认设置，通常由系统自行决定是隐藏还是显示
+    adjustResize：当前Activity的主窗口总是会被调整大小，从而保证软键盘有显示空间
+    adjustPan：当前窗口的内容将自动移动以便当前焦点从不被键盘覆盖和用户能总是看到输入内容的部分
+-->

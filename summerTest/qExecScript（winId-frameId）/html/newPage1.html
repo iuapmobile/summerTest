@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html class="um-win">
+
+<head>
+    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../css/iuapmobile.um.css">
+    <link rel="stylesheet" href="../css/font-icons.css">
+    <script src="../js/Frameworks/iuapmobile.frameworks.core.js"></script>
+    <script src="../js/jquery-2.1.4.min.js"></script>
+    <script src="../js/Frameworks/iuapmobile.frameworks.ui.js"></script>
+    <script src="../js/summer.js" ></script>
+    <script src="../js/index.js" ></script>
+
+    <style>
+    .um-page {
+        /* 设置um-page距离底部50px,50px为固定底部工具栏高度 */
+        bottom: 50px;
+    }
+    .icon-home,
+    .icon-msg,
+    .icon-share {
+        height: 25px;
+        background: url(../img/Home-25.png) center no-repeat;
+    }
+    .icon-msg {
+        background-image: url(../img/About-25.png);
+    }
+    .icon-share {
+        background-image: url(../img/Share-25.png);
+    }
+    .um-footerbar-item.active {
+        color: rgb(252, 116, 122);
+    }
+    .um-footerbar-item.active .icon-home {
+        background-image: url(../img/Home-25-active.png);
+    }
+    .um-footerbar-item.active .icon-msg {
+        background-image: url(../img/About-25-active.png);
+    }
+    .um-footerbar-item.active .icon-share {
+        background-image: url(../img/Share-25-active.png);
+    }
+    </style>
+</head>
+
+<body>
+    <div class="um-page um-win" id="index">
+        <div class="um-header" id="header" onclick="closeWin()">
+            <h3>导航栏</h3>
+        </div>
+        <div class="um-content" id="um-content">
+           
+        </div>
+    </div>
+    <!-- 注意， um-footer-fixed在um-page外 -->
+    <div class="um-footer-fixed um-border-top">
+        <div class="um-footerbar">
+            <a href="#" class="um-footerbar-item active">
+                <div class="icon-home mb5"></div>
+                <div class="f12 lh1">
+                    首页
+                </div>
+            </a>
+            <a href="#" class="um-footerbar-item">
+                <div class="icon-msg mb5"></div>
+                <div class="f12 lh1">
+                    消息
+                </div>
+            </a>
+            <a href="#" class="um-footerbar-item">
+                <div class="icon-share mb5"></div>
+                <div class="f12 lh1">
+                    分享
+                </div>
+            </a>
+        </div>
+    </div>
+</body>
+<script>	
+summerready = function(){
+    var y = $summer.offset($summer.byId('header')).h;
+    var width = $summer.offset(document.getElementsByTagName("body")[0]).w;		
+    var height = $summer.offset($summer.byId('um-content')).h;
+    summer.openFrame({
+        id: 'newPage2',
+        url: 'html/newPage2.html',
+        bounces: true,
+        rect: {
+            x: 0,
+            y: y,
+            w: width,
+            h: height
+        }
+    });
+}
+</script>
+</html>
