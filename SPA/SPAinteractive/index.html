@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+        <meta charset="UTF-8">
+        <title></title>
+        <link rel="stylesheet" href="css/font-icons.css">
+        <link rel="stylesheet" href="css/iuapmobile.um.css">
+        <style>
+            .um-list-item .btn {
+                border: 0;
+                display: inline-block;
+                margin: 20px 10%;
+                height: 50px;
+                line-height: 25px;
+                width: 80%;
+                background-color: #007aff;
+                text-align: center;
+                color: #fff;
+            }
+        </style>
+        <script src="js/Frameworks/iuapmobile.frameworks.core.js" ></script>
+        <script src="js/summer.js" ></script>
+        <script src="js/jquery.min.js" ></script>
+        <script src="js/Frameworks/iuapmobile.frameworks.ui.js" ></script>
+        <script src="js/index.js" ></script>
+    </head>
+    <body>
+        <div class="um-page" id="index">
+            <div id="header" class="um-header">
+                <h3>SPA交互</h3>
+            </div>
+            <div id="main" class="um-content">
+                <ul >
+                    <li class="um-list-item">
+                        <button class="btn">
+                            um
+                        </button>
+                    </li>
+                    <li class="um-list-item">
+                        <button class="btn">
+                            pop
+                        </button>
+                    </li>
+                    <li class="um-list-item">
+                        <button class="btn">
+                            stretch
+                        </button>
+                    </li>
+                    <li class="um-list-item">
+                        <button class="btn">
+                            drop
+                        </button>
+                    </li>
+                    <li class="um-list-item">
+                        <button class="btn">
+                            slideup
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="um-page" id="page1">
+            <div id="header" class="um-header">
+                <a href="#" class="um-back">返回</a>
+                <h3>新单页</h3>
+            </div>
+
+        </div>
+    </body>
+    <script>
+        $(function() {
+            $('.um-list-item').on('click', '.btn', function() {
+                var text = $.trim($(this).text());
+                console.log(text);
+                UM.page.changePage({
+                    target : "#page1",
+                    isReverse : 0,
+                    transition : text
+                });
+
+            })
+        });
+
+    </script>
+</html>
