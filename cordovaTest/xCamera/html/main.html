@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/iuapmobile.um.css">
+		<link rel="stylesheet" href="../css/font-icons.css">
+		<script src="../js/Frameworks/iuapmobile.frameworks.core.js" ></script>
+		<script src="../js/summer.js" ></script>
+		<script src="../js/jquery.min.js" ></script>
+		<script src="../js/Frameworks/iuapmobile.frameworks.ui.js" ></script>
+		<script src="../js/main.js" ></script>
+	</head>
+	<body>
+		<div class="um-frame" id="main">
+
+			<div id="content" class="um-content p15">
+				<div style="text-align:center;font-weight:bold;">iUAP Mobile</div>
+				<div class="p20">
+					<button onclick="capturePhoto();" class="p15">Capture Photo</button> <br>  
+				    <button onclick="capturePhotoEdit();" class="p15">Capture Editable Photo</button> <br>    
+				    <button class="p15" onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button><br>    
+				    <button class="p15" onclick="getPhoto(pictureSource.SAVEDPHOTOALBUM);">From Photo Album</button><br>   
+				    <img style="display:none;width:60px;height:60px;" id="smallImage" src="" />    
+				    <img style="display:none;" id="largeImage" src="" />      
+				</div>
+
+			</div>
+		</div>
+	</body>	
+</html>
+<script>
+summerready = function(){
+
+}
+var pictureSource;   // picture source   
+var destinationType; // sets the format of returned value  
+document.addEventListener("deviceready",onDeviceReady,false);  
+function onDeviceReady() {
+	pictureSource=navigator.camera.PictureSourceType;        
+	destinationType=navigator.camera.DestinationType;    
+}     
+function onPhotoDataSuccess(imageData) {        
+       
+	var smallImage = document.getElementById('smallImage');        
+	smallImage.style.display = 'block';        
+	smallImage.src = "data:image/jpeg;base64," + imageData; 
+} 
+// Called when a photo is successfully retrieved    //     
+function onPhotoURISuccess(imageURI) {        
+    
+	var largeImage = document.getElementById('largeImage');        
+	largeImage.style.display = 'block';        
+	largeImage.src = imageURI;    
+}      
+// A button will call this function    //      
+function capturePhoto() {      
+	//navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,destinationType: destinationType.DATA_URL }); 
+	summer.camera(onPhotoDataSuccess,onFail, { quality: 50,destinationType: destinationType.DATA_URL })  
+}      
+// A button will call this function    //     
+function capturePhotoEdit() {       
+	//navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 20, allowEdit: true,        destinationType: destinationType.DATA_URL });    
+	summer.camera(onPhotoDataSuccess,onFail,{ quality: 20, allowEdit: true,destinationType: destinationType.DATA_URL }) 
+}      
+// A button will call this function    //      
+function getPhoto(source) {        
+	//navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,        destinationType: destinationType.FILE_URI,        sourceType: source });
+	summer.camera(onPhotoURISuccess,onFail,{ quality: 20, destinationType: destinationType.FILE_URI,sourceType: source }) 
+}      
+// Called if something bad happens.    //     
+function onFail(message) {      
+	alert('Failed because: ' + message);    
+}     
+
+</script>

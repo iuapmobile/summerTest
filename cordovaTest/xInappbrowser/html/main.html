@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/iuapmobile.um.css">
+		<link rel="stylesheet" href="../css/font-icons.css">
+		<script src="../js/Frameworks/iuapmobile.frameworks.core.js" ></script>
+		<script src="../js/summer.js" ></script>
+		<script src="../js/jquery.min.js" ></script>
+		<script src="../js/Frameworks/iuapmobile.frameworks.ui.js" ></script>
+		<script src="../js/main.js" ></script>
+	</head>
+	<body>
+		<div class="um-frame" id="main">
+
+			<div id="content" class="um-content p15">
+				<div style="text-align:center;font-weight:bold;">iUAP Mobile</div>
+					<!-- 这里插入控件和编写代码 -->
+				<div class="p20">
+					<button class="btn" onclick="openInapp()">查看加速计</button>
+				</div>
+
+			</div>
+		</div>
+	</body>	
+</html>
+<script>
+summerready = function(){
+
+}
+function openInapp() {
+	summer.inappbrowser(
+		'http://www.baidu.com', 
+        '_blank', 
+        'location=no,toolbar=yes,toolbarposition=top,closebuttoncaption=关闭'
+    );
+}
+
+</script>
