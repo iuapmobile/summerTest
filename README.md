@@ -9,15 +9,17 @@
 
 ## cordova服务
 路径: cordovaTest\    
-(1)该用例展示如何使用summer.contacts.find、summer.contacts.save、summer.getLocation、summer.call的用法    
+该用例展示如何使用summer.contacts.find、summer.contacts.save、summer.getLocation、summer.call等用法  
+
 
 ## 原生服务
 路径: apiTest\    
-(1)该用例展示如何使用$scanner.generateQRCode、$scanner.generateQRCode、$scanner.generateQRCode的用法   
+该用例展示如何使用$scanner.generateQRCode、$scanner.generateQRCode、$scanner.generateQRCode等用法   
 
 ## summer服务
 路径: summerTest\    
-(1)该用例展示如何使用animation、execScript（winId-frameId）、storage、test_fullscreen的用法 
+该用例展示如何使用animation、execScript（winId-frameId）、storage、test_fullscreen等用法    
+1.list
    
 
 
