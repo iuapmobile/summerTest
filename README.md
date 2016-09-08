@@ -19,7 +19,7 @@
 ## summer服务
 路径: summerTest\    
 该用例展示如何使用animation、execScript（winId-frameId）、storage、test_fullscreen等用法    
-1.list
+1.qList示例使用的是summer中的setRefreshHeaderInfo和setRefreshFooterInfo的上下拉刷新方法来加载列表数据。
    
 
 
