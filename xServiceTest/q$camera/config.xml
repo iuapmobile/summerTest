@@ -2,7 +2,7 @@
 <application> 
   <app_start>index.html</app_start>  
   <app_name>qCamera</app_name>  
-  <project_name>qCamera</project_name>  
+  <project_name>q$camera</project_name>  
   <package_name>com.yonyou.qcamera</package_name>  
   <frame_name>ump</frame_name>  
   <icon relativePath="css/themes/default/app">app</icon>  

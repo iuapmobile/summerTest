@@ -5,11 +5,16 @@ summerready = function () {
 
 function openTest(){
 	$camera.open({
-		bindfield : "image",
-        callback : "mycallback()"
+        callback : function(args){
+		   alert(args);
+		}
    });     
 }
 
-function mycallback(args){
-   $alert(args);
+function openTest1(){
+	$camera.openPhotoAlbum({
+        callback : function (arges){
+          alert(arges)  
+        }
+	})
 }
