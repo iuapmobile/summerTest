@@ -7,7 +7,7 @@ function getService(){
 	$service.get({
        "url" : "http://opentest.yonyoutelecom.cn/mobile/isvName.do?account=qinfx&q=",
        "callback" : function (sender,arges){	
-             $alert(eval(arges.result));
+             alert(eval(arges.result));
     	} /*,
     	 "header":{
             "Content-Type":"application/x-www-form-urlencoded",
@@ -21,7 +21,7 @@ function postService(){
 	$service.post({
        "url" : "http://opentest.yonyoutelecom.cn/mobile/isvName.do?account=qinfx&q=",
        "callback" : function (sender,arges){	
-             $alert(eval(arges.result));
+             alert(eval(arges.result));
     	} /*,
     	 "header":{
             "Content-Type":"application/x-www-form-urlencoded",
