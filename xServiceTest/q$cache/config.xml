@@ -2,12 +2,12 @@
 <application> 
   <app_start>index.html</app_start>  
   <app_name>cache</app_name>  
-  <project_name>cache</project_name>  
+  <project_name>q$cache</project_name>  
   <package_name>com.yonyou.cache</package_name>  
   <frame_name>ump</frame_name>  
   <icon relativePath="css/themes/default/app">app</icon>  
   <target>android-15</target>  
-  <platform>ios</platform>  
+  <platform>android</platform>  
   <versionCode>1</versionCode>  
   <versionName>1</versionName>  
   <orientation>4</orientation>  
