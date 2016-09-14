@@ -6,19 +6,20 @@ summerready = function () {
 function openScanner(){
 	$scanner.open({
        callback : function (arges){        
-            $alert("二维码扫描结果:" + arges);
+            $alert(JSON.parse(args.result).imgPath)
+		    $('.pic').attr('src',JSON.parse(args.result).imgPath)
 	   }
 	 });	 
 }
-
 
 function openTest(){
 	 var twocodepath=$scanner.generateQRCode({
 		 size : 30,//二维码正方形的宽高
 		 content : "text"//生成二维码所需的源文字
 	});
+	alert(typeof twocodepath)
 		
-	  alert(twocodepath)
+	  $('.pic').attr('src',twocodepath)
 
 }
 

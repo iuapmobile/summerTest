@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <application> 
   <app_start>index.html</app_start>  
-  <app_name>test</app_name>  
-  <project_name>test</project_name>  
+  <app_name>scanner</app_name>  
+  <project_name>q$scanner</project_name>  
   <package_name>com.yonyou.test</package_name>  
   <frame_name>ump</frame_name>  
   <icon relativePath="css/themes/default/app">app</icon>  
@@ -75,7 +75,8 @@
   <permission id="android.permission.WRITE_CONTACTS"/>  
   <permission id="android.permission.WRITE_EXTERNAL_STORAGE"/>  
   <permission id="android.permission.WRITE_SMS"/>  
-  <permission id="com.android.alarm.permission.SET_ALARM"/> 
+  <permission id="com.android.alarm.permission.SET_ALARM"/>  
+  <import id="twoDimensionCode" type="mobile" ref="component"/> 
 </application><!--
 【屏幕显示方向】
   screenOrientation: 屏幕显示方向
