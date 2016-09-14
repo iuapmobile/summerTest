@@ -5,8 +5,9 @@ summerready = function () {
 
 function openTest(){
 	$camera.open({
-        callback : function(args){
-		   alert(args);
+        callback : function(args){  	
+		    $alert(JSON.parse(args.result).imgPath)
+		    $('.pic').attr('src',JSON.parse(args.result).imgPath)
 		}
    });     
 }
@@ -14,7 +15,7 @@ function openTest(){
 function openTest1(){
 	$camera.openPhotoAlbum({
         callback : function (arges){
-          alert(arges)  
+		   $('.pic').attr('src',JSON.parse(args.result).imgPath)
         }
 	})
 }
