@@ -9,7 +9,7 @@
 
 ## cordova服务
 路径: cordovaTest\    
-该用例展示如何使用summer.contacts.find、summer.contacts.save、summer.getLocation、summer.call等用法  
+该用例展示如何使用summer.contacts、summer.geolocation、summer.http、summer.phone、summer.batteryStatus、summer.camera、summer.device、summer.inappBrowser、summer.motion等用法  
 
 
 ## 原生服务
@@ -18,8 +18,8 @@
 
 ## summer服务
 路径: summerTest\    
-该用例展示如何使用animation、execScript（winId-frameId）、storage、test_fullscreen等用法    
-1.qList示例使用的是summer中的setRefreshHeaderInfo和setRefreshFooterInfo的上下拉刷新方法来加载列表数据。
+该用例展示如何使用openWIn、execScript、closeWIn、openFrame、closeFrame、progress、storage、test_fullscreen等用法    
+
    
 
 
