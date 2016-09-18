@@ -2,7 +2,7 @@
 //-----------------------------------------------------------------------
 // Copyright (C) Yonyou Corporation. All rights reserved.
 // Author： gct@yonyou.com
-// iUAP Mobile JS Framework 3.0.0.20160801
+// iUAP Mobile JS Framework 3.0.0.20160823.2047
 
 (function(window){
 	window._UM = window.UM;
@@ -1748,7 +1748,7 @@ CommonNativeCallService.prototype.callService=function(serviceType, jsonArgs, is
 			}			
 		}else if(typeof jsonArgs == "object"){
 			if(jsonArgs["callback"] && $isFunction(jsonArgs["callback"])){
-				// callback:function(){}
+				//1、 callback:function(){}
 				var newCallBackScript = "fun" + uuid(8, 16) + "()";//anonymous method
 				while($__cbm[newCallBackScript]){
 					newCallBackScript =  "fun" + uuid(8, 16) + "()";//anonymous method
@@ -1758,10 +1758,12 @@ CommonNativeCallService.prototype.callService=function(serviceType, jsonArgs, is
 				//
 				window[newCallBackScript.substring(0,newCallBackScript.indexOf("("))] = function (sender, args){
 					try{
-						alert(typeof sender);
-						alert(typeof args);
-						$alert(sender);
-						$alert(args);
+						//alert(typeof sender);
+						//alert(typeof args);
+						//$alert(sender);
+						//$alert(args);
+						if(args == undefined)
+							args = sender;
 						var _func = $__cbm[newCallBackScript];
 						_func(sender, args);	
 					}catch(e){
@@ -1769,14 +1771,14 @@ CommonNativeCallService.prototype.callService=function(serviceType, jsonArgs, is
 					}finally{
 						delete $__cbm[newCallBackScript];
 						delete window[newCallBackScript.substring(0,newCallBackScript.indexOf("("))];
-						alert("del ok");
-						alert(typeof $__cbm[newCallBackScript]);
-						alert(typeof window[newCallBackScript.substring(0,newCallBackScript.indexOf("("))]);
+						//alert("del ok");
+						//alert(typeof $__cbm[newCallBackScript]);
+						//alert(typeof window[newCallBackScript.substring(0,newCallBackScript.indexOf("("))]);
 					}				
 				}
 				jsonArgs["callback"] = newCallBackScript;				
 			}else if(jsonArgs["callback"] && typeof(jsonArgs["callback"]) == "string"){
-				// callback:"mycallback()"
+				//2、 callback:"mycallback()"
 				var cbName = jsonArgs["callback"].substring(0, jsonArgs["callback"].indexOf("("));
 				var callbackFn = eval(cbName);
 				if(typeof callbackFn != "function"){
@@ -1791,22 +1793,25 @@ CommonNativeCallService.prototype.callService=function(serviceType, jsonArgs, is
 				//
 				window[newCallBackScript.substring(0,newCallBackScript.indexOf("("))] = function (sender, args){
 					try{
-						alert(typeof sender);
-						alert(typeof args);
-						$alert(sender);
-						$alert(args);
+						//alert(typeof sender);
+						//alert(typeof args);
+						//$alert(sender);
+						//$alert(args);
+						if(args == undefined)
+							args = sender;
 						callbackFn(sender, args);	
 					}catch(e){
 						alert(e);
 					}finally{
 						delete window[newCallBackScript.substring(0,newCallBackScript.indexOf("("))];
-						alert("del ok");
-						alert(typeof window[newCallBackScript.substring(0,newCallBackScript.indexOf("("))]);
+						//alert("del ok");
+						//alert(typeof window[newCallBackScript.substring(0,newCallBackScript.indexOf("("))]);
 					}				
 				}
 				jsonArgs["callback"] = newCallBackScript;
 			}
-
+			
+			this.callBackProxy(jsonArgs , "error");
 		
 			serviceparams = jsonToString(jsonArgs);
 			if(typeof serviceparams == "object"){
@@ -1855,6 +1860,72 @@ CommonNativeCallService.prototype.callService=function(serviceType, jsonArgs, is
 			info = "调用$service.call(\""+serviceType+"\", jsonArgs)时发生异常,请检查!";
 		$console.log(info);
 		alert(info+", 更多请查看console日志;\n错误堆栈信息为:\n" + e.stack);
+	}
+}
+
+CommonNativeCallService.prototype.callBackProxy = function(jsonArgs, callback_KEY){
+	if(jsonArgs[callback_KEY] && $isFunction(jsonArgs[callback_KEY])){
+		// callback:function(){}
+		var newCallBackFnName = callback_KEY + uuid(8, 16);//anonymous method
+		while($__cbm[newCallBackFnName]){
+			newCallBackFnName =  callback_KEY + uuid(8, 16);//anonymous method
+		}
+		$__cbm[newCallBackFnName] = jsonArgs[callback_KEY];//callback can be global or local, so define a reference function in $__cbm
+		
+		//
+		window[newCallBackFnName] = function (sender, args){
+			try{
+				//alert(typeof sender);
+				//alert(typeof args);
+				//$alert(sender);
+				//$alert(args);
+				if(args == undefined)
+					args = sender;
+				var _func = jsonArgs[callback_KEY];
+				_func(sender, args);	
+			}catch(e){
+				alert(e);
+			}finally{
+				delete $__cbm[newCallBackFnName];
+				delete window[newCallBackFnName];
+				//alert("del ok"); 
+				//alert(typeof $__cbm[newCallBackScript]);
+				//alert(typeof window[newCallBackScript.substring(0,newCallBackScript.indexOf("("))]);
+			}				
+		}
+		jsonArgs[callback_KEY] = newCallBackFnName + "()";				
+	}else if(jsonArgs[callback_KEY] && typeof(jsonArgs[callback_KEY]) == "string"){
+		// callback:"mycallback()"
+		var cbName = jsonArgs[callback_KEY].substring(0, jsonArgs[callback_KEY].indexOf("("));
+		var callbackFn = eval(cbName);
+		if(typeof callbackFn != "function"){
+			alert(cbName + " is not a global function, callback function must be a global function!");
+			return;
+		}
+		
+		var newCallBackFnName = callback_KEY + uuid(8, 16);//anonymous method
+		while(window[newCallBackFnName]){
+			newCallBackFnName =  callback_KEY + uuid(8, 16);//anonymous method
+		}
+		//
+		window[newCallBackFnName] = function (sender, args){
+			try{
+				//alert(typeof sender);
+				//alert(typeof args);
+				//$alert(sender);
+				//$alert(args);
+				if(args == undefined)
+					args = sender;
+				callbackFn(sender, args);	
+			}catch(e){
+				alert(e);
+			}finally{
+				delete window[newCallBackFnName];
+				//alert("del ok");
+				//alert(typeof window[newCallBackScript.substring(0,newCallBackScript.indexOf("("))]);
+			}				
+		}
+		jsonArgs[callback_KEY] = newCallBackFnName + "()";
 	}
 }
 
@@ -2952,14 +3023,7 @@ function UMP$Services$Cache$read2(key, maxlength, charset){
 function UMP$Services$Cache$writeFile(filePath, content, append, charset, isSync){
 	if($isJSONObject(filePath)){		
 		return $service.call("UMFile.write", filePath, true);
-	}else{
-		if($environment.DeviceType == $environment.DeviceIOS){
-			var str = content;
-			if(typeof content != "string"){
-				str = $jsonToString(content);
-			}
-			return UM_callNativeService(this._store, filePath, str);	
-		}else if($environment.DeviceType == $environment.DeviceAndroid){
+	}else if($environment.DeviceType == $environment.DeviceAndroid || $environment.DeviceType == $environment.DeviceIOS){
 			var args = {};
 			if($isJSONObject(append) && arguments.length == 3){
 				args = append;
@@ -2981,14 +3045,13 @@ function UMP$Services$Cache$writeFile(filePath, content, append, charset, isSync
 				return UM_NativeCall.callService("UMFile.write", args, true);//默认都是同步调用，避免write后read不到最新的结果
 			else
 				return UM_NativeCall.callService("UMFile.write", args, isSync);
-		}
 	}
 }
+
+//////
 function UMP$Services$Cache$readFile(filePath, maxlength, charset){
 	var strContent = "";
-	if($environment.DeviceType == $environment.DeviceIOS){
-		strContent = UM_callNativeService(this._restore, filePath);	
-	}else if($environment.DeviceType == $environment.DeviceAndroid){  
+	if($environment.DeviceType == $environment.DeviceAndroid || $environment.DeviceType == $environment.DeviceIOS){  
 		var args ={};
 		if(filePath)
 			args["path"] = filePath;
@@ -3155,14 +3218,14 @@ UMP.Services.Sqlite.prototype = {
 		return this.openOrCreateDB(json);
 	},
 	openOrCreateDB:function(json){
-		if($isJSONObject(json) && $isEmpty(json["db"])){	
+		if($isJSONObject(json) && !$isEmpty(json["db"])){	
 			return $service.call(this.UMSQLite_openDB, json, false);
 		}else{
 			alert("参数不是一个有效的JSONObject，请确保参数是一个有效的JSON且含有db键值");
 		}
 	},
 	openDB:function(args){
-		if($isJSONObject(args) && $isEmpty(args["db"])){			
+		if($isJSONObject(args) && !$isEmpty(args["db"])){			
 			return $service.call(this.UMSQLite_openDB, args, false);
 		}else{
 			alert("参数不是一个有效的JSONObject，请使用openDB({...})形式的API");
@@ -3573,7 +3636,6 @@ $window = new UMP.Services.UMWindow();
 //
 
 
-
 //___________________________________________________________________________________________________ $umdevice UMP.Services.UMDevice
 UMP.Services.UMDevice = function UMP$Services$UMDevice(){
 	this._UMDevice_getDeviceInfo="UMDevice.getDeviceInfo";
@@ -3911,10 +3973,7 @@ function UMP$Services$Telephone$saveContact(tel, employeename, jobname, orgname,
 }
 */
 function UMP$Services$Telephone$call(tel){
-	if(CurrentEnvironment.DeviceType==CurrentEnvironment.DeviceIOS){
-    	UM_callNativeService(this._CALLTEL, tel);
-		//UM_callNativeServiceNoraml
-	}else if(CurrentEnvironment.DeviceType == CurrentEnvironment.DeviceAndroid) {
+	if(CurrentEnvironment.DeviceType == CurrentEnvironment.DeviceAndroid || CurrentEnvironment.DeviceType==CurrentEnvironment.DeviceIOS) {
    		$service.call("UMDevice.callPhone", "{tel:'"+tel+"'}");
 	}else{
 		alert("Not implementate UMP$Services$Telephone$call in CurrentEnvironment.DeviceType == " + CurrentEnvironment.DeviceType);
@@ -3923,15 +3982,11 @@ function UMP$Services$Telephone$call(tel){
 function UMP$Services$Telephone$sendMsg(tel, body){
 	if(arguments.length == 1 && $isJSONObject(arguments[0])){
 		var args = tel;		
-		if(CurrentEnvironment.DeviceType==CurrentEnvironment.DeviceIOS){
-			return UM_callNativeService(this._SENDMSG, args.tel, args.body);
-		}else if(CurrentEnvironment.DeviceType == CurrentEnvironment.DeviceAndroid) {
+	if(CurrentEnvironment.DeviceType == CurrentEnvironment.DeviceAndroid || CurrentEnvironment.DeviceType==CurrentEnvironment.DeviceIOS) {
 			return $service.call("UMDevice.sendMsg", args);
 		}
 	}else{
-		if(CurrentEnvironment.DeviceType==CurrentEnvironment.DeviceIOS){
-			UM_callNativeService(this._SENDMSG, tel, body);
-		}else if(CurrentEnvironment.DeviceType == CurrentEnvironment.DeviceAndroid) {
+	if(CurrentEnvironment.DeviceType == CurrentEnvironment.DeviceAndroid || CurrentEnvironment.DeviceType==CurrentEnvironment.DeviceIOS) {
 			//$service.call("UMDevice.sendMessage", "{recevie:'"+tel+"',message:'"+body+"'}");
 			$service.call("UMDevice.sendMsg", "{tel:'"+tel+"',body:'"+body+"'}");
 		}
@@ -4050,6 +4105,8 @@ function UMP$UI$Container$UMCamera$openPhotoAlbum(json){
 		args["bindfield"] = json["bindfield"];
 	if(json.callback)
 		args["callback"] = json["callback"];
+	if(json.compressionRatio)
+		args["compressionRatio"] = json["compressionRatio"];
 	return $service.call(this._UMDevice_openPhotoAlbum, args, false)//异步调用服务
 }
 UMP.UI.Container.UMCamera.prototype ={
