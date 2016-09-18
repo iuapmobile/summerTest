@@ -1,22 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<application>
-	<app_start>index.html</app_start>
-	<app_name>qnet</app_name>
-	<project_name>qnet</project_name>
-	<package_name>com.yonyou.qnet</package_name>
-	<frame_name>ump</frame_name>
-	<icon relativePath="css/themes/default/app">app</icon>
-	<target>android-15</target>
-	<platform>ios</platform>
-	<versionCode>1</versionCode>
-	<versionName>1</versionName>
-	<orientation>unspecified</orientation>
-	<min_sdk_version>10</min_sdk_version>
-	<max_sdk_version>17</max_sdk_version>
-	<permission id="android.permission.INTERNET"/>
-	<statebarstyle>dark</statebarstyle>
-	<isfullscreen>false</isfullscreen>
-	<windowSoftInputMode>stateHidden</windowSoftInputMode>
+<application> 
+  <app_start>index.html</app_start>  
+  <app_name>qnet</app_name>  
+  <project_name>qnet</project_name>  
+  <package_name>com.yonyou.qnet</package_name>  
+  <frame_name>ump</frame_name>  
+  <icon relativePath="css/themes/default/app">app</icon>  
+  <target>android-15</target>  
+  <platform>ios</platform>  
+  <versionCode>1</versionCode>  
+  <versionName>1</versionName>  
+  <orientation>unspecified</orientation>  
+  <min_sdk_version>10</min_sdk_version>  
+  <max_sdk_version>17</max_sdk_version>  
+  <statebarstyle>dark</statebarstyle>  
+  <isfullscreen>false</isfullscreen>  
+  <windowSoftInputMode>stateHidden</windowSoftInputMode>  
+  <permission id="android.permission.ACCESS_FINE_LOCATION"/>  
+  <permission id="android.permission.ACCESS_MOCK_LOCATION"/>  
+  <permission id="android.permission.ACCESS_NETWORK_STATE"/>  
+  <permission id="android.permission.ACCESS_WIFI_STATE"/>  
+  <permission id="android.permission.BIND_INPUT_METHOD"/>  
+  <permission id="android.permission.BLUETOOTH"/>  
+  <permission id="android.permission.BLUETOOTH_ADMIN"/>  
+  <permission id="android.permission.BROADCAST_PACKAGE_REMOVED"/>  
+  <permission id="android.permission.BROADCAST_SMS"/>  
+  <permission id="android.permission.BROADCAST_STICKY"/>  
+  <permission id="android.permission.CALL_PHONE"/>  
+  <permission id="android.permission.CALL_PRIVILEGED"/>  
+  <permission id="android.permission.CAMERA"/>  
+  <permission id="android.permission.CHANGE_NETWORK_STATE"/>  
+  <permission id="android.permission.CHANGE_WIFI_MULTICAST_STATE"/>  
+  <permission id="android.permission.CHANGE_WIFI_STATE"/>  
+  <permission id="android.permission.CLEAR_APP_CACHE"/>  
+  <permission id="android.permission.CLEAR_APP_USER_DATA"/>  
+  <permission id="android.permission.DELETE_CACHE_FILES"/>  
+  <permission id="android.permission.DELETE_PACKAGES"/>  
+  <permission id="android.permission.DISABLE_KEYGUARD"/>  
+  <permission id="android.permission.EXPAND_STATUS_BAR"/>  
+  <permission id="android.permission.FLASHLIGHT"/>  
+  <permission id="android.permission.FORCE_BACK"/>  
+  <permission id="android.permission.GET_ACCOUNTS"/>  
+  <permission id="android.permission.GET_PACKAGE_SIZE"/>  
+  <permission id="android.permission.INSTALL_PACKAGES"/>  
+  <permission id="android.permission.INTERNAL_SYSTEM_WINDOW"/>  
+  <permission id="android.permission.INTERNET"/>  
+  <permission id="android.permission.KILL_BACKGROUND_PROCESSES"/>  
+  <permission id="android.permission.MODIFY_AUDIO_SETTINGS"/>  
+  <permission id="android.permission.MODIFY_PHONE_STATE"/>  
+  <permission id="android.permission.MTWEAK_USER"/>  
+  <permission id="android.permission.NFC"/>  
+  <permission id="android.permission.PERSISTENT_ACTIVITY"/>  
+  <permission id="android.permission.PROCESS_OUTGOING_CALLS"/>  
+  <permission id="android.permission.READ_CALENDAR"/>  
+  <permission id="android.permission.READ_CONTACTS"/>  
+  <permission id="android.permission.READ_FRAME_BUFFER"/>  
+  <permission id="android.permission.READ_INPUT_STATE"/>  
+  <permission id="android.permission.READ_PHONE_STATE"/>  
+  <permission id="android.permission.READ_SMS"/>  
+  <permission id="android.permission.REBOOT"/>  
+  <permission id="android.permission.RECEIVE_BOOT_COMPLETED"/>  
+  <permission id="android.permission.RECEIVE_MMS"/>  
+  <permission id="android.permission.RECEIVE_SMS"/>  
+  <permission id="android.permission.RECORD_AUDIO"/>  
+  <permission id="android.permission.SEND_SMS"/>  
+  <permission id="android.permission.SET_ANIMATION_SCALE"/>  
+  <permission id="android.permission.SET_ORIENTATION"/>  
+  <permission id="android.permission.STATUS_BAR"/>  
+  <permission id="android.permission.SYSTEM_ALERT_WINDOW"/>  
+  <permission id="android.permission.UPDATE_DEVICE_STATS"/>  
+  <permission id="android.permission.USE_CREDENTIALS"/>  
+  <permission id="android.permission.VIBRATE"/>  
+  <permission id="android.permission.WAKE_LOCK"/>  
+  <permission id="android.permission.WRITE_CONTACTS"/>  
+  <permission id="android.permission.WRITE_EXTERNAL_STORAGE"/>  
+  <permission id="android.permission.WRITE_SMS"/>  
+  <permission id="com.android.alarm.permission.SET_ALARM"/>  
+  <import id="cordova-plugin-http" type="web" ref="cordova"/> 
 </application><!--
 【屏幕显示方向】
   screenOrientation: 屏幕显示方向

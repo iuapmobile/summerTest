@@ -7,5 +7,5 @@ function test1(){
 }
 
 function test2(){
-	alert($net. getNetworkInfo ())
+	$alert($net. getNetworkInfo ())
 }
