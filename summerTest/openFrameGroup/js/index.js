@@ -1,6 +1,10 @@
 ﻿summerready = function(){
     // here is your code...	
-    var y = $summer.offset($summer.byId('header')).h;
+}
+
+//打开frame组
+function openFrameGroup(){
+	var y = $summer.offset($summer.byId('header')).h;
     var width = $summer.offset(document.getElementsByTagName("body")[0]).w;		
     var height = $summer.offset($summer.byId('main')).h;
     summer.openFrameGroup({
@@ -43,9 +47,23 @@
     	//error
     });
 }
-function openGroup(index){
-	summer.setFrameGroupAttr({
-		id : "group1",
+//关闭frame组
+function closeFrameGroup(){
+	summer.closeFrameGroup({
+		id : "group1"
+	});
+}
+//设置frame的显示和隐藏
+function setFrameGroupAttrHidden(boo){
+	summer.setFrameGroupAttr({    
+	    id: 'group1',    
+	    hidden: boo    
+	});    
+}
+//设置frame的索引值显示在最上面
+function setFrameGroupAttr(index){
+	summer.setFrameGroupAttr({    
+		id : 'group1',
 		index : index
 	});
 }
