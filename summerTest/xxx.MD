@@ -1,2 +1,0 @@
-### qCloseFrame
-    summer.closeFrame的用例
