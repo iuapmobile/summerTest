@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <application> 
   <app_start>index.html</app_start>  
-  <app_name>qCamera</app_name>  
-  <project_name>q$camera</project_name>  
+  <app_name>tel</app_name>  
+  <project_name>q$tel</project_name>  
   <package_name>com.yonyou.qcamera</package_name>  
   <frame_name>ump</frame_name>  
   <icon relativePath="css/themes/default/app">app</icon>  
