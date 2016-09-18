@@ -14,7 +14,7 @@
 
 ## 原生服务
 路径: apiTest\    
-该用例展示如何使用$scanner.generateQRCode、$scanner.generateQRCode、$scanner.generateQRCode等用法   
+该用例展示如何使用$camera、$scanner、$ajax、$tel、$sqlite、$cache、$net、$device等用法   
 
 ## summer服务
 路径: summerTest\    
