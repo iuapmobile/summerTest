@@ -6,8 +6,10 @@ summerready = function () {
 function getService(){
 	$service.get({
        "url" : "http://opentest.yonyoutelecom.cn/mobile/isvName.do?account=qinfx&q=",
-       "callback" : function (sender,arges){	
-             alert(eval(arges.result));
+       "callback" : function (sender,arges){
+       		alert(arges.result);
+       		alert(eval(arges.result)[0].text);
+             
     	} /*,
     	 "header":{
             "Content-Type":"application/x-www-form-urlencoded",
@@ -21,8 +23,9 @@ function postService(){
 	$service.post({
        "url" : "http://opentest.yonyoutelecom.cn/mobile/isvName.do?account=qinfx&q=",
        "callback" : function (sender,arges){	
-             alert(eval(arges.result));
+            alert(eval(arges.result)[1].text);
     	} /*,
+    	"data" : {a:1,b:2},
     	 "header":{
             "Content-Type":"application/x-www-form-urlencoded",
              "User-Agent":"imgfornote"

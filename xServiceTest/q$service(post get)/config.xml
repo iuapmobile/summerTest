@@ -2,7 +2,7 @@
 <application>
 	<app_start>index.html</app_start>
 	<app_name>service</app_name>
-	<project_name>service</project_name>
+	<project_name>q$service(post get)</project_name>
 	<package_name>com.yonyou.service</package_name>
 	<frame_name>ump</frame_name>
 	<icon relativePath="css/themes/default/app">app</icon>
