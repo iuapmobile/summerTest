@@ -1,5 +1,5 @@
 ### 1、qAnimation
-    summer.openWin的用例,打开新页面是的动画类型。
+    summer.openWin的用例,打开新页面的动画类型选择。
 ### 2、qCloseFrame
     summer.closeFrame的用例,关闭指定的frame页面。    
 ### 3、qCloseFrame
