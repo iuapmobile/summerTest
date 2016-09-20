@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/iuapmobile.um.css">
+		<link rel="stylesheet" href="../css/font-icons.css">
+		<script src="../js/Frameworks/iuapmobile.frameworks.core.js" ></script>
+		<script src="../js/summer.js" ></script>
+		<script src="../js/jquery.min.js" ></script>
+		<script src="../js/Frameworks/iuapmobile.frameworks.ui.js" ></script>
+		<script src="../js/main.js" ></script>
+	</head>
+	<body>
+		<div class="um-frame" id="main">
+
+			<div id="content" class="um-content p15">
+				<div style="text-align:center;font-weight:bold;">iUAP Mobile</div>
+				<button class="p15 um-btn mt30" onclick="camera()">通过$camera来实现上传</button>
+			    <button class="p15 um-btn mt30" onclick="openPhotoAlbum()">通过$camera来实现选择图库</button>
+			    <button class="p15 um-btn mt30" onclick="upload()">通过$file来实现上传</button>
+			    <button class="p15 um-btn mt30" onclick="downloadImg()">通过$file来实现下载图片</button>
+			    <button class="p15 um-btn mt30" onclick="downloadDocx()">通过$file来实现下载Docx</button>
+			    <button class="p15 um-btn mt30" onclick="downloadPDF()">通过$file来实现下载PDF</button>
+			    <button class="p15 um-btn mt30" onclick="downloadTxt()">通过$file来实现下载txt</button>
+			    <button class="p15 um-btn mt30" onclick="downloadXlsx()">通过$file来实现下载xlsx</button>
+			    <img class="mt30" src="" alt="" width="300" height="300" id="uploadImg" />
+			</div>
+		</div>
+	</body>	
+</html>
