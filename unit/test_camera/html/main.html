@@ -15,17 +15,41 @@
 	<body>
 		<div class="um-page" id="main">
 			<!-- <div class="um-header" >
-				<h3>导航栏</h3>
+			<h3>导航栏</h3>
 			</div> -->
 
 			<div id="content" class="um-content p15">
-				<div style="text-align:center;font-weight:bold;">iUAP Mobile</div>
-					<!-- 这里插入控件和编写代码 -->
-				
+				<div style="text-align:center;font-weight:bold;">
+					iUAP Mobile
+				</div>
+				<!-- 这里插入控件和编写代码 -->
+				<button id="btn0" onclick="open0()" class="btn um-btn-success">
+					标准调用
+					<i class="ti-check"></i>
+				</button>
+				<br/>
+				<button id="btn1" onclick="open1()" class="btn um-btn-success">
+					兼容调用1-全局callback
+					<i class="ti-check"></i>
+				</button>
+				<br/>
+				<button id="btn2" onclick="open2()" class="btn um-btn-success">
+					兼容调用2- 局部callback
+					<i class="ti-check"></i>
+				</button>
+				<br/>
+
+				<img id="img0" src="../img/waite.png" width=88 alt="" class="um-img-responsive" >
+
+				<img id="img1" src="../img/sun.png" width="88" class="um-circle  um-img-responsive" alt="">
+
+				<img id="img2" src="../img/love.png" width="88" alt="" class="um-rounded um-img-responsive" >
+
+				<img id="img3" src="../img/love.png" width="88" class="um-img-thumbnail um-img-responsive" alt="">
 
 			</div>
 
 			<!-- <div class="um-footer"></div> -->
 		</div>
-	</body>	
+	</body>
 </html>
