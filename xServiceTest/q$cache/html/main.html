@@ -12,7 +12,7 @@
 		<script src="../js/Frameworks/iuapmobile.frameworks.ui.js" ></script>
 		<script src="../js/main.js" ></script>
 		<style>
-			button{display:block;margin:10px auto;width:100px}
+			button{width:100%;height:30px;background:#00a1ea;margin-top: 10px}
 		</style>
 	</head>
 	<body>
@@ -23,8 +23,11 @@
 
 			<div id="content" class="um-content p15">
 				<div style="text-align:center;font-weight:bold;">iUAP Mobile</div>
-					<button onclick="test()">设置缓存</button>
-					<button onclick="test1()">读取缓存</button>
+					<button onclick="test1()">设置string类型缓存</button>
+					<button onclick="test2()">设置json类型缓存</button>
+					<button onclick="test3()">读取string类型缓存</button>
+					<button onclick="test4()">读取json类型缓存</button>
+					<button onclick="test5()">打开新页面</button>
 			</div>
 
 			<!-- <div class="um-footer"></div> -->
