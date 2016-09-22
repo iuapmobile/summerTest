@@ -29,7 +29,8 @@ function openPhotoAlbum(){
         }
     });
 }
-function upload(){
+//$file  上传
+function uploadFile(){
 	alert(path);
     $file.upload({
         "url" : "http://123.103.9.206:7100/UpdateApp/file/upload",//上传服务器端路径
@@ -40,7 +41,26 @@ function upload(){
         }
    })
 }
-
+//cordova 上传
+function uploadCordova(){
+    var fileURL = path;
+    var options = new FileUploadOptions();
+    options.fileKey="file";
+    options.fileName=fileURL.substr(fileURL.lastIndexOf('/')+1);
+    options.mimeType="image/jpeg";
+    
+    var params = {};
+    options.params = params;
+    options.httpMethod = "POST"; 
+    alert(JSON.stringify(options));
+    var ft = new FileTransfer();
+    var SERVER = "http://123.103.9.206:7100/UpdateApp/file/upload"
+    ft.upload(fileURL, encodeURI(SERVER), function(ret){
+        alert("成功"+ JSON.stringify(ret));
+    }, function(err){
+        alert("失败"+ JSON.stringify(err));
+    }, options);
+}
 //下载PDF
 function downloadPDF(){
     //下载请求的url
