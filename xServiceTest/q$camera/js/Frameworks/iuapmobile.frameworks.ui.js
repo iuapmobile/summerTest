@@ -2,7 +2,7 @@
  * Summer UI JavaScript Library
  * Copyright (c) 2016 yonyou.com
  * Author: gct@yonyou.com
- * Version: 3.0.0.20160823.2047
+ * Version: 3.0.0.20160805
  */ 
 var UM = UM || {};
 UM.UI = UM.UI || {};
@@ -36,10 +36,27 @@ $(function() {
 	//消除点击click延迟
 	//FastClick.attach(document.body);
 	
-	$(document).on("touchmove", ".overlay", function(e) {
+	$(document).on("click", ".um-list-left-icon", function(e) {
+		e.stopPropagation();
+	}).on("touchmove", ".overlay", function(e) {
 		e.preventDefault();
 		return false;
+	}).on("click", ".um-tabbar li,.um-footerbar-item",function(){
+		$(this).addClass("active").siblings().removeClass("active");
 	})
+	
+	// 多行文本自适应高度
+	$("textarea.form-control").elastic();
+
+	if(UM.UI.isMobile) {
+		// 解决IOS和低端安卓设备 checkbox和radio bug
+		$("label").on("change", function(e){
+			$(this).addClass("um-label-change").siblings("label").addClass("um-label-change");
+			setTimeout(function(){
+				$(this).removeClass("um-label-change").siblings("label").removeClass("um-label-change");
+			}.bind(this), 100);
+		})
+	}
 	
 });
 /*window.addEventListener('load', function() {
@@ -49,7 +66,7 @@ $(function() {
 });*/
 /* 折叠菜单 */ 
 ;
-+function($) {
++ function($) {
   'use strict';
   $(function() {
     var openBtn = '.um-collapse-btn';
@@ -230,8 +247,6 @@ $(function() {
         } 
     }); 
 })(jQuery);
-// 多行文本自适应高度的调用
-$("textarea.form-control").elastic();
 ;
 (function(global, factory) {
     if (typeof module === "object" && typeof module.exports === "object") {
@@ -264,175 +279,138 @@ $("textarea.form-control").elastic();
     this.type = type;
     this._init();
   }
-    _UModal.prototype = {
-        constructor: _UModal,
+  _UModal.prototype = {
+    constructor: _UModal,
 
-        overlay: $('<div class="um-overlay"></div>'),
+    overlay: $('<div class="um-overlay"></div>'),
 
-        defaults: {
-            title: window.location.host || "",
-            text: "",
-            btnText: ["取消", "确定"],
-            overlay: true,
-            cancle: function() {},
-            ok: function(data) {}
-        },
+    defaults: {
+      title: window.location.host || "",
+      text: "",
+      btnText: ["取消", "确定"],
+      overlay: true,
+      cancle: function() {},
+      ok: function(data) {}
+    },
 
-        done: function(fn) {
-            if (typeof fn === "function" && this._complete) {
-                fn.call(this);
-            }
-        },
+    done: function(fn) {
+      if (typeof fn === "function" && this._complete) {
+        fn.call(this);
+      }
+    },
 
-        _generateHTML: function() {
+    _generateHTML: function() {
 
-            var settings = this.settings,
-                type = this.type,
-                html;
+      var settings = this.settings,
+        type = this.type,
+        html;
 
-            html = '<div class="um-modal"><div class="um-modal-content um-border-bottom">';
+      html = '<div class="um-modal"><div class="um-modal-content um-border-bottom">';
 
-            if (settings.title) {
-                html += '<div class="um-modal-title">' + settings.title + '</div>';
-            }
-            if (settings.text) {
-                html += '<div class="um-modal-text">';
-                //if(type === "tips") html += '<span class="um-ani-rotate"></span>';
-                html += settings.text + '</div>';
-            }
-            if (type === "prompt") {
-                html += '<div class="um-modal-input"><input type="text" class="form-control"></div>';
-            }
+      if (settings.title) {
+        html += '<div class="um-modal-title">' + settings.title + '</div>';
+      }
+      if (settings.text) {
+        html += '<div class="um-modal-text">';
+        //if(type === "tips") html += '<span class="um-ani-rotate"></span>';
+        html += settings.text + '</div>';
+      }
+      if (type === "prompt") {
+        html += '<div class="um-modal-input"><input type="text" class="form-control"></div>';
+      }
 
-            if (type === "login") {
-                html += '<div class="um-modal-input"><input type="text" class="form-control" placeholder="请输入账号"><input type="password" class="form-control" placeholder="请输入密码"></div>';
-            }
+      if (type === "login") {
+        html += '<div class="um-modal-input"><input type="text" class="form-control"><input type="text" class="form-control"></div>';
+      }
 
-            type === "toast" ? html += '</div>' : html += '</div><div class="um-modal-btns">';
+      type === "tips" ? html += '</div>' : html += '</div><div class="um-modal-btns">';
 
-            if (type === "confirm" || type === "login" || type === "prompt") {
-                html += '<a href="#" class="btn cancle">' + settings.btnText[0] + '</a>';
-            }
+      if (type === "confirm" || type === "login" || type === "prompt") {
+        html += '<a href="#" class="btn cancle">' + settings.btnText[0] + '</a>';
+      }
 
-            if (type === "toast") {
-                html += '</div>';
-                var that=this;
-                var duration=settings.duration? settings.duration:2000;
-                setTimeout(function(){
-                    that.destory(that.modal);
-                },duration)
-            } else {
-                html += '<a href="#" class="btn ok">' + settings.btnText[1] +
-                    '</a></div></div>';
-            }
+      if (type === "tips") {
+        html += '</div>';
+      } else {
+        html += '<a href="#" class="btn ok">' + settings.btnText[1] +
+          '</a></div></div>';
+      }
 
-            if (type === "loading") {
-                var text=settings.text? settings.text:'正在加载';
-                var icons=settings.icons ? settings.icons:'ti-reload';
-                html = '<div class="um-modal" style="background-color: rgba(0, 0, 0, 0.2);width: 150px;margin-left: -75px;padding: 20px;border-radius: 12px;"><div style="color: #ffffff;">'+text+'</div><span class="um-ani-rotate '+icons+'"></span></div>';
-            }
-            this.html = html;
-        },
-        _showModal: function() {
+      if (type === "loading") {
+        html = '<div class="um-modal" style="background-color: rgba(0, 0, 0, 0.35);width: 150px;margin-left: -75px;padding: 20px;border-radius: 12px;"><span class="um-ani-rotate"></span></div>';
+      }
+      this.html = html;
+    },
+    _showModal: function() {
 
-            this.settings.overlay && this.overlay.appendTo($('body')).fadeIn(300);
+      this.settings.overlay && this.overlay.appendTo($('body')).fadeIn(300);
 
-            var modal = $(this.html).appendTo($('body')),
+      var modal = $(this.html).appendTo($('body')),
+        modalH = modal.outerHeight(),
+        wh = window.innerHeight;
 
-                modalH = modal.outerHeight(),
-                wh = window.innerHeight;
-            console.log(modal);
-            modal.css('top', (wh - modalH - 20) / 2);
+      modal.css('top', (wh - modalH - 20) / 2);
 
-            setTimeout(function() {
-                modal.addClass('um-modal-in');
-            }, 100);
+      setTimeout(function() {
+        modal.addClass('um-modal-in');
+      }, 100);
 
-            this.modal = modal;
-            this._attachEvent();
-        },
-        _attachEvent: function() {
-            var that = this;
-            that.modal.on("click", '.btn', function(e) {
-                e.preventDefault();
-                if ($(this).hasClass('cancle')) {
-                    setTimeout(function() {
-                        that.settings.cancle(data)
-                    }, 100);
-                }
-                if ($(this).hasClass('ok')) {
-                    var input = that.modal.find('.form-control'),
-                        inputLen = input.length,
-                        data;
-                    if (inputLen) {
-                        if (inputLen == 1) data = that.modal.find('.form-control').val();
-                        else {
-                            data = [];
-                            $.each(input, function() {
-                                data.push(this.value);
-                            });
-                        }
-                    }
-                    setTimeout(function() {
-                        that.settings.ok(data)
-                    }, 100);
-                }
-                that.destory(that.modal);
-            });
-        },
-        destory: function() {
-            var that = this;
-            this.modal.removeClass('um-modal-in').addClass('um-modal-out').on('webkitTransitionEnd', function() {
-                that.modal.off('webkitTransitionEnd');
-                that.modal.removeClass('um-modal-out');
-                that.modal.remove();
-            });
-            // 避免遮罩闪烁
-            this.settings.overlay && this.overlay.remove();
-        },
-        _init: function() {
-
-            this._generateHTML();
-            this._showModal();
-
-            if (this.type === 'tips' || this.type === 'loading') {
-                this._complete = 1;
-            }
+      this.modal = modal;
+      this._attachEvent();
+    },
+    _attachEvent: function() {
+      var that = this;
+      that.modal.on("click", '.btn', function(e) {
+        e.preventDefault();
+        if ($(this).hasClass('cancle')) {
+          setTimeout(function() {
+            that.settings.cancle(data)
+          }, 100);
         }
+        if ($(this).hasClass('ok')) {
+          var input = that.modal.find('.form-control'),
+            inputLen = input.length,
+            data;
+          if (inputLen) {
+            if (inputLen == 1) data = that.modal.find('.form-control').val();
+            else {
+              data = [];
+              $.each(input, function() {
+                data.push(this.value);
+              });
+            }
+          }
+          setTimeout(function() {
+            that.settings.ok(data)
+          }, 100);
+        }
+        that.destory(that.modal);
+      });
+    },
+    destory: function() {
+      var that = this;
+      this.modal.removeClass('um-modal-in').addClass('um-modal-out').on('webkitTransitionEnd', function() {
+        that.modal.off('webkitTransitionEnd');
+        that.modal.removeClass('um-modal-out');
+        that.modal.remove();
+      });
+      // 避免遮罩闪烁
+      this.settings.overlay && this.overlay.remove();
+    },
+    _init: function() {
+
+      this._generateHTML();
+      this._showModal();
+
+      if (this.type === 'tips' || this.type === 'loading') {
+        this._complete = 1;
+      }
     }
-    var loadingModal=null;/*用来接收loading对象*/
-    var api={
-        alert: function (options) {
-            var $alert='alert';
-            return new _UModal($alert,options);
-        },
-        confirm: function (options) {
-            var $confirm='confirm';
-            return new _UModal($confirm,options);
-        },
-        prompt: function (options) {
-            var $prompt='prompt';
-            return new _UModal($prompt,options);
-        },
-        login: function (options) {
-            var $login='login';
-            return new _UModal($login,options);
-        },
-        toast: function (options) {
-            var $toast='toast';
-            return new _UModal($toast,options);
-        },
-        showLoadingBar: function (options) {
-            var $loading='loading';
-            loadingModal = new _UModal($loading,options);
-            //eturn loadingModal;
-        },
-        hideLoadingBar: function () {
-            console.log(loadingModal);
-            loadingModal.destroy();
-        }
-    };
-    $.extend(UM,api);
+  }
+  UM.modal = function(type, options) {
+    return new _UModal(type, options);
+  }
+  return UM.modal;
 }))
 
 ;
@@ -984,8 +962,8 @@ $("textarea.form-control").elastic();
                 }).fail(function() {
                     console.log("链接错误...");
                 });
-            } else if(dataTarget=='share'){
-                UM.share.open('#' + dataTarget);
+            } else if (dataTarget) {
+                UM.actionsheet.open("#" + dataTarget);
             }
         } catch (e) {
             console.log(e);
@@ -1288,172 +1266,50 @@ $("textarea.form-control").elastic();
     }
 
 }(typeof window !== "undefined" ? window : this, function(window, noGlobal) {
-    var activeDom = function(type,options){
+    var activeDom = function(type){
         this.type = type;
-        if(options){
-            this.settings=options;
-            var itemtarget='#actionsheet';
-            this.open(itemtarget);
-        }
-
     }
     activeDom.prototype = {
         constructor: activeDom,
-        open: function (target, pushPageDirection) {
-
+        open: function(target, pushPageDirection){
             var that = this;
             this.$target = target && $(target).length && $(target);
-            if(target=='#actionsheet'){
 
-                this._generateHTMl();
-                this._showHtml();
-                this.$target=this.actionSheet;
-            }
-
-            if (!this.$target || !this.$target.hasClass("um-" + this.type)) {
+            if(!this.$target || !this.$target.hasClass("um-" + this.type)) {
                 return;
-            }
+            } 
             this.$target.addClass("active");
-            var that=this;
-            setTimeout(function () {
-                that.$target.css('transform','translate3d(0, 0, 0)');
-            },100)
             if (pushPageDirection) {
                 var pushPageClass = "um-page-pushfrom" + pushPageDirection;
                 this.$target.data("pushPageClass", pushPageClass);
 
                 $(".um-page.active").addClass("um-transition-default").addClass(pushPageClass);
             }
-            this.$overlay = pushPageDirection ? $('<div class="overlay" style="background-color:rgba(0,0,0,0.1)"></div>') : $('<div class="overlay"></div>');
+            this.$overlay = pushPageDirection? $('<div class="overlay" style="background-color:rgba(0,0,0,0.1)"></div>'): $('<div class="overlay"></div>');
 
             this.$target.before(this.$overlay);
-
-            this.$overlay.on(UM.UI.eventType.down, function () {
+            
+            this.$overlay.on(UM.UI.eventType.down, function() {
                 that.close();
             });
         },
-        _generateHTMl: function () {
-            var settings=this.settings ? this.settings :{};
-            var type=this.type,
-                that=this;
-            if(type == 'actionsheet'){
-                var $content=$('<div class="um-actionsheet" id="actionsheet"> <ul class="um-list um-list-corner"> <li> <div class="btn action-cancle">取消</div> </li> </ul> </div>');
-                var $firstUl=$('<ul class="um-list um-list-corner"></ul>');
-                $content.prepend($firstUl);
-                if(settings.title){
-                    var $title=$('<li> <p class="btn popup-title">'+settings.title+' </p> </li>');
-                    $firstUl.append($title)
-                }
-                if(settings.items){
-                    for(var i=0; i<settings.items.length;i++){
-                        var $li=$('<li> <div class="btn action-item">'+settings.items[i]+'</div> </li>');
-                        $firstUl.append($li);
-                    }
-                }
-                that.content=$content;
-            }
-
-
-        },
-        _showHtml: function () {
-            var actionSheet=$(this.content).appendTo($('body'));
-            $(this.content).css('transform','translate3d(0, 100%, 0)');
-            this.actionSheet=actionSheet;
-            this._attachEvent();
-        },
-        _attachEvent: function () {
-            var that=this;
-            that.actionSheet.on('click','.action-item', function (e) {
-                e.preventDefault();
-                var index=$('.um-actionsheet .action-item').index($(this));
-                var callback=that.settings.callbacks[index];
-                setTimeout(function() {
-                    callback();
-                }, 100);
-                that.close();
-                setTimeout(function () {
-                    that.actionSheet.remove();
-                },1000)
-            });
-            that.actionSheet.on('click','.action-cancle',function(){
-                that.close();
-                setTimeout(function () {
-                    that.actionSheet.remove();
-                },1000)
-            })
-        },
-
-        close: function () {
-            var that=this;
-            if (!this.$target) {
+        close: function(){
+            if(!this.$target) {
                 // 关闭所有
                 $("um-" + this.type).removeClass("active");
-                setTimeout(function () {
-                    $("um-" + this.type).css('transform','translate3d(0, 100%, 0)');
-                    that.$overlay.remove();
-                },300)
             } else {
                 this.$target.removeClass("active");
-                setTimeout(function () {
-                    that.$target.css('transform','translate3d(0, 100%, 0)');
-                    that.$overlay.remove();
-                },300)
             }
-
-
+            this.$overlay.remove();
             var pushPageClass = this.$target.data("pushPageClass");
             if (pushPageClass) {
-                $(".um-page.active").removeClass(pushPageClass).one("webkitTransitionEnd", function () {
+                $(".um-page.active").removeClass(pushPageClass).one("webkitTransitionEnd", function(){
                     $(this).removeClass("um-transition-default");
                 })
             }
         }
     }
-
-    UM.actionsheet= function (options) {
-        var type='actionsheet';
-        return new activeDom(type,options)
-    };
-    //UM.actionsheet = new activeDom("actionsheet");
-    UM.share = new activeDom("share");
+    UM.actionsheet = new activeDom("actionsheet");
     UM.sidebar = new activeDom("sidebar");
     UM.poppicker = new activeDom("poppicker");
 }))
-/* 日期插件调用 */
-;
-(function(UM){
-    var _picker = function(selector,json){
-        this.defaults = {
-            theme: "ios7",
-            mode: "scroller",
-            display: "bottom",
-            animate: ""     
-        };
-        this.initmobscroll(selector,json);
-    }
-    _picker.prototype.initmobscroll = function(selector,json){
-        var options = $.extend(json,this.defaults);
-        $(selector).scroller('destroy').scroller(options);
-    }
-    UM.picker = function(selector,json) {
-        return new _picker(selector,json);
-    }
-})(UM)
-/*
-$(document).ready(function(){
-    var opts = {'date': {preset: 'date'},'datetime': {preset: 'datetime'},'time': {preset: 'time'},'select': {preset: 'select'}};
-    $.each(opts,function(value,item){
-        UM.picker(".um-scroller-"+ value,item);
-    });    
-});
-*/
-$(document).on("click", ".um-tabbar li,.um-footerbar-item",function(){
-	$(this).addClass("active").siblings().removeClass("active");
-})
-// 解决IOS和低端安卓设备 checkbox和radio bug
-$("label").on("change", function(e){
-	$(this).addClass("um-label-change").siblings("label").addClass("um-label-change");
-	setTimeout(function(){
-		$(this).removeClass("um-label-change").siblings("label").removeClass("um-label-change");
-	}.bind(this), 100);
-})

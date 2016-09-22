@@ -1,26 +1,45 @@
-//here is your code...
-summerready = function () {
-	$summer.byId("content").innerHTML += "<h1 style='text-align: center'>Hello friends, welcome to touch the summer frame!</h1><h2 style='text-align: center'>The frame update at " +(new Date()).toLocaleString()+"</h2>";
-};
 
-function openScanner(){
+function openScanner1(){
 	$scanner.open({
-       callback : function (arges){        
-            $alert(JSON.parse(args.result).imgPath)
-		    $('.pic').attr('src',JSON.parse(args.result).imgPath)
-	   }
+       callback : function (args){  
+		   alert(args)  //object类型
+		   alert(args.result)	//string类型	   
+		}
 	 });	 
 }
 
-function openTest(){
-	 var twocodepath=$scanner.generateQRCode({
-		 size : 30,//二维码正方形的宽高
-		 content : "text"//生成二维码所需的源文字
-	});
-	alert(typeof twocodepath)
-		
-	  $('.pic').attr('src',twocodepath)
+function openScanner2(){
+	$scanner.open({
+       callback : mycall2
+	 });
+	 
+ 	function mycall2(args){
+ 		alert(args)  //object类型
+		alert(args.result)	//string类型	
+    } 
+}
 
+function mycall3(args){
+ 		alert(args)  //object类型
+		alert(args.result)	//string类型	
+}  
+    
+function openScanner3(){
+	$scanner.open({
+       callback : "mycall3()"
+	 });
+	 
+ 	
+}
+
+
+function openTwocode(){
+	var twocodepath=$scanner.generateQRCode({
+		 size : 30,//二维码正方形的宽高
+		 content : "text"//生成二维码所需的源文字 string类型
+	});
+	var qq = twocodepath;		//string 图片路径 android无返回值
+	$('.pic').attr('src',qq);
 }
 
 
