@@ -51,7 +51,7 @@ function test4(){
    });     
 }
 //调取系统相册 
-//ios 回调数据成功，赋值找不到变量$;android回调函数没有执行
+//android回调函数没有执行
 function test11(){ 
 	$camera.openPhotoAlbum({
         callback : function (sender,args){          
