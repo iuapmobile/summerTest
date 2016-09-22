@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <application> 
   <app_start>index.html</app_start>  
-  <app_name>qnet</app_name>  
-  <project_name>qnet</project_name>  
-  <package_name>com.yonyou.qnet</package_name>  
+  <app_name>qCamera</app_name>  
+  <project_name>q$camera</project_name>  
+  <package_name>com.yonyou.qcamera</package_name>  
   <frame_name>ump</frame_name>  
   <icon relativePath="css/themes/default/app">app</icon>  
   <target>android-15</target>  
   <platform>ios</platform>  
   <versionCode>1</versionCode>  
   <versionName>1</versionName>  
-  <orientation>unspecified</orientation>  
+  <orientation>4</orientation>  
   <min_sdk_version>10</min_sdk_version>  
   <max_sdk_version>17</max_sdk_version>  
   <statebarstyle>dark</statebarstyle>  
@@ -75,8 +75,7 @@
   <permission id="android.permission.WRITE_CONTACTS"/>  
   <permission id="android.permission.WRITE_EXTERNAL_STORAGE"/>  
   <permission id="android.permission.WRITE_SMS"/>  
-  <permission id="com.android.alarm.permission.SET_ALARM"/>  
-  <import id="cordova-plugin-http" type="web" ref="cordova"/> 
+  <permission id="com.android.alarm.permission.SET_ALARM"/> 
 </application><!--
 【屏幕显示方向】
   screenOrientation: 屏幕显示方向
