@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html class="um-frame">
+	<head>
+		<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/iuapmobile.um.css">
+		<link rel="stylesheet" href="../css/font-icons.css">
+		<script src="../js/Frameworks/iuapmobile.frameworks.core.js" ></script>
+		<script src="../js/summer.js" ></script>
+		<script src="../js/jquery-2.1.4.min.js" ></script>
+		<script src="../js/Frameworks/iuapmobile.frameworks.ui.js" ></script>
+		<script src="../js/main.js" ></script>
+		<style>
+			button{width:100%;height:30px;background:#00a1ea;margin-top: 10px}
+			.pic{width:100px;height:100px;margin:10px auto;display: block}
+		</style>
+	</head>
+	<body>
+		<div class="um-frame" id="index">
+			<div id="header" class="um-header" onclick="closeWin()">
+				<a href="#" class="um-back">返回</a>
+				<h3>标题</h3>
+				<a href="#" class="um-header-right ti-plus f20"></a>
+			</div>
+			<div class="um-content">
+				<button onclick="test11()">回调为匿名函数</button>
+				<button onclick="test22()">回调为在闭包内的函数</button>
+				<button onclick="test33()">回调为全局函数</button>
+				<button onclick="test44()">回调为全局函数,但函数定义在闭包内</button>
+				<img src="" alt="" class="pic"/>	
+			</div>
+		</div>
+	</body>
+</html>

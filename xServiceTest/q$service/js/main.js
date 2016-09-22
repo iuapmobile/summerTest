@@ -7,7 +7,7 @@ function getService(){
 	$service.get({
        "url" : "http://opentest.yonyoutelecom.cn/mobile/isvName.do?account=qinfx&q=",
        "callback" : function (sender,arges){
-       		alert(arges.result);
+       		alert(arges.result);//string
        		alert(eval(arges.result)[0].text);
              
     	} /*,
