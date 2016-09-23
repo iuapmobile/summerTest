@@ -93,15 +93,32 @@ function downloads(url,filepath,bool){
     var filename = url.substr(url.lastIndexOf("/")+1);
 	//文件类型
 	var filetype = filename.split(".").pop();
+	
+	
+    alert('下载：'+filename + "...." + filetype + "....." + filepath);
+    //判断是否已经存在
+    
 	//判断网络类型
 	var available = $net.available();
-	var getNetworkInfo = $net.getNetworkInfo();
+	var getNetworkInfo = JSON.parse($net.getNetworkInfo());
 	if (!available){
-		return false;
 		alert("当前没有网络");
+		return false;
 	}
-    if( getNetworkInfo.type == "wifi" ){
+	//判断文件是否已经存在。
+	var readFile = $cache.read(filename) || ""; 
+	if ( readFile ){
+		alert("已经存在"+readFile);
+		return false;
+	}
+	//开始了
+	alert("新的下载即将开始");
+	
+	//判断是否为wifi连接，
+    if( getNetworkInfo.Type == "Wifi" ){
     	alert("wifi连接");
+    }else{
+    	alert("此时连接为移动网络")
     }
 	$file.download({
         "url" : url,
@@ -109,13 +126,13 @@ function downloads(url,filepath,bool){
         "filename" : filename, 
         "override" : bool,
         "callback" : function(args){
-        	
-        	//alert('下载完成回调：'+filename + "...." + filetype + "....." + filepath);
+        	//	暂时先用缓存来存储
+        	$cache.write(filename,filename);
 			$summer.alert(args);
 			$file.open({
-		        "filename" : filename,//文件全路径
-		         "filetype" : filetype,
-		         "filepath" : filepath
+		        "filename" : filename,//文件
+		        "filetype" : filetype,
+		        "filepath" : filepath
 		    });
         }
     });
