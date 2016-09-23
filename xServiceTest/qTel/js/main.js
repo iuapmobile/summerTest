@@ -8,7 +8,7 @@ function openTel(){
 
 function openTel1(){
 	$tel.sendMsg({
-	   "tel" : "13810513731",//电话号码
+	   "tel" : "13261813382,13810513731",//电话号码   ios支持群发   android不支持  返回短息界面的可是错误
 	   "body" : "hello"//短信内容
 	})
 }
