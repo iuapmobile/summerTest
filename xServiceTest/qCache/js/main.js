@@ -1,17 +1,3 @@
-/*多谢几种类型，复杂的json数据，验证read之后的类型,跨页面
-    write和read前后数据类型保持一致      str-xxxxxxxxx     obj-xxxxxxxxxx
-	$cache.write('person',{name:"张三",age:34})
-	alert($cache.read('person').name)//显示张三
-	alert(JSON.parse($cache.read('person')).name)//现在ok
-	
-	
-	$cache.write('person',"{name:\"张三\",age:34}")
-	alert($cache.read('person'))//显示字符串
-	alert(JSON.parse($cache.read('person')).name)//
-	
-	summer.writeFile
-	summer.readFile
-	summer.openCamera*/
 function test1(){
 	$cache.write('qq','{name:"屈海滨"}')
 }
