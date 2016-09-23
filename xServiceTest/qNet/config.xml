@@ -2,7 +2,7 @@
 <application> 
   <app_start>index.html</app_start>  
   <app_name>qnet</app_name>  
-  <project_name>qnet</project_name>  
+  <project_name>q$net</project_name>  
   <package_name>com.yonyou.qnet</package_name>  
   <frame_name>ump</frame_name>  
   <icon relativePath="css/themes/default/app">app</icon>  
