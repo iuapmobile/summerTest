@@ -2,7 +2,7 @@
 <application> 
   <app_start>index.html</app_start>  
   <app_name>scanner</app_name>  
-  <project_name>q$scanner</project_name>  
+  <project_name>qScanner</project_name>  
   <package_name>com.yonyou.test</package_name>  
   <frame_name>ump</frame_name>  
   <icon relativePath="css/themes/default/app">app</icon>  
