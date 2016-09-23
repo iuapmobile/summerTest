@@ -45,11 +45,11 @@ function test7(){
 }
 
 function test8(){
-	alert($device.getScreenHeight()); //android支持，返回number类型
+	alert($device.getScreenHeight()); //返回number类型
 }
 
 function test9(){
-	alert($device.getScreenWidth());//android支持，返回number类型
+	alert($device.getScreenWidth());//返回number类型
 }
 
 function test10(){
@@ -117,13 +117,13 @@ function test18(){          //android调取异常  ios 返回类型为string
 	 alert(qq)  
 }
 
-function test19_1(){   //Android独有   获取相册路径  返回类型为string   ios返回值为undefined
+function test19_1(){   //Android独有   获取相册路径  返回类型为string   
 	 alert($device.getAlbumPath())
 	 alert(typeof $device.getAlbumPath())
 }
 
 function test19_2(){
-	$device.getAlbumPath({   //Android独有   直接关闭         ios没有执行
+	$device.getAlbumPath({   //Android独有   直接关闭         
           "allFolders" : true,//是否获取相册中所有文件夹
           "callback" : function(args){
           		alert(typeof args)
@@ -134,7 +134,7 @@ function test19_2(){
 }
 
 function test19_3(){
-	 $device.getAlbumPath({   //Android独有  直接关闭  ios没有执行
+	 $device.getAlbumPath({   //Android独有  直接关闭 
           "allFolders" : false,//是否获取相册中所有文件夹
           "callback" : function(args){
           		alert(typeof args)
@@ -143,6 +143,6 @@ function test19_3(){
    })
 }
 
-function test20(){    //Android独有   相机服务存放照片的存储路径  返回类型为string  ios返回值为undefined
+function test20(){    //Android   相机服务存放照片的存储路径  返回类型为string  ios返回值为undefined
 	  alert($device.getAppAlbumPath())
 }
