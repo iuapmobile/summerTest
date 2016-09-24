@@ -51,7 +51,6 @@ function test4(){
    });     
 }
 //调取系统相册 
-//android回调函数没有执行
 function test11(){ 
 	$camera.openPhotoAlbum({
         callback : function (sender,args){          
