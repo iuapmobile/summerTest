@@ -131,6 +131,8 @@ function downloads(url,filepath,bool){
 			$summer.alert(args);
 			//在图片那里显示出来
 			$("#uploadImg").attr("src",args.path);
+			alert("现在是即将自动打开的阶段");
+			
 			$file.open({
 		        "filename" : filename,  //文件名
 		        "filetype" : filetype,  //文件格式
@@ -155,6 +157,10 @@ function uploadFile(){
 }
 //cordova 普通上传，无参数，无header
 function uploadCordova(){
+	if (!path){
+		alert("未选择文件");
+		return false;
+	}
     var fileURL = path;
     var options = new FileUploadOptions();
     options.fileKey="file";
