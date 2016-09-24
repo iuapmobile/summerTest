@@ -129,10 +129,12 @@ function downloads(url,filepath,bool){
         	//	暂时先用缓存来存储
         	$cache.write(filename,filename);
 			$summer.alert(args);
+			//在图片那里显示出来
+			$("#uploadImg").attr("src",args.path);
 			$file.open({
-		        "filename" : filename,//文件
-		        "filetype" : filetype,
-		        "filepath" : filepath
+		        "filename" : filename,  //文件名
+		        "filetype" : filetype,  //文件格式
+		        "filepath" : filepath	//文件路径
 		    });
         }
     });
