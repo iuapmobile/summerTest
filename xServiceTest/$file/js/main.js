@@ -2,7 +2,7 @@
 summerready = function () {
 	//
 };
-
+//全局变量 存储拍照或者图库选择回来的地址
 var path;
 //打开相机
 function camera(){
@@ -29,7 +29,11 @@ function openPhotoAlbum(){
         }
     });
 }
-
+//获取选择回来的图片的大小
+function getFileInfo(){
+	var size = $file.getFileInfo(path);
+	alert("文件大小" + JSON.parse(size).size + "kb");
+}
 //下载PDF
 function downloadPDF(){
     //下载请求的url
@@ -129,9 +133,11 @@ function downloads(url,filepath,bool){
         	//	暂时先用缓存来存储
         	$cache.write(filename,filename);
 			$summer.alert(args);
+			
 			//在图片那里显示出来
 			$("#uploadImg").attr("src",args.path);
 			alert("现在是即将自动打开的阶段");
+			
 			
 			$file.open({
 		        "filename" : filename,  //文件名
