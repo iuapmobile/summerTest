@@ -36,7 +36,7 @@ function test5(){
 
 function test6(){
 	alert($device.getMemoryInfo());//android支持，返回json类型为string key值为MemToal、MenFree等多个字段
-								   //ios 返回值为undefined
+								    //ios 返回json类型为string key值为MemToal、MenFree
 }
 
 function test7(){
@@ -73,7 +73,7 @@ function test12(){
 }
 
 function test13(){
-	$device.screenShot({   //android应用直接关闭  ios没有执行
+	$device.screenShot({   //android应用直接关闭  ios 返回object，键值为imgPath
        "callback" : function (args){
         	alert(typeof args);
         	$alert(args)
@@ -105,7 +105,7 @@ function test16(){
 }
 
 function test17(){
-	  alert($device.currentOrientation()) //android支持,返回类型为string   ios返回值为undefined
+	  alert($device.currentOrientation()) //android ios支持,返回类型为string  
 }
 
 function test18(){          //android调取异常  ios 返回类型为string
@@ -143,6 +143,6 @@ function test19_3(){
    })
 }
 
-function test20(){    //Android   相机服务存放照片的存储路径  返回类型为string  ios返回值为undefined
+function test20(){    //  UMP-8701 Android   相机服务存放照片的存储路径  返回类型为string '/storage/emulated/0/temp/'  ios返回值为undefined
 	  alert($device.getAppAlbumPath())
 }
