@@ -1,7 +1,27 @@
-//here is your code...
-summerready = function () {
-	//
+//	该方法接受一个“Position”对象，包含当前GPS坐标信息
+var onSuccess = function(position) {
+
+	alert('Latitude: '          + position.coords.latitude          + '\n' +
+		'Longitude: '         + position.coords.longitude         + '\n' +
+		'Altitude: '          + position.coords.altitude          + '\n' +
+		'Accuracy: '          + position.coords.accuracy          + '\n' +
+		'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
+		'Heading: '           + position.coords.heading           + '\n' +
+		'Speed: '             + position.coords.speed             + '\n' +
+		'Timestamp: '         + new Date(position.timestamp)      + '\n');
 };
+
+// onError回调函数接收一个PositionError对象
+function onError(error) {
+	alert('code: '    + error.code    + '\n' +
+		'message: ' + error.message + '\n');
+}
+
+summerready = function(){
+	//coding
+	navigator.geolocation.getCurrentPosition(onSuccess, onError);
+}
+
 //全局变量 存储拍照或者图库选择回来的地址
 var path;
 //打开相机
