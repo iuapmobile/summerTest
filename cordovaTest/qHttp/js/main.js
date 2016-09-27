@@ -1,4 +1,4 @@
-var url="http://opentest.yonyoutelecom.cn/mobile/isvName.do?account=qinfx&q=";
+var url="http://opentest.yonyoutelecom.cn/mobile/isvName.do?account=qinfx&q="; //ios 没有请求 用例编号UMP-8775
 function test1(){		
 	summer.post({"URL":url },		 //url为string类型
 			function(response) {
