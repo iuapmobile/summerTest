@@ -1,3 +1,4 @@
+//ios 没有执行方法 bug编号UMP-8777
 function test1(){
 	summer.contacts.find(
 			{'filter':'海','multiple':true,
