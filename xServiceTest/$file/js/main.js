@@ -19,21 +19,27 @@ function onError(error) {
 
 summerready = function(){
 	//coding
-	navigator.geolocation.getCurrentPosition(onSuccess, onError);
+	//navigator.geolocation.getCurrentPosition(onSuccess, onError);
 }
 
 //全局变量 存储拍照或者图库选择回来的地址
-var path;
+var path = [];
+
+//拍照
+var pathCamera;
+
+//相册
+var pathPhoto;
 //打开相机
 function camera(){
 	$camera.open({
 		bindfield : "image",
 		callback : function(args){
 			$summer.alert(args);
-			path = args.imgPath;
-			alert(path);
+			pathCamera = args.imgPath;
+			path.push(pathCamera);
 			//path = args.image.imgPath;
-			$("#uploadImg").attr("src",path);
+			$("#pathCamera").attr("src",pathCamera);
 		}	
 	})
 }
@@ -43,15 +49,16 @@ function openPhotoAlbum(){
         bindfield : "image",
         callback : function (args){
         	$summer.alert(args);
-			path = args.imgPath;
+			pathPhoto = args.imgPath;
+			path.push(pathPhoto);
 			//path = args.image.imgPath;
-			$("#uploadImg").attr("src",path);
+			$("#pathPhoto").attr("src",pathPhoto);
         }
     });
 }
 //获取选择回来的图片的大小
 function getFileInfo(){
-	var size = $file.getFileInfo(path);
+	var size = $file.getFileInfo(pathPhoto);
 	alert("文件大小" + JSON.parse(size).size + "kb");
 }
 //下载PDF
@@ -149,26 +156,35 @@ function downloads(url,filepath,bool){
         "locate" : filepath,
         "filename" : filename, 
         "override" : bool,
-        "callback" : function(args){
-        	//	暂时先用缓存来存储
-        	$cache.write(filename,filename);
-			$summer.alert(args);
-			
-			//在图片那里显示出来
-			$("#uploadImg").attr("src",args.path);
-			alert("现在是即将自动打开的阶段");
-			
-			
-			$file.open({
-		        "filename" : filename,  //文件名
-		        "filetype" : filetype,  //文件格式
-		        "filepath" : filepath	//文件路径
-		    });
-        }
+        "callback" : "downloadCall()"
     });
 }
+//下载完的回调
+function downloadCall(args){
+	
+	
+	
+	
+	
+	if(args.isfinish == true){
+		alert("下载完成");
+		alert("现在是即将自动打开的阶段");
 
-
+		
+		$summer.alert(args);
+		alert("地址:"+ args.savePath);
+		//	暂时先用缓存来存储
+		$cache.write(filename,filename);
+		$file.open({
+	        "filename" : filename,  //文件名
+	        "filetype" : filetype,  //文件格式
+	        "filepath" : filepath	//文件路径
+	    });
+	}else{
+		$("#number").html(args.percent);
+	}
+	
+}
 //$file  上传, 暂时未实现。
 function uploadFile(){
 	alert(path);
@@ -181,8 +197,39 @@ function uploadFile(){
         }
    })
 }
+
+//formData多图片上传
+function uploadMore(){
+	var param = {};
+	for(var i = 0,length = path.length; i< length;i++ ){
+		uploadCordova(
+			path[i],
+			"image/jpeg",
+			param,
+			"http://123.103.9.206:7100/UpdateApp/file/upload"
+		);
+	}
+}
+function uploadCamera(){
+	var param = {};
+	uploadCordova(
+		pathCamera,
+		"image/jpeg",
+		param,
+		"http://123.103.9.206:7100/UpdateApp/file/upload"
+	);
+}
+function uploadPhoto(){
+	var param = {};
+	uploadCordova(
+		pathPhoto,
+		"image/jpeg",
+		param,
+		"http://123.103.9.206:7100/UpdateApp/file/upload"
+	);
+}
 //cordova 普通上传，无参数，无header
-function uploadCordova(){
+function uploadCordova(path,type,params,url){
 	if (!path){
 		alert("未选择文件");
 		return false;
@@ -191,14 +238,13 @@ function uploadCordova(){
     var options = new FileUploadOptions();
     options.fileKey="file";
     options.fileName=fileURL.substr(fileURL.lastIndexOf('/')+1);
-    options.mimeType="image/jpeg";
-    
-    var params = {};
+    options.mimeType = type;
+
     options.params = params;
     options.httpMethod = "POST"; 
     alert(JSON.stringify(options));
     var ft = new FileTransfer();
-    var SERVER = "http://123.103.9.206:7100/UpdateApp/file/upload"
+    var SERVER = url;
     ft.upload(fileURL, encodeURI(SERVER), function(ret){
         alert("成功"+ JSON.stringify(ret));
     }, function(err){
