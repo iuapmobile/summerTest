@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/iuapmobile.um.css">
+		<link rel="stylesheet" href="../css/font-icons.css">
+		<script src="../js/Frameworks/iuapmobile.frameworks.core.js" ></script>
+		<script src="../js/jquery-2.1.4.min.js" ></script>
+		<script src="../js/Frameworks/iuapmobile.frameworks.ui.js" ></script>
+		<script src="../js/summer.js" ></script>
+		<script>
+			function erweimaclick() {
+				$scanner.open({
+					callback : "mycallback()"
+				});
+			}
+
+			function mycallback(arg) {
+				$alert(arg);
+			}
+
+			function closemy() {
+				summer.openWin({
+                id:'index',
+                url:'index.html'
+                
+                });
+			}
+
+			function createerweima() {
+				var str = $("#ewmstring").text();
+				var twocodepath = $scanner.generateQRCode({
+					size : 44, //二维码正方形的宽高
+					content : str//生成二维码所需的源文字
+				});
+				$alert(twocodepath);
+				$("#imgewm").set("src", twocodepath);
+			}
+		</script>
+		<style>
+			.um-content {
+				padding: 30px
+			}
+			.um-list {
+				margin: 0px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="um-page" id="index">
+			<div id="header" class="um-header">
+				<a  onclick="closemy()" class="um-back">返回</a>
+				<h3>二维码</h3>
+			</div>
+			<div class="um-content">
+
+				<div class="btn-group btn-group-vertical">
+					<button type="button" class="btn um-btn-success" onclick="erweimaclick()">
+						打开二维码
+					</button>
+				</div>
+
+				<ul class="um-list">
+					<li class="um-list-item">
+						<div class="um-list-item-inner">
+							<div class="um-list-item-body">
+								<input  id="ewmstring" type="text"  class="form-control" placeholder="请输入字符串">
+							</div>
+						</div>
+					</li>
+					<li class="um-list-item">
+						<div class="um-list-item-inner">
+							<div class="um-list-item-body">
+
+								<img id="imgewm" src="img/waite.png" width=44 alt="" class="um-img-responsive" >
+
+							</div>
+						</div>
+					</li>
+				</ul>
+				<div class="um-row">
+					<button class="um-btn um-no-brs" onclick="createerweima()">
+						生成二维码
+					</button>
+				</div>
+
+			</div>
+		</div>
+	</body>
+</html>
