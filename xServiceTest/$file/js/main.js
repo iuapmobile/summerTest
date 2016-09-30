@@ -39,49 +39,70 @@ function openPhotoAlbum(){
 }
 //获取选择回来的图片的大小
 function getFileInfo(){
+	alert(pathPhoto)
 	var size = $file.getFileInfo(pathPhoto);
 	alert("文件大小" + JSON.parse(size).size + "kb");
 }
 
 
 function uploadCamera(){
-	var param = {};
+	var params = {};
 	uploadCordova(
-		pathCamera,
-		"image/jpeg",
-		param,
-		"http://123.103.9.206:7100/UpdateApp/file/upload"
+		{
+			fileURL : pathCamera,
+			type : "image/jpeg",
+			params : params,
+			SERVER : "http://123.103.9.206:7100/UpdateApp/file/upload"
+		},function (ret){
+			alert("成功"+ JSON.stringify(ret));
+		},function(err){
+			alert("失败"+ JSON.stringify(err));
+		}
 	);
 }
 function uploadPhoto(){
-	var param = {};
+	var params = {};
 	uploadCordova(
-		pathPhoto,
-		"image/jpeg",
-		param,
-		"http://123.103.9.206:7100/UpdateApp/file/upload"
+		{
+			fileURL : pathPhoto,
+			type : "image/jpeg",
+			params : params,
+			SERVER : "http://123.103.9.206:7100/UpdateApp/file/upload"
+		},function (ret){
+			alert("成功"+ JSON.stringify(ret));
+		},function(err){
+			alert("失败"+ JSON.stringify(err));
+		}
 	);
 }
 
 //for 多图片上传
 function uploadMore(){
-	var param = {};
+	var params = {};
 	for(var i = 0,length = path.length; i< length;i++ ){
 		uploadCordova(
-			path[i],
-			"image/jpeg",
-			param,
-			"http://123.103.9.206:7100/UpdateApp/file/upload"
+			{
+				fileURL : path[i],
+				type : "image/jpeg",
+				params : params,
+				SERVER : "http://123.103.9.206:7100/UpdateApp/file/upload"
+			},function (ret){
+				alert("成功"+ JSON.stringify(ret));
+			},function(err){
+				alert("失败"+ JSON.stringify(err));
+			}
 		);
 	}
 }
 //cordova 普通上传，无参数，无header
-function uploadCordova(path,type,params,url){
+function uploadCordova(json,sFn,eFn){
+	var fileURL = json.fileURL,
+		type = json.type,
+		params = json.params;
 	if (!path){
 		alert("未选择文件");
 		return false;
 	}
-    var fileURL = path;
     var options = new FileUploadOptions();
     options.fileKey="file";
     options.fileName=fileURL.substr(fileURL.lastIndexOf('/')+1);
@@ -91,12 +112,8 @@ function uploadCordova(path,type,params,url){
     options.httpMethod = "POST"; 
     alert(JSON.stringify(options));
     var ft = new FileTransfer();
-    var SERVER = url;
-    ft.upload(fileURL, encodeURI(SERVER), function(ret){
-        alert("成功"+ JSON.stringify(ret));
-    }, function(err){
-        alert("失败"+ JSON.stringify(err));
-    }, options);
+    var SERVER = json.SERVER
+    ft.upload(fileURL, encodeURI(SERVER), sFn, eFn, options);
 }
 
 
