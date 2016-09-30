@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/font-icons.css">
+		<link rel="stylesheet" href="../css/iuapmobile.um.css"/>
+		<script src="../js/jquery-2.1.4.min.js" ></script>
+		<script src="../js/Frameworks/iuapmobile.frameworks.core.js" ></script>
+		<script src="../js/summer.js" ></script>
+		<script src="../js/Frameworks/iuapmobile.frameworks.ui.js" ></script>
+		<script type="text/javascript">
+			//创建并写入文件
+			function createAndWriteFile() {
+				//持久化数据保存
+				window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fs) {
+
+					alert('打开的文件系统: ' + fs.name);
+					fs.root.getFile("hangge.txt", {
+						create : true,
+						exclusive : false
+					}, function(fileEntry) {
+
+						alert("是否是个文件？" + fileEntry.isFile.toString());
+						// fileEntry.name == 'hangge.txt'
+						// fileEntry.fullPath == '/hangge.txt'
+						//文件内容
+						var dataObj = new Blob(['欢迎访问iuap mobile'], {
+							type : 'text/plain'
+						});
+						//写入文件
+						writeFile(fileEntry, dataObj);
+
+					}, onErrorCreateFile);
+
+				}, onErrorLoadFs);
+			}
+
+			function openFile() {
+				window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fs) {
+					fs.root.getFile("hangge.txt", {
+						create : true,
+						exclusive : false
+					}, function(fileEntry) {
+						readFile(fileEntry);
+					}, onErrorCreateFile)
+				}, onErrorLoadFs);
+			}
+
+			function editFile() {
+				window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fs) {
+					fs.root.getFile("hangge.txt", {
+						create : true,
+						exclusive : false
+					}, function(fileEntry) {
+						var dataObj = new Blob(['追加内容'], {
+							type : 'text/plain'
+						});
+						appendFile(fileEntry, dataObj, true);
+					}, onErrorCreateFile)
+				}, onErrorLoadFs);
+			}
+
+			//将内容数据写入到文件中（支持追加内容）
+			function appendFile(fileEntry, dataObj, isAppend) {
+				//创建一个写入对象
+				fileEntry.createWriter(function(fileWriter) {
+
+					//文件写入成功
+					fileWriter.onwriteend = function() {
+						alert("Successful file write");
+					};
+
+					//文件写入失败
+					fileWriter.onerror = function(e) {
+						alert("Failed file write: " + e.toString());
+					};
+
+					//如果是最加内容，则定位到文件尾部
+					if (isAppend) {
+						try {
+							fileWriter.seek(fileWriter.length);
+						} catch (e) {
+							alert("file doesn't exist!");
+						}
+					}
+					fileWriter.write(dataObj);
+				});
+			}
+
+			//读取文件
+			function readFile(fileEntry) {
+				fileEntry.file(function(file) {
+					var reader = new FileReader();
+					reader.onloadend = function() {
+						alert(this.result);
+					};
+					reader.readAsText(file);
+				}, onErrorReadFile);
+			}
+
+			//读取文件失败响应
+			function onErrorReadFile() {
+				alert("文件读取失败!");
+			}
+
+			//将内容数据写入到文件中
+			function writeFile(fileEntry, dataObj) {
+				//创建一个写入对象
+				fileEntry.createWriter(function(fileWriter) {
+
+					//文件写入成功
+					fileWriter.onwriteend = function() {
+						alert("Successful file write");
+					};
+
+					//文件写入失败
+					fileWriter.onerror = function(e) {
+						alert("Failed file write: " + e.toString());
+					};
+
+					//写入文件
+					fileWriter.write(dataObj);
+				});
+			}
+
+			//文件创建失败回调
+			function onErrorCreateFile(error) {
+				alert("文件创建失败！")
+			}
+
+			//FileSystem加载失败回调
+			function onErrorLoadFs(error) {
+				alert("文件系统加载失败！")
+			}
+
+			function closemy() {
+				summer.openWin({
+                id:'index',
+                url:'index.html'
+                
+                });
+			}
+		</script>
+	</head>
+	<body>
+		<div class="um-page" id="index">
+			<div id="header" class="um-header">
+
+				<a onclick="closemy()"  class="um-back">返回</a>
+				<h3>文件操作</h3>
+			</div>
+			<div id="main" class="um-content">
+
+				<button class="btn" onclick="createAndWriteFile()">
+					创建文件
+				</button>
+				<button class="btn" onclick="openFile()">
+					获取文件内容
+				</button>
+				<button class="btn" onclick="editFile()">
+					向文件追加内容
+				</button>
+
+			</div>
+
+		</div>
+	</body>
+</html>

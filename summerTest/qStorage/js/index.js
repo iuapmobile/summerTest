@@ -8,17 +8,11 @@ function getStorage(){
 }
 
 function setAppStorage(){
-	summer.setStorage('name',456)
+	summer.setAppStorage('name',456)
 
 }
 
 function getAppStorage(){
-	alert(summer.getStorage('name'));
+	alert(summer.getAppStorage('name'));
 }
-
-
-
-
-
-
 
