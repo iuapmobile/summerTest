@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/font-icons.css">
+		<link rel="stylesheet" href="css/iuapmobile.um.css">
+
+		<script src="js/Frameworks/iuapmobile.frameworks.core.js" ></script>
+		<script src="js/summer.js" ></script>
+		<script src="js/jquery.min.js" ></script>
+		<script src="js/Frameworks/iuapmobile.frameworks.ui.js" ></script>
+		<script src="js/index.js" ></script>
+	</head>
+	<body>
+		<div class="um-win" id="index">
+			<div id="header" class="um-header" onclick="downall()">
+				<a href="#" class="um-back">返回</a>
+				<h3 >标题</h3>
+				<a href="#" class="um-header-right ti-plus f20"></a>
+			</div>
+
+			<div id="main" class="um-content p15">
+	            <button class="p15 um-btn mt30" onclick="download(this)">通过$file来实现下载图片</button>
+	            <p id="f1">0</p>
+	            
+                <button class="p15 um-btn mt30" onclick="download2(this)">通过$file来实现下载Docx</button>
+                <p id="f2">0</p>
+                <button class="p15 um-btn mt30" onclick="download3(this)">通过$file来实现下载Docx</button>
+                <p id="f3">0</p>
+	            <button class="p15 um-btn mt30" onclick="check()">检测文件是否存在</button> 
+	            <button class="p15 um-btn mt30" onclick="removeFile()">删除指定的文件</button>   
+			</div>
+
+			<div class="um-footer">
+				<div class="um-tabbar-foot">
+					<a id="item0" href="#" class="um-footerbar-item">
+						<i class="ti-comments f20"></i>
+						<div class="um-tabbar-item-text">消息</div>
+					</a>
+					<a id="item1" href="#" class="um-footerbar-item"> 
+						<i class="ti-notepad f20"></i>
+						<div class="um-tabbar-item-text">日程</div> 
+					</a>
+					<a id="item2" href="#" class="um-footerbar-item active">
+						<i class="ti-agenda f20"></i>
+						<div class="um-tabbar-item-text">通讯录</div>
+					</a>
+					<a id="item3" href="#" class="um-footerbar-item">
+						<i class="ti-user f20"></i>
+						<div class="um-tabbar-item-text">我</div>
+					</a>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,34 +1,14 @@
-//	该方法接受一个“Position”对象，包含当前GPS坐标信息
-var onSuccess = function(position) {
-
-	alert('Latitude: '          + position.coords.latitude          + '\n' +
-		'Longitude: '         + position.coords.longitude         + '\n' +
-		'Altitude: '          + position.coords.altitude          + '\n' +
-		'Accuracy: '          + position.coords.accuracy          + '\n' +
-		'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
-		'Heading: '           + position.coords.heading           + '\n' +
-		'Speed: '             + position.coords.speed             + '\n' +
-		'Timestamp: '         + new Date(position.timestamp)      + '\n');
-};
-
-// onError回调函数接收一个PositionError对象
-function onError(error) {
-	alert('code: '    + error.code    + '\n' +
-		'message: ' + error.message + '\n');
-}
-
 summerready = function(){
 	//coding
-	//navigator.geolocation.getCurrentPosition(onSuccess, onError);
 }
 
 //全局变量 存储拍照或者图库选择回来的地址
 var path = [];
 
-//拍照
+//拍照路径，方便上传使用
 var pathCamera;
 
-//相册
+//相册路径，方便上传使用
 var pathPhoto;
 //打开相机
 function camera(){
@@ -47,6 +27,7 @@ function camera(){
 function openPhotoAlbum(){
 	$camera.openPhotoAlbum({
         bindfield : "image",
+        compressionRatio : 0.2,
         callback : function (args){
         	$summer.alert(args);
 			pathPhoto = args.imgPath;
@@ -61,155 +42,8 @@ function getFileInfo(){
 	var size = $file.getFileInfo(pathPhoto);
 	alert("文件大小" + JSON.parse(size).size + "kb");
 }
-//下载PDF
-function downloadPDF(){
-    //下载请求的url
-    var url = "http://123.103.9.206:7100/UpdateApp/package/TestPDF.pdf";
-    //存放路径
-    var filepath = "downloadTest/image"; 
-	//是否覆盖
-	var bool = true;
 
-    downloads(url,filepath,bool);
-}
 
-//下载TXT
-function downloadTxt(){
-    //下载请求的url
-    var url = "http://123.103.9.206:7100/UpdateApp/package/TestTxt.txt";
-    //存放路径
-    var filepath = "downloadTest/image"; 
-	//是否覆盖
-	var bool = true;
-
-    downloads(url,filepath,bool);
-}
-
-//下载docx
-function downloadDocx(){
-     //下载请求的url
-    var url = "http://123.103.9.206:7100/UpdateApp/package/TestWord.docx";
-    //存放路径
-    var filepath = "downloadTest/image"; 
-	//是否覆盖
-	var bool = true;
-
-    downloads(url,filepath,bool);
-}
-//下载excle
-function downloadXlsx(){
-    //下载请求的url
-    var url = "http://123.103.9.206:7100/UpdateApp/package/TestExcel.xlsx";
-    //存放路径
-    var filepath = "downloadTest/image"; 
-	//是否覆盖
-	var bool = true;
-
-    downloads(url,filepath,bool);
-}
-//下载图片
-function downloadImg(){
-	//下载请求的url
-    var url = "http://img5.pcpop.com/ArticleImages/0X0/3/3427/003427129.jpg";
-    //存放路径
-    var filepath = "downloadTest/image"; 
-	//是否覆盖
-	var bool = true;
-
-    downloads(url,filepath,bool);
-}
-//公用的download
-function downloads(url,filepath,bool){
-	//文件名
-    var filename = url.substr(url.lastIndexOf("/")+1);
-	//文件类型
-	var filetype = filename.split(".").pop();
-	
-	
-    alert('下载：'+filename + "...." + filetype + "....." + filepath);
-    //判断是否已经存在
-    
-	//判断网络类型
-	var available = $net.available();
-	var getNetworkInfo = JSON.parse($net.getNetworkInfo());
-	if (!available){
-		alert("当前没有网络");
-		return false;
-	}
-	//判断文件是否已经存在。
-	var readFile = $cache.read(filename) || ""; 
-	if ( readFile ){
-		alert("已经存在"+readFile);
-		return false;
-	}
-	//开始了
-	alert("新的下载即将开始");
-	
-	//判断是否为wifi连接，
-    if( getNetworkInfo.Type == "Wifi" ){
-    	alert("wifi连接");
-    }else{
-    	alert("此时连接为移动网络")
-    }
-	$file.download({
-        "url" : url,
-        "locate" : filepath,
-        "filename" : filename, 
-        "override" : bool,
-        "callback" : "downloadCall()"
-    });
-}
-//下载完的回调
-function downloadCall(args){
-	
-	
-	
-	
-	
-	if(args.isfinish == true){
-		alert("下载完成");
-		alert("现在是即将自动打开的阶段");
-
-		
-		$summer.alert(args);
-		alert("地址:"+ args.savePath);
-		//	暂时先用缓存来存储
-		$cache.write(filename,filename);
-		$file.open({
-	        "filename" : filename,  //文件名
-	        "filetype" : filetype,  //文件格式
-	        "filepath" : filepath	//文件路径
-	    });
-	}else{
-		$("#number").html(args.percent);
-	}
-	
-}
-//$file  上传, 暂时未实现。
-function uploadFile(){
-	alert(path);
-    $file.upload({
-        "url" : "http://123.103.9.206:7100/UpdateApp/file/upload",//上传服务器端路径
-        "filename" : path || "a.png",//上传文件的路径+文件名
-        "bindfield" : "upload",//上传后的返回值，类型为JSONObject（其中从键值url可以获取上传后该文件的url）
-        "callback" : function (){
-            alert(upload.url)
-        }
-   })
-}
-
-//formData多图片上传
-function uploadMore(){
-	var param = {};
-	for(var i = 0,length = path.length; i< length;i++ ){
-		uploadCordova(
-			path[i],
-			"image/jpeg",
-			param,
-			"http://123.103.9.206:7100/UpdateApp/file/upload"
-		);
-	}
-}
 function uploadCamera(){
 	var param = {};
 	uploadCordova(
@@ -227,6 +61,19 @@ function uploadPhoto(){
 		param,
 		"http://123.103.9.206:7100/UpdateApp/file/upload"
 	);
+}
+
+//for 多图片上传
+function uploadMore(){
+	var param = {};
+	for(var i = 0,length = path.length; i< length;i++ ){
+		uploadCordova(
+			path[i],
+			"image/jpeg",
+			param,
+			"http://123.103.9.206:7100/UpdateApp/file/upload"
+		);
+	}
 }
 //cordova 普通上传，无参数，无header
 function uploadCordova(path,type,params,url){
@@ -251,6 +98,13 @@ function uploadCordova(path,type,params,url){
         alert("失败"+ JSON.stringify(err));
     }, options);
 }
+
+
+
+/*   *** 下边为下载整合***    */
+
+
+
 
 //此处为友人才专用upload， 带参数和header的请求
 function uploadHr(){
@@ -468,10 +322,6 @@ function SHA1(msg) {
     return temp.toLowerCase();
 
 }
-
-
-
-
 
 
 //为了实现summer.download

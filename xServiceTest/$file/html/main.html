@@ -17,30 +17,23 @@
 
 			<div id="content" class="um-content p15">
 				<div style="text-align:center;font-weight:bold;">iUAP Mobile</div>
-				<button class="p15 um-btn mt30" onclick="camera()">通过$camera来实现拍照</button>
-			    <button class="p15 um-btn mt30" onclick="openPhotoAlbum()">通过$camera来实现选择图库</button>
-			    <button class="p15 um-btn mt30" onclick="getFileInfo()">获取文件大小</button>
+				<button class="p15 um-btn mt30 " onclick="camera()">拍照</button>
+			    <button class="p15 um-btn mt30" onclick="openPhotoAlbum()">选择图库</button>
+			    <button class="p15 um-btn mt30" onclick="getFileInfo()">获取相册选取文件大小</button>
 			    
 			    <img class="mt30" src="" alt="" width="160" height="160" id="pathCamera" />
 			    <img class="mt30" src="" alt="" width="160" height="160" id="pathPhoto" />
 			    
-			    <button class="p15 um-btn mt30" onclick="uploadCamera()">通过cordova来实现上传</button>
-			    <button class="p15 um-btn mt30" onclick="uploadPhoto()">通过cordova来实现上传</button>
-			    <button class="p15 um-btn mt30 um-btn-warning" onclick="uploadMore()">通过cordova来实现多图上传</button>
+			    <button class="p15 um-btn mt30" onclick="uploadCamera()">上传相机选取</button>
+			    <button class="p15 um-btn mt30" onclick="uploadPhoto()">上传相册选取</button>
+			    <button class="p15 um-btn mt30 um-btn-warning" onclick="uploadMore()">同时上传相册图和拍照图</button>
 			    
-			    <button class="p15 um-btn mt30" onclick="downloadImg()">通过$file来实现下载图片</button>
-			    <p id="number1">0</p>
-			    <button class="p15 um-btn mt30" onclick="downloadDocx()">通过$file来实现下载Docx</button>
-			    <p id="number2">0</p>
-			    <button class="p15 um-btn mt30" onclick="downloadPDF()">通过$file来实现下载PDF</button>
-			    <button class="p15 um-btn mt30" onclick="downloadTxt()">通过$file来实现下载txt</button>
-			    <button class="p15 um-btn mt30" onclick="downloadXlsx()">通过$file来实现下载xlsx</button>
 			    
 			    
 			    <!-- <button class="p15 um-btn mt30" onclick="cameraC()">通过cordova拍照</button>
 			    <button class="p15 um-btn mt30" onclick="photoC()">通过cordova选择图片</button> -->
 			    <!-- <button class="p15 um-btn mt30" onclick="uploadFile()">通过$file来实现上传</button> -->
-			    <button class="p15 um-btn mt30" onclick="uploadCordova()">通过cordova来实现上传</button>
+			    <!-- <button class="p15 um-btn mt30" onclick="uploadCordova()">通过cordova来实现上传</button> -->
 			</div>
 		</div>
 	</body>	
