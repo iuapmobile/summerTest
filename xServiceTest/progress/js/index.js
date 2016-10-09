@@ -136,10 +136,10 @@ function downloadCall(args){
     var filename = args.filename;
 
     if(args.isfinish == true){
+    	//通过数字来将下边的id赋值percent
         num ++ ;
-		//$summer.alert(args);
+        //将第一个截取
 		arr.splice(0, 1);
-		//$summer.alert(arr);
 		if(arr.length>0){
 			downloads(arr[0].url,arr[0].filepath,arr[0].bool);
 		}
