@@ -40,7 +40,7 @@ function openPhotoAlbum(){
 //获取选择回来的图片的大小
 function getFileInfo(){
 	alert(pathPhoto)
-	var size = $file.getFileInfo(pathPhoto);
+	var size = summer.UMFile.getFileInfo(pathPhoto);
 	alert("文件大小" + JSON.parse(size).size + "kb");
 }
 
@@ -62,18 +62,16 @@ function uploadCamera(){
 }
 function uploadPhoto(){
 	var params = {};
-	uploadCordova(
-		{
-			fileURL : pathPhoto,
-			type : "image/jpeg",
-			params : params,
-			SERVER : "http://123.103.9.206:7100/UpdateApp/file/upload"
-		},function (ret){
-			alert("成功"+ JSON.stringify(ret));
-		},function(err){
-			alert("失败"+ JSON.stringify(err));
-		}
-	);
+	summer.upload({
+		fileURL : pathPhoto,
+		type : "image/jpeg",
+		params : params,
+		SERVER : "http://123.103.9.206:7100/UpdateApp/file/upload"
+	},function (ret){
+		alert("成功"+ JSON.stringify(ret));
+	},function(err){
+		alert("失败"+ JSON.stringify(err));
+	});
 }
 
 //for 多图片上传

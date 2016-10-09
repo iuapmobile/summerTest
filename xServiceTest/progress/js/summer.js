@@ -1054,12 +1054,23 @@
 				$summer.alert(json);
 				delete json["alert"];
 			}
-
 			return this.callCordova('summer-plugin-frame.XFrame','openFrame',json, successFn, errFn);
         },
         closeFrame : function(json, successFn, errFn){
 			return this.callCordova('summer-plugin-frame.XFrame','closeFrame',json, successFn, errFn);
         },
+        openFrameGroup : function(json, successFn, errFn){
+			return this.callCordova('summer-plugin-frame.XFrame', 'openFrameGroup', json, successFn, errFn);
+		},
+		closeFrameGroup : function(json, successFn, errFn){
+			return this.callCordova('summer-plugin-frame.XFrame', 'closeFrameGroup', json, successFn, errFn);
+		},
+		setFrameGroupAttr : function(json, successFn, errFn){
+			return this.callCordova('summer-plugin-frame.XFrame', 'setFrameGroupAttr', json, successFn, errFn);
+		},
+		setFrameGroupIndex : function(json, successFn, errFn){
+			return this.callCordova('summer-plugin-frame.XFrame', 'setFrameGroupIndex', json, successFn, errFn);
+		},
         openWin : function(json, successFn, errFn){
 			return this.callCordova('summer-plugin-frame.XFrame', 'openWin', json, successFn, errFn);
         },
@@ -1128,7 +1139,8 @@
             return s.cordova.require('summer-plugin-frame.XFrame').refreshFooterLoadDone(json, successFn, errFn);
         }
     };
-
+ 
+ 
     //核心API直接通过 summer.xxx()访问
     s.openFrame = s.window.openFrame;
     s.closeFrame = s.window.closeFrame;
@@ -1146,6 +1158,11 @@
     s.setRefreshFooterInfo = s.window.setRefreshFooterInfo;
     s.refreshFooterLoadDone = s.window.refreshFooterLoadDone;
 
+    s.openFrameGroup = s.window.openFrameGroup;
+    s.closeFrameGroup = s.window.closeFrameGroup;
+    s.setFrameGroupAttr = s.window.setFrameGroupAttr;
+    s.setFrameGroupIndex = s.window.setFrameGroupIndex;
+
     s.showProgress = function(json){
 		if(!s.canrequire()) return;
     	var invoker = summer.require('summer-plugin-service.XService');
@@ -1158,7 +1175,24 @@
     	json = json || {};
         invoker.call("UMJS.hideLoadingBar",json);
     };
+    //upload方法
+    s.upload = function(json,sFn,eFn,headers){		
+    	var fileURL = json.fileURL,
+    		type = json.type,
+			params = json.params;
+	    var options = new FileUploadOptions();
+	    options.fileKey="file";
+	    options.fileName=fileURL.substr(fileURL.lastIndexOf('/')+1);
+	    options.mimeType = type;
 
+	    options.params = params;
+	    options.httpMethod = "POST"; 
+	    options.headers = headers || "";
+
+	    var ft = new FileTransfer();
+	    var SERVER = json.SERVER;
+	    ft.upload(fileURL, encodeURI(SERVER), sFn, eFn, options);
+    };
     s.eval = function(script){
     	var t = setTimeout("try{eval(" + script + ")}catch(e){alert(e)}", 10);
     };
@@ -1279,21 +1313,21 @@
         return this.setStorage(key, value, "application");
     };
 	s.getAppStorage = function(key){
-        return this.getStorage("application");
+        return this.getStorage(key, "application");
     };
 	
 	s.writeConfig = function(key, value){
         return this.setStorage(key, value, "configure");
     };
 	s.readConfig = function(key){
-        return this.getStorage("configure");
+        return this.getStorage(key, "configure");
     };
 	
 	s.setWindowStorage = function(key, value){
         return this.setStorage(key, value, "window");
     };
 	s.getWindowStorage = function(key){
-        return this.getStorage("window");
+        return this.getStorage(key, "window");
     };
 	
     s.rmStorage = function(key){
@@ -1337,16 +1371,11 @@
 	s.upgrade = function(json, successFn, errFn){
 		return s.callCordova('summer-plugin-core.XUpgrade', 'upgrade', json, successFn, errFn);
 	};
-	//exit
-	s.exitApp = function(json){
-		var ver = s.callSync('XUpgrade.getVersion', json || {});
-		if(typeof ver == "string"){
-			return JSON.parse(versionInfo);
-		}else{
-			alert("getVersion' return value is not string!")
-			return ver;
-		}
-	}
+	//退出
+	s.exitApp = function(json, successFn, errFn){
+		return s.callCordova('summer-plugin-core.XUpgrade', 'exitApp', json, successFn, errFn);
+	};
+	
 	//网络请求服务
 	s.ajax = function(json, successFn, errFn){
 		if(json.type == "get"){
@@ -1625,7 +1654,7 @@
 						return;	
 					}			
 				}else if(typeof jsonArgs == "object"){
-					if(jsonArgs["callback"] && typeof(jsonArgs["callback"]) == "function"){
+					if(jsonArgs["callback"] && $isFunction(jsonArgs["callback"]) && !jsonArgs["__keepCallback"]){
 						//1、 callback:function(){}
 						var newCallBackScript = "fun" + $summer.UUID(8, 16) + "()";//anonymous method
 						while($__cbm[newCallBackScript]){
@@ -1655,7 +1684,7 @@
 							}				
 						}
 						jsonArgs["callback"] = newCallBackScript;				
-					}else if(jsonArgs["callback"] && typeof(jsonArgs["callback"]) == "string"){
+					}else if(jsonArgs["callback"] && typeof(jsonArgs["callback"]) == "string" && !jsonArgs["__keepCallback"]){
 						//2、 callback:"mycallback()"
 						var cbName = jsonArgs["callback"].substring(0, jsonArgs["callback"].indexOf("("));
 						var callbackFn = eval(cbName);
@@ -1877,9 +1906,51 @@
 		}
 		
 	};
+	s.UMFile = {
+		remove : function(args){
+			return s.service.call("UMFile.remove", args, false);//默认异步
+		},
+		exists : function(args){
+			return s.service.call("UMFile.exists", args, true);
+		},
+		download : function(jsonArgs){
+			if($validator.isEmpty(jsonArgs.url)){
+				alert("参数url不能为空");
+			}
+			if($validator.isEmpty(jsonArgs.filename)){
+				alert("参数filename不能为空");
+			}
+			if($validator.isEmpty(jsonArgs.locate)){
+				alert("参数locate不能为空");
+			}
+			if($validator.isEmpty(jsonArgs.override)){
+				alert("参数override不能为空");
+			}
+			if($validator.isEmpty(jsonArgs.callback)){
+				alert("参数callback不能为空");
+			}
+			jsonArgs["__keepCallback"] = true;
+			return s.service.call("UMFile.download", jsonArgs);//默认异步
+		},
+		open : function(args){
+			if(!$validator.isJSONObject(args)){
+				alert("调用$file.open方法时，参数不是一个有效的JSONObject");
+			}
+			return s.service.call("UMDevice.openFile", args, false);//调用的是UMDevice的方法
+		},
+		getFileInfo : function(args){
+			var json = args;
+			if(typeof args == "string"){
+				json = {"path" : args};
+			}
+			return s.service.call("UMFile.getFileInfo",json, true);
+		}
+
+	};
 	s.writeFile = s.UMDevice.writeFile;
 	s.readFile = s.UMDevice.readFile;
 	s.openCamera = s.UMDevice.openCamera;
+
 }(window,summer);
 
 (function(w,s,$s,prefix){

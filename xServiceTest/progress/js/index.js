@@ -10,7 +10,7 @@ var filename,
 	filepath;
 //删除指定位置的文件\
 function removeFile(){
-	$file.remove({
+	summer.UMFile.remove({
 	    path : filepath,
 	    file : filename,
 	    callback : "removeCall()"
@@ -28,7 +28,7 @@ function removeCall(args){
 //检测目标文件是否存在的方法
 
 function check(){
-	var flag = $file.exists({
+	var flag = summer.UMFile.exists({
 		path : filepath,
 		file : filename
 	}).toString();
@@ -120,7 +120,7 @@ function downloads(url,filepath,bool,obj){
 	filename = url.substr(url.lastIndexOf("/")+1);
     
     
-	$file.download({
+	summer.UMFile.download({
         "url" : url,
         "locate" : filepath,
         "filename" : filename, 
@@ -143,11 +143,10 @@ function downloadCall(args){
 		if(arr.length>0){
 			downloads(arr[0].url,arr[0].filepath,arr[0].bool);
 		}
-		return;
 		//调用打开文件函数
 		var r = confirm("确认打开吗!");
 		if (r == true){
-  			//openFile();
+  			openFile();
   		}else{
   			alert("You pressed Cancel!");
   		}
@@ -162,7 +161,7 @@ function downloadCall(args){
 function openFile(){
 	//将filename.的格式解析
 	var filetype = filename.split(".").pop();
-	$file.open({
+	summer.UMFile.open({
         "filename" : filename,  //文件名
         "filetype" : filetype,  //文件格式
         "filepath" : filepath	//文件路径
