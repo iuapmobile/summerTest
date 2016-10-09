@@ -10,6 +10,9 @@ summerready = function(){
         name: 'main',
         url: 'html/main.html',
         bounces: true,
+        pageParam:{
+          count : 1
+         },
         rect: {
             x: 0,
             y: y,
