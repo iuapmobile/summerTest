@@ -30,7 +30,7 @@ function openPhotoAlbum(){
         compressionRatio : 0.2,
         callback : function (args){
         	$summer.alert(args);
-			pathPhoto = args.imgPath;
+			pathPhoto = args.compressImgPath;
 			path.push(pathPhoto);
 			//path = args.image.imgPath;
 			$("#pathPhoto").attr("src",pathPhoto);

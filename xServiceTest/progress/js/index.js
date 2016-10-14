@@ -104,6 +104,7 @@ function downloads(url,filepath,bool,obj){
 	
 	
 	//判断网络类型		
+	/*
 	var available = $net.available();
 	var getNetworkInfo = JSON.parse($net.getNetworkInfo());
 	if (!available){
@@ -116,7 +117,7 @@ function downloads(url,filepath,bool,obj){
     }else{
     	alert("此时连接为移动网络");
     }
-    
+    */
 	filename = url.substr(url.lastIndexOf("/")+1);
     
     

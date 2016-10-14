@@ -1565,9 +1565,7 @@
 		s = {};
 		w.summer = s;
 	}
-	
 	//----------------------------------------------------------------------------------- Validator
-	
 	var $validator = {
 		check : function(obj,paramNameArray,msg){
 			for(var i=0,len=paramNameArray.length;i<len;i++){
@@ -1589,14 +1587,6 @@
 				}			
 			}
 			return true;
-		},
-		isEmpty : function(obj){
-			return $summer.isEmpty(obj);
-		},
-		isJSONObject : function(obj){
-			if ($summer.isJSONObject(obj)) {
-				alert("参数不是一个有效的JSONObject");
-			}
 		},
 		isNamespace : function(ns){
 			/*
@@ -1635,26 +1625,157 @@
 			return true;
 		}
 	}
-	
+	var UM = {
+		stringToJSON : function (str){
+		    if(str == null || (typeof str == "string" && str == ""))
+				return null;
+				
+			if(typeof str == "string"){
+				try{
+					if(str.indexOf("\n") >= 0){				
+						str = str.replace(/\n/g,"\\n");
+					}
+					if(str.indexOf("\r") >= 0){				
+						str = str.replace(/\r/g,"\\r");
+					}
+					if(!isNaN(str)){
+						return str;
+					}
+					if(/^[\d.]+$/.test(str)){
+						return str;
+					}
+					var result = eval('(' + str + ')');
+					if(Object.prototype.toString.call(result) === '[object Object]'){
+						return result;
+					}
+					if(Object.prototype.toString.call(result) === '[object Array]'){
+						return result;
+					}
+					return str;
+				}catch(e){
+					//alert("stringToJSON Exception! not a valid json string ");
+					return str;
+				}
+			}else if(typeof str == "object"){
+				return str;
+			}else{
+				alert("$stringToJSON()出错! 试图将一个["+ typeof str +"]类型的参数执行stringToJSON!");
+				return str;//不会走到这里
+			}
+		},
+		jsonToString : function (obj){
+		    
+		    switch(typeof(obj)){
+		        case 'string':            
+					try{
+						return eval('"'+ obj.replace(/(["\\])/g, '\\$1') +'"');            
+		            }catch(e){
+						return obj;
+		            }
+				case 'array':
+					return '[' + obj.map(UM.jsonToString).join(',') + ']';
+				case 'object':
+					if(obj instanceof Array){
+						var strArr = [];
+						var len = obj.length;
+						/*
+						for(var i=0; i<len; i++){
+							strArr.push(THIS.jsonToString(obj[i]));
+						}				
+						return '[' + strArr.join(',') + ']';
+						*/
+						
+						for(var i=0; i<len; i++){					
+							var item = null;
+							if(typeof obj[i] == "string"){
+								item = "\"" + obj[i] + "\"";
+							}else if(typeof obj[i] == "object"){
+								item = UM.jsonToString(obj[i]);
+							}else{						
+								item = UM.jsonToString(obj[i]);
+							}
+							
+							strArr.push(item);
+						}				
+						return '[' + strArr.join(',') + ']';
+					}else if(obj==null){
+						//return 'null';
+						return "";//兼容老版本		
+						//return "\"\"";
+				
+					}else{
+						var list = [];
+						for (var property in obj){
+							var vv = UM.jsonToString(obj[property]);
+							var p = UM.jsonToString(property);
+							if(p.indexOf("\"")>=0){
+
+							}else{
+								p="\""+p+"\"";
+							}
+							if(obj[property] instanceof Array){
+								
+							}else if(vv.toString().indexOf("\"")>=0){//哪一种情况??
+								
+								if(typeof obj[property] == "string"){
+									if(obj[property].indexOf("{")>-1 && obj[property].indexOf("}")>obj[property].indexOf("{")){//
+										if(JSON.tryParseJSON(obj[property])){
+											//vv = vv.replace(/\"/g,"\\\""); 
+											vv = vv.replace(/(["\\])/g, '\\$1');									
+											vv="\"" +vv+"\"" ;
+										}else{
+											vv = vv.replace(/(["\\])/g, '\\$1');
+											vv="\"" +vv+"\"" ;
+										}
+									}else{
+										//vv = vv.replace(/\"/g,"\\\"");  
+										vv = vv.replace(/(["\\])/g, '\\$1');								
+										vv="\"" +vv+"\"" ;
+									}
+								}
+								
+							}
+							else{
+								vv="\"" +vv+"\"" ;
+								//list.push("\""+THIS.jsonToString(property)+"\"" + ':'+"\"" + THIS.jsonToString(obj[property])+"\"");
+							}
+							list.push(p + ':'+vv);
+							}
+						return '{' + list.join(',') + '}';  
+					}  
+				case 'number':  
+					return obj;
+				case 'boolean':  
+					return "\"" + obj.toString() + "\"";
+				case 'undefined': 
+					return "";//兼容老版本		
+					//return "\"\"";
+				default:  
+					return obj;  
+			}  
+		}
+	}
+	$jsonToString = UM.jsonToString;
+	$stringToJSON = UM.stringToJSON;
 	s.service = {
 		call:function(serviceType, jsonArgs, isSync){
 			try{		
 				var serviceparams = "";
 				if(typeof jsonArgs == "string"){
-					var json = JSON.parse(jsonArgs);
+					var json = $stringToJSON(jsonArgs);
 					if(typeof json == "string"){
 						//转json后仍然为string，则报错，规定：调用服务的参数如果是字符串，必须是能转为json的字符串才行
 						alert("调用服务[" + serviceType + "]时参数不是一个有效的json字符串。参数是" + jsonArgs);
 						return;	
 					}
-					serviceparams = JSON.stringify(json);
+					serviceparams = $jsonToString(json);
 					if(typeof serviceparams == "object"){
 						//转json后仍然为string，则报错，规定：调用服务的参数如果是字符串，必须是能转为json的字符串才行
 						alert("调用服务[" + serviceType + "]时传递的参数不能标准化为json字符串，请检查参数格式。参数是" + jsonArgs);
 						return;	
 					}			
 				}else if(typeof jsonArgs == "object"){
-					if(jsonArgs["callback"] && $isFunction(jsonArgs["callback"]) && !jsonArgs["__keepCallback"]){
+					if(jsonArgs["callback"] && $summer.isFunction(jsonArgs["callback"]) && !jsonArgs["__keepCallback"]){
 						//1、 callback:function(){}
 						var newCallBackScript = "fun" + $summer.UUID(8, 16) + "()";//anonymous method
 						while($__cbm[newCallBackScript]){
@@ -1720,7 +1841,7 @@
 					
 					this.callBackProxy(jsonArgs , "error");
 				
-					serviceparams = JSON.stringify(jsonArgs);
+					serviceparams = $jsonToString(jsonArgs);
 					if(typeof serviceparams == "object"){
 						//转string后仍然为json，则报错，规定：调用服务的参数如果是字符串，必须是能转为json的字符串才行
 						alert("调用服务[" + serviceType + "]时传递的参数不能标准化为json字符串，请检查参数格式" + jsonArgs);
@@ -1731,13 +1852,12 @@
 					return;
 				}
 					
-
-					if(isSync){
-						return adrinvoker.call2(serviceType,serviceparams);//call2是同步调用
-					}else{
-						//默认异步执行
-						return adrinvoker.call(serviceType,serviceparams);//call是异步调用 默认异步
-					}
+				if(isSync){
+					return adrinvoker.call2(serviceType,serviceparams);//call2是同步调用
+				}else{
+					//默认异步执行
+					return adrinvoker.call(serviceType,serviceparams);//call是异步调用 默认异步
+				}
 			}catch(e){
 				var info="";
 				if(isSync)	
@@ -1844,7 +1964,7 @@
 						args[key] = $stringToJSON(args[key]);
 					}
 				}
-				return UM_NativeCall.callService("UMService.callAction", args, false);
+				return s.service.call("UMService.callAction", args, false);
 			}else{
 				var args = {};
 				args["viewid"] = controllerName;
@@ -1859,7 +1979,7 @@
 					}
 				}
 				//$service.call("UMService.callAction","{callback:'myback', contextmapping:'data'，viewid:'"+controllerName+"',isDataCollect:'false',params:{demo:'demo'},action:'needPwd'}");
-				return UM_NativeCall.callService("UMService.callAction", args);
+				return s.service.call("UMService.callAction", args);
 			}
 		}
 	};//s.service end
@@ -1914,26 +2034,26 @@
 			return s.service.call("UMFile.exists", args, true);
 		},
 		download : function(jsonArgs){
-			if($validator.isEmpty(jsonArgs.url)){
+			if($summer.isEmpty(jsonArgs.url)){
 				alert("参数url不能为空");
 			}
-			if($validator.isEmpty(jsonArgs.filename)){
+			if($summer.isEmpty(jsonArgs.filename)){
 				alert("参数filename不能为空");
 			}
-			if($validator.isEmpty(jsonArgs.locate)){
+			if($summer.isEmpty(jsonArgs.locate)){
 				alert("参数locate不能为空");
 			}
-			if($validator.isEmpty(jsonArgs.override)){
+			if($summer.isEmpty(jsonArgs.override)){
 				alert("参数override不能为空");
 			}
-			if($validator.isEmpty(jsonArgs.callback)){
-				alert("参数callback不能为空");
+			if($summer.isEmpty(jsonArgs.callback)){
+				alert("参数callback不能为空 ");
 			}
 			jsonArgs["__keepCallback"] = true;
 			return s.service.call("UMFile.download", jsonArgs);//默认异步
 		},
 		open : function(args){
-			if(!$validator.isJSONObject(args)){
+			if(!$summer.isJSONObject(args)){
 				alert("调用$file.open方法时，参数不是一个有效的JSONObject");
 			}
 			return s.service.call("UMDevice.openFile", args, false);//调用的是UMDevice的方法
