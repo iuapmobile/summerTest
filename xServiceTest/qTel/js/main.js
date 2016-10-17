@@ -1,22 +1,29 @@
 //here is your code...
 summerready = function () {
-	$summer.byId("content").innerHTML += "<h1 style='text-align: center'>Hello friends, welcome to touch the summer frame!</h1><h2 style='text-align: center'>The frame update at " +(new Date()).toLocaleString()+"</h2>";
 };
-function openTel(){
-	 $tel.call("13810513731")
+function call(){
+	$tel.call('13261813382')
 }
-
-function openTel1(){
+function sendMessage(){
 	$tel.sendMsg({
-	   "tel" : "13261813382,13810513731",//电话号码   ios支持群发   android不支持群发  返回短息界面的可是错误
-	   "body" : "hello"//短信内容
+		tel:'13261813382',
+		body:'收到请回复'
 	})
+	alert('发送成功！！！！！')
 }
-
-function openTel2(){
-	$tel.sendMail({
-	   "receive" : "523422607@qq.com",//收件人
-	   "title" : "hello",//邮件主题
-	   "content" : "欢迎使用UAP Mobile"//邮件内容
-	})
+function sendMail(){
+	$tel.sendMail('wuxlr@yonyou.com','我是谁？','收到勿回');
+	alert('发送成功')
+}
+function saveContact(){
+	$tel.saveContact( {
+		tel:"18210773633",//手机号码
+		employeename:"鬼杀",//联系人名称
+		jobname:"国务院总理",//职位
+		orgname:"暗杀部",//部门名称
+		address:"天通苑1号",//单位地址
+		email:"1234@163.com",//邮箱
+		officetel:"010-897657"//办公电话
+	});
+	alert('保存成功');
 }

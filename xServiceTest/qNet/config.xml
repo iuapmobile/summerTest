@@ -2,12 +2,12 @@
 <application> 
   <app_start>index.html</app_start>  
   <app_name>qnet</app_name>  
-  <project_name>q$net</project_name>  
+  <project_name>qnet</project_name>  
   <package_name>com.yonyou.qnet</package_name>  
   <frame_name>ump</frame_name>  
   <icon relativePath="css/themes/default/app">app</icon>  
   <target>android-15</target>  
-  <platform>ios</platform>  
+  <platform>android</platform>  
   <versionCode>1</versionCode>  
   <versionName>1</versionName>  
   <orientation>unspecified</orientation>  
@@ -76,7 +76,7 @@
   <permission id="android.permission.WRITE_EXTERNAL_STORAGE"/>  
   <permission id="android.permission.WRITE_SMS"/>  
   <permission id="com.android.alarm.permission.SET_ALARM"/>  
-  <import id="cordova-plugin-http" type="web" ref="cordova"/> 
+  <import/>
 </application><!--
 【屏幕显示方向】
   screenOrientation: 屏幕显示方向

@@ -2,7 +2,7 @@
 function openScanner1(){
 	$scanner.open({
        callback : function (args){  
-		   alert(args)  // ios返回值 object类型    key值为result  android 没有执行回调
+		   $sumer.alert(args)  // ios返回值 object类型    key值为result  android 没有执行回调
 		}
 	 });	 
 }

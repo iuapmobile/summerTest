@@ -2,12 +2,12 @@
 <application> 
   <app_start>index.html</app_start>  
   <app_name>sqlite</app_name>  
-  <project_name>q$sqlite</project_name>  
+  <project_name>qSqlite</project_name>  
   <package_name>com.yonyou.test</package_name>  
   <frame_name>ump</frame_name>  
   <icon relativePath="css/themes/default/app">app</icon>  
   <target>android-15</target>  
-  <platform>ios</platform>  
+  <platform>android</platform>  
   <versionCode>1</versionCode>  
   <versionName>1</versionName>  
   <orientation>4</orientation>  

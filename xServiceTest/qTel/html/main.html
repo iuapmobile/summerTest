@@ -12,7 +12,8 @@
 		<script src="../js/Frameworks/iuapmobile.frameworks.ui.js" ></script>
 		<script src="../js/main.js" ></script>
 		<style>
-			button{display:block;margin:10px auto;width:100px}
+			button{display:block;margin:10px auto;width:100px;
+				margin-top: 30px;}
 		</style>
 	</head>
 	<body>
@@ -23,9 +24,10 @@
 
 			<div id="content" class="um-content p15">
 				<div style="text-align:center;font-weight:bold;">iUAP Mobile</div>
-					<button onclick="openTel()">打电话</button>
-					<button onclick="openTel1()">写短信</button>
-					<button onclick="openTel2()">写邮件</button>
+				<button onclick="call()">打电话</button>
+				<button onclick="sendMessage()">发短信</button>
+				<button onclick="sendMail()">发送邮件</button>
+				<button onclick="saveContact()">保存联系人</button>
 				
 
 			</div>

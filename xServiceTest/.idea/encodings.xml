@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/qCache/js/new.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/qCamera/js/new.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/qDevice/js/new.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/qNet/js/new.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/qScanner/js/new.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/qService/js/new.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/qSqlite/js/new.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/qTel/js/new.js" charset="UTF-8" />
+  </component>
+</project>

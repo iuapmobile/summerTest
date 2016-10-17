@@ -1,148 +1,153 @@
-function test1(){
-	alert($device.getTimeZoneID()); //android支持  返回数据类型为string  ios返回值为undefined
+//here is your code...
+function test() {
+	$summer.alert($device.getTimeZoneID());
 }
 
-function test2(){
-	alert($device.getTimeZoneDisplayName()); //android支持  返回数据类型为string  ios返回值为undefined
+function test1() {
+	$summer.alert($device.getTimeZoneDisplayName());
 }
 
-function getLocation(){
-	$device.getLocation({   
-	     "callback" :  function(args){    	
-	     	var qq = JSON.parse(args.result);//ios: 返回结果args类行为json  android 没有执行回调
-	     	alert(qq.longitude); //返回经度
-	     	alert(qq.latitude); //返回纬度
-	     },  //回调执行的JS方法				
-	     "single" : "true", //是否只获取1次
-	     "isgetaddress" : "true", //是否需要获取地址
-	     "network" : "true" //是否使用wifi定位
-	 })	
+function test2() {
+	$summer.alert($device.getDeviceInfo());
 }
 
-function test3(){
+function test3() {
+	$summer.alert($device.captureTwodcode());
+}
+
+function test4() {
+	$summer.alert($device.getLocation({
+		"bindfield" : "location", //
+		"single" : "true", //是否只获取1次
+		"isgetaddress" : "true", //是否获取地址
+		"network" : "true", //是否wify定位
+		"callback" : "locationcallback()"
+	}));
+}
+
+function test5() {
+	$device.openscan();
+}
+
+function test6() {
+	$device.capturePhoto({
+		bindfield : "image",
+		callback : function(args) {
+			$alert(args)
+		}
+	});
+}
+
+function test7() {
+	$summer.alert($device.getAlbumPath());
+}
+
+function test8() {
+	$summer.alert($device.getAppAlbumPath());
+}
+
+function test9() {
+	$summer.alert($device.generateQRCode({
+		size : '200',
+		content : '你好！',
+	}));
+}
+
+function test10() {
+	$device.sendMail({
+		receive : 'wuxlr@yonyou.com',
+		title : '您好',
+		content : '您好吗？'
+	});
+}
+
+function test11() {
+	$device.saveContact({
+		tel : "10080", //手机号码
+		employeename : "中国移动", //联系人名称
+		jobname : "", //职位
+		orgname : "", //部门名称
+		address : "", //单位地址
+		email : "", //邮箱
+		officetel : ""//办公电话
+	});
+}
+
+function test12() {
+	$summer.alert($device.getContacts());
+}
+
+function test13() {
+	$summer.alert($device.openAddressBook());
+}
+
+function test14() {
+	$summer.alert($device.getInternalMemoryInfo());
+}
+
+function test15() {
+	$summer.alert($device.getExternalStorageInfo());
+}
+
+function test16() {
+	$summer.alert($device.getMemoryInfo());
+}
+
+function test17() {
+	$device.gotoMapView({
+		posX : "", //位置信息x坐标
+		posY : "", //位置信息y坐标
+		bindfield : "", //绑定字段
+		auto : "false", //是否自动定位
+		aroundpoi : "", //周围兴趣点
+		keyword : "", //要定位的关键字
+		onaroundpoiclick : function() {
+			$alert('您点击了目的地')
+		}, //兴趣点点击触发的JS方法
+		onmylocationclick : function() {
+			alert('您目前所处的位置')
+		}//我的位置点击触发的JS方法
+	});
+}
+
+function test18() {
 	$device.openWebView({
-	   "url" : "http://www.baidu.com" //android支持    ios不执行
-	 });
+		url : "http://www.baidu.com"
+	});
 }
 
-function test4(){
-	alert($device.getInternalMemoryInfo()); //android  返回json类型为string key值为MemToal、MenFree
-	alert($device.getInternalMemoryInfo().total);//ios      返回object类型，key值为total、free
+function test19() {
+	$device.screenShot({
+		callback : function(args) {
+			$summer.alert(args);
+		}
+	});
 }
 
-function test5(){
-	alert($device.getExternalStorageInfo());//仅android支持，返回json类型为string key值为TotalSize、freeSize
+function test20() {
+	$device.notify({
+		"sendTime" : "2015-02-03 13:54:30",
+		"sendBody" : "您设置了消息提醒事件",
+		"icon" : "app.png"
+	});
 }
 
-function test6(){
-	alert($device.getMemoryInfo());//android支持，返回json类型为string key值为MemToal、MenFree等多个字段
-								    //ios 返回json类型为string key值为MemToal、MenFree
+function test21() {
+	$summer.alert($device.getScreenWidth());
 }
 
-function test7(){
-	alert($device.getDeviceInfo()) //android支持，返回json类型为string key值为deviceid、os、screen、version等多个字段
-	alert($device.getDeviceInfo().os) //ios 返回类型为object key值为deviceid、os、screen等字段
+function test22() {
+	$summer.alert($device.getScreenHeight());
 }
 
-function test8(){
-	alert($device.getScreenHeight()); //返回number类型
+function test23() {
+	$summer.alert($device.getScreenDensity());
 }
 
-function test9(){
-	alert($device.getScreenWidth());//返回number类型
+function test24() {
+	$summer.alert($device.currentOrientation());
 }
 
-function test10(){
-	alert($device.getScreenDensity()); //android支持，返回number类型      ios 返回值为undefined
-}
+summerready = function() {
 
-function test11(){
-	$device.notify({       //android有震动提示 设置的信息没有提示    ios 没有执行
-	  "sendTime" : "2015-02-03 13:54:30",//提示时间
-	  "sendBody" : "您设置了消息提醒事件",//提示文字内容
-	  "icon" : "../img/mt_food.png"//图标
-	 })
-}
-
-function test12(){
-	$device.capturePhoto({  //android的回调函数没有执行       ios 返回类型为object 键值为imgPath
-        "callback" : function (args){
-        	alert(args.imgPath)
-		 }
-	 });
-}
-
-function test13(){
-	$device.screenShot({   //android应用直接关闭  ios 返回object，键值为imgPath
-       "callback" : function (args){
-        	alert(typeof args);
-        	$alert(args)
-		 } 
-   })
-}
-
-function test14(){
-	$device.saveContact({  //   android 和 ios支持，
-		"tel" : "139****",//手机号码
-		"employeename" : "张三",//联系人名称
-		"jobname" : "职员",//职位
-		"orgname" : "开发部",//部门名称
-		"address" : "北京市海淀区***",//单位地址
-		"email" : "zhangsan@yonyou.com",//邮箱
-		"officetel" : "6243****"//办公电话
-	})
-}
-
-function test15(){
-	$device.openAddressBook();  //android 和 ios支持，
-}
-
-function test16(){
-	 var value=$device.getContacts();//(android调取成功时,返回类型为array类型的string)  ios没有执行  android调取异常
-	 alert(JSON.parse(value))
-	 alert(JSON.parse(value)[0])
-     alert(JSON.parse(value)[0].id)
-}
-
-function test17(){
-	  alert($device.currentOrientation()) //android ios支持,返回类型为string  
-}
-
-function test18(){          //android调取异常  ios 返回类型为string
-	var qq=$device.generateQRCode({
-		 size : 30,//二维码正方形的宽高
-		 content : "text"//生成二维码所需的源文字
-	 });
-	 	 
-	 alert(qq)  
-}
-
-function test19_1(){   //Android独有   获取相册路径  返回类型为string   
-	 alert($device.getAlbumPath())
-	 alert(typeof $device.getAlbumPath())
-}
-
-function test19_2(){
-	$device.getAlbumPath({   //Android独有   直接关闭         
-          "allFolders" : true,//是否获取相册中所有文件夹
-          "callback" : function(args){
-          		alert(typeof args)
-          		$alert(args)
-          }
-   })
-  
-}
-
-function test19_3(){
-	 $device.getAlbumPath({   //Android独有  直接关闭 
-          "allFolders" : false,//是否获取相册中所有文件夹
-          "callback" : function(args){
-          		alert(typeof args)
-          		$alert(args)
-          }
-   })
-}
-
-function test20(){    //  UMP-8701 Android   相机服务存放照片的存储路径  返回类型为string '/storage/emulated/0/temp/'  ios返回值为undefined
-	  alert($device.getAppAlbumPath())
-}
+};
