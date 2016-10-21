@@ -37,7 +37,7 @@ function postService(){
 
 }
 function callActionService(){
-    summer.service.callAction({
+    summer.UMService.callAction({
         "viewid" : "xxx.xxx.xx",//后台带包名的Controller名
         "action" : "methodName",//方法名,
         "params" : {a:1,b:2},//自定义参数

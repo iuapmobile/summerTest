@@ -19,13 +19,15 @@ function test3() {
 }
 
 function test4() {
-    $summer.alert(summer.UMDevice.getLocation({
-        "bindfield" : "location", //
+    summer.UMDevice.getLocation({
         "single" : "true", //是否只获取1次
         "isgetaddress" : "true", //是否获取地址
         "network" : "true", //是否wify定位
-        "callback" : "locationcallback()"
-    }));
+        "callback" : function(args){
+             $summer.alert(args);
+        
+        }
+    });
 }
 
 function test5() {

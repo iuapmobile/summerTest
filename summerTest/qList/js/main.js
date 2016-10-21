@@ -57,15 +57,16 @@ summerready = function () {
  	
  	summer.window.setRefreshFooterInfo({
                      visible: true,
-                     bgColor: '#F5F5F5',
-                     textColor: '#4d4d4d',
+                     bgColor: 'red',
+                     textColor: '#fff',
                      textDown: '上拉刷新...',
                      textUp: '松开刷新...',
                      textDo : '正在刷新数据...',                                                                                                                                                                                   showTime: true
         }, function (ret, err) {
                       //从服务器加载数据，加载完成后调用api.refreshFooterLoadDone()方法恢复组件到默认状态
+                      alert('获取成功！');
                   	var row = {
-	    				"sender" : "集团咨询部",
+	    				"sender" : "底部加载更多",
 	    				"img" : "../img/org5.png",
 	    				"msgNum" : 6,
 	    				"lastMsg" : "各位同仁，2015年4季度油料报销标准5.85元/升。",

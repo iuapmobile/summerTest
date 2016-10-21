@@ -75,7 +75,8 @@
   <permission id="android.permission.WRITE_CONTACTS"/>  
   <permission id="android.permission.WRITE_EXTERNAL_STORAGE"/>  
   <permission id="android.permission.WRITE_SMS"/>  
-  <permission id="com.android.alarm.permission.SET_ALARM"/> 
+  <permission id="com.android.alarm.permission.SET_ALARM"/>  
+  <import/>
 </application><!--
 【屏幕显示方向】
   screenOrientation: 屏幕显示方向
