@@ -6,7 +6,7 @@ summerready = function () {
 
 };
 function getService(){
-    summer.UMService.get({
+    summer.get({
         "url" : "http://opentest.yonyoutelecom.cn/mobile/isvName.do?account=qinfx&q=", //url地址
         "callback" : function (sender,args){
 
@@ -22,7 +22,7 @@ function getService(){
 }
 
 function postService(){
-    summer.UMService.post({
+    summer.post({
         "url" : "http://opentest.yonyoutelecom.cn/mobile/isvName.do?account=qinfx&q=",//url地址
         "callback" : function (sender,args){
             $summer.alert(args)//通过回调函数的参数获得数据sender和args，返回值为json结构的string类型
@@ -37,7 +37,7 @@ function postService(){
 
 }
 function callActionService(){
-    summer.UMService.callAction({
+    summer.callAction({
         "viewid" : "xxx.xxx.xx",//后台带包名的Controller名
         "action" : "methodName",//方法名,
         "params" : {a:1,b:2},//自定义参数
