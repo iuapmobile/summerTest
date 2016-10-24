@@ -23,6 +23,8 @@ function test22(){
     summer.openPhotoAlbum({
         callback : mycb22
     });
+
+
 }
 
 function test33(){

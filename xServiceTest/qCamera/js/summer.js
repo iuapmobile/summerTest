@@ -1514,7 +1514,7 @@
 						jsonArgs["callback"] = newCallBackScript;
 					}
 
-					s.service.callBackProxy(jsonArgs , "error");
+					s.UMService.callBackProxy(jsonArgs , "error");
 
 					serviceparams = $summer.jsonToStr(jsonArgs);
 					if(typeof serviceparams == "object"){
@@ -2117,7 +2117,7 @@
 	s.writeFile = s.UMCache.writeFile;
 	s.readFile = s.UMCache.readFile;
 	/*camera*/
-	s.openCamera= s.UMCamera.openCamera;
+	s.openCamera= s.UMCamera.open;
 	s.openPhotoAlbum = s.UMCamera.openPhotoAlbum;
 	/*scanner*/
 	s.openScanner= s.UMScanner.open;

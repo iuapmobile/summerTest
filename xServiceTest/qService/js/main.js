@@ -35,14 +35,16 @@ function postService(){
 }
 function callActionService(){
     $service.callAction({
-        "viewid" : "xxx.xxx.xx",//后台带包名的Controller名
-        "action" : "methodName",//方法名,
-        "params" : {a:1,b:2},//自定义参数
-        "autoDataBinding" : true,//请求完毕后，是否进行数据绑定，如果没有该属性，则默认不绑定。
-        "contextmapping" : "fieldPath",//将返回结果映射到指定的Context字段上，如果没有该属性，则默认为替换整个Context
-        "callback" : function (args) {
+        "viewid" : "a.b.data", //后台带包名的Controller名
+        "action" : "getData", //方法名,
+        "params" : "{a:123,b:465}", //自定义参数
+        "autoDataBinding": true,//请求完毕后，是否进行数据绑定，如果没有该属性，则默认不绑定。
+        "contextmapping": "fieldPath",//将返回结果映射到指定的Context字段上，如果没有该属性，则默认为替换整个Context
+        "callback": function (args) {
             $summer.alert(args);
         },//请求回来后执行的js方法
-        "error" : "myerror()"//失败回调的js方法
+        "error": function (error) {
+            alert(error);
+        }//失败回调的js方法
     })
 }

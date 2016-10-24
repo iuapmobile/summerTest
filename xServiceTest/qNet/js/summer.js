@@ -1514,7 +1514,7 @@
 						jsonArgs["callback"] = newCallBackScript;
 					}
 
-					s.service.callBackProxy(jsonArgs , "error");
+					s.UMService.callBackProxy(jsonArgs , "error");
 
 					serviceparams = $summer.jsonToStr(jsonArgs);
 					if(typeof serviceparams == "object"){

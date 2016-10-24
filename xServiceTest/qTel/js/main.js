@@ -9,11 +9,11 @@ function sendMessage(){
 		tel:'13261813382',
 		body:'收到请回复'
 	})
-	alert('发送成功！！！！！')
+	
 }
 function sendMail(){
 	$tel.sendMail('wuxlr@yonyou.com','我是谁？','收到勿回');
-	alert('发送成功')
+	
 }
 function saveContact(){
 	$tel.saveContact( {
@@ -25,5 +25,5 @@ function saveContact(){
 		email:"1234@163.com",//邮箱
 		officetel:"010-897657"//办公电话
 	});
-	alert('保存成功');
+	
 }

@@ -5,7 +5,7 @@
 function openScanner(){
    summer.openScanner({
         callback : function (args){
-            $summer.alert(args)  // ios返回值 object类型    key值为result  android 没有执行回调
+            $summer.alert(args)
         }
     });
 }

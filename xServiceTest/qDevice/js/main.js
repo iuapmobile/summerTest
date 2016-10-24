@@ -11,9 +11,7 @@ function test2() {
 	$summer.alert($device.getDeviceInfo());
 }
 
-function test3() {
-	$summer.alert($device.captureTwodcode());
-}
+
 
 function test4() {
 	$device.getLocation({
@@ -81,7 +79,7 @@ function test12() {
 }
 
 function test13() {
-	$summer.alert($device.openAddressBook());
+	$device.openAddressBook();
 }
 
 function test14() {

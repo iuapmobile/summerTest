@@ -1514,7 +1514,7 @@
 						jsonArgs["callback"] = newCallBackScript;
 					}
 
-					s.service.callBackProxy(jsonArgs , "error");
+					s.UMService.callBackProxy(jsonArgs , "error");
 
 					serviceparams = $summer.jsonToStr(jsonArgs);
 					if(typeof serviceparams == "object"){
@@ -1968,7 +1968,7 @@
 	s.UMSqlite={
 		openDB:function(args){
 			if($summer.isJSONObject(args) && !$summer.isEmpty(args["db"])){
-				return s.callService(this.UMSQLite_openDB, args, false);
+				return s.callService('UMSQLite.openDB', args, false);
 			}else{
 				alert("参数不是一个有效的JSONObject，请使用openDB({...})形式的API");
 			}

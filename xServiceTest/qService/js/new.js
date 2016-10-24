@@ -5,47 +5,94 @@
 summerready = function () {
 
 };
-function getService(){
-    summer.get({
-        "url" : "http://opentest.yonyoutelecom.cn/mobile/isvName.do?account=qinfx&q=", //url地址
-        "callback" : function (sender,args){
+function getService() {
+    summer.get("http://opentest.yonyoutelecom.cn/mobile/isvName.do?account=qinfx&q=", {
+        a: 1,
+        b: 2
+    }, {Authorization: "OAuth2: token"}, function (response) {
+        // prints 200
+        alert(response.status);
+        try {
+            response.data = JSON.parse(response.data);
+            // prints test
+            $summer.alert(response.data);
+        } catch (e) {
+           alert("JSON parsing error");
+        }
+    }, function (response) {
+        // prints 403
+       alert(response.status);
 
-           $summer.alert(args)///通过回调函数的参数获得数据sender和args，返回值为json结构的string类型
-
-        } /*,
-         "header":{
-         "Content-Type":"application/x-www-form-urlencoded",
-         "User-Agent":"imgfornote"
-         `},
-         "timeout" : "5"*/
-    })
+        //prints Permission denied
+        alert(response.error);
+    });
 }
 
-function postService(){
-    summer.post({
-        "url" : "http://opentest.yonyoutelecom.cn/mobile/isvName.do?account=qinfx&q=",//url地址
-        "callback" : function (sender,args){
-            $summer.alert(args)//通过回调函数的参数获得数据sender和args，返回值为json结构的string类型
-        } /*,
-         "data" : {a:1,b:2},
-         "header":{
-         "Content-Type":"application/x-www-form-urlencoded",
-         "User-Agent":"imgfornote"
-         `},
-         "timeout" : "5"*/
-    })
+function postService() {
+    summer.post("http://opentest.yonyoutelecom.cn/mobile/isvName.do?account=qinfx&q=", {
+        a: 1,
+        b: 2
+    }, {Authorization: "OAuth2: token"}, function (response) {
+        // prints 200
+       alert(response.status);
+        try {
+            response.data = JSON.parse(response.data);
+            // prints test
+            $summer.alert(response.data);
+        } catch (e) {
+            alert("JSON parsing error");
+        }
+    }, function (response) {
+        // prints 403
+       alert(response.status);
+
+        //prints Permission denied
+        alert(response.error);
+    });
 
 }
-function callActionService(){
+function ajaxService() {
+
+    summer.ajax({
+        type: 'post',
+        url: 'http://opentest.yonyoutelecom.cn/mobile/isvName.do?account=qinfx&q=',
+        param: {
+            a: 1,
+            b: 2
+        },
+        header: {Authorization: "OAuth2: token"}
+    }, function (response) {
+        // prints 200
+        alert(response.status);
+        try {
+            response.data = JSON.parse(response.data);
+            // prints test
+            $summer.alert(response.data);
+        } catch (e) {
+            alert("JSON parsing error");
+        }
+    }, function (response) {
+        // prints 403
+        alert(response.status);
+
+        //prints Permission denied
+        alert(response.error);
+    });
+
+
+}
+function callActionService() {
     summer.callAction({
-        "viewid" : "xxx.xxx.xx",//后台带包名的Controller名
-        "action" : "methodName",//方法名,
-        "params" : {a:1,b:2},//自定义参数
-        "autoDataBinding" : true,//请求完毕后，是否进行数据绑定，如果没有该属性，则默认不绑定。
-        "contextmapping" : "fieldPath",//将返回结果映射到指定的Context字段上，如果没有该属性，则默认为替换整个Context
-        "callback" : function (args) {
+        "viewid" : "a.b.data", //后台带包名的Controller名
+        "action" : "getData", //方法名,
+        "params" : '{"a":"123","b":"465"}', //自定义参数
+        "autoDataBinding": true,//请求完毕后，是否进行数据绑定，如果没有该属性，则默认不绑定。
+        "contextmapping": "fieldPath",//将返回结果映射到指定的Context字段上，如果没有该属性，则默认为替换整个Context
+        "callback": function (args) {
             $summer.alert(args);
         },//请求回来后执行的js方法
-        "error" : "myerror()"//失败回调的js方法
+        "error": function (error) {
+            alert(error);
+        }//失败回调的js方法
     })
 }

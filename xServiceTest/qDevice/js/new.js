@@ -14,20 +14,27 @@ function test2() {
     $summer.alert(summer.getDeviceInfo());
 }
 
-function test3() {
-    $summer.alert(summer.captureTwodcode());
-}
+
 
 function test4() {
-    summer.getLocation({
-        "single" : "true", //是否只获取1次
-        "isgetaddress" : "true", //是否获取地址
-        "network" : "true", //是否wify定位
-        "callback" : function(args){
-             $summer.alert(args);
+    var onSuccess = function(position) {
+        alert('Latitude: '          + position.coords.latitude          + '\n' +
+            'Longitude: '         + position.coords.longitude         + '\n' +
+            'Altitude: '          + position.coords.altitude          + '\n' +
+            'Accuracy: '          + position.coords.accuracy          + '\n' +
+            'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
+            'Heading: '           + position.coords.heading           + '\n' +
+            'Speed: '             + position.coords.speed             + '\n' +
+            'Timestamp: '         + position.timestamp                + '\n');
+    };
 
-        }
-    });
+    // onError Callback receives a PositionError object
+    //
+    function onError(error) {
+        alert('code: '    + error.code    + '\n' +
+            'message: ' + error.message + '\n');
+    }
+    summer.getLocation(onSuccess,onError);
 }
 
 function test6() {
@@ -66,7 +73,7 @@ function test12() {
 }
 
 function test13() {
-    $summer.alert(summer.openAddressBook());
+   summer.openAddressBook();
 }
 
 function test14() {
