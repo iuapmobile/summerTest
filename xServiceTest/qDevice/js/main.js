@@ -11,18 +11,19 @@ function test2() {
 	$summer.alert($device.getDeviceInfo());
 }
 
-function test3() {
-	$summer.alert($device.captureTwodcode());
-}
+
 
 function test4() {
-	$summer.alert($device.getLocation({
+	$device.getLocation({
 		"bindfield" : "location", //
 		"single" : "true", //是否只获取1次
 		"isgetaddress" : "true", //是否获取地址
 		"network" : "true", //是否wify定位
-		"callback" : "locationcallback()"
-	}));
+		"callback" :function(){
+		$summer.alert(location);
+		
+		}
+	});
 }
 
 function test5() {
@@ -78,7 +79,7 @@ function test12() {
 }
 
 function test13() {
-	$summer.alert($device.openAddressBook());
+	$device.openAddressBook();
 }
 
 function test14() {

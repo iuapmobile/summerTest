@@ -2,7 +2,7 @@
  * Created by Administrator on 2016/10/17.
  */
 function test11(){
-    summer.UMCamera.openPhotoAlbum({
+    summer.openPhotoAlbum({
         callback : function (sender,args){
             alert(typeof args); //object
             alert(typeof(args.imgPath)); //string
@@ -20,13 +20,15 @@ function test22(){
         $('.pic').attr('src',args.imgPath);
     }
 
-    summer.UMCamera.openPhotoAlbum({
+    summer.openPhotoAlbum({
         callback : mycb22
     });
+
+
 }
 
 function test33(){
-    summer.UMCamera.open({
+    summer.openCamera({
         callback : "mycb3()"
     });
 }

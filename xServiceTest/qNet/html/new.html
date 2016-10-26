@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="um-frame">
 	<head>
 		<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
 		<meta charset="UTF-8">
@@ -11,7 +11,11 @@
 		<script src="../js/Frameworks/iuapmobile.frameworks.ui.js" ></script>
 		<script src="../js/new.js" ></script>
 		<style>
-			button{display: block;margin: 10px auto}
+			button{display: block;margin: 30px auto;width: 100px;height: 50px;text-align: center;line-height: 50px;}
+			html.um-frame {
+            height:auto;
+            overflow:auto;
+            }
 		</style>
 	</head>
 	<body>
@@ -21,7 +25,6 @@
 			</div> -->
 
 			<div id="content" class="um-content p15">
-				<div style="text-align:center;font-weight:bold;">iUAP Mobile</div>
 					<button onclick="test1()">获取网络状态</button>
 					<button onclick="test2()">获取设备网络信息</button>
 			</div>

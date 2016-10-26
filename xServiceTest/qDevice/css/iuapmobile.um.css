@@ -3450,10 +3450,7 @@ html1.um-win1 {
 .um-frame {
   background-color: #efeff4;
 }
-html.um-frame {
-  height: auto;
-  overflow: auto;
-}
+
 /*********gct dev**********************/
 .um-header-title, .um-header h3 {
   font-size: 1em;
