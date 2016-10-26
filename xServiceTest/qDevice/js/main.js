@@ -118,11 +118,7 @@ function test18() {
 }
 
 function test19() {
-	$device.screenShot({
-		callback : function(args) {
-			$summer.alert(args);
-		}
-	});
+	$alert($device.screenShot());
 }
 
 function test20() {
