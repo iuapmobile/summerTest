@@ -11,11 +11,16 @@
 		<script src="../js/jquery.min.js" ></script>
 		<script src="../js/Frameworks/iuapmobile.frameworks.ui.js" ></script>
 		<script src="../js/main.js" ></script>
+	    <style>
+	       body{-webkit-user-select:none;}
+	       input{-webkit-appearance:none;}
+	    </style>
 	</head>
 	<body>
 		<div class="um-frame" id="main">
 
 			<div id="content" class="um-content p15">
+			    <input type="file" onchange="changes()" />
 				<div style="text-align:center;font-weight:bold;">iUAP Mobile</div>
 				<button class="p15 um-btn mt30 " onclick="camera()">拍照</button>
 			    <button class="p15 um-btn mt30" onclick="openPhotoAlbum()">选择图库</button>

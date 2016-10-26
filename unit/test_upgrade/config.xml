@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <application> 
   <app_start>index.html</app_start>  
   <app_name>test_upgrade</app_name>  
@@ -14,14 +13,13 @@
   <orientation>unspecified</orientation>  
   <min_sdk_version>10</min_sdk_version>  
   <max_sdk_version>17</max_sdk_version>  
-  <permission id="android.permission.INTERNET"></permission>  
+  <permission id="android.permission.INTERNET"/>  
   <statebarstyle>dark</statebarstyle>  
   <isfullscreen>false</isfullscreen>  
   <windowSoftInputMode>stateHidden</windowSoftInputMode>  
-  <import id="cordova-plugin-http" type="web" ref="cordova"></import>  
+  <import id="cordova-plugin-http" type="web" ref="cordova"/>  
   <import id="cordova-plugin-file" type="web" ref="cordova"/> 
-</application>
-<!--
+</application><!--
 【屏幕显示方向】
   screenOrientation: 屏幕显示方向
     landscape: 横向
