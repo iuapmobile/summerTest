@@ -1,24 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html class="um-frame">
     <head>
         <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
         <meta charset="UTF-8">
         <title></title>
         <link rel="stylesheet" href="../css/iuapmobile.um.css">
         <link rel="stylesheet" href="../css/font-icons.css">
-        <script src="../js/Frameworks/iuapmobile.frameworks.core.js" ></script>
+        <style>
+            html.um-frame {
+                height: auto;
+                overflow: auto;
+            }
+        </style>
         <script src="../js/jquery-2.1.4.min.js" ></script>
         <script src="../js/Frameworks/iuapmobile.frameworks.ui.js" ></script>
         <script src="../js/summer.js" ></script>
         <script src="../js/codorva.js" ></script>
-        <script>
-            $(function() {
-
-            });
-        </script>
+        
     </head>
     <body>
-        <div class="um-page" id="index">
+        <div class="um-frame" id="index">
             <div class="um-content p10">
                 <div class="um-grid um-row">
                     <div class="um-grid-row tc um-border-bottom">
@@ -29,9 +30,9 @@
                             </div> </a>
                         </div>
                         <div class="um-border-right um-bgc-white">
-                            <a onclick="openwin('dialogs','html/dialogs.html')" class="um-circle um-black"> <img src="../img/mt_mv.png" width=40 class="um-img-responsive" alt="">
+                            <a onclick="openwin('dialogs','html/networkinformation.html')" class="um-circle um-black"> <img src="../img/mt_mv.png" width=40 class="um-img-responsive" alt="">
                             <div  class="f12 mt5">
-                                dialogs
+                                network
                             </div> </a>
                         </div>
                         <div class="um-border-right um-bgc-white">
@@ -43,12 +44,7 @@
 
                     </div>
                     <div class="um-grid-row tc um-border-bottom">
-                        <div  class="um-bgc-white um-border-right">
-                            <a onclick="openwin('deviceorientation','html/deviceorientation.html')" class="um-circle um-black"> <img src="../img/mt_ktv.png" width=40 class="um-img-responsive" alt="">
-                            <div  class="f12 mt5">
-                                device-orientation
-                            </div> </a>
-                        </div>
+
                         <div class="um-border-right um-bgc-white">
                             <a onclick="openwin('mediacapture','html/mediacapture.html')" class="um-circle um-black"> <img src="../img/mt_new.png" width=40 class="um-img-responsive" alt="">
                             <div class="f12 mt5">
@@ -61,15 +57,15 @@
                                 compat
                             </div> </a>
                         </div>
-
-                    </div>
-                    <div class="um-grid-row tc um-border-bottom">
                         <div class="um-border-right um-bgc-white">
                             <a onclick="openwin('media','html/media.html')" class="um-circle um-black"> <img src="../img/mt_money.png" width=40 class="um-img-responsive" alt="">
-                            <div  class="f12 mt5">
-                                media
-                            </div> </a>
+                                <div  class="f12 mt5">
+                                    media
+                                </div> </a>
                         </div>
+                    </div>
+                    <div class="um-grid-row tc um-border-bottom">
+
                         <div class="um-bgc-white um-border-right">
                             <a onclick="openwin('vibration','html/vibration.html')" class="um-circle um-black"> <img src="../img/mt_xiaochi.png" width=40 class="um-img-responsive" alt="">
                             <div  class="f12 mt5">
@@ -84,15 +80,7 @@
                         </div>
 
                     </div>
-                    <div class="um-grid-row tc um-border-bottom">
-                        <div class="um-border-right um-bgc-white">
-                            <a onclick="openwin('networkinformation','html/networkinformation.html')" class="um-circle um-black"> <img src="../img/mt_you.png" width=40 class="um-img-responsive" alt="">
-                            <div  class="f12 mt5">
-                                network-information
-                            </div> </a>
-                        </div>
 
-                    </div>
                 </div>
             </div>
         </div>

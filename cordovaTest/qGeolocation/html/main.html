@@ -1,12 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html class="um-frame">
 	<head>
 		<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
 		<meta charset="UTF-8">
 		<title></title>
 		<link rel="stylesheet" href="../css/iuapmobile.um.css">
 		<link rel="stylesheet" href="../css/font-icons.css">
-		<script src="../js/Frameworks/iuapmobile.frameworks.core.js" ></script>
+		<style>
+			html.um-frame {
+				height: auto;
+				overflow: auto;
+			}
+		</style>
 		<script src="../js/summer.js" ></script>
 		<script src="../js/jquery.min.js" ></script>
 		<script src="../js/Frameworks/iuapmobile.frameworks.ui.js" ></script>
@@ -19,13 +24,39 @@
 			</div> -->
 
 			<div id="content" class="um-content p15">
-				<div style="text-align:center;font-weight:bold;">iUAP Mobile</div>
-					<button onclick="test()">geolocation</button>
+
+					<button onclick="test()" class="btn">geolocation</button>
 				
 
 			</div>
 
 			<!-- <div class="um-footer"></div> -->
 		</div>
+		<script>
+			function test(){
+				var onSuccess = function(position) {
+					alert('Latitude: '          + position.coords.latitude          + '\n' +
+							'Longitude: '         + position.coords.longitude         + '\n' +
+							'Altitude: '          + position.coords.altitude          + '\n' +
+							'Accuracy: '          + position.coords.accuracy          + '\n' +
+							'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
+							'Heading: '           + position.coords.heading           + '\n' +
+							'Speed: '             + position.coords.speed             + '\n' +
+							'Timestamp: '         + position.timestamp                + '\n');
+				};
+
+				// onError Callback receives a PositionError object
+				//
+				function onError(error) {
+					alert('code: '    + error.code    + '\n' +
+							'message: ' + error.message + '\n');
+				}
+
+				navigator.geolocation.getCurrentPosition(onSuccess, onError);
+
+
+
+			}
+		</script>
 	</body>	
 </html>

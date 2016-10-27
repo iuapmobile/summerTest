@@ -1,13 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html class="um-frame">
 	<head>
 		<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
 		<meta charset="UTF-8">
 		<title></title>
 		<link rel="stylesheet" href="../css/font-icons.css">
 		<link rel="stylesheet" href="../css/iuapmobile.um.css"/>
+		<style>
+			html.um-frame {
+				height: auto;
+				overflow: auto;
+			}
+		</style>
 		<script src="../js/jquery-2.1.4.min.js" ></script>
-		<script src="../js/Frameworks/iuapmobile.frameworks.core.js" ></script>
 		<script src="../js/summer.js" ></script>
 		<script src="../js/Frameworks/iuapmobile.frameworks.ui.js" ></script>
 		<script type="text/javascript">
@@ -46,7 +51,7 @@
 		</script>
 	</head>
 	<body>
-		<div class="um-page" id="index">
+		<div class="um-frame" id="index">
 			<div id="header" class="um-header">
 				<a onclick="closemy()"  class="um-back">返回</a><h3>媒体</h3>
 			</div>

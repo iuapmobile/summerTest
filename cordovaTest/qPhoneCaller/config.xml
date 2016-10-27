@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <application> 
   <app_start>index.html</app_start>  
   <app_name>qPhoneCaller</app_name>  
@@ -8,7 +7,7 @@
   <frame_name>ump</frame_name>  
   <icon relativePath="css/themes/default/app">app</icon>  
   <target>android-15</target>  
-  <platform>android</platform>  
+  <platform>ios</platform>  
   <versionCode>1</versionCode>  
   <versionName>1</versionName>  
   <orientation>4</orientation>  
@@ -17,7 +16,7 @@
   <statebarstyle>dark</statebarstyle>  
   <isfullscreen>false</isfullscreen>  
   <windowSoftInputMode>stateHidden</windowSoftInputMode>  
-  <permission id="android.permission.ACCESS_FINE_LOCATION"></permission>  
+  <permission id="android.permission.ACCESS_FINE_LOCATION"/>  
   <permission id="android.permission.ACCESS_MOCK_LOCATION"/>  
   <permission id="android.permission.ACCESS_NETWORK_STATE"/>  
   <permission id="android.permission.ACCESS_WIFI_STATE"/>  
@@ -77,9 +76,12 @@
   <permission id="android.permission.WRITE_EXTERNAL_STORAGE"/>  
   <permission id="android.permission.WRITE_SMS"/>  
   <permission id="com.android.alarm.permission.SET_ALARM"/>  
-  <import id="cordova-plugin-phonecaller" type="web" ref="cordova"/> 
-</application>
-<!--
+  <import id="cordova-plugin-phonecaller" type="web" ref="cordova"/>  
+  <import id="cordova-plugin-http" type="web" ref="cordova"/>  
+  <import id="cordova-plugin-camera" type="web" ref="cordova"/>  
+  <import id="cordova-plugin-file" type="web" ref="cordova"/>  
+  <import id="cordova-plugin-whitelist" type="web" ref="cordova"/> 
+</application><!--
 【屏幕显示方向】
   screenOrientation: 屏幕显示方向
     landscape: 横向

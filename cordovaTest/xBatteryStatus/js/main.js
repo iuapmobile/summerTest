@@ -4,7 +4,10 @@ summerready = function () {
 
 };
 function openBattery(){
-	summer.batterystatus(function(status){
+    window.addEventListener("batterystatus", onBatteryStatus, false);
+
+    function onBatteryStatus(status) {
+        $summer.alert(status);
         alert("Level: " + status.level + " isPlugged: " + status.isPlugged);
-    });
+    }
 }

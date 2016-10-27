@@ -1,0 +1,121 @@
+
+clean:
+     [echo] Initializing all output directories...
+   [delete] Deleting directory /Users/ispace/umpfiles/userfiles/32/36747/project/bin
+   [delete] Deleting directory /Users/ispace/umpfiles/userfiles/32/36747/project/classes
+   [delete] Deleting directory /Users/ispace/umpfiles/userfiles/32/36747/project/src
+   [delete] Deleting directory /Users/ispace/umpfiles/userfiles/32/36747/project/assets
+   [delete] Deleting directory /Users/ispace/umpfiles/userfiles/32/36747/project/gen
+
+init:
+    [mkdir] Created dir: /Users/ispace/umpfiles/userfiles/32/36747/project/bin
+    [mkdir] Created dir: /Users/ispace/umpfiles/userfiles/32/36747/project/classes
+    [mkdir] Created dir: /Users/ispace/umpfiles/userfiles/32/36747/project/src
+    [mkdir] Created dir: /Users/ispace/umpfiles/userfiles/32/36747/project/src/com/yonyou/qbarcodescanner
+    [mkdir] Created dir: /Users/ispace/umpfiles/userfiles/32/36747/project/assets
+    [mkdir] Created dir: /Users/ispace/umpfiles/userfiles/32/36747/project/assets/www
+    [mkdir] Created dir: /Users/ispace/umpfiles/userfiles/32/36747/project/gen
+    [mkdir] Created dir: /Users/ispace/umpfiles/userfiles/32/36747/output/temp
+    [mkdir] Created dir: /Users/ispace/umpfiles/userfiles/32/36747/output/install
+    [mkdir] Created dir: /Users/ispace/umpfiles/userfiles/32/36747/output/projectfiles
+
+BUILD SUCCESSFUL
+Total time: 0 seconds
+
+copy:
+     [copy] Copying 407 files to /Users/ispace/umpfiles/userfiles/32/36747/project
+
+gen-R:
+     [echo] Generating R.java from the resources...
+     [exec]     (skipping file '.gitignore' due to ANDROID_AAPT_IGNORE pattern '.*')
+     [exec]     (skipping file '.gitignore' due to ANDROID_AAPT_IGNORE pattern '.*')
+
+pre_init:
+
+aidl:
+     [echo] Compiling .aidl into java files...
+
+pre_compile:
+
+compile:
+     [echo] Compiling java source code...
+    [javac] Compiling 35 source files to /Users/ispace/umpfiles/userfiles/32/36747/project/classes
+
+BUILD SUCCESSFUL
+Total time: 0 seconds
+
+dex:
+     [echo] Converting compiled files and external libraries into .dex file...
+     [exec] warning: Ignoring InnerClasses attribute for an anonymous inner class
+     [exec] (org.dom4j.dom.DOMNodeHelper$1) that doesn't come with an
+     [exec] associated EnclosingMethod attribute. This class was probably produced by a
+     [exec] compiler that did not target the modern .class file format. The recommended
+     [exec] solution is to recompile the class from source, using an up-to-date compiler
+     [exec] and without specifying any "-target" type options. The consequence of ignoring
+     [exec] this warning is that reflective operations on this class will incorrectly
+     [exec] indicate that it is *not* an inner class.
+     [exec] warning: Ignoring InnerClasses attribute for an anonymous inner class
+     [exec] (org.dom4j.io.DocumentInputSource$1) that doesn't come with an
+     [exec] associated EnclosingMethod attribute. This class was probably produced by a
+     [exec] compiler that did not target the modern .class file format. The recommended
+     [exec] solution is to recompile the class from source, using an up-to-date compiler
+     [exec] and without specifying any "-target" type options. The consequence of ignoring
+     [exec] this warning is that reflective operations on this class will incorrectly
+     [exec] indicate that it is *not* an inner class.
+     [exec] warning: Ignoring InnerClasses attribute for an anonymous inner class
+     [exec] (org.dom4j.rule.RuleManager$1) that doesn't come with an
+     [exec] associated EnclosingMethod attribute. This class was probably produced by a
+     [exec] compiler that did not target the modern .class file format. The recommended
+     [exec] solution is to recompile the class from source, using an up-to-date compiler
+     [exec] and without specifying any "-target" type options. The consequence of ignoring
+     [exec] this warning is that reflective operations on this class will incorrectly
+     [exec] indicate that it is *not* an inner class.
+     [exec] warning: Ignoring InnerClasses attribute for an anonymous inner class
+     [exec] (org.dom4j.swing.BranchTreeNode$1) that doesn't come with an
+     [exec] associated EnclosingMethod attribute. This class was probably produced by a
+     [exec] compiler that did not target the modern .class file format. The recommended
+     [exec] solution is to recompile the class from source, using an up-to-date compiler
+     [exec] and without specifying any "-target" type options. The consequence of ignoring
+     [exec] this warning is that reflective operations on this class will incorrectly
+     [exec] indicate that it is *not* an inner class.
+     [exec] warning: Ignoring InnerClasses attribute for an anonymous inner class
+     [exec] (org.dom4j.swing.LeafTreeNode$1) that doesn't come with an
+     [exec] associated EnclosingMethod attribute. This class was probably produced by a
+     [exec] compiler that did not target the modern .class file format. The recommended
+     [exec] solution is to recompile the class from source, using an up-to-date compiler
+     [exec] and without specifying any "-target" type options. The consequence of ignoring
+     [exec] this warning is that reflective operations on this class will incorrectly
+     [exec] indicate that it is *not* an inner class.
+     [exec] warning: Ignoring InnerClasses attribute for an anonymous inner class
+     [exec] (org.dom4j.xpath.DefaultXPath$1) that doesn't come with an
+     [exec] associated EnclosingMethod attribute. This class was probably produced by a
+     [exec] compiler that did not target the modern .class file format. The recommended
+     [exec] solution is to recompile the class from source, using an up-to-date compiler
+     [exec] and without specifying any "-target" type options. The consequence of ignoring
+     [exec] this warning is that reflective operations on this class will incorrectly
+     [exec] indicate that it is *not* an inner class.
+     [exec] Uncaught translation error: java.lang.IllegalArgumentException: already added: Lcom/google/zxing/BarcodeFormat;
+     [exec] Uncaught translation error: java.lang.IllegalArgumentException: already added: Lcom/google/zxing/Binarizer;
+     [exec] Uncaught translation error: java.lang.IllegalArgumentException: already added: Lcom/google/zxing/BinaryBitmap;
+     [exec] Uncaught translation error: java.lang.IllegalArgumentException: already added: Lcom/google/zxing/ChecksumException;
+     [exec] Uncaught translation error: java.lang.IllegalArgumentException: already added: Lcom/google/zxing/DecodeHintType;
+     [exec] Uncaught translation error: java.lang.IllegalArgumentException: already added: Lcom/google/zxing/EncodeHintType;
+     [exec] Uncaught translation error: java.lang.IllegalArgumentException: already added: Lcom/google/zxing/FormatException;
+     [exec] Uncaught translation error: java.lang.IllegalArgumentException: already added: Lcom/google/zxing/LuminanceSource;
+     [exec] Uncaught translation error: java.lang.IllegalArgumentException: already added: Lcom/google/zxing/MultiFormatReader;
+     [exec] 
+     [exec] UNEXPECTED TOP-LEVEL EXCEPTION:
+     [exec] java.lang.RuntimeException: Translation has been interrupted
+     [exec] 	at com.android.dx.command.dexer.Main.processAllFiles(Main.java:608)
+     [exec] 	at com.android.dx.command.dexer.Main.runMonoDex(Main.java:311)
+     [exec] 	at com.android.dx.command.dexer.Main.run(Main.java:277)
+     [exec] 	at com.android.dx.command.dexer.Main.main(Main.java:245)
+     [exec] 	at com.android.dx.command.Main.main(Main.java:106)
+     [exec] Caused by: java.lang.InterruptedException: Too many errors
+     [exec] 	at com.android.dx.command.dexer.Main.processAllFiles(Main.java:600)
+     [exec] 	... 4 more
+
+BUILD FAILED
+/Users/ispace/umpfiles/userfiles/32/36747/project/build.xml:280: exec returned: 2
+
+Total time: 11 seconds

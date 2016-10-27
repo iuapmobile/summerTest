@@ -79,10 +79,13 @@
   <import id="cordova-plugin-media-capture" type="web" ref="cordova"/>  
   <import id="cordova-plugin-compat" type="web" ref="cordova"/>  
   <import id="cordova-plugin-globalization" type="web" ref="cordova"/>  
+  <import id="cordova-plugin-http" type="web" ref="cordova"/>  
+  <import id="cordova-plugin-camera" type="web" ref="cordova"/>  
   <import id="cordova-plugin-device-orientation" type="web" ref="cordova"/>  
   <import id="cordova-plugin-network-information" type="web" ref="cordova"/>  
   <import id="cordova-plugin-dialogs" type="web" ref="cordova"/>  
   <import id="cordova-plugin-file" type="web" ref="cordova"/>  
+  <import id="cordova-plugin-whitelist" type="web" ref="cordova"/>  
   <import id="cordova-plugin-vibration" type="web" ref="cordova"/>  
   <import id="cordova-plugin-media" type="web" ref="cordova"/> 
 </application>

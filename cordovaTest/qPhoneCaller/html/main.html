@@ -1,26 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html class="um-frame">
 	<head>
 		<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
 		<meta charset="UTF-8">
 		<title></title>
 		<link rel="stylesheet" href="../css/iuapmobile.um.css">
 		<link rel="stylesheet" href="../css/font-icons.css">
-		<script src="../js/Frameworks/iuapmobile.frameworks.core.js" ></script>
+		<style>
+			html.um-frame {
+				height: auto;
+				overflow: auto;
+			}
+		</style>
 		<script src="../js/summer.js" ></script>
 		<script src="../js/jquery-2.1.4.min.js" ></script>
 		<script src="../js/Frameworks/iuapmobile.frameworks.ui.js" ></script>
 		<script src="../js/main.js" ></script>
 	</head>
 	<body>
-		<div class="um-page" id="main">
+		<div class="um-frame" id="main">
 			<!-- <div class="um-header" >
 				<h3>导航栏</h3>
 			</div> -->
 
 			<div id="content" class="um-content p15">
-				<div style="text-align:center;font-weight:bold;">iUAP Mobile</div>
-					<button onclick="test()">撥打電話</button>
+
+					<button onclick="test()" class="btn">撥打電話</button>
 				
 
 			</div>

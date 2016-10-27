@@ -1,22 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html class="um-frame">
 	<head>
 		<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
 		<meta charset="UTF-8">
 		<title></title>
 		<link rel="stylesheet" href="../css/iuapmobile.um.css">
 		<link rel="stylesheet" href="../css/font-icons.css">
-		<script src="../js/Frameworks/iuapmobile.frameworks.core.js" ></script>
 		<script src="../js/summer.js" ></script>
 		<script src="../js/jquery-2.1.4.min.js" ></script>
 		<script src="../js/Frameworks/iuapmobile.frameworks.ui.js" ></script>
 		<script src="../js/main.js" ></script>	
 		<style>
 			button{width: 100px;height: 30px;display: block;margin:10px auto}
+			html.um-frame {
+				height: auto;
+				overflow:auto;
+			}
 		</style>
 	</head>
 	<body>
-		<div class="um-page" id="main">
+		<div class="um-frame" id="main">
 			<!-- <div class="um-header" >
 				<h3>导航栏</h3>
 			</div> -->
@@ -25,7 +28,7 @@
 				<div style="text-align:center;font-weight:bold;">iUAP Mobile</div>
 				<button onclick="test1()">post请求</button>
 				<button onclick="test2()">get请求</button>
-				<button onclick="test3()">ajax请求</button>
+				
 			</div>
 
 			<!-- <div class="um-footer"></div> -->
