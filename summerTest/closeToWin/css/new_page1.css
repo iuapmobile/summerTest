@@ -1,0 +1,13 @@
+.um-list-item-left button {
+    margin-left: 10px;
+    border: 0;
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    width: 60%;
+    background-color: #007aff;
+    color: #fff;
+}
+html{
+	overflow:hidden;
+}
