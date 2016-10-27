@@ -18,7 +18,9 @@
   <isfullscreen>false</isfullscreen>  
   <windowSoftInputMode>stateHidden</windowSoftInputMode>  
   <import id="cordova-plugin-http" type="web" ref="cordova"/>  
-  <import id="cordova-plugin-file" type="web" ref="cordova"/> 
+  <import id="cordova-plugin-camera" type="web" ref="cordova"/>  
+  <import id="cordova-plugin-file" type="web" ref="cordova"/>  
+  <import id="cordova-plugin-whitelist" type="web" ref="cordova"/> 
 </application><!--
 【屏幕显示方向】
   screenOrientation: 屏幕显示方向
