@@ -1,4 +1,10 @@
-﻿
+﻿function openWin(){
+	summer.openWin({
+        "id" : 'aa',
+        "url" : 'html/aa.html'
+        
+    });
+}
 summerready = function(){
     // here is your code...	
     var header = $summer.byId("header");
@@ -10,7 +16,7 @@ var filename,
 	filepath;
 //删除指定位置的文件\
 function removeFile(){
-	summer.UMFile.remove({
+	summer.removeFile({
 	    path : filepath,
 	    file : filename,
 	    callback : "removeCall()"
@@ -28,7 +34,7 @@ function removeCall(args){
 //检测目标文件是否存在的方法
 
 function check(){
-	var flag = summer.UMFile.exists({
+	var flag = summer.exists({
 		path : filepath,
 		file : filename
 	}).toString();
@@ -58,7 +64,7 @@ function download(obj){
 //为了多文件下载
 function download2(obj){
     //下载请求的url
-    var url = "http://uapma.yonyou.com:8443/weixin/um.zip";
+    var url = "http://121.196.222.96:8096/picture/ca891266-c6c9-41f7-9cc4-adfd100f711c.mp4";
     //var url = "http://img5.pcpop.com/ArticleImages/0X0/3/3427/003427129.jpg"
     //存放路径
     var filepath = "downloadTest/image"; 
@@ -121,7 +127,7 @@ function downloads(url,filepath,bool,obj){
 	filename = url.substr(url.lastIndexOf("/")+1);
     
     
-	summer.UMFile.download({
+	summer.download({
         "url" : url,
         "locate" : filepath,
         "filename" : filename, 
@@ -133,10 +139,14 @@ function downloads(url,filepath,bool,obj){
 
 var num = 1;
 function downloadCall(args){
+	
     //判断下载是否完成
     var filename = args.filename;
 
     if(args.isfinish == true){
+    	$summer.alert(args)
+    	var savePath = args.savePath;
+    	summer.setStorage("savePath", savePath);
     	//通过数字来将下边的id赋值percent
         num ++ ;
         //将第一个截取
@@ -162,7 +172,7 @@ function downloadCall(args){
 function openFile(){
 	//将filename.的格式解析
 	var filetype = filename.split(".").pop();
-	summer.UMFile.open({
+	summer.openFile({
         "filename" : filename,  //文件名
         "filetype" : filetype,  //文件格式
         "filepath" : filepath	//文件路径

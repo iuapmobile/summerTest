@@ -1,6 +1,9 @@
 summerready = function(){
 	//coding
 }
+function changes(){
+alert(111);
+}
 
 //全局变量 存储拍照或者图库选择回来的地址
 var path = [];
@@ -12,7 +15,7 @@ var pathCamera;
 var pathPhoto;
 //打开相机
 function camera(){
-	$camera.open({
+	summer.openCamera({
 		bindfield : "image",
 		callback : function(args){
 			$summer.alert(args);
@@ -25,7 +28,7 @@ function camera(){
 }
 //打开相册
 function openPhotoAlbum(){
-	$camera.openPhotoAlbum({
+	summer.openPhotoAlbum({
         bindfield : "image",
         compressionRatio : 0.2,
         callback : function (args){
@@ -40,7 +43,7 @@ function openPhotoAlbum(){
 //获取选择回来的图片的大小
 function getFileInfo(){
 	alert(pathPhoto)
-	var size = summer.UMFile.getFileInfo(pathPhoto);
+	var size = summer.getFileInfo(pathPhoto);
 	alert("文件大小" + JSON.parse(size).size + "kb");
 }
 

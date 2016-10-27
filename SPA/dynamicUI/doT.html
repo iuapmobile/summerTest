@@ -33,7 +33,7 @@
 		<script src="./js/jquery.min.js" ></script>
 		<script type="text/javascript" src="js/iscroll.js"></script>
 		<script src="./js/Frameworks/iuapmobile.frameworks.ui.js" ></script>
-        <script type="text/javascript" src="./js/knockout.js"></script>
+      
         <script type="text/javascript" src="./js/Frameworks/iuapmobile.frameworks.listview.js"></script>
 		<script type="text/javascript" src="js/doT.js"></script>
 		<script type="text/x-dot-template" id="list">
@@ -47,15 +47,15 @@
 							</div>
 							<div class="um-list-item-media msg-info">
 								<img alt="" src="{{=value.img}}" width=50>
-								<span class="um-badge" data-bind="text:msgNum,visible:msgNum>0">{{=value.msgNum}}</span>
+								<span class="um-badge" >{{=value.msgNum}}</span>
 							</div>
 							<div class="um-list-item-inner">
 								<div class="um-list-item-body">
-									<h4 class="um-media-heading fb f16 um-text-overflow" data-bind="text:sender">{{=value.sender}}</h4>
-									<p class="um-gray f14 um-text-overflow" data-bind="text:lastMsg">{{=value.lastMsg}}</p>
+									<h4 class="um-media-heading fb f16 um-text-overflow" >{{=value.sender}}</h4>
+									<p class="um-gray f14 um-text-overflow">{{=value.lastMsg}}</p>
 								</div>
 								<div class="pr10">
-									<span class="um-gray f12" data-bind="text:lastTime">{{=value.lastTime}}</span>
+									<span class="um-gray f12" >{{=value.lastTime}}</span>
 								</div>
 							</div>
 						</a>

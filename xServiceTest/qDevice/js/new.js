@@ -95,11 +95,7 @@ function test18() {
 }
 
 function test19() {
-    summer.screenShot({
-        callback : function(args) {
-            $summer.alert(args);
-        }
-    });
+    $summer.alert(summer.screenShot());
 }
 
 function test20() {
