@@ -1,0 +1,293 @@
+
+#wrap{
+    background:#fafafa;
+    height: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-flex-flow: column;
+           flex-flow: column;
+}
+#main_data{
+    -webkit-box-flex: 1; 
+    -webkit-flex: 1;
+    flex: 1;
+    position:fixed;
+    left:0;
+    top:224px;
+}
+
+#header{
+	width:100%;
+	/*height:4rem;*/
+	height:180px;
+	background:  #2B5DE8 url("../image/s-bg.jpg");
+    position: fixed;
+    top:0;
+    left:0;
+}
+header.bar{
+	background-color:transparent;
+	border:none;
+} 
+header.bar .icon{
+	color:#FFFFFF;
+}
+header.bar .title{
+	color:#ffffff;
+}
+.bar{
+	position:static;
+	/*height:150px;*/
+}
+.nav{
+	padding:0 15px;
+}
+.segmented-control{
+	border: 2px solid #ef4e56;
+}
+.segmented-control .control-item.active{
+	background-color:#ef4e56;
+	color:#FFFFFF;
+}
+.segmented-control .control-item{
+	font-size:16px;
+	line-height:1.2;
+	color:#ef4e56;
+	border:none;
+}
+
+.summer-grid-nine:after {
+  display: block;
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  -webkit-transform-origin: 0 0;
+  -webkit-transform: scale(1);
+  pointer-events: none;
+}
+.summer-grid-nine li {
+    float: left;
+    list-style: none;
+    text-align: center;
+    position: relative;
+    padding: 20px 10px;
+    border-right: none;
+    border-bottom: none;
+    background:none;
+}
+.summer-grid-nine li:after {
+  display: block;
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  -webkit-transform-origin: 0 0;
+  -webkit-transform: scale(1);
+  
+}
+.summer-grid-nine li .icon {
+  font-size: 30px;
+  display: inline-block;
+  text-indent: center;
+  margin-bottom: 5px;
+}
+.summer-grid-nine li p {
+  margin-bottom: 0;
+}
+
+
+.a-icon{
+	display:inline-block;
+	width:75px;
+	height:75px;
+}
+.s-f{
+	background:url(../image/workersCare/inductionWelcome.png) no-repeat center center;
+	background-size:75px 75px;
+}
+.s-s{
+	background:url(../image/workersCare/blessBirthday.png) no-repeat center center;
+	background-size:75px 75px;
+}
+.summer-grid-nine{
+	background:none;
+	position:relative;
+	top:-5px;
+	overflow:hidden;
+}
+.summer-grid-nine li{
+	border-color:#e2e3e7;
+}
+.summer-grid-nine li .icon{
+	font-size:40px;
+}
+.summer-grid-nine li p{
+	color:#fff;
+	font-size:0.3rem;
+}
+.summer-col-2{
+	width: 50%;
+}
+/*空礼物的样式*/
+.content{
+    background: #f4f4f4;
+}
+.empty{
+    width:100%;
+    height:100%;
+    box-sizing:border-box;
+    padding-top:90px;
+    background:#f4f4f4;
+    position:fixed;
+    left:0;
+    top:224px;
+}
+.empty img{
+    display: block;
+    margin:0 auto;
+    width:2.11rem;
+    height:2.87rem;
+}
+.empty span{
+    display: block;
+    margin:10px auto 300px;
+    width:4rem;
+    height:0.5rem;
+    text-align:center;
+    line-height:0.5rem;
+    color:#a9a9a9;
+    font-size:0.36rem;
+    font-weight:600;
+}   
+
+/*页签的样式*/
+.tabnav{
+    display: -webkit-box; 
+    display: -moz-box; 
+    display: -ms-flexbox; 
+    display: -webkit-flex; 
+    display: flex; 
+    
+    width: 100%;
+    box-sizing: border-box;
+    /*padding: 10px;*/
+    background: #fff;
+    border-bottom: 2px solid #f2f2f2;
+    height:0.88rem;
+    line-height:0.88rem;
+    box-sizing:border-box;
+    position: fixed;
+    top:180px;
+    left:0;
+}
+.tabnav span{          
+    -webkit-box-flex: 1.0;
+    -moz-flex-grow: 1;
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+    display:block;   
+    width: 0.3rem;
+    height: 0.88rem;
+    line-height: 0.88rem;
+    text-align: center;
+    box-sizing:border-box;
+}
+.tabnav span.active{
+    color:#08DBF3;
+    border-bottom:2px solid #08DBF3;
+}
+
+
+.fl{
+    float:left;
+}
+.fr{
+    float:right;
+}
+
+.write{             
+    overflow: hidden;
+}
+.scroll{
+    width:8.7rem;
+    overflow: hidden;
+}
+.write .scroll .show{
+    width:7.5rem;   
+}
+.write .scroll .disappear{
+    width:1.2rem;
+    height:1.57rem;
+    background:#ff6347 url(../image/workersCare/delete.png) no-repeat center center;
+}
+
+/*礼物列表的样式*/
+dl{
+    height:1.6rem;   
+}
+
+dt{
+    width:1.9rem;
+    height:1.6rem;
+    text-align:center;
+}
+dt a{
+    display:inline-block;
+    vertical-align:middle;
+}
+dt span{
+    display:inline-block;
+    vertical-align:middle;
+    height:100%;
+    width:0;
+}
+dt img{
+    width:1.1rem;
+    height:1.34rem;
+}
+dd{ 
+    width:5.6rem;
+    border-bottom:1px solid #e4e4e4;
+}
+dd .ptxt{
+    padding-top:0.05rem;
+    height:1.55rem;
+   
+}
+.ptxt p.black{
+    color:#343434;
+}
+.ptxt p strong{
+    color:#1baebe;
+    font-weight:normal;
+}
+dd .spa{
+   padding-right:0.26rem;
+}
+dd span{
+    display:block;
+    text-align:right; 
+    margin-bottom : 0; 
+    color:#ddd;
+}
+.thanks{
+    width:0.94rem;
+    height:0.50rem;
+    border-radius :3px;
+    color:#1BAEBE;
+    border:1px solid #1BAEBE;
+    text-align:center;
+    line-height:0.50rem;  
+    float:right; 
+}
+
+.none{
+    display:none;
+}

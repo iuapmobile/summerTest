@@ -76,7 +76,10 @@
   <permission id="android.permission.WRITE_EXTERNAL_STORAGE"/>  
   <permission id="android.permission.WRITE_SMS"/>  
   <permission id="com.android.alarm.permission.SET_ALARM"/>  
-  <import id="cordova-plugin-http" type="web" ref="cordova"/> 
+  <import id="cordova-plugin-http" type="web" ref="cordova"/>  
+  <import id="cordova-plugin-camera" type="web" ref="cordova"/>  
+  <import id="cordova-plugin-file" type="web" ref="cordova"/>  
+  <import id="cordova-plugin-whitelist" type="web" ref="cordova"/> 
 </application><!--
 【屏幕显示方向】
   screenOrientation: 屏幕显示方向

@@ -1,0 +1,152 @@
+
+clean:
+     [echo] Initializing all output directories...
+   [delete] Deleting directory /Users/ispace/umpfiles/userfiles/32/36563/project/bin
+   [delete] Deleting directory /Users/ispace/umpfiles/userfiles/32/36563/project/classes
+   [delete] Deleting directory /Users/ispace/umpfiles/userfiles/32/36563/project/src
+   [delete] Deleting directory /Users/ispace/umpfiles/userfiles/32/36563/project/assets
+   [delete] Deleting directory /Users/ispace/umpfiles/userfiles/32/36563/project/gen
+
+init:
+    [mkdir] Created dir: /Users/ispace/umpfiles/userfiles/32/36563/project/bin
+    [mkdir] Created dir: /Users/ispace/umpfiles/userfiles/32/36563/project/classes
+    [mkdir] Created dir: /Users/ispace/umpfiles/userfiles/32/36563/project/src
+    [mkdir] Created dir: /Users/ispace/umpfiles/userfiles/32/36563/project/src/com/yonyou/qcamera
+    [mkdir] Created dir: /Users/ispace/umpfiles/userfiles/32/36563/project/assets
+    [mkdir] Created dir: /Users/ispace/umpfiles/userfiles/32/36563/project/assets/www
+    [mkdir] Created dir: /Users/ispace/umpfiles/userfiles/32/36563/project/gen
+    [mkdir] Created dir: /Users/ispace/umpfiles/userfiles/32/36563/output/temp
+    [mkdir] Created dir: /Users/ispace/umpfiles/userfiles/32/36563/output/install
+    [mkdir] Created dir: /Users/ispace/umpfiles/userfiles/32/36563/output/projectfiles
+
+BUILD SUCCESSFUL
+Total time: 0 seconds
+
+copy:
+     [copy] Copying 204 files to /Users/ispace/umpfiles/userfiles/32/36563/project
+
+gen-R:
+     [echo] Generating R.java from the resources...
+     [exec]     (skipping file '.gitignore' due to ANDROID_AAPT_IGNORE pattern '.*')
+     [exec]     (skipping file '.gitignore' due to ANDROID_AAPT_IGNORE pattern '.*')
+
+pre_init:
+
+aidl:
+     [echo] Compiling .aidl into java files...
+
+pre_compile:
+
+compile:
+     [echo] Compiling java source code...
+    [javac] Compiling 33 source files to /Users/ispace/umpfiles/userfiles/32/36563/project/classes
+
+BUILD SUCCESSFUL
+Total time: 0 seconds
+
+dex:
+     [echo] Converting compiled files and external libraries into .dex file...
+     [exec] warning: Ignoring InnerClasses attribute for an anonymous inner class
+     [exec] (org.dom4j.dom.DOMNodeHelper$1) that doesn't come with an
+     [exec] associated EnclosingMethod attribute. This class was probably produced by a
+     [exec] compiler that did not target the modern .class file format. The recommended
+     [exec] solution is to recompile the class from source, using an up-to-date compiler
+     [exec] and without specifying any "-target" type options. The consequence of ignoring
+     [exec] this warning is that reflective operations on this class will incorrectly
+     [exec] indicate that it is *not* an inner class.
+     [exec] warning: Ignoring InnerClasses attribute for an anonymous inner class
+     [exec] (org.dom4j.io.DocumentInputSource$1) that doesn't come with an
+     [exec] associated EnclosingMethod attribute. This class was probably produced by a
+     [exec] compiler that did not target the modern .class file format. The recommended
+     [exec] solution is to recompile the class from source, using an up-to-date compiler
+     [exec] and without specifying any "-target" type options. The consequence of ignoring
+     [exec] this warning is that reflective operations on this class will incorrectly
+     [exec] indicate that it is *not* an inner class.
+     [exec] warning: Ignoring InnerClasses attribute for an anonymous inner class
+     [exec] (org.dom4j.rule.RuleManager$1) that doesn't come with an
+     [exec] associated EnclosingMethod attribute. This class was probably produced by a
+     [exec] compiler that did not target the modern .class file format. The recommended
+     [exec] solution is to recompile the class from source, using an up-to-date compiler
+     [exec] and without specifying any "-target" type options. The consequence of ignoring
+     [exec] this warning is that reflective operations on this class will incorrectly
+     [exec] indicate that it is *not* an inner class.
+     [exec] warning: Ignoring InnerClasses attribute for an anonymous inner class
+     [exec] (org.dom4j.swing.LeafTreeNode$1) that doesn't come with an
+     [exec] associated EnclosingMethod attribute. This class was probably produced by a
+     [exec] compiler that did not target the modern .class file format. The recommended
+     [exec] solution is to recompile the class from source, using an up-to-date compiler
+     [exec] and without specifying any "-target" type options. The consequence of ignoring
+     [exec] this warning is that reflective operations on this class will incorrectly
+     [exec] indicate that it is *not* an inner class.
+     [exec] warning: Ignoring InnerClasses attribute for an anonymous inner class
+     [exec] (org.dom4j.swing.BranchTreeNode$1) that doesn't come with an
+     [exec] associated EnclosingMethod attribute. This class was probably produced by a
+     [exec] compiler that did not target the modern .class file format. The recommended
+     [exec] solution is to recompile the class from source, using an up-to-date compiler
+     [exec] and without specifying any "-target" type options. The consequence of ignoring
+     [exec] this warning is that reflective operations on this class will incorrectly
+     [exec] indicate that it is *not* an inner class.
+     [exec] warning: Ignoring InnerClasses attribute for an anonymous inner class
+     [exec] (org.dom4j.xpath.DefaultXPath$1) that doesn't come with an
+     [exec] associated EnclosingMethod attribute. This class was probably produced by a
+     [exec] compiler that did not target the modern .class file format. The recommended
+     [exec] solution is to recompile the class from source, using an up-to-date compiler
+     [exec] and without specifying any "-target" type options. The consequence of ignoring
+     [exec] this warning is that reflective operations on this class will incorrectly
+     [exec] indicate that it is *not* an inner class.
+
+package-res-and-assets:
+     [echo] Packaging resources and assets...
+     [exec]     (skipping file '.gitignore' due to ANDROID_AAPT_IGNORE pattern '.*')
+     [exec]     (skipping file '.gitignore' due to ANDROID_AAPT_IGNORE pattern '.*')
+     [exec] res/drawable/huz_popup_bottom.9.png: libpng warning: iCCP: Not recognizing known sRGB profile that has been edited
+     [exec] res/drawable/huz_popup_top.9.png: libpng warning: iCCP: Not recognizing known sRGB profile that has been edited
+     [exec] res/drawable-mdpi/ic_action_search.png: libpng warning: iCCP: Not recognizing known sRGB profile that has been edited
+     [exec] res/drawable-hdpi/ic_action_search.png: libpng warning: iCCP: Not recognizing known sRGB profile that has been edited
+     [exec] res/drawable-xhdpi/ic_action_search.png: libpng warning: iCCP: Not recognizing known sRGB profile that has been edited
+     [exec] res/drawable/plubin_camera_del_focused.png: libpng warning: iCCP: Not recognizing known sRGB profile that has been edited
+     [exec] res/drawable/plugin_camera_album_back.png: libpng warning: iCCP: Not recognizing known sRGB profile that has been edited
+     [exec] res/drawable/plugin_camera_back_btn.png: libpng warning: iCCP: Not recognizing known sRGB profile that has been edited
+     [exec] res/drawable/plugin_camera_back_btn_pressed.png: libpng warning: iCCP: Not recognizing known sRGB profile that has been edited
+     [exec] res/drawable/plugin_camera_bottom_bar.png: libpng warning: iCCP: Not recognizing known sRGB profile that has been edited
+     [exec] res/drawable/plugin_camera_cancel.png: libpng warning: iCCP: Not recognizing known sRGB profile that has been edited
+     [exec] res/drawable/plugin_camera_cancel_pressed.png: libpng warning: iCCP: Not recognizing known sRGB profile that has been edited
+     [exec] res/drawable/plugin_camera_choose_back.png: libpng warning: iCCP: Not recognizing known sRGB profile that has been edited
+     [exec] res/drawable/plugin_camera_del_unfocused.png: libpng warning: iCCP: Not recognizing known sRGB profile that has been edited
+     [exec] res/drawable/plugin_camera_choosed.png: libpng warning: iCCP: Not recognizing known sRGB profile that has been edited
+     [exec] res/drawable/plugin_camera_filenum.png: libpng warning: iCCP: Not recognizing known sRGB profile that has been edited
+     [exec] res/drawable/plugin_camera_preview_focused.png: libpng warning: iCCP: Not recognizing known sRGB profile that has been edited
+     [exec] res/drawable/plugin_camera_preview_pressed.png: libpng warning: iCCP: Not recognizing known sRGB profile that has been edited
+     [exec] res/drawable/plugin_camera_preview_unselected.png: libpng warning: iCCP: Not recognizing known sRGB profile that has been edited
+     [exec] res/drawable/plugin_camera_send_focused.png: libpng warning: iCCP: Not recognizing known sRGB profile that has been edited
+     [exec] res/drawable/plugin_camera_send_pressed.png: libpng warning: iCCP: Not recognizing known sRGB profile that has been edited
+     [exec] res/drawable/plugin_camera_send_unselected.png: libpng warning: iCCP: Not recognizing known sRGB profile that has been edited
+
+unsigned:
+     [echo] Packaging unsigned apk for release...
+
+jarsigner:
+     [echo] Packaging signed apk for release...
+     [echo] luopeng android.keystore=/Users/ispace/umpfiles/profile/ump.keystore,android.store.password=123456,android.keypass=umpump
+     [echo] Packaging signed apk for release zxing...
+
+pre_release:
+
+release:
+     [echo] Delete unsigned files...
+   [delete] Deleting: /Users/ispace/umpfiles/userfiles/32/36563/project/bin/unsigned_package.apk
+     [echo] APK is released.
+
+BUILD SUCCESSFUL
+Total time: 18 seconds
+
+pre_package:
+
+package:
+     [echo] Copy and deploy files to dest
+     [copy] Copying 54 files to /Users/ispace/umpfiles/userfiles/32/36563/output/install
+      [zip] Building zip: /Users/ispace/umpfiles/userfiles/32/36563/output/projectfiles/qCamera.zip
+     [echo] Package is finished!!!
+
+BUILD SUCCESSFUL
+Total time: 0 seconds

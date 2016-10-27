@@ -7,7 +7,7 @@
   <frame_name>ump</frame_name>  
   <icon relativePath="css/themes/default/app">app</icon>  
   <target>android-15</target>  
-  <platform>android</platform>  
+  <platform>ios</platform>  
   <versionCode>1</versionCode>  
   <versionName>1</versionName>  
   <orientation>unspecified</orientation>  
@@ -76,7 +76,10 @@
   <permission id="android.permission.WRITE_EXTERNAL_STORAGE"/>  
   <permission id="android.permission.WRITE_SMS"/>  
   <permission id="com.android.alarm.permission.SET_ALARM"/>  
-  <import/>
+  <import id="cordova-plugin-http" type="web" ref="cordova"/>  
+  <import id="cordova-plugin-camera" type="web" ref="cordova"/>  
+  <import id="cordova-plugin-file" type="web" ref="cordova"/>  
+  <import id="cordova-plugin-whitelist" type="web" ref="cordova"/> 
 </application><!--
 【屏幕显示方向】
   screenOrientation: 屏幕显示方向
