@@ -15,15 +15,17 @@
     <script type="text/javascript" src="../js/knockout.js"></script>
     <script type="text/javascript" src="../js/Frameworks/iuapmobile.frameworks.listview.js"></script>
     <script src="../js/new1.js"></script>
+    <script src="../js/main.js"></script>
 </head>
 <body>
 <div class="um-page" id="index">
-    <div id="header" class="um-header" onclick="closeWin()">
+    <div id="header" class="um-header" >
         <h3>热点</h3>
         <a class="um-empty" href="#newsDetail"></a>
     </div>
     <div id="main" class="um-content">
-    	<button onclick="openWin()">openWin</button>
+    	<button onclick="openWin('new2')">openWin</button>
+    	<button onclick="closeWin()">closeWin动画</button>
         <div class="um-listview-wrap" id="listview">
             <ul class="um-list um-no-active" data-bind="foreach:data">
                 <li class="um-listview-row" >
@@ -54,28 +56,28 @@
     </div>
     <div class="um-footer">
         <div class="um-tabbar-foot">
-            <a id="item0" href="#" class="um-footerbar-item active"> <i class="ti-comments f20"></i>
+            <a id="item0" href="#" class="um-footerbar-item active" onclick="closeToWin('root')"> <i class="ti-comments f20"></i>
 
                 <div class="um-tabbar-item-text">
-                    新闻
+                    关闭到初始页
                 </div>
             </a>
-            <a id="item1" href="#" class="um-footerbar-item"> <i class="ti-notepad f20"></i>
+            <a id="item1" href="#" class="um-footerbar-item" onclick="closeToWin('new1')"> <i class="ti-notepad f20"></i>
 
                 <div class="um-tabbar-item-text">
-                    日程
+                    关闭到new1
                 </div>
             </a>
-            <a id="item2" href="#" class="um-footerbar-item "> <i class="ti-agenda f20"></i>
+            <a id="item2" href="#" class="um-footerbar-item " onclick="closeToWin('new2')"> <i class="ti-agenda f20"></i>
 
                 <div class="um-tabbar-item-text">
-                    通讯录
+                  关闭到new2
                 </div>
             </a>
-            <a id="item3" href="#" class="um-footerbar-item"> <i class="ti-user f20"></i>
+            <a id="item3" href="#" class="um-footerbar-item" onclick="closeToWin('new3')"> <i class="ti-user f20"></i>
 
                 <div class="um-tabbar-item-text">
-                    我
+                 关闭到new3
                 </div>
             </a>
         </div>

@@ -137,14 +137,6 @@
         //console.log("您长按了列表！");
     });
 });
-function closeWin(){
-	summer.closeWin()
-}
-function openWin(){
-	summer.openWin({
-        "id" : 'new2',
-        "url" : 'html/new2.html'
-    });
-}
+
 
 

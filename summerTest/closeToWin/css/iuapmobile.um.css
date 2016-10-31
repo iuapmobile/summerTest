@@ -11,6 +11,7 @@ CSS base
 /*** from scss/um/Mixins/_commin.scss ***/
 /*** from scss/um/Common/base.scss ***/
 /*    v3.0.20160726   */
+button{width: 100%;height:30px;}
 dl, dt, dd, ul, ol, li, pre, form, p, fieldset, input, textarea, blockquote, th, td, button {
   margin: 0;
   padding: 0;

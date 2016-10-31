@@ -10,7 +10,7 @@
 		<script src="../js/summer.js" ></script>
 		<script src="../js/jquery-2.1.4.min.js" ></script>
 		<script src="../js/Frameworks/iuapmobile.frameworks.ui.js" ></script>
-
+		<script src="../js/main.js" ></script>
 		<script>
 			function $pageReady() {
 				/*这里编写与原生服务相关的代码逻辑，例如对原生设备服务的调用，对网络服务的调用等*/
@@ -24,11 +24,12 @@
 	</head>
 	<body>
 		<div class="um-page" id="index">
-			<div class="um-header" onclick="closeToWin()">
-				<a href="index.html" class="um-back"> 返回</a>
+			<div class="um-header">
+				<a href="#" class="um-back"> 返回</a>
 				<h3>表单录入</h3>
 				<a href="#" class="um-header-right ti-save"></a>
 			</div>
+			<button onclick="openWin('new1')" >openWin</button>
 			<div class="um-content">
 				<ul class="um-list" style="margin:30px 0px">
 					<li >
@@ -113,9 +114,5 @@
 			</div>
 		</div>
 	</body>
-	<script>
-		function closeToWin(){
-			summer.closeToWin({"id":"root"})
-		}
-	</script>
+
 </html>

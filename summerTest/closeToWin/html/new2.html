@@ -10,13 +10,15 @@
 		<script src="../js/summer.js" ></script>
 		<script src="../js/jquery.min.js" ></script>
 		<script src="../js/Frameworks/iuapmobile.frameworks.ui.js" ></script>
+		 <script src="../js/main.js"></script>
 	</head>
 	<body>
 		<div class="um-frame" id="index">
+		 <button onclick="openWin('new3')">openWin</button>
 			<div class="um-content">
 				<div class="um-grid um-row">
 					<div class="um-grid-row tc um-border-bottom">
-						<div class="um-border-right um-bgc-white" onclick="openWin()">
+						<div class="um-border-right um-bgc-white" >
 							<a href="#" class="um-circle um-black"> <img src="../img/mt_food.png" width=40 class="um-img-responsive" alt="">
 							<div class="f12 mt5">
 								美食
@@ -71,13 +73,4 @@
 			</div>
 		</div>
 	</body>
-	<script>
-		function openWin(){
-			summer.openWin({
-		        "id" : 'new3',
-		        "url" : 'html/new3.html'
-		    });
-		}
-
-	</script>
 </html>

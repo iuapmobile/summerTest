@@ -1,10 +1,25 @@
-//here is your code...
-summerready = function () {
-	$summer.byId("content").innerHTML += "<h1 style='text-align: center'>Hello friends, welcome to touch the summer frame!</h1><h2 style='text-align: center'>The frame update at " +(new Date()).toLocaleString()+"</h2>";
-};
-function openWin(){
+
+function openWin(id){
 	summer.openWin({
-        "id" : 'new1',
-        "url" : 'html/new1.html'
+        "id" : id,
+        "url" : 'html/'+id+'.html',
+        "animation" : {
+	        'type' :"movein", //none|push|fade
+	        'subType':"from_right", //from_left|from_top|from_bottom
+	        'duration':300
+    	}
     });
+}
+function closeWin(){
+	summer.closeWin({
+		"animation" : {
+	        'type' :"movein", //none|push|fade
+	        'subType':"from_top", //from_left|from_top|from_bottom
+	        'duration':300
+    	}
+	})
+}
+
+function closeToWin(id){
+	summer.closeToWin({"id":id})
 }
