@@ -1,22 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <application>
 	<app_start>index.html</app_start>
-	<app_name>closeFrame</app_name>
-	<project_name>closeFrame</project_name>
-	<package_name>com.yonyou.closeframe</package_name>
+	<app_name>qSetFrameAttr</app_name>
+	<project_name>qSetFrameAttr</project_name>
+	<package_name>com.yonyou.qsetframeattr</package_name>
 	<frame_name>ump</frame_name>
 	<icon relativePath="css/themes/default/app">app</icon>
 	<target>android-15</target>
 	<platform>ios</platform>
 	<versionCode>1</versionCode>
 	<versionName>1</versionName>
-	<orientation>4</orientation>
+	<orientation>unspecified</orientation>
 	<min_sdk_version>10</min_sdk_version>
 	<max_sdk_version>17</max_sdk_version>
 	<permission id="android.permission.INTERNET"/>
 	<statebarstyle>dark</statebarstyle>
 	<isfullscreen>false</isfullscreen>
 	<windowSoftInputMode>stateHidden</windowSoftInputMode>
+	<import id="cordova-plugin-http" type="web" ref="cordova"/>  
+	<import id="cordova-plugin-camera" type="web" ref="cordova"/>  
+	<import id="cordova-plugin-file" type="web" ref="cordova"/>  
+	<import id="cordova-plugin-whitelist" type="web" ref="cordova"/> 
 </application><!--
 【屏幕显示方向】
   screenOrientation: 屏幕显示方向

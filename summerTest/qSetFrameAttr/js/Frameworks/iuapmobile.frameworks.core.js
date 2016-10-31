@@ -2,7 +2,7 @@
 //-----------------------------------------------------------------------
 // Copyright (C) Yonyou Corporation. All rights reserved.
 // Author： gct@yonyou.com
-// iUAP Mobile JS Framework 3.0.0.20160805
+// iUAP Mobile JS Framework 3.0.0.20160823.2047
 
 (function(window){
 	window._UM = window.UM;
@@ -1747,7 +1747,7 @@ CommonNativeCallService.prototype.callService=function(serviceType, jsonArgs, is
 				return;	
 			}			
 		}else if(typeof jsonArgs == "object"){
-			if(jsonArgs["callback"] && $isFunction(jsonArgs["callback"])){
+			if(jsonArgs["callback"] && $isFunction(jsonArgs["callback"]) && !jsonArgs["__keepCallback"]){
 				//1、 callback:function(){}
 				var newCallBackScript = "fun" + uuid(8, 16) + "()";//anonymous method
 				while($__cbm[newCallBackScript]){
@@ -1777,7 +1777,7 @@ CommonNativeCallService.prototype.callService=function(serviceType, jsonArgs, is
 					}				
 				}
 				jsonArgs["callback"] = newCallBackScript;				
-			}else if(jsonArgs["callback"] && typeof(jsonArgs["callback"]) == "string"){
+			}else if(jsonArgs["callback"] && typeof(jsonArgs["callback"]) == "string" && !jsonArgs["__keepCallback"]){
 				//2、 callback:"mycallback()"
 				var cbName = jsonArgs["callback"].substring(0, jsonArgs["callback"].indexOf("("));
 				var callbackFn = eval(cbName);
@@ -3023,21 +3023,22 @@ function UMP$Services$Cache$read2(key, maxlength, charset){
 function UMP$Services$Cache$writeFile(filePath, content, append, charset, isSync){
 	if($isJSONObject(filePath)){		
 		return $service.call("UMFile.write", filePath, true);
-	}else{
-		if($environment.DeviceType == $environment.DeviceIOS){
-			var str = content;
-			if(typeof content != "string"){
-				str = $jsonToString(content);
-			}
-			return UM_callNativeService(this._store, filePath, str);	
-		}else if($environment.DeviceType == $environment.DeviceAndroid){
+	}else if($environment.DeviceType == $environment.DeviceAndroid || $environment.DeviceType == $environment.DeviceIOS){
 			var args = {};
 			if($isJSONObject(append) && arguments.length == 3){
 				args = append;
 				if(filePath)
 					args["path"] = filePath;
 				if(content)
-					args["content"] = content;
+					if(typeof content == "object"){
+						content = "obj-"+Json.stringify(content);
+						args["content"] = content;
+					}else if(typeof content == "string"){
+						content = "str-"+content;
+						args["content"] = content;
+					}else{
+						alert("writeFile不支持"+typeof content +"类型的参数");
+					}			
 			}else{				
 				if(filePath)
 					args["path"] = filePath;
@@ -3052,14 +3053,13 @@ function UMP$Services$Cache$writeFile(filePath, content, append, charset, isSync
 				return UM_NativeCall.callService("UMFile.write", args, true);//默认都是同步调用，避免write后read不到最新的结果
 			else
 				return UM_NativeCall.callService("UMFile.write", args, isSync);
-		}
 	}
 }
+
+//////
 function UMP$Services$Cache$readFile(filePath, maxlength, charset){
 	var strContent = "";
-	if($environment.DeviceType == $environment.DeviceIOS){
-		strContent = UM_callNativeService(this._restore, filePath);	
-	}else if($environment.DeviceType == $environment.DeviceAndroid){  
+	if($environment.DeviceType == $environment.DeviceAndroid || $environment.DeviceType == $environment.DeviceIOS){  
 		var args ={};
 		if(filePath)
 			args["path"] = filePath;
@@ -3079,6 +3079,13 @@ function UMP$Services$Cache$readFile(filePath, maxlength, charset){
 			obj = $stringToJSON(strContent);
 			return obj;
 			*/
+			if(strContent.indexof("obj-")==0){
+				 strContent = strContent.slice(4);
+				 return JSON.parse(strContent);
+			}else if(strContent.indexof("str-")==0){
+				strContent = strContent.slice(4);
+				return strContent;
+			}
 			return strContent;
 		}catch(e){
 			return strContent;
@@ -3226,14 +3233,14 @@ UMP.Services.Sqlite.prototype = {
 		return this.openOrCreateDB(json);
 	},
 	openOrCreateDB:function(json){
-		if($isJSONObject(json) && $isEmpty(json["db"])){	
+		if($isJSONObject(json) && !$isEmpty(json["db"])){	
 			return $service.call(this.UMSQLite_openDB, json, false);
 		}else{
 			alert("参数不是一个有效的JSONObject，请确保参数是一个有效的JSON且含有db键值");
 		}
 	},
 	openDB:function(args){
-		if($isJSONObject(args) && $isEmpty(args["db"])){			
+		if($isJSONObject(args) && !$isEmpty(args["db"])){			
 			return $service.call(this.UMSQLite_openDB, args, false);
 		}else{
 			alert("参数不是一个有效的JSONObject，请使用openDB({...})形式的API");
@@ -3267,9 +3274,7 @@ UMP.Services.Network = function UMP$Services$Network(){
 
 function UMP$Services$Network$isConnect(){
 	var result = false;
-	if($environment.DeviceType == $environment.DeviceIOS){		
-		result = $service.call(this.um_IsConnect, {}, true);	
-	}else if($environment.DeviceType == $environment.DeviceAndroid){		
+    if($environment.DeviceType == $environment.DeviceAndroid || $environment.DeviceType == $environment.DeviceIOS){		
 		result = $service.call(this.UMNetwork_isAvailable, {}, true);
 	}
 	if(result != null && result.toString().toLowerCase() == "true"){
@@ -3644,7 +3649,6 @@ $window = new UMP.Services.UMWindow();
 //
 
 
-
 //___________________________________________________________________________________________________ $umdevice UMP.Services.UMDevice
 UMP.Services.UMDevice = function UMP$Services$UMDevice(){
 	this._UMDevice_getDeviceInfo="UMDevice.getDeviceInfo";
@@ -3827,6 +3831,7 @@ function UMP$Services$UMDevice$openWebView(args){
 	return $service.call("UMDevice.openWebView", args);
 }
 function UMP$Services$UMDevice$screenShot(args){
+	args = {};
     if(!$isJSONObject(args)){
 		alert("调用screenshot服务时，参数不是一个有效的JSONObject");
 	}
@@ -3982,10 +3987,7 @@ function UMP$Services$Telephone$saveContact(tel, employeename, jobname, orgname,
 }
 */
 function UMP$Services$Telephone$call(tel){
-	if(CurrentEnvironment.DeviceType==CurrentEnvironment.DeviceIOS){
-    	UM_callNativeService(this._CALLTEL, tel);
-		//UM_callNativeServiceNoraml
-	}else if(CurrentEnvironment.DeviceType == CurrentEnvironment.DeviceAndroid) {
+	if(CurrentEnvironment.DeviceType == CurrentEnvironment.DeviceAndroid || CurrentEnvironment.DeviceType==CurrentEnvironment.DeviceIOS) {
    		$service.call("UMDevice.callPhone", "{tel:'"+tel+"'}");
 	}else{
 		alert("Not implementate UMP$Services$Telephone$call in CurrentEnvironment.DeviceType == " + CurrentEnvironment.DeviceType);
@@ -3994,15 +3996,11 @@ function UMP$Services$Telephone$call(tel){
 function UMP$Services$Telephone$sendMsg(tel, body){
 	if(arguments.length == 1 && $isJSONObject(arguments[0])){
 		var args = tel;		
-		if(CurrentEnvironment.DeviceType==CurrentEnvironment.DeviceIOS){
-			return UM_callNativeService(this._SENDMSG, args.tel, args.body);
-		}else if(CurrentEnvironment.DeviceType == CurrentEnvironment.DeviceAndroid) {
+	if(CurrentEnvironment.DeviceType == CurrentEnvironment.DeviceAndroid || CurrentEnvironment.DeviceType==CurrentEnvironment.DeviceIOS) {
 			return $service.call("UMDevice.sendMsg", args);
 		}
 	}else{
-		if(CurrentEnvironment.DeviceType==CurrentEnvironment.DeviceIOS){
-			UM_callNativeService(this._SENDMSG, tel, body);
-		}else if(CurrentEnvironment.DeviceType == CurrentEnvironment.DeviceAndroid) {
+	if(CurrentEnvironment.DeviceType == CurrentEnvironment.DeviceAndroid || CurrentEnvironment.DeviceType==CurrentEnvironment.DeviceIOS) {
 			//$service.call("UMDevice.sendMessage", "{recevie:'"+tel+"',message:'"+body+"'}");
 			$service.call("UMDevice.sendMsg", "{tel:'"+tel+"',body:'"+body+"'}");
 		}
@@ -4121,6 +4119,8 @@ function UMP$UI$Container$UMCamera$openPhotoAlbum(json){
 		args["bindfield"] = json["bindfield"];
 	if(json.callback)
 		args["callback"] = json["callback"];
+	if(json.compressionRatio)
+		args["compressionRatio"] = json["compressionRatio"];
 	return $service.call(this._UMDevice_openPhotoAlbum, args, false)//异步调用服务
 }
 UMP.UI.Container.UMCamera.prototype ={
@@ -4462,7 +4462,7 @@ function UMP$Services$UMFile$download(jsonArgs){
 	if($isEmpty(jsonArgs.callback)){
 		alert("参数callback不能为空");
 	}
-	
+	jsonArgs["__keepCallback"] = true;
 	return $service.call(this._UMFile_download, jsonArgs);//默认异步
 }
 
@@ -4502,9 +4502,13 @@ function UMP$Services$UMFile$write(args, isSync){
 	}
 	return UM_NativeCall.callService("UMFile.write", args, isSync);
 }
-function UMP$Services$UMFile$remove(args, isSync){
+function UMP$Services$UMFile$remove(args){
 	//参数path支持文件和文件夹两种,$service.call("UMFile.delete",{"path":"filetest/test.txt"},true);
-	return $service.call("UMFile.delete", args, typeof isSync == "undefined" ? false : true);//默认异步删除
+	//return $service.call("UMFile.delete", args, typeof isSync == "undefined" ? false : true);//默认异步删除
+	return $service.call("UMFile.remove", args, false);//默认异步
+}
+function UMP$Services$UMFile$exists(args){
+	return $service.call("UMFile.exists", args, true);//调用的是UMDevice的方法
 }
 function UMP$Services$UMFile$getFileInfo(args){
 	//return $service.call("UMFile.getFileInfo",{"path":"filetest/test.txt"}, true);
@@ -4544,6 +4548,7 @@ UMP.Services.UMFile.prototype = {
 	writeFile : UMP$Services$UMFile$writeFile,
 	write : UMP$Services$UMFile$write,
 	remove : UMP$Services$UMFile$remove,
+	exists : UMP$Services$UMFile$exists,
 	getFileInfo: UMP$Services$UMFile$getFileInfo,
 	open: UMP$Services$UMFile$open,
 	ftpUpload : UMP$Services$UMFile$ftpUpload,
@@ -4997,15 +5002,14 @@ UMP.UI.Mvc.Action.registerClass('UMP.UI.Mvc.Action');
 
 
 
-//=========================================================================
-//-----------------------------------------------------------------------
-// Copyright (C) Yonyou Corporation. All rights reserved.
-// include : UMP.Web.EventMgr
-// Author gct@yonyou.com
-//-----------------------------------------------------------------------
-/*!
- * UAP Mobile JavaScript Library v2.7.0
- */
+/**********************************************************
+* UAP Mobile JavaScript Library
+* Copyright (C) Yonyou Corporation. All rights reserved.
+* include : UMP.Web.EventMgr
+* Author: gct@yonyou.com
+* version: 2.7.20161028
+**********************************************************/
+
 (function( window, undefined ) {
     UM = window.UM || {};
     UM._inherit = (function () {
