@@ -10,7 +10,7 @@ summerready = function(){
         bounces: true,
         position: {
             top: top,
-			bottom: bottom,
+			bottom: bottom+20,
             left: 0,
             right: 0
         }
