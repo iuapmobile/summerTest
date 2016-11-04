@@ -64,7 +64,7 @@ function download(obj){
 //为了多文件下载
 function download2(obj){
     //下载请求的url
-    var url = "http://121.196.222.96:8096/picture/ca891266-c6c9-41f7-9cc4-adfd100f711c.mp4";
+    var url = "http://121.196.222.96:8096/picture/f5715297-7232-4111-b33f-b7be2743c2fc.avi";
     //var url = "http://img5.pcpop.com/ArticleImages/0X0/3/3427/003427129.jpg"
     //存放路径
     var filepath = "downloadTest/image"; 

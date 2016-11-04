@@ -47,22 +47,21 @@ function getFileInfo(){
 	alert("文件大小" + JSON.parse(size).size + "kb");
 }
 
-
+//上传相机
 function uploadCamera(){
 	var params = {};
-	uploadCordova(
-		{
-			fileURL : pathCamera,
-			type : "image/jpeg",
-			params : params,
-			SERVER : "http://123.103.9.206:7100/UpdateApp/file/upload"
-		},function (ret){
-			alert("成功"+ JSON.stringify(ret));
-		},function(err){
-			alert("失败"+ JSON.stringify(err));
-		}
-	);
+	summer.upload({
+		fileURL : pathCamera,
+		type : "image/jpeg",
+		params : params,
+		SERVER : "http://123.103.9.206:7100/UpdateApp/file/upload"
+	},function (ret){
+		alert("成功"+ JSON.stringify(ret));
+	},function(err){
+		alert("失败"+ JSON.stringify(err));
+	});
 }
+//上传图库
 function uploadPhoto(){
 	var params = {};
 	summer.upload({
