@@ -1,194 +1,50 @@
 <!DOCTYPE html>
-<html class="um-win">
+<html>
 	<head>
 		<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
 		<meta charset="UTF-8">
 		<title></title>
 		<link rel="stylesheet" href="css/font-icons.css">
 		<link rel="stylesheet" href="css/iuapmobile.um.css">
-		<style>
-			/* 设置背景图片 */
-			.icon-home, .icon-msg, .icon-share {
-				height: 25px;
-				background: url(../img/Home-25.png) center no-repeat;
-			}
-			.icon-msg {
-				background-image: url(../img/About-25.png);
-			}
-			.icon-share {
-				background-image: url(../img/Share-25.png);
-			}
-			/* 设置激活状态 */
-			.um-footerbar-item.active {
-				color: rgb(252, 116, 122);
-			}
-			.um-footerbar-item.active .icon-home {
-				background-image: url(../img/Home-25-active.png);
-			}
-			.um-footerbar-item.active .icon-msg {
-				background-image: url(../img/About-25-active.png);
-			}
-			.um-footerbar-item.active .icon-share {
-				background-image: url(../img/Share-25-active.png);
-			}
-
-		</style>
 
 		<script src="js/Frameworks/iuapmobile.frameworks.core.js" ></script>
 		<script src="js/summer.js" ></script>
-		<script src="js/jquery-2.1.4.min.js" ></script>
+		<script src="js/jquery.min.js" ></script>
 		<script src="js/Frameworks/iuapmobile.frameworks.ui.js" ></script>
 		<script src="js/index.js" ></script>
-		<script src="js/knockout-2.2.0.js" type="text/javascript" charset="utf-8"></script>
-		<script>
-			$(function() {
-				var arrData = [{
-					title : "军事",
-					src : "#item1"
-				}, {
-					title : "社会",
-					src : "#item2"
-				}, {
-					title : "体育",
-					src : "#item3"
-				}, {
-					title : "娱乐",
-					src : "#item4"
-				}, {
-					title : "财经",
-					src : "#item5"
-				}, {
-					title : "科技",
-					src : "#item6"
-				}, {
-					title : "专题",
-					src : "#item7"
-				}, {
-					title : "图片",
-					src : "#item8"
-				}, {
-					title : "视频",
-					src : "#item9"
-				}, {
-					title : "国内",
-					src : "#item10"
-				}, {
-					title : "国际",
-					src : "#item11"
-				}, {
-					title : "视界",
-					src : "#item12"
-				}];
-
-				function Model() {
-					this.arrData = ko.observableArray(arrData);
-				}
-
-
-				ko.applyBindings(new Model());
-			})
-
-		</script>
 	</head>
 	<body>
-		<div class="um-page um-win" id="index">
-			<div id="header" class="um-header">
+		<div class="um-win" id="index">
+			<div id="header" class="um-header" >
 				<a href="#" class="um-back">返回</a>
 				<h3>标题</h3>
-				<a href="#" class="um-header-right ti-layout-grid2 f24" onclick="openwin1()"></a>
+				<a href="#" class="um-header-right ti-plus f20"></a>
 			</div>
 
 			<div id="main" class="um-content p15">
-
-				<div class="um-input-text ">
-					<span class="ti-lock um-input-left-icon"></span>
-					<input type="text" class="form-control" placeholder="Username">
-				</div>
-				<div class="um-input-text ">
-					<span class="ti-lock um-input-left-icon"></span>
-					<input type="text" class="form-control" placeholder="Username">
-				</div>
-				<div class="um-input-text ">
-					<span class="ti-lock um-input-left-icon"></span>
-					<input type="text" class="form-control" placeholder="Username">
-				</div>
-
-				<div class="um-nav">
-					<div class="um-nav-inner">
-						<div class="um-nav-item"><img src="img/love.png" width="150" alt="">
-						</div>
-						<div class="um-nav-item"><img src="img/waite.png" width="150" alt="">
-						</div>
-						<div class="um-nav-item"><img src="img/sun.png" width="150" alt="">
-						</div>
-						<div class="um-nav-item"><img src="img/love.png" width="150" alt="">
-						</div>
-						<div class="um-nav-item"><img src="img/waite.png" width="150" alt="">
-						</div>
-						<div class="um-nav-item"><img src="img/sun.png" width="150" alt="">
-						</div>
-						<div class="um-nav-item"><img src="img/love.png" width="150" alt="">
-						</div>
-						<div class="um-nav-item"><img src="img/waite.png" width="150" alt="">
-						</div>
-						<div class="um-nav-item"><img src="img/sun.png" width="150" alt="">
-						</div>
-						<div class="um-nav-item"><img src="img/love.png" width="150" alt="">
-						</div>
-						<div class="um-nav-item"><img src="img/waite.png" width="150" alt="">
-						</div>
-						<div class="um-nav-item"><img src="img/sun.png" width="150" alt="">
-						</div>
-						<div class="um-nav-item"><img src="img/love.png" width="150" alt="">
-						</div>
-						<div class="um-nav-item"><img src="img/waite.png" width="150" alt="">
-						</div>
-						<div class="um-nav-item"><img src="img/sun.png" width="150" alt="">
-						</div>
-					</div>
-				</div>
-
-				<ul class="um-tabbar um-tabbar-underline">
-					<li>
-						<a>用户</a>
-					</li>
-					<li class="active">
-						<a>应用</a>
-					</li>
-					<li>
-						<a>社区</a>
-					</li>
-					<li>
-						<a>企业</a>
-					</li>
-				</ul>
+	
 			</div>
 
-			<div class="um-footer">
+			<div class="um-footer" id="footer">
 				<div class="um-tabbar-foot">
-					<a id="item0" href="#" class="um-footerbar-item"> <i class="ti-menu-alt f24"></i>
-					<div class="um-tabbar-item-text">
-						企业审核
-					</div> </a>
-					<a id="item1" href="#" class="um-footerbar-item"> <i class="ti-bar-chart f22"></i>
-					<div class="um-tabbar-item-text">
-						业绩分析
-					</div> </a>
-					<a id="item2" href="#" class="um-footerbar-item active"> <i class="ti-pencil-alt f20"></i>
-					<div class="um-tabbar-item-text">
-						新增统计
-					</div> </a>
-					<a id="item3" href="#" class="um-footerbar-item"> <i class="ti-user f18"></i>
-					<div class="um-tabbar-item-text">
-						个人中心
-					</div> </a>
-					<a id="item4" href="#" class="um-footerbar-item"> <i class="ti-settings f24"></i>
-					<div class="um-tabbar-item-text">
-						设置
-					</div> </a>
+					<a id="item0" href="#" class="um-footerbar-item">
+						<i class="ti-comments f20"></i>
+						<div class="um-tabbar-item-text">消息</div>
+					</a>
+					<a id="item1" href="#" class="um-footerbar-item"> 
+						<i class="ti-notepad f20"></i>
+						<div class="um-tabbar-item-text">日程</div> 
+					</a>
+					<a id="item2" href="#" class="um-footerbar-item active">
+						<i class="ti-agenda f20"></i>
+						<div class="um-tabbar-item-text">通讯录</div>
+					</a>
+					<a id="item3" href="#" class="um-footerbar-item">
+						<i class="ti-user f20"></i>
+						<div class="um-tabbar-item-text">我</div>
+					</a>
 				</div>
 			</div>
 		</div>
 	</body>
-
 </html>

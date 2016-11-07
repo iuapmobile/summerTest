@@ -2,7 +2,7 @@
 //-----------------------------------------------------------------------
 // Copyright (C) Yonyou Corporation. All rights reserved.
 // Author： gct@yonyou.com
-// iUAP Mobile JS Framework 3.0.0.20160805
+// iUAP Mobile JS Framework 3.0.0.20160823.2047
 
 (function(window){
 	window._UM = window.UM;
@@ -4121,6 +4121,8 @@ function UMP$UI$Container$UMCamera$openPhotoAlbum(json){
 		args["bindfield"] = json["bindfield"];
 	if(json.callback)
 		args["callback"] = json["callback"];
+	if(json.compressionRatio)
+		args["compressionRatio"] = json["compressionRatio"];
 	return $service.call(this._UMDevice_openPhotoAlbum, args, false)//异步调用服务
 }
 UMP.UI.Container.UMCamera.prototype ={
