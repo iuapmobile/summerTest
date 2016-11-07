@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/font-icons.css">
+		<link rel="stylesheet" href="css/iuapmobile.um.css">
+		<script src="js/summer.js" ></script>
+		<script src="js/jquery.min.js" ></script>
+		<script src="js/Frameworks/iuapmobile.frameworks.ui.js" ></script>
+	</head>
+	<body>
+		<div id="win" class="um-win" >
+			<div id="header" class="um-header">
+				 
+				<h3>图表</h3>
+				 
+			</div>
+
+			<div id="content" class="um-content">
+				<h4>echart分类</h4>
+				<a href="#" onclick="openWin('bar')">
+					<div class="um-label um-box-justify">
+	                	<div>柱状图</div>
+	                	<div>
+	                		 <i class="ti-angle-right"></i>
+	                	</div>
+                	</div>
+				</a>
+				<a href="#" onclick="openWin('line')">
+					<div class="um-label um-box-justify">
+	                	<div>折线图</div>
+	                	<div>
+	                		 <i class="ti-angle-right"></i>
+	                	</div>
+                	</div>
+				</a>
+				<a href="#" onclick="openWin('pan')">
+					<div class="um-label um-box-justify">
+	                	<div>饼状图</div>
+	                	<div>
+	                		 <i class="ti-angle-right"></i>
+	                	</div>
+                	</div
+                	>
+				</a>
+			</div>
+			 
+		</div>
+		<script>
+			function openWin(type){
+				summer.openWin({
+					id:type,
+					url:"html/"+type+".html"
+				});
+			}
+			
+		</script>
+	</body>
+</html>

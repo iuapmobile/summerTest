@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/font-icons.css">
+		<link rel="stylesheet" href="../css/iuapmobile.um.css">
+		<script src="../js/summer.js" ></script>
+		<script src="../js/jquery.min.js" ></script>
+		<script src="../js/Frameworks/iuapmobile.frameworks.ui.js" ></script>
+        <script src="../js/echarts.common.min.js"></script>
+	</head>
+	<body>
+		<div class="um-frame" id="main">
+			 <div class="um-header" >
+			 	<a href="#" class="um-back">返回</a>
+				<h3>柱状图</h3>
+			</div>  
+
+			<div id="content" class="um-content">
+				 
+                 <div id='myChart' style="height:500px;"></div>
+
+			</div>
+
+			<!-- <div class="um-footer"></div> -->
+		</div>
+
+        <script>
+        	$('.um-back').click(function (){
+				summer.closeWin();
+			});
+			summerready=function(){
+            $(function () {		
+                //基于准备好的dom,初始化echarts实例
+        		var myChart=echarts.init(document.getElementById('myChart'));
+        		//指定图表的配置项和数据
+        		var	option={
+        			color: ['#007aff'],
+        			title : {
+        				text: '2015年采购金额各月数据一览',
+        				x:'center',
+        				y:10,
+        				textStyle: {
+        					color: '#333',
+        					fontSize: 18
+        				}
+        			},
+        			tooltip: {                                  // 气泡提示配置
+        				trigger: 'item',                        // 触发类型，默认数据触发，可选为：'axis'
+        			}, 
+        			xAxis: [{								    //x坐标轴相关设置
+        				type: 'category',
+        				boundaryGap: true,
+        				axisLine: { 
+        					lineStyle: {
+        						color: '#E3E5E8',
+        						width: 2
+        					}
+        				}, 
+        				axisLabel: {
+        					textStyle: {
+        						color: '#333',
+        						fontSize: 16
+        					}
+        				},
+        				data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
+        			}],
+        			yAxis: [{								//y坐标轴相关设置
+        				type: 'value',
+        				name: '(万元)',
+        				nameTextStyle:{
+        					align: 'right',
+        					fontSize: 16
+        				}, 
+        				axisLine: {
+        					lineStyle: {
+        						color: 'black',
+        						width: 2
+        					}
+        				}, 
+        				axisLabel: {
+        					textStyle: {
+        						color: '#333',
+        						fontSize: 16
+        					}
+        				}
+        			}],
+        			grid: {
+        				x: 60,
+        				y: 80,
+        				x2: 40,
+        				y2: 50
+        			},
+        			series: [{
+        				type: 'bar',
+        				itemStyle: {
+        					normal: {
+        						lineStyle:{
+        							width: 5
+        						}
+        						
+        					}
+        				},
+        				data: [120, 150, 200, 160,300,230,169,321,234,432,126,148]
+        			}]
+        	    };
+                // 使用刚指定的配置项和数据显示图表。
+                myChart.setOption(option);	
+                // 点击事件操作
+                myChart.on('click', function (param) {
+        			alert(JSON.stringify(param.value));
+        	    });
+            });
+           }
+        </script>
+	</body>	
+</html>
