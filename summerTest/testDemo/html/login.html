@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html class="um-win">
+	<head>
+		<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/font-icons.css">
+		<link rel="stylesheet" href="../css/iuapmobile.um.css">
+		<script src="../js/jquery.min.js" ></script>
+		<script src="../js/summer.js" ></script>
+		<script src="../js/Frameworks/iuapmobile.frameworks.core.js" ></script>
+		<script src="../js/Frameworks/iuapmobile.frameworks.ui.js" ></script>
+		<style>
+			#main {
+				background: #256FEA;
+			}
+			.login {
+				background: #fff;
+				padding: 15px;
+				border-radius: 5px;
+				padding: 6%;
+			}
+			.login button.um-btn {
+				border-radius: 3px;
+				padding: 5px 12px;
+				border-color: #009BF5;
+				background: #009BF5;
+			}
+			.login p.title {
+				color: #00B3ED;
+			}
+			.login p.user {
+				color: #848484;
+			}
+			input.form-control {
+				border: none;
+				border-bottom: 1px solid #e3e3e5;
+			}
+			input.form-control:focus {
+				box-shadow: none;
+			}
+			.login .um-input-clear {
+				color: #fff;
+				background-color: #ddd;
+				padding: 4px;
+			}
+			.form-control:focus + .um-input-clear {
+				color: #fff;
+			}
+			.um-input-clear.ti-eye.eye {
+				color: #256FEA;
+			}
+			.um-header {
+				background-color: #256FEA;
+				border: none
+			}
+		</style>
+	</head>
+	<body>
+		<div class="um-page um-win" id="index">
+			<div class="um-header" id="header" >
+				<a href="#"  class="um-back" onclick="onBackKeyDown()"></a>
+			</div>
+			<div id="main" class="um-content p15 um-box-center um-row">
+				<div class="login um-xs-10 um-sm-6 um-md-4 um-lg-3">
+					<p class="title tc mb30 fb f24">
+						WISE++
+					</p>
+					<p class="user f14">
+						用户名
+					</p>
+					<div class="pr">
+						<input type="text" class="form-control um-no-brs" placeholder=" ">
+						<span class="um-input-clear ti-close um-circle  f12"></span>
+					</div>
+					<p class="user f14 mt10">
+						密码
+					</p>
+					<div class="pr">
+						<input type="password" class="form-control um-no-brs" placeholder="">
+						<span class="um-input-clear ti-eye um-circle  f12 "></span>
+					</div>
+					<button class="um-btn mt30" onclick="login()">
+						登  录
+					</button>
+					<p class="tr mt10 f12">
+						<a href="">忘记密码？</a>
+					</p>
+				</div>
+			</div>
+		</div>
+		<script>
+			$(function() {
+				$(".um-input-clear.ti-close").click(function() {
+					$(this).prev("input").val("");
+				})
+				$(".um-input-clear.ti-eye").click(function() {
+					var $pre_input = $(this).prev("input");
+					('password' == $pre_input.attr('type')) ? $pre_input.attr('type', 'text') : $pre_input.attr('type', 'password');
+					$(this).toggleClass('eye');
+				})
+			})
+			
+			//加载监听安卓返回键，全屏显示
+			summerready = function() {
+				document.addEventListener("backbutton", onBackKeyDown, false);
+				//监听返回键
+				$summer.fixStatusBar($summer.byId('header'));
+			}
+			//定义返回键的方法
+			function onBackKeyDown() {
+				summer.closeWin();
+				summer.execScript({
+					winId : 'root',
+					script : "set2()"
+				});
+			};
+			//定义登录的方法
+			function login() {
+				summer.closeWin();
+				summer.execScript({
+					'winId' : 'root',
+					'script' : "set('海滨：您好')"
+				});
+			};
+		</script>
+	</body>
+</html>

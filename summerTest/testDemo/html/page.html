@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/iuapmobile.um.css">
+		<link rel="stylesheet" href="../css/font-icons.css">
+		<script src="../js/Frameworks/iuapmobile.frameworks.core.js" ></script>
+		<script src="../js/jquery.min.js" ></script>
+		<script src="../js/Frameworks/iuapmobile.frameworks.ui.js" ></script>
+		<script src="../js/summer.js" ></script>
+	</head>
+	<body>
+		<div class="um-page" id="index">
+			<div class="um-header" id="header">
+				<a href="#" class="um-back" onclick="summer.closeWin()"> 返回</a>
+				<h3>表单录入</h3>
+				<a href="#" class="um-header-right ti-save"  onclick="save()"></a>
+			</div>
+			<div class="um-content p15">
+				<ul class="um-list" style="margin:30px 0px">
+					<li>
+						<div class="um-list-item">
+							<div class="um-list-item-inner">
+								<div class="um-list-item-left">
+									用户名
+								</div>
+								<div class="um-list-item-right">
+									<input type="text" class="form-control btn1" placeholder="这是默认提示文字">
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="um-list-item">
+							<div class="um-list-item-inner">
+								<div class="um-list-item-left">
+									电话
+								</div>
+								<div class="um-list-item-right">
+									<input type="text" class="form-control btn2" placeholder="请输入电话">
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="um-list-item">
+							<div class="um-list-item-inner">
+								<div class="um-list-item-left">
+									邮件
+								</div>
+								<div class="um-list-item-right">
+									<input type="text" class="form-control btn3" placeholder="请输入邮件">
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="um-list-item">
+							<div class="um-list-item-inner">
+								<div class="um-list-item-left">
+									部门
+								</div>
+								<div class="um-list-item-right">
+									<input type="text" class="form-control btn4" placeholder="请输入部门">
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="um-list-item">
+							<div class="um-list-item-inner">
+								<div class="um-list-item-left">
+									地址
+								</div>
+								<div class="um-list-item-right">
+									<input type="text" class="form-control btn5" placeholder="请输入地址">
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+	<script>
+		//加载后获取编辑内容
+		summerready = function() {
+			$summer.fixStatusBar($summer.byId('header'));
+			$('.btn1').val(summer.pageParam.name);
+			$('.btn2').val(summer.pageParam.tel);
+			$('.btn3').val(summer.pageParam.email);
+			$('.btn4').val(summer.pageParam.service);
+			$('.btn5').val(summer.pageParam.address);
+		}
+		//保存后定义的方法
+		function save() {
+			summer.closeWin();
+			var obj = {};
+			var qq = $('.btn1').val();
+			var tel = $('.btn2').val();
+			var email = $('.btn3').val();
+			var address = $('.btn4').val();
+			var service = $('.btn5').val();
+			obj['name'] = qq;
+			obj['tel'] = tel;
+			obj['email'] = email;
+			obj['service'] = service;
+			obj['address'] = address;
+			obj = JSON.stringify(obj)
+			summer.execScript({
+				winId : 'root',
+				frameId : 'address',
+				script : "set1(" + obj + ")"
+			});
+
+		}
+	</script>
+</html>

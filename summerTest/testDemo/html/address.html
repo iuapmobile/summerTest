@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html class="um-frame">
+	<head>
+		<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/iuapmobile.um.css">
+		<link rel="stylesheet" href="../css/font-icons.css">
+		<link rel="stylesheet" type="text/css" href="../css/iuapmobile.um.sortlist-2.7.0.css">
+		<script src="../js/Frameworks/iuapmobile.frameworks.core.js" ></script>
+		<script src="../js/jquery.min.js" ></script>
+		<script src="../js/Frameworks/iuapmobile.frameworks.ui.js" ></script>
+		<script type="text/javascript" src="../js/knockout-2.2.0.js"></script>
+		<script type="text/javascript" src="../js/Frameworks/iuapmobile.frameworks.sortlist-2.7.0.js"></script>
+		<script src="../js/summer.js" ></script>
+	</head>
+	<body>
+		<div class="um-frame" id="index">
+			<div class="um-content">
+
+				<div class="um-sortlist" id="sortList">
+					<ul class="um-sortlist-content" data-bind="foreach:jsonArray">
+						<li class="um-sortlist-group">
+							<a  class="um-box-vc  um-sortlist-title"><span class="um-sortlist-icon"><i class="ti-angle-down"></i></span><span data-bind="text:gname"></span></a>
+							<ul class="um-list um-no-active" data-bind="foreach:row">
+								<li class="um-sortlist-row" >
+									<a href="#" class="um-list-item um-swipe-action">
+									<div class="um-list-item-media">
+										<img alt="" class="um-circle" width=50 data-bind="attr:{src: img}">
+									</div>
+									<div class="um-list-item-inner">
+										<div class="um-list-item-body">
+											<h4 data-bind="text:name" class="f14"></h4>
+											<p class="f14 um-text-overflow">
+												<i class="ti-mobile um-blue vm"></i><span class="ml5" data-bind="text:tel"></span>
+											</p>
+											<p class="f14 um-text-overflow">
+												<i class="ti-email um-blue vm"></i><span class="ml5" data-bind="text:email"></span>
+											</p>
+										</div>
+									</div> </a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+
+			</div>
+		</div>
+
+		<script>
+			//编辑联系人
+			var q,qq;		    
+			$(function() {
+				$('.um-content').on('click', '.um-sortlist-row', function() {
+					q = $(this).parent().parent().index();
+					qq = $(this).index();
+					summer.openWin({
+						"id" : 'page',
+						"url" : 'html/page.html',
+						"pageParam" : jsonArray[q].row[qq],
+						"fullScreen" : true,
+						"animation" : {
+							'type' : "movein", //none|push|fade
+							'subType' : "from_right", //from_left|from_top|from_bottom
+							'duration' : 300
+						}
+					});
+				})
+			})
+			//Knockout绑定
+			var jsonArray = [{
+				"gname" : "A",
+				"row" : [{
+					"name" : "爱丽丝",
+					"img" : "../img/contact1.jpg",
+					"tel" : "1375101***1",
+					"email" : "xyz1@yonyou.com",
+					"service" : '移动',
+					"address" : '北京'
+				}]
+			}, {
+				"gname" : "B",
+				"row" : [{
+					"name" : "拜伦",
+					"img" : "../img/contact3.jpg",
+					"tel" : "1375101***3",
+					"email" : "xyz3@yonyou.com",
+					"service" : '移动',
+					"address" : '北京'
+				}]
+			}, {
+				"gname" : "B",
+				"row" : [{
+					"name" : "拜伦",
+					"img" : "../img/contact3.jpg",
+					"tel" : "1375101***3",
+					"email" : "xyz3@yonyou.com",
+					"service" : '移动',
+					"address" : '北京'
+				}]
+			}, {
+				"gname" : "B",
+				"row" : [{
+					"name" : "拜伦",
+					"img" : "../img/contact3.jpg",
+					"tel" : "1375101***3",
+					"email" : "xyz3@yonyou.com",
+					"service" : '移动',
+					"address" : '北京'
+				}]
+			}, {
+				"gname" : "B",
+				"row" : [{
+					"name" : "拜伦",
+					"img" : "../img/contact3.jpg",
+					"tel" : "1375101***3",
+					"email" : "xyz3@yonyou.com",
+					"service" : '移动',
+					"address" : '北京'
+				}]
+			}];
+			var viewModel = ko.observableArray(jsonArray);
+			ko.applyBindings(viewModel);
+			//执行编辑联系人之后的方法
+			function set1(obj) {
+				var json = {};
+				json.gname = 'q';
+				json.row = [];
+				json.row[0] = {};
+				json.row[0].name = obj.name;
+				json.row[0].tel = obj.tel;
+				json.row[0].email = obj.email;
+				json.row[0].img = "../img/contact1.jpg", json.row[0].service = obj.service;
+				json.row[0].address = obj.address;
+				viewModel.replace(viewModel()[q], json)
+			}
+
+		</script>
+	</body>
+</html>
