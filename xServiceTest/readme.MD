@@ -1,9 +1,9 @@
-### 1、$device
-    $device用例,包括获取时区ID、获取时区DisplayName、获取位置信息、打开网页、获取存储信息。
-### 2、$ajax
-    $service.get()、$service.post()用例,通过get和post的方式向服务器索求数据的请求。    
+### 1、qDevice
+    包含原生device相关服务用例,包括获取时区ID、获取时区DisplayName、获取位置信息、打开网页、获取存储信息。
+### 2、qService
+    包含summer.get、summer.post、以及兼容方式$service.get、$service.post用例,通过get和post的方式向服务器索求数据的请求。    
 ### 3、$scanner
-    $scanner的用例,扫描二维码和生成二维码。 
+    包含summer.openScaner、以及兼容方式$scaner.open用例,扫描二维码和生成二维码。 
 ### 4、$cache
     $cache用例，设置和读取缓存。
 ### 5、$tel
