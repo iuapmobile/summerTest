@@ -31,7 +31,7 @@
 ### 16、setFrameAttr
     summer.SetFrameAttr用例,设置frame页面的现实和隐藏。 
 ### 17、storage
-    summer.setStorage()、summer.getStorage()和summer.setStorage()、summer.getStorage()的用例,设置和读取缓存包括关闭应用可以读到缓存和关闭应用清除缓存两种。
+    summer.setStorage()、summer.getStorage()和summer.setAppStorage()、summer.getAppStorage()的用例,设置和读取缓存包括关闭应用可以读到缓存和关闭应用清除缓存两种。
 ### 18、testDemo
     综合测试用例，包括列表的展示、修改、全屏的使用、文本框的取值、跨页面的执行方法。  
  

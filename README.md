@@ -12,9 +12,8 @@
 该单元展示如何使用openWIn、execScript、closeWIn、openFrame、closeFrame、progress、storage、test_fullscreen等用法 
 
 ## 单元测试用例
-路径: summerTest/unit/ 
+路径: summerTest/unit/     
 该单元展示summer服务的用例使用
-
 
 ## 原生服务
 路径: summerTest/xServiceTest/  
