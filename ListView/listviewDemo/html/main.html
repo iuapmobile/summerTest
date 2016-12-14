@@ -26,21 +26,11 @@
         		text-align: center;
         		color: white;
         	}
-        	
-        	
-        	html,body {
-				-webkit-touch-callout:none;
-				-webkit-text-size-adjust:none;
-				-webkit-tap-highlight-color:rgba(0, 0, 0, 0);
-				-webkit-user-select:none;
-				background-color: #fff;
-			}
         </style>
 
 		<script src="../js/summer.js" ></script>
 		<script src="../js/jquery.min.js" ></script>
 		<script src="../js/Frameworks/iuapmobile.frameworks.ui.js" ></script>
-		<script src="../js/Frameworks/iuapmobile.frameworks.core.js" ></script>
 		<script src="../js/main.js" ></script>
         <script type="text/javascript" src="../js/knockout.js"></script>
         <script type="text/javascript" src="../js/Frameworks/iuapmobile.frameworks.listview.js"></script>
@@ -53,36 +43,33 @@
 
 			<div id="content" class="um-content">
 				<img src="../img/banner0.jpg" style="width:100%"></img>
-				<div class="p15">
-					<!-- 这里插入控件和编写代码 -->
 					
-				</div>
-				
-                <div class="um-listview-wrap" id="listview">
-                	<ul class="um-list um-no-active" data-bind="foreach: data">
-                		<li class="um-listview-row">
-                			<a href="#" class="um-list-item um-swipe-action um-no-icon">
-                				<div class="um-swipe-btns">
-                					<span class="um-swipe-btn um-delete">删除</span>
-                				</div>
-                				<div class="um-list-item-media msg-info">
-                					<img alt="" data-bind="attr:{'src': img}" width=50>
-                					<span class="um-badge" data-bind="text:msgNum,visible:msgNum>0"></span>
-                				</div>
-                				<div class="um-list-item-inner">
-                					<div class="um-list-item-body">
-                						<h4 class="um-media-heading fb f16 um-text-overflow" data-bind="text:sender"></h4>
-                						<p class="um-gray f14 um-text-overflow" data-bind="text:lastMsg"></p>
-                					</div>
-                					<div class="pr10">
-                						<span class="um-gray f12" data-bind="text:lastTime"></span>
-                					</div>
-                				</div> 
-                			</a>
-                		</li>
-                	</ul>
-                </div>
+                    <div class="um-listview-wrap" id="listview">
+                    	<ul class="um-list um-no-active" data-bind="foreach: data">
+                    		<li class="um-listview-row">
+                    			<a href="#" class="um-list-item um-swipe-action um-no-icon">
+                    				<div class="um-swipe-btns">
+                    					<span class="um-swipe-btn um-delete">删除</span>
+                    				</div>
+                    				<div class="um-list-item-media msg-info">
+                    					<img alt="" data-bind="attr:{'src': img}" width=50>
+                    					<span class="um-badge" data-bind="text:msgNum,visible:msgNum>0"></span>
+                    				</div>
+                    				<div class="um-list-item-inner">
+                    					<div class="um-list-item-body">
+                    						<h4 class="um-media-heading fb f16 um-text-overflow" data-bind="text:sender"></h4>
+                    						<p class="um-gray f14 um-text-overflow" data-bind="text:lastMsg"></p>
+                    					</div>
+                    					<div class="pr10">
+                    						<span class="um-gray f12" data-bind="text:lastTime"></span>
+                    					</div>
+                    				</div> 
+                    			</a>
+                    		</li>
+                    	</ul>
+                    </div>
 
+			</div>
 
 			<!-- <div class="um-footer"></div> -->
 		</div>

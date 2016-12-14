@@ -51,6 +51,23 @@ function open0() {
 
 }
 
+function open01() {
+	summer.openCamera({
+        "callback" : function(args){
+            alert(args.imgPath) //图片路径，类型为string 
+            
+            
+			alert( "typeof args == " + typeof args);
+			
+			alert(JSON.stringify(args));
+		
+			alert(args.imgPath);
+			$summer.byId("img1").src = args.imgPath;
+		}
+    })
+ 
+
+}
 
 function open1() {
 	$camera.open({
@@ -65,7 +82,7 @@ function xxxx(sender, args) {
 	alert(JSON.stringify(args));
 	alert(sender.imgPath);
 	alert(args.imgPath);
-	$summer.byId("img1").src = args.imgPath;
+	$summer.byId("img2").src = args.imgPath;
 }
 
 function open2() {
@@ -76,7 +93,7 @@ function open2() {
 		alert(JSON.stringify(args));
 		alert(sender.imgPath);
 		alert(args.imgPath);
-		$summer.byId("img2").src = args.imgPath;
+		$summer.byId("img3").src = args.imgPath;
 	}
 
 	$camera.open({

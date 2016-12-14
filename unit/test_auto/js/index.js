@@ -19,4 +19,5 @@ summerready = function(){
             height: height
         }
     });
+   
 }

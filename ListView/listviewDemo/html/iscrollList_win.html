@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/iuapmobile.um.css">
+		<link rel="stylesheet" href="../css/font-icons.css">
+        <link rel="stylesheet" type="text/css" href="../css/iuapmobile.um.iScrollList-2.7.0.css">
+
+		<script src="../js/summer.js" ></script>
+		<script src="../js/jquery.min.js" ></script>
+		<script src="../js/Frameworks/iuapmobile.frameworks.ui.js" ></script>
+		<script type="text/javascript" src="../js/Frameworks/iuapmobile.frameworks.ui.js"></script>
+        <script type="text/javascript" src="../js/jquery-2.1.4.min.js"></script>
+        <script type="text/javascript" src="../js/Frameworks/iuapmobile.frameworks.iscrollList-2.7.0.js"></script>
+        <script type="text/javascript" src="../js/knockout-2.2.0.js"></script>
+	</head>
+	<body>
+		<div class="um-win" id="index">
+			<div class="um-header" >
+				<h3>um-win加载列表</h3>
+			</div>
+			<div class="um-content">
+				<!--wrapper需要内部出现滚动，所以设置为等于父容器的高度，即为固定高度-->
+                <div id="wrapper" style="height:100%">
+                	<div class="uScrollList">
+                		<!--注意 pullDown和pullUp需要设置box-sizing为content-box-->
+                		<div class="pullDown" style="box-sizing: content-box">
+                			<span class="pullDownIcon"></span><span class="pullDownLabel">下拉刷新...</span>
+                		</div>		
+                		<ul id="thelist1" data-bind="foreach:users">
+                			<li>		
+                				<img style="width:33px;height:33px;margin-left:10px;margin-top:5px" src="../img/app_weibo.jpg"></img>		
+                				<div style="display:inline-block">
+                					<span data-bind="text:name"></span>
+                				</div>
+                				<div style="display:inline-block">
+                					<span data-bind="text:phone"></span>
+                				</div>			
+                			</li>		
+                		</ul>		
+                		<!--注意 pullDown和pullUp需要设置box-sizing为content-box-->
+                		<div class="pullUp" style="box-sizing: content-box">
+                			<span class="pullUpIcon"></span><span class="pullUpLabel">上拉加载更多...</span>
+                		</div>		
+                	</div>
+                </div>
+
+			</div>
+			<div class="um-footer">
+				<div class="um-footer">
+				    <div class="um-footerbar">
+				        <a href="#" class="um-footerbar-item">
+				            <i class="ti-comments f20"></i>
+				            <div class="f12 lh1">消息</div>
+				        </a>
+				        <a href="#" class="um-footerbar-item active">
+				            <i class="ti-notepad f20"></i>
+				            <div class="f12 lh1">日程</div>
+				        </a>
+				        <a href="#" class="um-footerbar-item">
+				            <i class="ti-id-badge f20"></i>
+				            <div class="f12 lh1">通讯录</div>
+				        </a>
+				        <a href="#" class="um-footerbar-item">
+				            <i class="ti-user f20"></i>
+				            <div class="f12 lh1">我</div>
+				        </a>
+				    </div>
+				</div>
+			</div>
+		</div>
+
+        <script>
+        	$(function(){
+        		//1、数据模型加载，与控件无关
+        		var ViewModel = function() {
+        			var self = this;				
+        			self.users = ko.observableArray([]);
+        			for (var i = 0; i < 10; i++) {
+        				var start = 1000;
+        				self.users.push({ id: start+i, name: '用户'+(start+i), phone:13812340000+start+i });
+        			}
+        		};
+        		var myModel = new ViewModel();
+        		ko.applyBindings(myModel);
+        		var ilist = UM.iScrollList("#wrapper");
+        		ilist.on("pullDown",function(){
+        			setTimeout(function () { // <-- Simulate network congestion, remove setTimeout from production!					
+        				var curUsers = myModel.users();
+        				for (var i = 0, id = curUsers[0].id; i < 10; i++) {
+        					id--;
+        					myModel.users.unshift({ id: id, name: '用户'+id, phone:13812340000+id });
+        				}
+        				ilist.refresh(); //数据加载完成后，调用界面更新方法   Remember to refresh when contents are loaded (ie: on ajax completion)
+        			}, 1000);	// <-- Simulate network congestion, remove setTimeout from production!
+        
+        		}).on("pullUp",function(){
+        				setTimeout(function () { // <-- Simulate network congestion, remove setTimeout from production!
+        				var curUsers = myModel.users();
+        				for (var i = 0, start =curUsers[curUsers.length-1].id+1; i < 10; i++) {
+        					var index =  start + i;
+        					myModel.users.push({ id: index, name: '用户'+index, phone:13812340000+index });
+        				}
+        				ilist.refresh(); // 数据加载完成后，调用界面更新方法 Remember to refresh when contents are loaded (ie: on ajax completion)
+        			}, 1000);	// <-- Simulate network congestion, remove setTimeout from production!
+        			
+        		});
+        	});				
+        </script>
+	</body>
+</html>

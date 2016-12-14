@@ -13,7 +13,7 @@
 		<script src="../js/main.js" ></script>
 	</head>
 	<body>
-		<div class="um-page" id="main">
+		<div class="um-frame" id="main">
 			<!-- <div class="um-header" >
 			<h3>导航栏</h3>
 			</div> -->
@@ -24,17 +24,22 @@
 				</div>
 				<!-- 这里插入控件和编写代码 -->
 				<button id="btn0" onclick="open0()" class="btn um-btn-success">
-					标准调用
+					$camera.open
+					<i class="ti-check"></i>
+				</button>
+				<br/>
+				<button id="btn0" onclick="open01()" class="btn um-btn-success">
+					summer.openCamera
 					<i class="ti-check"></i>
 				</button>
 				<br/>
 				<button id="btn1" onclick="open1()" class="btn um-btn-success">
-					兼容调用1-全局callback
+					$camera兼容调用1-全局callback
 					<i class="ti-check"></i>
 				</button>
 				<br/>
 				<button id="btn2" onclick="open2()" class="btn um-btn-success">
-					兼容调用2- 局部callback
+					$camera兼容调用2- 局部callback
 					<i class="ti-check"></i>
 				</button>
 				<br/>
