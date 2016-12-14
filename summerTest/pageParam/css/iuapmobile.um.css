@@ -7,9 +7,7 @@ CSS base
 * @author : gct@yonyou.com
 */
 /*********20160810 *********/
-/*** from scss/um/Common/variables.scss ***/
-/*** from scss/um/Mixins/_commin.scss ***/
-/*** from scss/um/Common/base.scss ***/
+
 /*    v3.0.20160726   */
 dl, dt, dd, ul, ol, li, pre, form, p, fieldset, input, textarea, blockquote, th, td, button {
   margin: 0;
@@ -90,7 +88,7 @@ body {
 }
 
 a {
-  color: #007aff;
+  color: #00a1ea;
   text-decoration: none;
   cursor: pointer;
 }
@@ -1709,7 +1707,7 @@ a {
 }
 
 .um-ani-rotate:before {
-  color: #007aff;
+  color: #00a1ea;
   font-size: 20.4px;
   display: inline-block;
   vertical-align: middle;
@@ -2784,7 +2782,7 @@ a {
   display: block;
 }
 .um-box-justify > a:active, .um-box-justify > a.active {
-  color: #007aff;
+  color: #00a1ea;
 }
 
 .um-css3-hc {
@@ -2935,8 +2933,8 @@ input[type="radio"]:checked ~ .um-icon-checkbox:before, input[type="checkbox"]:c
   display: inline-block;
   width: 14px;
   height: 14px;
-  border-left: 3px solid #007aff;
-  border-bottom: 3px solid #007aff;
+  border-left: 3px solid #00a1ea;
+  border-bottom: 3px solid #00a1ea;
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
   margin: 0px 0px 0xp 0px;
@@ -3079,7 +3077,7 @@ input[type="radio"]:checked ~ .um-icon-checkbox:before, input[type="checkbox"]:c
 }
 
 .um-blue {
-  color: #007aff;
+  color: #00a1ea;
 }
 
 .um-purple {
@@ -3123,7 +3121,7 @@ input[type="radio"]:checked ~ .um-icon-checkbox:before, input[type="checkbox"]:c
 }
 
 .um-bgc-blue {
-  background-color: #007aff;
+  background-color: #00a1ea;
 }
 
 .um-bgc-purple {
@@ -3174,10 +3172,10 @@ input[type="radio"]:checked ~ .um-icon-checkbox:before, input[type="checkbox"]:c
   vertical-align: middle;
   touch-action: manipulation;
   cursor: pointer;
-  color: #007aff;
+  color: #00a1ea;
   background-color: #ffffff;
   background-image: none;
-  border: 1px solid #007aff;
+  border: 1px solid #00a1ea;
   -webkit-user-select: none;
   padding: 9px 12px;
   font-size: 17px;
@@ -3206,7 +3204,7 @@ input[type="radio"]:checked ~ .um-icon-checkbox:before, input[type="checkbox"]:c
 
 /*带填充的btn*/
 .btn-bg {
-  background-color: #007aff;
+  background-color: #00a1ea;
   color: #ffffff;
 }
 
@@ -3272,11 +3270,11 @@ input[type="radio"]:checked ~ .um-icon-checkbox:before, input[type="checkbox"]:c
 
 .um-btn {
   color: #fff;
-  background-color: #007aff;
-  border-color: #007aff;
+  background-color: #00a1ea;
+  border-color: #00a1ea;
 }
 .um-btn .badge {
-  color: #007aff;
+  color: #00a1ea;
   background-color: #fff;
 }
 
@@ -3559,7 +3557,7 @@ html.um-frame {
 .um-header {
   position: relative;
   min-height: 44px;
-  background-color: #007aff;
+  background-color: #00a1ea;
   z-index: 5;
 }
 
@@ -3569,7 +3567,7 @@ html.um-frame {
   background-position: left top;
   background-size: 100% 100%;
   height: 140px;
-  background-color: #007aff;
+  background-color: #00a1ea;
 }
 
 .um-header-btns {
@@ -3618,7 +3616,7 @@ html.um-frame {
 .um-header-left.btn,
 .um-header-left.btn-bg,
 .um-header-left.um-btn {
-  color: #007aff;
+  color: #00a1ea;
 }
 .um-back:hover, .um-back:active,
 .um-header-right:hover,
@@ -3683,7 +3681,7 @@ html.um-frame {
   transition: color ease .3s;
 }
 .um-footerbar-item.active {
-  color: #007aff;
+  color: #00a1ea;
 }
 .um-footerbar-item img {
   margin: 0 auto;
@@ -3850,7 +3848,7 @@ input[type="number"].form-control {
 }
 .um-input-search .form-control + .um-input-cancle {
   display: none;
-  color: #007aff;
+  color: #00a1ea;
   -webkit-box-flex: 1;
   box-flex: 1;
   -webkit-flex: 1;
@@ -4088,7 +4086,7 @@ input[type="number"].form-control {
   position: relative;
   overflow: hidden;
   margin: 30px -15px 0;
-  color: #007aff;
+  color: #00a1ea;
 }
 
 .um-check-group-item {
@@ -4170,7 +4168,7 @@ input[type="number"].form-control {
   position: relative;
   display: inline-block;
   vertical-align: middle;
-  color: #007aff;
+  color: #00a1ea;
   padding-left: 20px;
 }
 .um-check-inline .um-icon-checkbox {
@@ -4462,7 +4460,7 @@ input[type="number"].form-control {
   transform: translate3d(0, 0, 0);
 }
 .um-actionsheet .btn, .um-share .btn, .um-actionsheet .btn-bg, .um-share .btn-bg, .um-actionsheet .um-btn, .um-share .um-btn {
-  color: #007aff;
+  color: #00a1ea;
   padding-top: 7px;
   padding-bottom: 7px;
   text-align: center;
@@ -4485,7 +4483,7 @@ input[type="number"].form-control {
   background-color: #fff;
 }
 .um-share .btn, .um-share .btn-bg, .um-share .um-btn {
-  border-color: #007aff;
+  border-color: #00a1ea;
   border-radius: 5px;
 }
 
@@ -4506,7 +4504,7 @@ input[type="number"].form-control {
   transform: translate3d(0, 0, 0);
 }
 .um-poppicker .btn, .um-poppicker .btn-bg, .um-poppicker .um-btn {
-  color: #007aff;
+  color: #00a1ea;
   text-align: right;
   padding-right: 23px;
 }
@@ -4525,7 +4523,7 @@ input[type="number"].form-control {
   display: box;
   display: -webkit-flex;
   display: flex;
-  border: 1px solid #007aff;
+  border: 1px solid #00a1ea;
   border-radius: 5px;
   background-color: #fff;
 }
@@ -4539,7 +4537,7 @@ input[type="number"].form-control {
   margin-left: -1px;
   display: block;
   text-align: center;
-  border-right: 1px solid #007aff;
+  border-right: 1px solid #00a1ea;
   font-size: 14px;
   line-height: 1.6;
   overflow: hidden;
@@ -4547,7 +4545,7 @@ input[type="number"].form-control {
   white-space: nowrap;
   padding: 3px 0;
   text-decoration: none;
-  color: #007aff;
+  color: #00a1ea;
   transition: all ease .3s;
 }
 .um-tabbar > li:last-child > a {
@@ -4561,7 +4559,7 @@ input[type="number"].form-control {
 }
 .um-tabbar > li.active > a {
   color: #fff;
-  background-color: #007aff;
+  background-color: #00a1ea;
 }
 
 .um-tabbar-underline {
@@ -4574,13 +4572,13 @@ input[type="number"].form-control {
   color: #777777;
 }
 .um-tabbar-underline > li.active {
-  color: #007aff;
+  color: #00a1ea;
   background-color: transparent;
-  border-bottom: 2px solid #007aff;
+  border-bottom: 2px solid #00a1ea;
 }
 .um-tabbar-underline > li.active > a {
   background-color: transparent;
-  color: #007aff;
+  color: #00a1ea;
 }
 
 .um-tabbar-foot {
@@ -4610,7 +4608,7 @@ input[type="number"].form-control {
   transition: color ease .4s;
 }
 .um-tabbar-item:active, .um-tabbar-item.active {
-  color: #007aff;
+  color: #00a1ea;
 }
 .um-tabbar-item img {
   margin: 0 auto;
@@ -4723,7 +4721,7 @@ input[type=range]::-webkit-slider-thumb:before {
   font-weight: bold;
 }
 .um-modal .um-modal-btns .btn:visited, .um-modal .um-modal-btns .btn-bg:visited, .um-modal .um-modal-btns .um-btn:visited {
-  color: #007aff;
+  color: #00a1ea;
 }
 .um-modal .um-modal-btns .btn:first-child, .um-modal .um-modal-btns .btn-bg:first-child, .um-modal .um-modal-btns .um-btn:first-child {
   border-bottom-left-radius: 12px;
@@ -4740,7 +4738,7 @@ input[type=range]::-webkit-slider-thumb:before {
   height: 31.9px;
 }
 .um-modal .form-control:focus {
-  border-color: #007aff;
+  border-color: #00a1ea;
   box-shadow: none;
 }
 .um-modal.um-modal-in {
@@ -4775,7 +4773,7 @@ input[type=range]::-webkit-slider-thumb:before {
   border-bottom: 1px solid #ddd;
 }
 .um-table-container thead > tr {
-  background-color: #007aff;
+  background-color: #00a1ea;
   color: #fff;
   font-weight: 500;
 }
@@ -4945,11 +4943,11 @@ input[type=range]::-webkit-slider-thumb:before {
   width: auto;
   line-height: 1;
   color: #fff;
-  background-color: #007aff;
-  border-color: #007aff;
+  background-color: #00a1ea;
+  border-color: #00a1ea;
 }
 .um-input-group .btn .badge, .um-input-group .btn-bg .badge, .um-input-group .um-btn .badge {
-  color: #007aff;
+  color: #00a1ea;
   background-color: #fff;
 }
 .um-input-group .btn:first-child, .um-input-group .btn-bg:first-child, .um-input-group .um-btn:first-child {
@@ -4982,7 +4980,7 @@ input[type=range]::-webkit-slider-thumb:before {
   top: 0;
   padding: 11px 11px;
   z-index: 5;
-  color: #007aff;
+  color: #00a1ea;
   font-weight: bold;
 }
 .um-input-group span[class^="ti-"] + input.form-control {
@@ -5023,7 +5021,7 @@ input[type=range]::-webkit-slider-thumb:before {
   line-height: 23.8px;
   color: #fff;
   text-align: center;
-  background-color: #007aff;
+  background-color: #00a1ea;
   box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
   transition: width .6s ease;
 }
@@ -5186,7 +5184,7 @@ input[type=range]::-webkit-slider-thumb:before {
   text-align: center;
 }
 .um-nav-item:active, .um-nav-item.active {
-  color: #007aff;
+  color: #00a1ea;
 }
 
 .um-grade {
@@ -5221,7 +5219,7 @@ input[type=range]::-webkit-slider-thumb:before {
 }
 
 .um-picker {
-  color: #007aff;
+  color: #00a1ea;
 }
 
 /*# sourceMappingURL=iuapmobile.um.css.map */

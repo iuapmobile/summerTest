@@ -74,7 +74,8 @@
 </body>
 <script>
 	summerready = function () {
-		alert(summer.getSysInfo({pageParam:''}).pageParam.count1)
+		//alert(summer.getSysInfo({pageParam:''}).pageParam)  //string
+		alert(summer.pageParam.count1)
 		summer.openFrame({
 	        id: 'new2',
 	        url: 'html/new2.html',

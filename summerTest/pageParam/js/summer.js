@@ -5,12 +5,12 @@
  * Version: 3.0.0.20160823.2047
  */
 ;(function(w){
-    w.$summer = w.$summer || {};
-    w.summer = w.summer || {};
+    w.$summer = {};
+    w.summer = {};
     w.api = w.summer;
     (function(){
     	var url = document.location.pathname.split("www")[0]+"www/cordova.js";
-        var _script = document.createElement('script');
+        _script = document.createElement('script');
         _script.id = "cordova_js";
         _script.type = 'text/javascript';
         _script.charset = 'utf-8';
@@ -199,7 +199,7 @@
             }
             catch (e) {
             }
-            if (Math) {
+            with (Math) {
                 r1 = Number(arg1.toString().replace(".", ""));
                 r2 = Number(arg2.toString().replace(".", ""));
                 return (r1 / r2) * pow(10, t2 - t1);
@@ -963,7 +963,7 @@
 	
 	//ios Asynchronous
 	if(typeof UM_callNativeServiceNoraml == "undefined"){
-		var UM_callNativeServiceNoraml = function(serviceType,strParams){//异步调用，和安卓统一接口
+		UM_callNativeServiceNoraml = function(serviceType,strParams){//异步调用，和安卓统一接口
 			return adrinvoker.call(serviceType,strParams);
 		}
 	}else{
@@ -1779,6 +1779,13 @@
 			}
 			s.callService("UMDevice.saveContact", args);
 		},
+		openApp: function (args) {
+		
+			if(!$summer.isJSONObject(args)){
+				alert("调用openApp服务时，参数不是一个有效的JSONObject");
+			}
+			s.callService("UMDevice.openApp", args);
+		}
 	};
 	s.UMFile = {
 		remove : function(args){
@@ -1818,6 +1825,10 @@
 				json = {"path" : args};
 			}
 			return s.callService("UMFile.getFileInfo",json, true);
+		},
+		openFileSelector : function(args){
+			alert(123456);
+			return s.callService("UMFile.openFileSelector", args,true);
 		}
 
 	};
@@ -2074,12 +2085,14 @@
 	s.getAppAlbumPath = s.UMDevice.getAppAlbumPath;
 	s.getContacts = s.UMDevice.getContacts;
 	s.saveContact = s.UMDevice.saveContact;
+	s.openApp = s.UMDevice.openApp;
 	//
 	s.removeFile = s.UMFile.remove;
  	s.exists = s.UMFile.exists;
  	s.download = s.UMFile.download;
  	s.openFile = s.UMFile.open;
  	s.getFileInfo = s.UMFile.getFileInfo;
+ 	s.openFileSelector = s.UMFile.openFileSelector;
 	/*tel*/
 	s.callPhone= s.UMTel.call;
 	s.sendMsg= s.UMTel.sendMsg;
