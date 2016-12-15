@@ -10,28 +10,21 @@
 		<script src="js/jquery.min.js" ></script>
 		<script src="js/Frameworks/iuapmobile.frameworks.ui.js" ></script>
 		<script src="js/index.js" ></script>
+	<!-- 	<script src="js/main.js" ></script> -->
 	</head>
 	<body>
 		<div class="um-win" id="index">
-			<div id="header">
-				<div class="um-header">
-					<h3>标题</h3>
-				</div>
-				<nav class="nav">
-					
-                    <ul class="um-tabbar">
-                        <li onclick="openFrameGroup()"><a>打开Frame组</a></li>
-                        <li onclick="closeFrameGroup()"><a>关闭Frame组</a></li>
-                        <li onclick="setFrameGroupAttrHidden(false)"><a>显示Frame组</a></li>
-                        <li onclick="setFrameGroupAttrHidden(true)"><a>隐藏Frame组</a></li>
-                    </ul>
-
-				</nav>
-			</div>
 			
+            <div class="um-header" id="header">
+            	<a href="#"  class="um-back" onclick="closeFrameGroup()"></a>
+            	<h3>订单信息</h3>
+            	<div class="um-header-btns" onclick="setFrameGroupAttrHidden()">
+            		<i class="ti-plus mr5" style="color: #fff;"></i>
+            	</div>
+            </div>
 
-			<div id="main" class="um-content p15">
-	
+			<div id="main" class="um-content">
+				
 			</div>
 
 			<div class="um-footer">
