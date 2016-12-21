@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <application> 
   <app_start>index.html</app_start>  
-  <app_name>test</app_name>  
-  <project_name>testDemo</project_name>  
-  <package_name>com.yonyou.test</package_name>  
+  <app_name>upgrade</app_name>  
+  <project_name>upgrade</project_name>  
+  <package_name>com.yonyou.progress</package_name>  
   <frame_name>ump</frame_name>  
   <icon relativePath="css/themes/default/app">app</icon>  
   <target>android-15</target>  
@@ -13,13 +14,16 @@
   <orientation>unspecified</orientation>  
   <min_sdk_version>10</min_sdk_version>  
   <max_sdk_version>17</max_sdk_version>  
-  <permission id="android.permission.INTERNET"/>  
+  <permission id="android.permission.INTERNET"></permission>  
   <statebarstyle>dark</statebarstyle>  
   <isfullscreen>false</isfullscreen>  
   <windowSoftInputMode>stateHidden</windowSoftInputMode>  
-  <fullScreen>true</fullScreen>  
-  <import/>
-</application><!--
+  <import id="cordova-plugin-http" type="web" ref="cordova"></import>  
+  <import id="cordova-plugin-camera" type="web" ref="cordova"/>  
+  <import id="cordova-plugin-file" type="web" ref="cordova"/>  
+  <import id="cordova-plugin-whitelist" type="web" ref="cordova"/> 
+</application>
+<!--
 【屏幕显示方向】
   screenOrientation: 屏幕显示方向
     landscape: 横向

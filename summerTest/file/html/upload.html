@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/iuapmobile.um.css">
+		<link rel="stylesheet" href="../css/font-icons.css">
+
+		<script src="../js/summer.js" ></script>
+		<script src="../js/jquery.min.js" ></script>
+		<script src="../js/Frameworks/iuapmobile.frameworks.ui.js" ></script>
+		<script src="../js/upload.js" ></script>
+		<style>
+			html, body {
+				overflow: hidden;
+			}
+			a.um-back {
+				z-index: 50;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="um-win" id="main">
+			<div id="content" class="um-content">
+
+				<div    class="um-header um-header-personal">
+					<a href="#" class="um-back">返回</a>
+					<p class="tc pt15 um-photo">
+						<img class="um-circle" height=60 width=60 src="../img/user.png" alt="..." alt="点击上传图片">
+					</p>
+					<p class="tc  um-white user-name">
+						点击上传头像
+					</p>
+					<p class="tc um-white">
+						name@yonyou.com
+					</p>
+				</div>
+
+				<div class="um-list">
+					<div class="um-list-item">
+						<div class="um-list-item-media">
+							<img src="../img/form.png" width=24 class="um-round" alt="">
+						</div>
+						<div class="um-list-item-inner">
+							<div class="um-list-item-body">
+								版本号
+							</div>
+							<div class="um-list-item-right">
+								v1.0.0
+							</div>
+						</div>
+					</div>
+					<a href="#" class="um-list-item">
+					<div class="um-list-item-media">
+						<img src="../img/select.png" width=24 class="um-round" alt="">
+					</div>
+					<div class="um-list-item-inner">
+						<div class="um-list-item-body">
+							修改密码
+						</div>
+						<div class="um-list-item-right">
+							<span class="um-gray mr15"></span>
+						</div>
+					</div> </a>
+
+				</div>
+				<div class="um-list">
+					<a href="#p2"  class="um-list-item"> <div class="um-list-item-media um-icon-ios um-icon-ios-general"></div>
+					<div class="um-list-item-inner">
+						<div class="um-list-item-body">
+							设置
+						</div>
+					</div> </a>
+					<a href="#p2"  class="um-list-item"> <div class="um-list-item-media um-icon-ios um-icon-ios-mails"></div>
+					<div class="um-list-item-inner">
+						<div class="um-list-item-body">
+							消息
+						</div>
+						<div class="um-list-item-right">
+							<span class="um-badge um-btn-info mr10">4</span>
+						</div>
+					</div> </a>
+
+				</div>
+
+			</div>
+
+			<!-- <div class="um-footer"></div> -->
+		</div>
+		<script>
+			//返回按钮
+			$('.um-back').click(function() {
+				summer.closeWin();
+			});
+
+			$(function() {
+				$('.um-photo').on('click', function() {
+					UM.actionsheet({
+						title : '选择照片',
+						items : ['拍照上传', '本地上传'],
+						callbacks : [
+						function() {
+							summer.openCamera({
+								callback : function(args) {
+									$('.um-header-personal .user-name').text('思战');
+									var params = {};
+									summer.upload({
+										fileURL : args.imgPath,
+										type : "image/jpeg",
+										params : params,
+										SERVER : "http://123.103.9.206:7100/UpdateApp/file/upload"
+									}, function(ret) {
+										alert("上传成功" + JSON.stringify(ret));
+										var fileName = args.imgPath.substr(args.imgPath.lastIndexOf('/') + 1);
+										//alert(fileName);
+										$('.um-header-personal .um-circle').attr('src', 'http://172.20.7.97:8080/UpdateApp/upload/' + fileName);
+									}, function(err) {
+										alert("失败" + JSON.stringify(err));
+									});
+								}
+							});
+						},
+						function() {
+							summer.openPhotoAlbum({
+								callback : function(args) {
+									$('.um-header-personal .user-name').text('思战');
+									var params = {};
+									summer.upload({
+										fileURL : args.imgPath,
+										type : "image/jpeg",
+										params : params,
+										SERVER : "http://123.103.9.206:7100/UpdateApp/file/upload"
+									}, function(ret) {
+										alert("上传成功" + JSON.stringify(ret));
+										var fileName = args.imgPath.substr(args.imgPath.lastIndexOf('/') + 1);
+										$('.um-header-personal .um-circle').attr('src', 'http://172.20.7.97:8080/UpdateApp/upload/' + fileName);
+
+									}, function(err) {
+										alert("失败" + JSON.stringify(err));
+									});
+
+								}
+							})
+						}]
+
+					});
+				})
+			})
+		</script>
+	</body>
+</html>

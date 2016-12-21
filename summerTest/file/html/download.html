@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/iuapmobile.um.css">
+		<link rel="stylesheet" href="../css/font-icons.css">
+		<script src="../js/summer.js" ></script>
+		<script src="../js/jquery.min.js" ></script>
+		<script src="../js/Frameworks/iuapmobile.frameworks.ui.js" ></script>
+	</head>
+	<style>
+		html {
+			background: white;
+		}
+		.mlist, .size {
+			color: #808080;
+		}
+		.mlist span {
+			color: #333;
+		}
+		li.um-label {
+			margin: 0;
+			padding: 0;
+			margin-bottom: 20px;
+		}
+		.um-label + .um-label {
+			border: none;
+		}
+		.um-progress.um-progress-line {
+			background: white;
+			box-shadow: none;
+		}
+		.um-progress .um-progress-bar{
+			transition: width .6s linear;
+		}
+
+	</style>
+	<body>
+		<div class="um-win" id="index">
+			<div class="um-header" >
+
+				<a href="#"  class="um-back">返回</a>
+
+				<h3>张三的入职</h3>
+			</div>
+
+			<div class="um-content p15">
+
+				<p class="mlist h40">
+					性别： <span>男</span>
+				</p>
+				<p class="mlist h40">
+					出生日期： <span>1990-09-01</span>
+				</p>
+				<p class="mlist h40">
+					最高学历： <span>研究生</span>
+				</p>
+				<p class="mlist h40">
+					参加工作日期： <span>2014-10-09</span>
+				</p>
+				<p class="mlist h40">
+					人员类别： <span>正式员工</span>
+				</p>
+				<p class="mlist h40">
+					工作地点： <span>北京</span>
+				</p>
+				<p class="mlist h40">
+					职务： <span>部门经理</span>
+				</p>
+				<p class="mlist h40">
+					主管： <span>王京</span>
+				</p>
+				<div class="um-box">
+					<span class="mlist">附件：</span>
+					<ul >
+						<li class="um-label um-direction-v um-box">
+							<div class="um-box-justify ">
+								<div>
+									<img class="img-rounded" src="../img/pdf.png" width=35 height=40 alt="">
+								</div>
+								<div  class='ml15'>									
+									视觉设计规范.zip
+									<div class="size">
+										3.56M
+									</div>
+								</div>
+								<div onclick="download1(this)" class="download1">
+									<span  > </span><i class="ti-download ml30 um-black"></i>
+								</div>
+
+							</div>
+							<div class="um-progress um-progress-line ">
+								<div class="um-progress-bar um-progress-bar-success zip"    ></div>
+							</div>
+
+						</li>
+						<li class="um-label um-direction-v um-box">
+							<div class="um-box-justify ">
+								<div>
+									<img class="img-rounded" src="../img/word.png" width=35 height=40 alt="">
+								</div>
+								<div  class='ml15'>
+									个人简历_张三.doc
+									<div class="size">
+										368k
+									</div>
+								</div>
+								<div  onclick="download2(this)" class="download2">
+									<span  > </span><i class="ti-download ml30 um-black"></i>
+								</div>
+
+							</div>
+							<div class="um-progress um-progress-line ">
+								<div class="um-progress-bar um-progress-bar-success doc"    ></div>
+							</div>
+
+						</li>
+					</ul>
+				</div>
+			</div>
+	</body>
+</html>
+<script>
+	//返回按钮
+	$('.um-back').click(function(){
+		summer.closeWin();
+	});
+	//公用的download
+	var arr = [];
+	function downloads(url, filepath, bool, obj) {
+		if (obj) {
+			var json = {};
+			json.url = url;
+			json.filepath = filepath;
+			json.bool = bool;
+			arr.push(json);
+
+			if (arr.length > 1) {
+				//将新的任务加入到数组
+				alert("正在下载,请稍候...");
+				return false;
+			}
+		}
+		
+		filename = url.substr(url.lastIndexOf("/") + 1);
+		summer.download({
+			"url" : url,
+			"locate" : filepath,
+			"filename" : filename,
+			"override" : bool,
+			"callback" : "downloadCall()"
+		});
+	}
+	var filename,
+		filepath;
+	//检测目标文件是否存在的方法
+
+	function check() {
+		var flag = summer.exists({
+			path : filepath,
+			file : filename
+		}).toString();
+		alert(flag);
+		var txt = flag == "true" ? 1 : 0;
+		alert(txt);
+		return txt;
+	}
+
+	//下载文件
+	function download1(obj) {
+		var url = "http://uapma.yonyou.com:8443/weixin/um.zip";
+		//存放路径
+		filepath = "Download/test";
+		//是否覆盖
+		var bool = true;	
+		downloads(url, filepath, bool, obj);
+	}
+	function download2(obj) {	
+		var url = "http://img5.pcpop.com/ArticleImages/0X0/3/3427/003427129.jpg"
+		//存放路径
+		filepath = "Download/test";
+		//是否覆盖
+		var bool = true;
+		//console.log(type);
+		downloads(url, filepath, bool, obj);
+	}
+	var num = 1;
+	function downloadCall(args) {
+		//alert('已经成功回调');
+		//判断下载是否完成
+		var filename = args.filename;
+		if (args.isfinish == true) {
+			num++;
+			//$summer.alert(args);
+			arr.splice(0, 1);
+			//$summer.alert(arr);
+			if (arr.length > 0) {
+				downloads(arr[0].url, arr[0].filepath, arr[0].bool);
+			}
+			//console.log(args);
+			setTimeout(function(){
+				//调用打开文件函数
+				var r = confirm("文件下载完毕,现在打开吗？");
+				if (r == true) {
+					openFile();
+					
+				} else {
+					alert("You pressed Cancel!");
+				}
+			},1000)
+		} else {
+			if(args.filename=='um.zip'){
+				$('div.um-progress-bar.zip').css('width', args.percent + '%');
+			}else if(args.filename=='TestWord.docx'){
+				$('div.um-progress-bar.doc').css('width', args.percent + '%');
+			}
+		}
+		return;
+	}
+	//打开文件
+
+		function openFile() {
+			//将filename.的格式解析
+			var filetype = filename.split(".").pop();
+			summer.openFile({
+				"filename" : filename, //文件名
+				"filetype" : filetype, //文件格式
+				"filepath" : filepath	//文件路径
+			});
+			var size = summer.getFileInfo(filepath);
+			alert("文件大小" + JSON.parse(size).size + "kb");
+			var flag = summer.exists({
+				path : filepath,
+				file : filename
+			}).toString();
+			alert(flag);
+
+			summer.removeFile({
+				"path" : filepath, //文件路径
+				"filename" : filename, //文件名
+				"callback" : "removeCallback()" //删除完成之后的回调函数
+			})
+
+		}
+
+		function removeCallback(args) {
+			alert(args.status);
+		}
+</script>

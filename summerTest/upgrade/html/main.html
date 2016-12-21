@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../css/font-icons.css">
+    <link rel="stylesheet" href="../css/iuapmobile.um.css">
+    <style>
+
+        .boxShadow {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.3);
+            z-index: 1000000;
+        }
+
+        .progress-container {
+            height: 170px;
+            margin-top: 50%;
+            width: 90%;
+            margin-left: 5%;
+            background-color: #fff;
+        }
+
+        .container-title {
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            padding-left: 20px;
+            font-size: 20px;
+            color: #ffffff;
+            background-color: #007aff;
+        }
+
+        .container-content {
+            width: 100%;
+            height: 120px;
+            background-color: #1D2E3C;
+            padding: 10px;
+        }
+
+        .content-tip {
+            color: #fff;
+            margin-bottom: 20px;
+        }
+    </style>
+
+    <script src="../js/summer.js"></script>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/Frameworks/iuapmobile.frameworks.ui.js"></script>
+    <script src="../js/main.js"></script>
+</head>
+<body>
+<div class="um-frame" id="main">
+
+    <div id="content" class="um-content">
+        <img src="../img/banner0.jpg" style="width:100%"></img>
+
+        <div class="p15">
+           <div class="btn" onclick="testingVersion()">跟新app</div>
+        </div>
+    </div>
+
+    <!-- <div class="um-footer"></div> -->
+</div>
+<div class="boxShadow none" >
+    <div class="progress-container">
+        <div class="container-title">
+            提示
+        </div>
+        <div class="container-content">
+            <div class="content-tip">正在跟新app，请稍后</div>
+            <div class="um-progress">
+                <div class="um-progress-bar" >
+                    0%
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script>
+    function testingVersion(){
+        //服务器端版本
+        var jsonVersionInfoOfServer = null;
+        //当前应用版本号
+        var jsonVersionInfoOfClient = null;
+
+        var os = $summer.os;
+        var url = "http://123.103.9.205:8090/mwap/version/version.json";
+        $.ajax({
+            type : 'get',
+            url : url,
+            data : {},
+            cache : false,
+            dataType : 'json',
+            success : function(ret) {
+                if (os == "android"){
+                    jsonVersionInfoOfServer = {
+                        versionCode : ret.android_versioncode,
+                        versionName : ret.android_versionname,
+                        download : ret.android_download
+                    };
+                }else if(os == "ios"){
+                    jsonVersionInfoOfServer = {
+                        versionCode : ret.ios_versioncode,
+                        versionName : ret.ios_versionname,
+                        download : ret.ios_download
+                    };
+                }
+
+                //第二步、获取当前APP的版本信息
+                var versionInfo = summer.getVersion();
+
+                if(typeof versionInfo == "string"){
+                    //安卓走这里
+                    //alert("当前版本信息为"+ versionInfo);
+                    jsonVersionInfoOfClient = JSON.parse(versionInfo);
+                }else if(typeof versionInfo == "object"){
+                    //alert("当前版本信息转换类型后为"+ JSON.stringify(versionInfo));
+                    jsonVersionInfoOfClient = versionInfo;
+                }
+
+                if(parseInt(jsonVersionInfoOfServer.versionCode) > parseInt(jsonVersionInfoOfClient.versionCode)){
+                    summer.upgrade({
+                        "url":"http://123.103.9.205:8090/mwap/"+jsonVersionInfoOfServer.download,
+                        showProgress:false,
+                        "version":{
+                            versionCode:jsonVersionInfoOfServer.versionCode,
+                            versionName:jsonVersionInfoOfServer.versionName
+                        }
+                    }, function(reg){
+                        $('.boxShadow').removeClass('none');
+                        if(reg.status == '0'){
+                            alert("app升级完毕");
+                            $('.boxShadow').addClass('none');
+                            summer.openWin({
+                                url:'index.html',
+                                isKeep:false
+                            });
+                        }else{
+                         $('.um-progress-bar').html(reg.percent+'%').width($('.um-progress').width()/100*parseInt(reg.percent));
+                        }
+                    },function(){
+                        alert("app升级error");
+                    })
+                }else{
+
+
+                }
+            },
+            error:function(response){
+                alert("请求服务器失败");
+            }
+        });
+    }
+
+</script>
+</body>
+
+</html>
