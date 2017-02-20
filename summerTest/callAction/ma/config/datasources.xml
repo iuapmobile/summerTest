@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dsset>
+
+	<datasource id="emm_url">
+		<url>{modules/mobrt/config/config.properties:mdm_login_url}/push/devicestatus</url>
+	</datasource>	
+	
+</dsset>
