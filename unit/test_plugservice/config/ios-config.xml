@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<config>
+   <sys-framework>
+       <framework>CoreLocation.framework</framework>
+       <framework>CoreTelephony.framework</framework>
+   </sys-framework>
+   <delegate-classes>
+       <class></class>
+   </delegate-classes>
+   <debugSettings>
+       <debug></debug>
+       <release></release>
+   </debugSettings>
+</config>
