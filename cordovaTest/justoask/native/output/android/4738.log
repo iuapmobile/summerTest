@@ -1,0 +1,358 @@
+
+2018-04-17 14:32:00:
+构建服务器收到用户[moli_yonyou]构建请求,开始排队构建...
+
+2018-04-17 14:32:00:
+排队完成！开始构建app...
+
+2018-04-17 14:32:00:
+获取到用户配置的系统默认的插件：[cordova-plugin-compat]...
+
+2018-04-17 14:32:00:
+获取到用户配置的构建系统cordova库插件：[cordova-plugin-wechat]...
+
+2018-04-17 14:32:00:
+获取到用户配置的系统默认的插件：[cordova-plugin-file]...
+
+2018-04-17 14:32:00:
+获取到用户配置的系统默认的插件：[cordova-plugin-http]...
+
+2018-04-17 14:32:00:
+获取到用户配置的系统默认的插件：[cordova-plugin-camera]...
+
+2018-04-17 14:32:00:
+用户有配置默认证书，将使用用户默认证书...
+
+2018-04-17 14:32:00:
+获取到构建使用的证书别名：[ump]...
+
+createCordovaProject:
+     [echo] === start create cordova project ===
+     [echo] /usr/local/bin/cordova create /Users/uapma/BuildServer/umpfiles/userfiles/1190/4738/project/justoask
+     [echo] 			com.yonyou.justoask justoask
+     [echo] 		
+     [exec] Creating a new cordova project.
+     [echo] === end create cordova project ===
+
+BUILD SUCCESSFUL
+Total time: 1 second
+
+addPlatform:
+     [echo] add platform
+     [echo] cordova platform add android@/Users/uapma/BuildServer/umpfiles/cordovaLibs/platforms/cordova-android.tgz --save
+     [exec] Using cordova-fetch for cordova-android@/Users/uapma/BuildServer/umpfiles/cordovaLibs/platforms/cordova-android.tgz
+     [exec] Adding android project...
+     [exec] Creating Cordova project for the Android platform:
+     [exec] 	Path: platforms/android
+     [exec] 	Package: com.yonyou.justoask
+     [exec] 	Name: justoask
+     [exec] 	Activity: MainActivity
+     [exec] 	Android target: android-25
+     [exec] Subproject Path: CordovaLib
+     [exec] Android project created with cordova-android@6.1.2
+     [exec] Discovered plugin "cordova-plugin-whitelist" in config.xml. Adding it to the project
+     [exec] Installing "cordova-plugin-whitelist" for android
+     [exec] 
+     [exec]                This plugin is only applicable for versions of cordova-android greater than 4.0. If you have a previous platform version, you do *not* need this plugin since the whitelist will be built in.
+     [exec]           
+     [exec] Adding cordova-plugin-whitelist to package.json
+     [exec] Saved plugin info for "cordova-plugin-whitelist" to config.xml
+     [exec] --save flag or autosave detected
+     [exec] Saving android@/Users/uapma/BuildServer/umpfiles/cordovaLibs/platforms/cordova-android.tgz into config.xml file ...
+     [echo] === end add platform===
+
+BUILD SUCCESSFUL
+Total time: 8 seconds
+
+initCordovaPlugins:
+     [echo] add plugin in cordovaproject
+     [echo]  start add plugin /Users/uapma/BuildServer/umpfiles/userfiles/1190/4738/input/summer-plugin-android-template 
+     [exec] Installing "summer-plugin-ios-template" for android
+     [echo]  end add plugin /Users/uapma/BuildServer/umpfiles/userfiles/1190/4738/input/summer-plugin-android-template 
+     [echo]  start add plugin /Users/uapma/BuildServer/umpfiles/cordovaLibs/plugins/system/common/summer-plugin-apm 
+     [exec] Installing "summer-plugin-apm" for android
+     [echo]  end add plugin /Users/uapma/BuildServer/umpfiles/cordovaLibs/plugins/system/common/summer-plugin-apm 
+     [echo]  start add plugin /Users/uapma/BuildServer/umpfiles/cordovaLibs/plugins/system/common/summer-plugin-core 
+     [exec] Installing "summer-plugin-core" for android
+     [echo]  end add plugin /Users/uapma/BuildServer/umpfiles/cordovaLibs/plugins/system/common/summer-plugin-core 
+     [echo]  start add plugin /Users/uapma/BuildServer/umpfiles/cordovaLibs/plugins/system/common/summer-plugin-frame 
+     [exec] Installing "summer-plugin-frame" for android
+     [echo]  end add plugin /Users/uapma/BuildServer/umpfiles/cordovaLibs/plugins/system/common/summer-plugin-frame 
+     [echo]  start add plugin /Users/uapma/BuildServer/umpfiles/cordovaLibs/plugins/system/common/summer-plugin-service 
+     [exec] Installing "summer-plugin-service" for android
+     [echo]  end add plugin /Users/uapma/BuildServer/umpfiles/cordovaLibs/plugins/system/common/summer-plugin-service 
+     [echo]  start add plugin /Users/uapma/BuildServer/umpfiles/cordovaLibs/plugins/system/android/common/summer-plugin-android-resource 
+     [exec] Installing "summer-plugin-android-resource" for android
+     [exec] Subproject Path: CordovaLib
+     [echo]  end add plugin /Users/uapma/BuildServer/umpfiles/cordovaLibs/plugins/system/android/common/summer-plugin-android-resource 
+     [echo]  start add plugin /Users/uapma/BuildServer/umpfiles/cordovaLibs/plugins/system/android/release/summer-plugin-android-release 
+     [exec] Installing "summer-plugin-android-release" for android
+     [exec] Subproject Path: CordovaLib
+     [echo]  end add plugin /Users/uapma/BuildServer/umpfiles/cordovaLibs/plugins/system/android/release/summer-plugin-android-release 
+     [echo]  start add plugin /Users/uapma/BuildServer/umpfiles/cordovaLibs/plugins/cordova/cordova-plugin-compat 
+     [exec] Installing "cordova-plugin-compat" for android
+     [echo]  end add plugin /Users/uapma/BuildServer/umpfiles/cordovaLibs/plugins/cordova/cordova-plugin-compat 
+     [echo]  start add plugin /Users/uapma/BuildServer/umpfiles/cordovaLibs/plugins/cordova/cordova-plugin-file 
+     [exec] Installing "cordova-plugin-file" for android
+     [exec] Plugin dependency "cordova-plugin-compat@1.1.0" already fetched, using that version.
+     [exec] Dependent plugin "cordova-plugin-compat" already installed on android.
+     [exec] 
+     [exec] The Android Persistent storage location now defaults to "Internal". Please check this plugin's README to see if your application needs any changes in its config.xml.
+     [exec] 
+     [exec] If this is a new application no changes are required.
+     [exec] 
+     [exec] If this is an update to an existing application that did not specify an "AndroidPersistentFileLocation" you may need to add:
+     [exec] 
+     [exec]       "<preference name="AndroidPersistentFileLocation" value="Compatibility" />"
+     [exec] 
+     [exec] to config.xml in order for the application to find previously stored files.
+     [exec]         
+     [echo]  end add plugin /Users/uapma/BuildServer/umpfiles/cordovaLibs/plugins/cordova/cordova-plugin-file 
+     [echo]  start add plugin /Users/uapma/BuildServer/umpfiles/cordovaLibs/plugins/cordova/cordova-plugin-http 
+     [exec] Installing "cordova-plugin-http" for android
+     [exec] Plugin dependency "cordova-plugin-file@4.3.2" already fetched, using that version.
+     [exec] Dependent plugin "cordova-plugin-file" already installed on android.
+     [echo]  end add plugin /Users/uapma/BuildServer/umpfiles/cordovaLibs/plugins/cordova/cordova-plugin-http 
+     [echo]  start add plugin /Users/uapma/BuildServer/umpfiles/cordovaLibs/plugins/cordova/cordova-plugin-camera 
+     [exec] Installing "cordova-plugin-camera" for android
+     [exec] Plugin dependency "cordova-plugin-compat@1.1.0" already fetched, using that version.
+     [exec] Dependent plugin "cordova-plugin-compat" already installed on android.
+     [exec] Subproject Path: CordovaLib
+     [echo]  end add plugin /Users/uapma/BuildServer/umpfiles/cordovaLibs/plugins/cordova/cordova-plugin-camera 
+     [echo]  start add plugin /Users/uapma/BuildServer/umpfiles/cordovaLibs/plugins/cordova/cordova-plugin-wechat 
+     [exec] Installing "cordova-plugin-wechat" for android
+     [exec] Running android-install.Hook: after_plugin_install, Package: com.yonyou.justoask, Path: /Users/uapma/BuildServer/umpfiles/userfiles/1190/4738/project/justoask.
+     [echo]  end add plugin /Users/uapma/BuildServer/umpfiles/cordovaLibs/plugins/cordova/cordova-plugin-wechat 
+     [echo] === end add plugin ===
+
+BUILD SUCCESSFUL
+Total time: 18 seconds
+
+buildAndroid:
+     [echo] Start Build Android App
+     [echo] /usr/local/bin/cordova build android --release -- --keystore /Users/dongzhk/BuildServer/umpfiles/profile/ump.keystore --alias ump --storePassword 123456 --password umpump
+     [echo] Build base Dir /Users/uapma/BuildServer/umpfiles/userfiles/1190/4738/project/justoask
+     [exec] ANDROID_HOME=/Applications/android-sdk-macosx-r16
+     [exec] JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_73.jdk/Contents/Home
+     [exec] Reading build config file: /Users/uapma/BuildServer/umpfiles/userfiles/1190/4738/project/justoask/build.json
+     [exec] Reading the keystore from: /Users/uapma/BuildServer/umpfiles/profile/1190/ump_20170619164555_20180315113122.keystore
+     [exec] Subproject Path: CordovaLib
+     [exec] Parallel execution is an incubating feature.
+     [exec] Repository https://repo1.maven.org/maven2/ replaced by http://maven.aliyun.com/nexus/content/groups/public/.
+     [exec] Repository https://jcenter.bintray.com/ replaced by http://maven.aliyun.com/nexus/content/groups/public/.
+     [exec] Repository https://repo1.maven.org/maven2/ replaced by http://maven.aliyun.com/nexus/content/groups/public/.
+     [exec] Repository https://jcenter.bintray.com/ replaced by http://maven.aliyun.com/nexus/content/groups/public/.
+     [exec] Incremental java compilation is an incubating feature.
+     [exec] :preBuild
+     [exec] :CordovaLib:preBuild
+     [exec] :preBuild UP-TO-DATE
+     [exec] :CordovaLib:preBuild UP-TO-DATE
+     [exec] :preReleaseBuild UP-TO-DATE
+     [exec] :CordovaLib:preReleaseBuild
+     [exec] :checkReleaseManifest
+     [exec] :CordovaLib:preReleaseBuild UP-TO-DATE
+     [exec] :CordovaLib:checkReleaseManifest
+     [exec] :preDebugBuild
+     [exec] :CordovaLib:prepareReleaseDependencies
+     [exec] :preDebugBuild UP-TO-DATE
+     [exec] :preDebugAndroidTestBuild UP-TO-DATE
+     [exec] :CordovaLib:compileReleaseAidl
+     [exec] :generateReleaseBuildConfig
+     [exec] :CordovaLib:compileReleaseNdk UP-TO-DATE
+     [exec] :CordovaLib:compileLint
+     [exec] :generateReleaseResValues
+     [exec] :CordovaLib:copyReleaseLint UP-TO-DATE
+     [exec] :incrementalReleaseJavaCompilationSafeguard
+     [exec] :CordovaLib:mergeReleaseShaders
+     [exec] :compileReleaseNdk UP-TO-DATE
+     [exec] :CordovaLib:compileReleaseShaders
+     [exec] :mergeReleaseShaders
+     [exec] :CordovaLib:generateReleaseAssets
+     [exec] :CordovaLib:mergeReleaseAssets
+     [exec] :compileReleaseShaders
+     [exec] :generateReleaseAssets
+     [exec] :processReleaseJavaRes
+     [exec] :CordovaLib:mergeReleaseProguardFiles
+     [exec] :CordovaLib:packageReleaseRenderscript
+     [exec] :processReleaseJavaRes UP-TO-DATE
+     [exec] :validateSigningRelease
+     [exec] :CordovaLib:packageReleaseRenderscript UP-TO-DATE
+     [exec] :CordovaLib:compileReleaseRenderscript
+     [exec] :CordovaLib:generateReleaseResValues
+     [exec] :CordovaLib:generateReleaseResources
+     [exec] :CordovaLib:packageReleaseResources
+     [exec] :CordovaLib:processReleaseManifest
+     [exec] :CordovaLib:generateReleaseBuildConfig
+     [exec] :CordovaLib:processReleaseResources
+     [exec] :CordovaLib:generateReleaseSources
+     [exec] :CordovaLib:incrementalReleaseJavaCompilationSafeguard
+     [exec] :CordovaLib:compileReleaseJavaWithJavac
+     [exec] :CordovaLib:compileReleaseJavaWithJavac - is not incremental (e.g. outputs have changed, no previous execution, etc.).
+     [exec] :CordovaLib:processReleaseJavaRes UP-TO-DATE
+     [exec] :CordovaLib:transformResourcesWithMergeJavaResForRelease
+     [exec] :CordovaLib:transformClassesAndResourcesWithSyncLibJarsForRelease
+     [exec] :CordovaLib:mergeReleaseJniLibFolders
+     [exec] :CordovaLib:transformNative_libsWithMergeJniLibsForRelease
+     [exec] :CordovaLib:transformNative_libsWithSyncJniLibsForRelease
+     [exec] :CordovaLib:bundleRelease
+     [exec] :prepareAndroidCordovaLibUnspecifiedReleaseLibrary
+     [exec] :CordovaLib:preDebugBuild UP-TO-DATE
+     [exec] :CordovaLib:checkDebugManifest
+     [exec] :CordovaLib:prepareDebugDependencies
+     [exec] :CordovaLib:compileDebugAidl
+     [exec] :CordovaLib:compileDebugNdk UP-TO-DATE
+     [exec] :CordovaLib:copyDebugLint UP-TO-DATE
+     [exec] :CordovaLib:mergeDebugShaders
+     [exec] :CordovaLib:compileDebugShaders
+     [exec] :CordovaLib:generateDebugAssets
+     [exec] :CordovaLib:mergeDebugAssets
+     [exec] :CordovaLib:mergeDebugProguardFiles
+     [exec] :CordovaLib:packageDebugRenderscript UP-TO-DATE
+     [exec] :CordovaLib:compileDebugRenderscript
+     [exec] :CordovaLib:generateDebugResValues
+     [exec] :CordovaLib:generateDebugResources
+     [exec] :CordovaLib:packageDebugResources
+     [exec] :CordovaLib:processDebugManifest
+     [exec] :CordovaLib:generateDebugBuildConfig
+     [exec] :CordovaLib:processDebugResources
+     [exec] :CordovaLib:generateDebugSources
+     [exec] :CordovaLib:incrementalDebugJavaCompilationSafeguard
+     [exec] :CordovaLib:compileDebugJavaWithJavac
+     [exec] :CordovaLib:compileDebugJavaWithJavac - is not incremental (e.g. outputs have changed, no previous execution, etc.).
+     [exec] :CordovaLib:processDebugJavaRes UP-TO-DATE
+     [exec] :CordovaLib:transformResourcesWithMergeJavaResForDebug
+     [exec] :CordovaLib:transformClassesAndResourcesWithSyncLibJarsForDebug
+     [exec] :CordovaLib:mergeDebugJniLibFolders
+     [exec] :CordovaLib:transformNative_libsWithMergeJniLibsForDebug
+     [exec] :CordovaLib:transformNative_libsWithSyncJniLibsForDebug
+     [exec] :CordovaLib:bundleDebug
+     [exec] :prepareComAndroidSupportAnimatedVectorDrawable2411Library
+     [exec] :prepareComAndroidSupportAppcompatV72411Library
+     [exec] :prepareComAndroidSupportMultidex101Library
+     [exec] :prepareComAndroidSupportSupportV42411Library
+     [exec] :prepareComAndroidSupportSupportVectorDrawable2411Library
+     [exec] :prepareOrgXutilsXutils3340Library
+     [exec] :prepareYyemmsdkLibrary
+     [exec] :prepareYymamsdkLibrary
+     [exec] :prepareYysummerLibrary
+     [exec] :prepareYyudaccessorLibrary
+     [exec] :prepareReleaseDependencies
+     [exec] :compileReleaseAidl
+     [exec] :compileReleaseRenderscript
+     [exec] :generateReleaseResources
+     [exec] :mergeReleaseResources
+     [exec] :processReleaseManifest
+     [exec] [:yyemmsdk:] /Users/uapma/BuildServer/umpfiles/userfiles/1190/4738/project/justoask/platforms/android/build/intermediates/exploded-aar/yyemmsdk/AndroidManifest.xml:30:5-79 Warning:
+     [exec] 	Element uses-permission#android.permission.ACCESS_FINE_LOCATION at [:yyemmsdk:] AndroidManifest.xml:30:5-79 duplicated with element declared at [:yyemmsdk:] AndroidManifest.xml:27:5-79
+     [exec] /Users/uapma/BuildServer/umpfiles/userfiles/1190/4738/project/justoask/platforms/android/AndroidManifest.xml:6:5-39:19 Warning:
+     [exec] 	application@android:allowBackup was tagged at AndroidManifest.xml:6 to replace other declarations but no other declaration present
+     [exec] :processReleaseResources
+     [exec] :generateReleaseSources
+     [exec] :compileReleaseJavaWithJavac
+     [exec] :compileReleaseJavaWithJavac - is not incremental (e.g. outputs have changed, no previous execution, etc.).
+     [exec] 注: 某些输入文件使用或覆盖了已过时的 API。
+     [exec] 注: 有关详细信息, 请使用 -Xlint:deprecation 重新编译。
+     [exec] 注: /Users/uapma/BuildServer/umpfiles/userfiles/1190/4738/project/justoask/platforms/android/src/org/apache/cordova/file/AssetFilesystem.java使用了未经检查或不安全的操作。
+     [exec] 注: 有关详细信息, 请使用 -Xlint:unchecked 重新编译。
+     [exec] :compileReleaseSources
+     [exec] :lintVitalRelease
+     [exec] :mergeReleaseAssets
+     [exec] :transformClassesWithJarMergingForRelease
+     [exec] :collectReleaseMultiDexComponents
+     [exec] :transformClassesWithMultidexlistForRelease
+     [exec] :transformClassesWithDexForRelease
+     [exec] :mergeReleaseJniLibFolders
+     [exec] :transformNative_libsWithMergeJniLibsForRelease
+     [exec] :transformResourcesWithMergeJavaResForReleasewarning: Ignoring InnerClasses attribute for an anonymous inner class
+     [exec] (com.tencent.mm.opensdk.diffdev.a.b) that doesn't come with an
+     [exec] associated EnclosingMethod attribute. This class was probably produced by a
+     [exec] compiler that did not target the modern .class file format. The recommended
+     [exec] solution is to recompile the class from source, using an up-to-date compiler
+     [exec] and without specifying any "-target" type options. The consequence of ignoring
+     [exec] this warning is that reflective operations on this class will incorrectly
+     [exec] indicate that it is *not* an inner class.
+     [exec] warning: Ignoring InnerClasses attribute for an anonymous inner class
+     [exec] (com.tencent.mm.opensdk.diffdev.a.c) that doesn't come with an
+     [exec] associated EnclosingMethod attribute. This class was probably produced by a
+     [exec] compiler that did not target the modern .class file format. The recommended
+     [exec] solution is to recompile the class from source, using an up-to-date compiler
+     [exec] and without specifying any "-target" type options. The consequence of ignoring
+     [exec] this warning is that reflective operations on this class will incorrectly
+     [exec] indicate that it is *not* an inner class.
+     [exec] warning: Ignoring InnerClasses attribute for an anonymous inner class
+     [exec] (com.tencent.mm.opensdk.openapi.WXApiImplV10$ActivityLifecycleCb$1) that doesn't come with an
+     [exec] associated EnclosingMethod attribute. This class was probably produced by a
+     [exec] compiler that did not target the modern .class file format. The recommended
+     [exec] solution is to recompile the class from source, using an up-to-date compiler
+     [exec] and without specifying any "-target" type options. The consequence of ignoring
+     [exec] this warning is that reflective operations on this class will incorrectly
+     [exec] indicate that it is *not* an inner class.
+     [exec] warning: Ignoring InnerClasses attribute for an anonymous inner class
+     [exec] (com.tencent.mm.opensdk.openapi.WXApiImplV10$ActivityLifecycleCb$2) that doesn't come with an
+     [exec] associated EnclosingMethod attribute. This class was probably produced by a
+     [exec] compiler that did not target the modern .class file format. The recommended
+     [exec] solution is to recompile the class from source, using an up-to-date compiler
+     [exec] and without specifying any "-target" type options. The consequence of ignoring
+     [exec] this warning is that reflective operations on this class will incorrectly
+     [exec] indicate that it is *not* an inner class.
+     [exec] warning: Ignoring InnerClasses attribute for an anonymous inner class
+     [exec] (net.lingala.zip4j.unzip.Unzip$1) that doesn't come with an
+     [exec] associated EnclosingMethod attribute. This class was probably produced by a
+     [exec] compiler that did not target the modern .class file format. The recommended
+     [exec] solution is to recompile the class from source, using an up-to-date compiler
+     [exec] and without specifying any "-target" type options. The consequence of ignoring
+     [exec] this warning is that reflective operations on this class will incorrectly
+     [exec] indicate that it is *not* an inner class.
+     [exec] warning: Ignoring InnerClasses attribute for an anonymous inner class
+     [exec] (net.lingala.zip4j.unzip.Unzip$2) that doesn't come with an
+     [exec] associated EnclosingMethod attribute. This class was probably produced by a
+     [exec] compiler that did not target the modern .class file format. The recommended
+     [exec] solution is to recompile the class from source, using an up-to-date compiler
+     [exec] and without specifying any "-target" type options. The consequence of ignoring
+     [exec] this warning is that reflective operations on this class will incorrectly
+     [exec] indicate that it is *not* an inner class.
+     [exec] warning: Ignoring InnerClasses attribute for an anonymous inner class
+     [exec] (net.lingala.zip4j.util.ArchiveMaintainer$1) that doesn't come with an
+     [exec] associated EnclosingMethod attribute. This class was probably produced by a
+     [exec] compiler that did not target the modern .class file format. The recommended
+     [exec] solution is to recompile the class from source, using an up-to-date compiler
+     [exec] and without specifying any "-target" type options. The consequence of ignoring
+     [exec] this warning is that reflective operations on this class will incorrectly
+     [exec] indicate that it is *not* an inner class.
+     [exec] warning: Ignoring InnerClasses attribute for an anonymous inner class
+     [exec] (net.lingala.zip4j.util.ArchiveMaintainer$2) that doesn't come with an
+     [exec] associated EnclosingMethod attribute. This class was probably produced by a
+     [exec] compiler that did not target the modern .class file format. The recommended
+     [exec] solution is to recompile the class from source, using an up-to-date compiler
+     [exec] and without specifying any "-target" type options. The consequence of ignoring
+     [exec] this warning is that reflective operations on this class will incorrectly
+     [exec] indicate that it is *not* an inner class.
+     [exec] warning: Ignoring InnerClasses attribute for an anonymous inner class
+     [exec] (net.lingala.zip4j.zip.ZipEngine$1) that doesn't come with an
+     [exec] associated EnclosingMethod attribute. This class was probably produced by a
+     [exec] compiler that did not target the modern .class file format. The recommended
+     [exec] solution is to recompile the class from source, using an up-to-date compiler
+     [exec] and without specifying any "-target" type options. The consequence of ignoring
+     [exec] this warning is that reflective operations on this class will incorrectly
+     [exec] indicate that it is *not* an inner class.
+     [exec] 
+     [exec] :packageRelease
+     [exec] :assembleRelease
+     [exec] :cdvBuildRelease
+     [exec] 
+     [exec] BUILD SUCCESSFUL
+     [exec] 
+     [exec] Total time: 11.374 secs
+     [exec] Built the following apk(s): 
+     [exec] 	/Users/uapma/BuildServer/umpfiles/userfiles/1190/4738/project/justoask/platforms/android/build/outputs/apk/android-release.apk
+     [echo] End Build Android App
+     [echo] start move apk and asserts
+     [move] Moving 1 file to /Users/uapma/BuildServer/umpfiles/userfiles/1190/4738/output/install
+      [zip] Building zip: /Users/uapma/BuildServer/umpfiles/userfiles/1190/4738/output/install/justoask_assets.zip
+     [echo] end move apk and asserts
+     [echo] delete build dir add by dongzhk
+   [delete] Deleting directory /Users/uapma/BuildServer/umpfiles/userfiles/1190/4738/project/justoask/platforms/android/build
+     [echo] end delete build dir by dongzhk
+
+BUILD SUCCESSFUL
+Total time: 14 seconds
